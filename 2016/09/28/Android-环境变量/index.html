@@ -4,23 +4,59 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>My Test | 刘楠的博客</title>
+    <title>Android 环境变量 | 刘楠的博客</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Liu Nan">
     
 
     
-    <meta name="description" content="This  is my blog!">
+    <meta name="description" content="JDK环境变量配置
+JAVA_HOME
+JDK的安装路径C:\Program Files (x86)\Java\jdk1.8.0_25 
+
+CLASSPATH
+.;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar
+
+PATH
+%JAVA_HOME%\bin;%JAVA_HOME%\jre\bin
+
+
+Android SDK环境变量
+ANDROID_H">
 <meta property="og:type" content="article">
-<meta property="og:title" content="My Test">
-<meta property="og:url" content="https://ln0491.github.io/2016/09/28/My-Test/index.html">
+<meta property="og:title" content="Android 环境变量">
+<meta property="og:url" content="https://ln0491.github.io/2016/09/28/Android-环境变量/index.html">
 <meta property="og:site_name" content="刘楠的博客">
-<meta property="og:description" content="This  is my blog!">
-<meta property="og:updated_time" content="2016-09-28T02:12:19.148Z">
+<meta property="og:description" content="JDK环境变量配置
+JAVA_HOME
+JDK的安装路径C:\Program Files (x86)\Java\jdk1.8.0_25 
+
+CLASSPATH
+.;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar
+
+PATH
+%JAVA_HOME%\bin;%JAVA_HOME%\jre\bin
+
+
+Android SDK环境变量
+ANDROID_H">
+<meta property="og:updated_time" content="2016-09-28T05:58:21.263Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="My Test">
-<meta name="twitter:description" content="This  is my blog!">
+<meta name="twitter:title" content="Android 环境变量">
+<meta name="twitter:description" content="JDK环境变量配置
+JAVA_HOME
+JDK的安装路径C:\Program Files (x86)\Java\jdk1.8.0_25 
+
+CLASSPATH
+.;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar
+
+PATH
+%JAVA_HOME%\bin;%JAVA_HOME%\jre\bin
+
+
+Android SDK环境变量
+ANDROID_H">
 
     
     <link rel="alternative" href="/atom.xml" title="刘楠的博客" type="application/atom+xml">
@@ -83,14 +119,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2016/09/28/My-Test/" title="My Test" itemprop="url">My Test</a>
+      <a href="/2016/09/28/Android-环境变量/" title="Android 环境变量" itemprop="url">Android 环境变量</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="Liu Nan" target="_blank" itemprop="author">Liu Nan</a>
 		
   <p class="article-time">
-    <time datetime="2016-09-28T02:11:58.000Z" itemprop="datePublished"> 发表于 2016-09-28</time>
+    <time datetime="2016-09-28T05:57:33.000Z" itemprop="datePublished"> 发表于 2016-09-28</time>
     
   </p>
 </header>
@@ -99,24 +135,77 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#JDK环境变量配置"><span class="toc-number">1.</span> <span class="toc-text">JDK环境变量配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Android-SDK环境变量"><span class="toc-number">2.</span> <span class="toc-text">Android SDK环境变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MAVEN-环境变量"><span class="toc-number">3.</span> <span class="toc-text">MAVEN 环境变量</span></a></li></ol>
 		
 		</div>
 		
-		  
+		<h2 id="JDK环境变量配置"><a href="#JDK环境变量配置" class="headerlink" title="JDK环境变量配置"></a>JDK环境变量配置</h2><ul>
+<li><p>JAVA_HOME</p>
+<pre><code>JDK的安装路径C:\Program Files (x86)\Java\jdk1.8.0_25 
+</code></pre></li>
+<li><p>CLASSPATH</p>
+<pre><code>.;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar
+</code></pre></li>
+<li><p>PATH</p>
+<pre><code>%JAVA_HOME%\bin;%JAVA_HOME%\jre\bin
+</code></pre></li>
+</ul>
+<h2 id="Android-SDK环境变量"><a href="#Android-SDK环境变量" class="headerlink" title="Android SDK环境变量"></a>Android SDK环境变量</h2><ul>
+<li><p>ANDROID_HOME</p>
+<pre><code>D:\Android\sdk
+</code></pre></li>
+<li><p>PATH</p>
+<pre><code>%ANDROID_HOME%\platform-tools;%ANDROID_HOME%\tools;
+</code></pre></li>
+</ul>
+<h2 id="MAVEN-环境变量"><a href="#MAVEN-环境变量" class="headerlink" title="MAVEN 环境变量"></a>MAVEN 环境变量</h2><ul>
+<li><p>MAVEN_HOME</p>
+<pre><code>D:\JAVA\apache-maven-3.3.9
+</code></pre></li>
+<li><p>PATH</p>
+</li>
+<li><pre><code>%MAVEN_HOME%\bin;
+</code></pre></li>
+</ul>
+<p>MAVEN_OPTS</p>
+<pre><code>-Xms128m -Xmx512m
+</code></pre><ul>
+<li><p>查看是否配置成功</p>
+<blockquote>
+<p>mvn -v</p>
+</blockquote>
+</li>
+<li><p>默认本地仓库</p>
+<blockquote>
+<p>系统当前用户目录下.m2下,Maven缺省的本地仓库路径为${user.home}/.m2/repository。 </p>
+</blockquote>
+</li>
+<li><p>修改本地创库</p>
+</li>
+</ul>
+<blockquote>
+<p>在D盘下新m2\repository文件夹    可以通过修改${user.home}/.m2/settings.xml配置本地仓库路径     修改Maven安装目录下的 conf/文件夹内的setting.xml文件，新增一行：</p>
+</blockquote>
+<pre><code>&lt;localRepository&gt;D:/JAVA/m2/repository&lt;/localRepository&gt;
+</code></pre><blockquote>
+<p>（表示本地仓库的地址为：D:/JAVA/m2/repository）</p>
+</blockquote>
+<p>将setting.xml复制一份到D:/JAVA/m2/repository</p>
+<pre><code>注意ManvenConfig下有此文件，便不要修改，复制出来修改
+</code></pre>  
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/test/">test</a>
+  <a class="article-category-link" href="/categories/android/">android</a>
 </div>
 
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/test/">test</a>
+  <span></span> <a href="/tags/android/">android</a>
   </div>
 
 </div>
@@ -125,7 +214,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="https://ln0491.github.io/2016/09/28/My-Test/" data-title="My Test | 刘楠的博客" data-tsina="null" class="share clearfix">
+	  <div data-url="https://ln0491.github.io/2016/09/28/Android-环境变量/" data-title="Android 环境变量 | 刘楠的博客" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -138,19 +227,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2016/09/28/MAVEN常用命令学习/" title="MAVEN常用命令学习">
-  <strong>上一篇：</strong><br/>
-  <span>
-  MAVEN常用命令学习</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2016/09/28/my-new-post/"  title="my new post">
+<a href="/2016/09/28/MAVEN常用命令学习/"  title="MAVEN常用命令学习">
  <strong>下一篇：</strong><br/> 
- <span>my new post
+ <span>MAVEN常用命令学习
 </span>
 </a>
 </div>
@@ -159,7 +240,7 @@
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2016/09/28/My-Test/" data-title="My Test" data-url="https://ln0491.github.io/2016/09/28/My-Test/"></div>
+	<div class="ds-thread" data-thread-key="2016/09/28/Android-环境变量/" data-title="Android 环境变量" data-url="https://ln0491.github.io/2016/09/28/Android-环境变量/"></div>
 </section>
 
 
@@ -169,7 +250,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#JDK环境变量配置"><span class="toc-number">1.</span> <span class="toc-text">JDK环境变量配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Android-SDK环境变量"><span class="toc-number">2.</span> <span class="toc-text">Android SDK环境变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MAVEN-环境变量"><span class="toc-number">3.</span> <span class="toc-text">MAVEN 环境变量</span></a></li></ol>
  
   </div>
 

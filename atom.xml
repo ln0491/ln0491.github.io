@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ln0491.github.io/"/>
-  <updated>2016-09-28T05:52:45.480Z</updated>
+  <updated>2016-09-28T05:58:21.263Z</updated>
   <id>https://ln0491.github.io/</id>
   
   <author>
@@ -14,6 +14,83 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Android 环境变量</title>
+    <link href="https://ln0491.github.io/2016/09/28/Android-%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/"/>
+    <id>https://ln0491.github.io/2016/09/28/Android-环境变量/</id>
+    <published>2016-09-28T05:57:33.000Z</published>
+    <updated>2016-09-28T05:58:21.263Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="JDK环境变量配置"><a href="#JDK环境变量配置" class="headerlink" title="JDK环境变量配置"></a>JDK环境变量配置</h2><ul>
+<li><p>JAVA_HOME</p>
+<pre><code>JDK的安装路径C:\Program Files (x86)\Java\jdk1.8.0_25 
+</code></pre></li>
+<li><p>CLASSPATH</p>
+<pre><code>.;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar
+</code></pre></li>
+<li><p>PATH</p>
+<pre><code>%JAVA_HOME%\bin;%JAVA_HOME%\jre\bin
+</code></pre></li>
+</ul>
+<h2 id="Android-SDK环境变量"><a href="#Android-SDK环境变量" class="headerlink" title="Android SDK环境变量"></a>Android SDK环境变量</h2><ul>
+<li><p>ANDROID_HOME</p>
+<pre><code>D:\Android\sdk
+</code></pre></li>
+<li><p>PATH</p>
+<pre><code>%ANDROID_HOME%\platform-tools;%ANDROID_HOME%\tools;
+</code></pre></li>
+</ul>
+<h2 id="MAVEN-环境变量"><a href="#MAVEN-环境变量" class="headerlink" title="MAVEN 环境变量"></a>MAVEN 环境变量</h2><ul>
+<li><p>MAVEN_HOME</p>
+<pre><code>D:\JAVA\apache-maven-3.3.9
+</code></pre></li>
+<li><p>PATH</p>
+</li>
+<li><pre><code>%MAVEN_HOME%\bin;
+</code></pre></li>
+</ul>
+<p>MAVEN_OPTS</p>
+<pre><code>-Xms128m -Xmx512m
+</code></pre><ul>
+<li><p>查看是否配置成功</p>
+<blockquote>
+<p>mvn -v</p>
+</blockquote>
+</li>
+<li><p>默认本地仓库</p>
+<blockquote>
+<p>系统当前用户目录下.m2下,Maven缺省的本地仓库路径为${user.home}/.m2/repository。 </p>
+</blockquote>
+</li>
+<li><p>修改本地创库</p>
+</li>
+</ul>
+<blockquote>
+<p>在D盘下新m2\repository文件夹    可以通过修改${user.home}/.m2/settings.xml配置本地仓库路径     修改Maven安装目录下的 conf/文件夹内的setting.xml文件，新增一行：</p>
+</blockquote>
+<pre><code>&lt;localRepository&gt;D:/JAVA/m2/repository&lt;/localRepository&gt;
+</code></pre><blockquote>
+<p>（表示本地仓库的地址为：D:/JAVA/m2/repository）</p>
+</blockquote>
+<p>将setting.xml复制一份到D:/JAVA/m2/repository</p>
+<pre><code>注意ManvenConfig下有此文件，便不要修改，复制出来修改
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;JDK环境变量配置&quot;&gt;&lt;a href=&quot;#JDK环境变量配置&quot; class=&quot;headerlink&quot; title=&quot;JDK环境变量配置&quot;&gt;&lt;/a&gt;JDK环境变量配置&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;JAVA_HOME&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;JDK的安装路径
+    
+    </summary>
+    
+      <category term="android" scheme="https://ln0491.github.io/categories/android/"/>
+    
+    
+      <category term="android" scheme="https://ln0491.github.io/tags/android/"/>
+    
+  </entry>
   
   <entry>
     <title>MAVEN常用命令学习</title>
