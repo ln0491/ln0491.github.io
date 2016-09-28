@@ -1,0 +1,742 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Volley自定义Request | 刘楠的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Liu Nan">
+    
+
+    
+    <meta name="description" content="自定义Requestpublic class StringRequest extends Request&amp;lt;String&amp;gt; {
+        //监听器
+    private final Listener&amp;lt;String&amp;gt; mListener;
+
+    //构造方法 这时一定要调用super
+    public StringRequest(int method, Str">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Volley自定义Request">
+<meta property="og:url" content="https://ln0491.github.io/2016/09/28/Volley自定义Request/index.html">
+<meta property="og:site_name" content="刘楠的博客">
+<meta property="og:description" content="自定义Requestpublic class StringRequest extends Request&amp;lt;String&amp;gt; {
+        //监听器
+    private final Listener&amp;lt;String&amp;gt; mListener;
+
+    //构造方法 这时一定要调用super
+    public StringRequest(int method, Str">
+<meta property="og:updated_time" content="2016-09-28T06:16:22.313Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Volley自定义Request">
+<meta name="twitter:description" content="自定义Requestpublic class StringRequest extends Request&amp;lt;String&amp;gt; {
+        //监听器
+    private final Listener&amp;lt;String&amp;gt; mListener;
+
+    //构造方法 这时一定要调用super
+    public StringRequest(int method, Str">
+
+    
+    <link rel="alternative" href="/atom.xml" title="刘楠的博客" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="刘楠的博客" title="刘楠的博客"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="刘楠的博客">刘楠的博客</a></h1>
+				<h2 class="blog-motto">热爱生活</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">首页</a></li>
+					
+						<li><a href="/archives">归档</a></li>
+					
+						<li><a href="/tags">标签</a></li>
+					
+						<li><a href="/categories">分类</a></li>
+					
+						<li><a href="/about">关于</a></li>
+					
+					<li>
+ 					
+						<form class="search" action="http://zhannei.baidu.com/cse/search" target="_blank">
+							<label>Search</label>
+						<input name="s" type="hidden" value= 9779949399098768934 ><input type="text" name="q" size="30" placeholder="搜索"><br>
+						</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/09/28/Volley自定义Request/" title="Volley自定义Request" itemprop="url">Volley自定义Request</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Liu Nan" target="_blank" itemprop="author">Liu Nan</a>
+		
+  <p class="article-time">
+    <time datetime="2016-09-28T06:16:01.000Z" itemprop="datePublished"> 发表于 2016-09-28</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#自定义Request"><span class="toc-number">1.</span> <span class="toc-text">自定义Request</span></a></li></ol>
+		
+		</div>
+		
+		<h4 id="自定义Request"><a href="#自定义Request" class="headerlink" title="自定义Request"></a>自定义Request</h4><pre><code>public class StringRequest extends Request&lt;String&gt; {
+        //监听器
+    private final Listener&lt;String&gt; mListener;
+
+    //构造方法 这时一定要调用super
+    public StringRequest(int method, String url, Listener&lt;String&gt; listener, ErrorListener errorListener) {
+        super(method, url, errorListener);
+        this.mListener = listener;
+    }
+
+    //调用上面的方法
+    public StringRequest(String url, Listener&lt;String&gt; listener, ErrorListener errorListener) {
+        this(0, url, listener, errorListener);
+    }
+
+    //只是deliverResponse()方法中的实现很简单，仅仅是调用了mListener中的onResponse()方法，并将response内容传入即可，这样就可以将服务器响应的数据进行回调了
+    protected void deliverResponse(String response) {
+        this.mListener.onResponse(response);
+    }
+
+    protected Response&lt;String&gt; parseNetworkResponse(NetworkResponse response) {
+        String parsed;
+        try {
+            //parseCharset字符编码
+            parsed = new String(response.data, HttpHeaderParser.parseCharset(response.headers));
+        } catch (UnsupportedEncodingException var4) {
+            parsed = new String(response.data);
+        }
+        //头信息
+        return Response.success(parsed, HttpHeaderParser.parseCacheHeaders(response));
+    }
+}
+</code></pre><p>由于Request类中的deliverResponse()和parseNetworkResponse()是两个抽象方法，<br>因此StringRequest中需要对这两个方法进行实现。deliverResponse()方法中的实现很简单，仅仅是调用了mListener中的onResponse()方法，并将response内容传入即可，这样就可以将服务器响应的数据进行回调了。<br>parseNetworkResponse()方法中则应该对服务器响应的数据进行解析,其中数据是以字节的形式存放在NetworkResponse的data变量中的，这里将数据取出然后组装成一个String，并传入Response的success()方法中即可。</p>
+<p>#####自定义GsonRequest</p>
+<pre><code>package com.liu.volleydemo.requestion;
+
+import com.android.volley.NetworkResponse;
+import com.android.volley.ParseError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.toolbox.HttpHeaderParser;
+import com.google.gson.Gson;
+
+import java.io.UnsupportedEncodingException;
+
+/**
+ * @Description: 描述
+ * @AUTHOR 刘楠  Create By 2016/9/26 0026 18:11
+ */
+public class GsonRequest&lt;T&gt; extends Request&lt;T&gt; {
+    private final Response.Listener&lt;T&gt; mListener;
+    private       Gson                 mGson;
+    private       Class&lt;T&gt;             mClazz;
+
+    public GsonRequest(int method, String url, Class&lt;T&gt; clazz, Response.Listener&lt;T&gt; listener, Response.ErrorListener errorListener) {
+        super(method, url, errorListener);
+        this.mListener = listener;
+        mGson= new Gson();
+        mClazz = clazz;
+    }
+
+    public GsonRequest(String url, Class&lt;T&gt; clazz, Response.Listener&lt;T&gt; listener, Response.ErrorListener errorListener) {
+        this(Method.GET, url, clazz, listener, errorListener);
+    }
+
+    @Override
+    protected void deliverResponse(T response) {
+
+        mListener.onResponse(response);
+
+    }
+
+    @Override
+    protected Response&lt;T&gt; parseNetworkResponse(NetworkResponse response) {
+
+        try {
+            /**
+             * 获取数据
+             */
+            String jsonString = new String(response.data, HttpHeaderParser.parseCharset(response.headers));
+            // 转化反回
+            return Response.success(mGson.fromJson(jsonString, mClazz), HttpHeaderParser.parseCacheHeaders(response));
+
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+            return Response.error(new ParseError(e));
+        }
+
+    }
+
+}
+</code></pre><p>=================BEAN==========</p>
+<p>package com.liu.volleydemo.bean;</p>
+<p>import java.util.List;</p>
+<pre><code>/**
+ * @Description: 描述
+ * @AUTHOR 刘楠  Create By 2016/9/26 0026 18:36
+ */
+public class WeixinSelected {
+
+
+
+
+    public String       reason;
+
+
+    public ResultEntity result;
+    public int error_code;
+
+    @Override
+    public String toString() {
+        return &quot;WeixinSelected{&quot; +
+                &quot;reason=&apos;&quot; + reason + &apos;\&apos;&apos; +
+                &quot;, result=&quot; + result +
+                &quot;, error_code=&quot; + error_code +
+                &apos;}&apos;;
+    }
+
+    public static class ResultEntity {
+        public int totalPage;
+        public int ps;
+        public int pno;
+
+        @Override
+        public String toString() {
+            return &quot;ResultEntity{&quot; +
+                    &quot;totalPage=&quot; + totalPage +
+                    &quot;, ps=&quot; + ps +
+                    &quot;, pno=&quot; + pno +
+                    &quot;, list=&quot; + list +
+                    &apos;}&apos;;
+        }
+
+
+
+        public List&lt;ListEntity&gt; list;
+
+        public static class ListEntity {
+            public String firstImg;
+            public String id;
+            public String source;
+            public String title;
+            public String url;
+            public String mark;
+
+            @Override
+            public String toString() {
+                return &quot;ListEntity{&quot; +
+                        &quot;firstImg=&apos;&quot; + firstImg + &apos;\&apos;&apos; +
+                        &quot;, id=&apos;&quot; + id + &apos;\&apos;&apos; +
+                        &quot;, source=&apos;&quot; + source + &apos;\&apos;&apos; +
+                        &quot;, title=&apos;&quot; + title + &apos;\&apos;&apos; +
+                        &quot;, url=&apos;&quot; + url + &apos;\&apos;&apos; +
+                        &quot;, mark=&apos;&quot; + mark + &apos;\&apos;&apos; +
+                        &apos;}&apos;;
+            }
+        }
+    }
+}
+</code></pre><p>请求</p>
+<pre><code>final RequestQueue requestQueue = MyVolley.getRequestQueue(this);
+
+   String       url    =&quot;http://v.juhe.cn/weixin/query&quot;;
+   final String appkey =&quot;24834287692b8d54cf634668ce5de0b4&quot;;
+
+  GsonRequest&lt;WeixinSelected&gt; gsonRequest = new GsonRequest&lt;WeixinSelected&gt;(Request.Method.POST,url, WeixinSelected.class, new Response.Listener&lt;WeixinSelected&gt;() {
+       @Override
+       public void onResponse(WeixinSelected weixinSelected) {
+
+           Log.d(&quot;vivi&quot;, &quot;onResponse: &quot;+weixinSelected.toString());
+
+       }
+   }, new Response.ErrorListener() {
+       @Override
+       public void onErrorResponse(VolleyError volleyError) {
+
+           volleyError.printStackTrace();
+           Log.d(&quot;vivi&quot;, &quot;onErrorResponse: &quot;+volleyError.getMessage());
+       }
+   }){
+       @Override
+       protected Map&lt;String, String&gt; getParams() throws AuthFailureError {
+
+           Map&lt;String,String&gt; params = new HashMap&lt;&gt;();
+           params.put(&quot;key&quot;,appkey);
+           return params;
+       }
+   };
+
+   requestQueue.add(gsonRequest);
+</code></pre><blockquote>
+<p>日志</p>
+</blockquote>
+<pre><code>WeixinSelected{reason=&apos;success&apos;, result=ResultEntity{totalPage=25, ps=20, pno=1, list=[ListEntity{firstImg=&apos;http://zxpic.gtimg.com/infonew/0/wechat_pics_-8255071.jpg/640&apos;, id=&apos;wechat_20160915039850&apos;, source=&apos;功夫体育&apos;, title=&apos;女排冠军们“高”人一等，谁敢娶？&apos;, url=&apos;http://v.juhe.cn/weixin/redirect?wid=wechat_20160915039850&apos;, mark=&apos;&apos;}, ListEntity{firstImg=&apos;http://zxpic.gtimg.com/infonew/0/wechat_pics_-8575838.jpg/640&apos;, id=&apos;wechat_20151201058612&apos;, source=&apos;龍神迷失&apos;, title=&apos;中国首辆上牌的布加迪威龙，以为车牌很一般，最后发现车牌很霸气&apos;, url=&apos;http://v.juhe.cn/weixin/redirect?wid=wechat_20151201058612&apos;, mark=&apos;&apos;}, ListEntity{firstImg=&apos;http://zxpic.gtimg.com/infonew/0/wechat_pics_-8206632.jpg/640&apos;, id=&apos;wechat_20160102022165&apos;, source=&apos;篮球频道&apos;, title=&apos;【球迷关注点】书豪:一度想退役不再打球 曾被科比一句蔑视激怒&apos;, url=&apos;http://v.juhe.cn/weixin/redirect?wid=wechat_20160102022165&apos;, mark=&apos;&apos;}, ListEntity{firstImg=&apos;http://zxpic.gtimg.com/infonew/0/wechat_pics_-8064767.jpg/640&apos;, id=&apos;wechat_20160908053966&apos;, source=&apos;娱乐圈扒姐&apos;, title=&apos;某知名女星在节目中威胁选手收贿，私下爱搞潜规则&apos;, url=&apos;http://v.juhe.cn/weixin/redirect?wid=wechat_20160908053966&apos;, mark=&apos;&apos;}, ListEntity{firstImg=&apos;http://zxpic.gtimg.com/infonew/0/wechat_pics_-7986866.jpg/640&apos;, id=&apos;wechat_20160906017693&apos;, source=&apos;颜小白的篮球梦&apos;, title=&apos;科比跟乔丹比到底差在哪里？仅仅是身体素质吗&apos;, url=&apos;http://v.juhe.cn/weixin/redirect?wid=wechat_20160906017693&apos;, mark=&apos;&apos;}, ListEntity{firstImg=&apos;http://zxpic.gtimg.com/infonew/0/wechat_pics_-7986843.jpg/640&apos;, id=&apos;wechat_20160906017663&apos;, source=&apos;嘻嘻哈哈&apos;, title=&apos;神动图|这手感绝对不差！&apos;, url=&apos;http://v.juhe.cn/weixin/redirect?wid=wechat_20160906017663&apos;, mark=&apos;&apos;}, ListEntity{firstImg=&apos;http://zxpic.gtimg.com/infonew/0/wechat_pics_-7986833.jpg/640&apos;, id=&apos;wechat_20160906017658&apos;, source=&apos;嘻嘻哈哈&apos;, title=&apos;江湖流传的这些奇葩书，简直刷新我的三观~&apos;, url=&apos;http://v.juhe.cn/weixin/redirect?wid=wechat_20160906017658&apos;, mark=&apos;&apos;}, ListEntity{firstImg=&apos;http://zxpic.gtimg.com/infonew/0/wechat_pics_-7986819.jpg/640&apos;, id=&apos;wechat_20160906017552&apos;, source=&apos;笑你妹&apos;, title=&apos;【搞笑段子】有心无力啊，办起事来几分钟完事~&apos;, url=&apos;http://v.juhe.cn/weixin/redirect?wid=wechat_20160906017552&apos;, mark=&apos;&apos;}, ListEntity{firstImg=&apos;http://zxpic.gtimg.com/infonew/0/wechat_pics_-7986802.jpg/640&apos;, id=&apos;wechat_20160906017288&apos;, source=&apos;TechWeb&apos;, title=&apos;在iPhone7发布之前我们先来看看它的跑分吧&apos;, url=&apos;http://v.juhe.cn/weixin/redirect?wid=wechat_20160906017288&apos;, mark=&apos;&apos;}, ListEntity{firstImg=&apos;http://zxpic.gtimg.com/infonew/0/wechat_pics_-7986693.jpg/640&apos;, id=&apos;wechat_20160906016354&apos;, source=&apos;陇南生活网&apos;, title=&apos;甘肃：将发生严重腐败问题的地区部门直接评为“一般”&apos;, url=&apos;http://v.juhe.cn/weixin/redirect?wid=wechat_20160906016354&apos;, mark=&apos;&apos;}, ListEntity{firstImg=&apos;http://zxpic.gtimg.com/infonew/0/wechat_pics_-7986675.jpg/640&apos;, id=&apos;wechat_20160906016213&apos;, source=&apos;云上的空母&apos;, title=&apos;万吨两栖舰上的袖珍火炮，射速为每分钟200发&apos;, url=&apos;http://v.juhe.cn/weixin/redirect?wid=wechat_20160906016213&apos;, mark=&apos;&apos;}, ListEntity{firstImg=&apos;http://zxpic.gtimg.com/infonew/0/wechat_pics_-7986645.jpg/640&apos;, id=&apos;wechat_20160906016204&apos;, source=&apos;云上的空母&apos;, title=&apos;全球最大口径的加特林机关炮，一眨眼打出50发炮弹&apos;, url=&apos;http://v.juhe.cn/weixin/redirect?wid=wechat_20160906016204&apos;, mark=&apos;&apos;}, ListEntity{firstImg=&apos;http://zxpic.gtimg.com/infonew/0/wechat_pics_-7986534.jpg/640&apos;, id=&apos;wechat_20160906015882&apos;, source=&apos;钛媒体&apos;, title=&apos;三星耗10亿美元召回Note7，并称损失令人real心痛钛晨报&apos;, url=&apos;http://v.juhe.cn/weixin/redirect?wid=wechat_20160906015882&apos;, mark=&apos;&apos;}, ListEntity{firstImg=&apos;http://zxpic.gtimg.com/infonew/0/wechat_pics_-7986438.jpg/640&apos;, id=&apos;wechat_20160906015702&apos;, source=&apos;摄影笔记&apos;, title=&apos;一篇文章看懂尼康数码单反&apos;, url=&apos;http://v.juhe.cn/weixin/redirect?wid=wechat_20
+</code></pre><p>源码：<br><a href="https://github.com/ln0491/VolleyDemo" target="_blank" rel="external">https://github.com/ln0491/VolleyDemo</a></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/android/">android</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/volley/">volley</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="https://ln0491.github.io/2016/09/28/Volley自定义Request/" data-title="Volley自定义Request | 刘楠的博客" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2016/09/28/Android onTouch 事件/" title="Android onTouch 事件">
+  <strong>上一篇：</strong><br/>
+  <span>
+  Android onTouch 事件</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2016/09/28/Volley加载网络图片/"  title="Volley加载网络图片">
+ <strong>下一篇：</strong><br/> 
+ <span>Volley加载网络图片
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="2016/09/28/Volley自定义Request/" data-title="Volley自定义Request" data-url="https://ln0491.github.io/2016/09/28/Volley自定义Request/"></div>
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#自定义Request"><span class="toc-number">1.</span> <span class="toc-text">自定义Request</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/android/" title="android">android<sup>6</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/java/" title="java">java<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/test/" title="test">test<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/android/" title="android">android<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/volley/" title="volley">volley<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/test/" title="test">test<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/maven/" title="maven">maven<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  
+  <div class="tagcloudlist">
+    <p class="asidetitle">标签云</p>
+    <div class="tagcloudlist clearfix">
+       <a href="/tags/android/" style="font-size: 20px;">android</a> <a href="/tags/maven/" style="font-size: 10px;">maven</a> <a href="/tags/test/" style="font-size: 15px;">test</a> <a href="/tags/volley/" style="font-size: 20px;">volley</a>
+    </div>
+  </div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://www.cnblogs.com/" target="_blank" title="博客园">博客园</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.csdn.net/" target="_blank" title="CSDN">CSDN</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.cnblogs.com/liunanjava/" target="_blank" title="森林森">森林森</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.jianshu.com/" target="_blank" title="简书">简书</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> 爱生活爱编码. <br/>
+			This is my blog,Try to do better.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/ln0491" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<a href="mailto:153011784@qq.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+		
+		<a href="/about" target="_blank" title="Liu Nan">Liu Nan</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+	$('#toc.toc-aside').css('display', 'block').addClass('fadeIn'); //这个是我新加的，修改点
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+        getSize();
+        if (myWidth >= 1024) {
+          c.click();
+        }
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"ln0491"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?f9d3aff238126ad201a9a789a888d75a";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1260477305'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1260477305%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
