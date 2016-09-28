@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>刘楠的技术学习博客</title>
+  <title>刘楠的博客</title>
   <subtitle>热爱生活</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ln0491.github.io/"/>
-  <updated>2016-09-28T02:12:19.148Z</updated>
+  <updated>2016-09-28T05:52:45.480Z</updated>
   <id>https://ln0491.github.io/</id>
   
   <author>
@@ -14,6 +14,48 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>MAVEN常用命令学习</title>
+    <link href="https://ln0491.github.io/2016/09/28/MAVEN%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0/"/>
+    <id>https://ln0491.github.io/2016/09/28/MAVEN常用命令学习/</id>
+    <published>2016-09-28T05:49:57.000Z</published>
+    <updated>2016-09-28T05:52:45.480Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="MAVEN学习"><a href="#MAVEN学习" class="headerlink" title="MAVEN学习"></a>MAVEN学习</h2><h2 id="清理target目录下的所有文件"><a href="#清理target目录下的所有文件" class="headerlink" title="清理target目录下的所有文件"></a>清理target目录下的所有文件</h2><pre><code>mvn clean
+</code></pre><h2 id="项目构建与编译"><a href="#项目构建与编译" class="headerlink" title="项目构建与编译"></a>项目构建与编译</h2><pre><code>mvn clean compile
+</code></pre><blockquote>
+<p>在targe目录下生成文件</p>
+</blockquote>
+<h2 id="构建测试"><a href="#构建测试" class="headerlink" title="构建测试"></a>构建测试</h2><pre><code>mvn clean test
+</code></pre><blockquote>
+<p>在targe目录下生成文件,在执行test之前会先执行compile</p>
+</blockquote>
+<h2 id="打包"><a href="#打包" class="headerlink" title="打包"></a>打包</h2><pre><code>mvn clean package
+</code></pre><blockquote>
+<p>在targe目录下生成jar,执行package之前会先执行test</p>
+</blockquote>
+<h2 id="安装jar包到本地仓库"><a href="#安装jar包到本地仓库" class="headerlink" title="安装jar包到本地仓库"></a>安装jar包到本地仓库</h2><pre><code>mvn clean install
+</code></pre><blockquote>
+<p>执行install之前会先执行，package</p>
+</blockquote>
+<h2 id="下载源码"><a href="#下载源码" class="headerlink" title="下载源码"></a>下载源码</h2><pre><code>mvn dependency:sources
+</code></pre><h2 id="关联源码"><a href="#关联源码" class="headerlink" title="关联源码"></a>关联源码</h2><pre><code>mvn eclipse:eclipse 
+</code></pre><h2 id="在Eclipce中配置"><a href="#在Eclipce中配置" class="headerlink" title="在Eclipce中配置"></a>在Eclipce中配置</h2><p><img src="https://ln0491.github.io/img/maven.png" alt="mavensource.png"></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;MAVEN学习&quot;&gt;&lt;a href=&quot;#MAVEN学习&quot; class=&quot;headerlink&quot; title=&quot;MAVEN学习&quot;&gt;&lt;/a&gt;MAVEN学习&lt;/h2&gt;&lt;h2 id=&quot;清理target目录下的所有文件&quot;&gt;&lt;a href=&quot;#清理target目录下的所有文件&quot;
+    
+    </summary>
+    
+      <category term="java" scheme="https://ln0491.github.io/categories/java/"/>
+    
+    
+      <category term="maven" scheme="https://ln0491.github.io/tags/maven/"/>
+    
+  </entry>
   
   <entry>
     <title>My Test</title>
