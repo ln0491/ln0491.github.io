@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>刘楠的技术学习博客</title>
+  <title>刘楠的博客</title>
   <subtitle>热爱生活</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ln0491.github.io/"/>
-  <updated>2016-09-28T02:12:19.148Z</updated>
+  <updated>2016-09-28T05:58:21.263Z</updated>
   <id>https://ln0491.github.io/</id>
   
   <author>
@@ -14,6 +14,125 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Android 环境变量</title>
+    <link href="https://ln0491.github.io/2016/09/28/Android-%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/"/>
+    <id>https://ln0491.github.io/2016/09/28/Android-环境变量/</id>
+    <published>2016-09-28T05:57:33.000Z</published>
+    <updated>2016-09-28T05:58:21.263Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="JDK环境变量配置"><a href="#JDK环境变量配置" class="headerlink" title="JDK环境变量配置"></a>JDK环境变量配置</h2><ul>
+<li><p>JAVA_HOME</p>
+<pre><code>JDK的安装路径C:\Program Files (x86)\Java\jdk1.8.0_25 
+</code></pre></li>
+<li><p>CLASSPATH</p>
+<pre><code>.;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar
+</code></pre></li>
+<li><p>PATH</p>
+<pre><code>%JAVA_HOME%\bin;%JAVA_HOME%\jre\bin
+</code></pre></li>
+</ul>
+<h2 id="Android-SDK环境变量"><a href="#Android-SDK环境变量" class="headerlink" title="Android SDK环境变量"></a>Android SDK环境变量</h2><ul>
+<li><p>ANDROID_HOME</p>
+<pre><code>D:\Android\sdk
+</code></pre></li>
+<li><p>PATH</p>
+<pre><code>%ANDROID_HOME%\platform-tools;%ANDROID_HOME%\tools;
+</code></pre></li>
+</ul>
+<h2 id="MAVEN-环境变量"><a href="#MAVEN-环境变量" class="headerlink" title="MAVEN 环境变量"></a>MAVEN 环境变量</h2><ul>
+<li><p>MAVEN_HOME</p>
+<pre><code>D:\JAVA\apache-maven-3.3.9
+</code></pre></li>
+<li><p>PATH</p>
+</li>
+<li><pre><code>%MAVEN_HOME%\bin;
+</code></pre></li>
+</ul>
+<p>MAVEN_OPTS</p>
+<pre><code>-Xms128m -Xmx512m
+</code></pre><ul>
+<li><p>查看是否配置成功</p>
+<blockquote>
+<p>mvn -v</p>
+</blockquote>
+</li>
+<li><p>默认本地仓库</p>
+<blockquote>
+<p>系统当前用户目录下.m2下,Maven缺省的本地仓库路径为${user.home}/.m2/repository。 </p>
+</blockquote>
+</li>
+<li><p>修改本地创库</p>
+</li>
+</ul>
+<blockquote>
+<p>在D盘下新m2\repository文件夹    可以通过修改${user.home}/.m2/settings.xml配置本地仓库路径     修改Maven安装目录下的 conf/文件夹内的setting.xml文件，新增一行：</p>
+</blockquote>
+<pre><code>&lt;localRepository&gt;D:/JAVA/m2/repository&lt;/localRepository&gt;
+</code></pre><blockquote>
+<p>（表示本地仓库的地址为：D:/JAVA/m2/repository）</p>
+</blockquote>
+<p>将setting.xml复制一份到D:/JAVA/m2/repository</p>
+<pre><code>注意ManvenConfig下有此文件，便不要修改，复制出来修改
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;JDK环境变量配置&quot;&gt;&lt;a href=&quot;#JDK环境变量配置&quot; class=&quot;headerlink&quot; title=&quot;JDK环境变量配置&quot;&gt;&lt;/a&gt;JDK环境变量配置&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;JAVA_HOME&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;JDK的安装路径
+    
+    </summary>
+    
+      <category term="android" scheme="https://ln0491.github.io/categories/android/"/>
+    
+    
+      <category term="android" scheme="https://ln0491.github.io/tags/android/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MAVEN常用命令学习</title>
+    <link href="https://ln0491.github.io/2016/09/28/MAVEN%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0/"/>
+    <id>https://ln0491.github.io/2016/09/28/MAVEN常用命令学习/</id>
+    <published>2016-09-28T05:49:57.000Z</published>
+    <updated>2016-09-28T05:52:45.480Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="MAVEN学习"><a href="#MAVEN学习" class="headerlink" title="MAVEN学习"></a>MAVEN学习</h2><h2 id="清理target目录下的所有文件"><a href="#清理target目录下的所有文件" class="headerlink" title="清理target目录下的所有文件"></a>清理target目录下的所有文件</h2><pre><code>mvn clean
+</code></pre><h2 id="项目构建与编译"><a href="#项目构建与编译" class="headerlink" title="项目构建与编译"></a>项目构建与编译</h2><pre><code>mvn clean compile
+</code></pre><blockquote>
+<p>在targe目录下生成文件</p>
+</blockquote>
+<h2 id="构建测试"><a href="#构建测试" class="headerlink" title="构建测试"></a>构建测试</h2><pre><code>mvn clean test
+</code></pre><blockquote>
+<p>在targe目录下生成文件,在执行test之前会先执行compile</p>
+</blockquote>
+<h2 id="打包"><a href="#打包" class="headerlink" title="打包"></a>打包</h2><pre><code>mvn clean package
+</code></pre><blockquote>
+<p>在targe目录下生成jar,执行package之前会先执行test</p>
+</blockquote>
+<h2 id="安装jar包到本地仓库"><a href="#安装jar包到本地仓库" class="headerlink" title="安装jar包到本地仓库"></a>安装jar包到本地仓库</h2><pre><code>mvn clean install
+</code></pre><blockquote>
+<p>执行install之前会先执行，package</p>
+</blockquote>
+<h2 id="下载源码"><a href="#下载源码" class="headerlink" title="下载源码"></a>下载源码</h2><pre><code>mvn dependency:sources
+</code></pre><h2 id="关联源码"><a href="#关联源码" class="headerlink" title="关联源码"></a>关联源码</h2><pre><code>mvn eclipse:eclipse 
+</code></pre><h2 id="在Eclipce中配置"><a href="#在Eclipce中配置" class="headerlink" title="在Eclipce中配置"></a>在Eclipce中配置</h2><p><img src="https://ln0491.github.io/img/maven.png" alt="mavensource.png"></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;MAVEN学习&quot;&gt;&lt;a href=&quot;#MAVEN学习&quot; class=&quot;headerlink&quot; title=&quot;MAVEN学习&quot;&gt;&lt;/a&gt;MAVEN学习&lt;/h2&gt;&lt;h2 id=&quot;清理target目录下的所有文件&quot;&gt;&lt;a href=&quot;#清理target目录下的所有文件&quot;
+    
+    </summary>
+    
+      <category term="java" scheme="https://ln0491.github.io/categories/java/"/>
+    
+    
+      <category term="maven" scheme="https://ln0491.github.io/tags/maven/"/>
+    
+  </entry>
   
   <entry>
     <title>My Test</title>

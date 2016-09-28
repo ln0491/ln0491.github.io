@@ -4,23 +4,64 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>My Test | 刘楠的博客</title>
+    <title>MAVEN常用命令学习 | 刘楠的博客</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Liu Nan">
     
 
     
-    <meta name="description" content="This  is my blog!">
+    <meta name="description" content="MAVEN学习清理target目录下的所有文件mvn clean
+项目构建与编译mvn clean compile
+
+在targe目录下生成文件
+
+构建测试mvn clean test
+
+在targe目录下生成文件,在执行test之前会先执行compile
+
+打包mvn clean package
+
+在targe目录下生成jar,执行package之前会先执行test
+
+安装jar包到本地仓库mv">
 <meta property="og:type" content="article">
-<meta property="og:title" content="My Test">
-<meta property="og:url" content="https://ln0491.github.io/2016/09/28/My-Test/index.html">
+<meta property="og:title" content="MAVEN常用命令学习">
+<meta property="og:url" content="https://ln0491.github.io/2016/09/28/MAVEN常用命令学习/index.html">
 <meta property="og:site_name" content="刘楠的博客">
-<meta property="og:description" content="This  is my blog!">
-<meta property="og:updated_time" content="2016-09-28T02:12:19.148Z">
+<meta property="og:description" content="MAVEN学习清理target目录下的所有文件mvn clean
+项目构建与编译mvn clean compile
+
+在targe目录下生成文件
+
+构建测试mvn clean test
+
+在targe目录下生成文件,在执行test之前会先执行compile
+
+打包mvn clean package
+
+在targe目录下生成jar,执行package之前会先执行test
+
+安装jar包到本地仓库mv">
+<meta property="og:image" content="https://ln0491.github.io/img/maven.png">
+<meta property="og:updated_time" content="2016-09-28T05:52:45.480Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="My Test">
-<meta name="twitter:description" content="This  is my blog!">
+<meta name="twitter:title" content="MAVEN常用命令学习">
+<meta name="twitter:description" content="MAVEN学习清理target目录下的所有文件mvn clean
+项目构建与编译mvn clean compile
+
+在targe目录下生成文件
+
+构建测试mvn clean test
+
+在targe目录下生成文件,在执行test之前会先执行compile
+
+打包mvn clean package
+
+在targe目录下生成jar,执行package之前会先执行test
+
+安装jar包到本地仓库mv">
+<meta name="twitter:image" content="https://ln0491.github.io/img/maven.png">
 
     
     <link rel="alternative" href="/atom.xml" title="刘楠的博客" type="application/atom+xml">
@@ -83,14 +124,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2016/09/28/My-Test/" title="My Test" itemprop="url">My Test</a>
+      <a href="/2016/09/28/MAVEN常用命令学习/" title="MAVEN常用命令学习" itemprop="url">MAVEN常用命令学习</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="Liu Nan" target="_blank" itemprop="author">Liu Nan</a>
 		
   <p class="article-time">
-    <time datetime="2016-09-28T02:11:58.000Z" itemprop="datePublished"> 发表于 2016-09-28</time>
+    <time datetime="2016-09-28T05:49:57.000Z" itemprop="datePublished"> 发表于 2016-09-28</time>
     
   </p>
 </header>
@@ -99,24 +140,44 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#MAVEN学习"><span class="toc-number">1.</span> <span class="toc-text">MAVEN学习</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#清理target目录下的所有文件"><span class="toc-number">2.</span> <span class="toc-text">清理target目录下的所有文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#项目构建与编译"><span class="toc-number">3.</span> <span class="toc-text">项目构建与编译</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#构建测试"><span class="toc-number">4.</span> <span class="toc-text">构建测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#打包"><span class="toc-number">5.</span> <span class="toc-text">打包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装jar包到本地仓库"><span class="toc-number">6.</span> <span class="toc-text">安装jar包到本地仓库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#下载源码"><span class="toc-number">7.</span> <span class="toc-text">下载源码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关联源码"><span class="toc-number">8.</span> <span class="toc-text">关联源码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#在Eclipce中配置"><span class="toc-number">9.</span> <span class="toc-text">在Eclipce中配置</span></a></li></ol>
 		
 		</div>
 		
-		  
+		<h2 id="MAVEN学习"><a href="#MAVEN学习" class="headerlink" title="MAVEN学习"></a>MAVEN学习</h2><h2 id="清理target目录下的所有文件"><a href="#清理target目录下的所有文件" class="headerlink" title="清理target目录下的所有文件"></a>清理target目录下的所有文件</h2><pre><code>mvn clean
+</code></pre><h2 id="项目构建与编译"><a href="#项目构建与编译" class="headerlink" title="项目构建与编译"></a>项目构建与编译</h2><pre><code>mvn clean compile
+</code></pre><blockquote>
+<p>在targe目录下生成文件</p>
+</blockquote>
+<h2 id="构建测试"><a href="#构建测试" class="headerlink" title="构建测试"></a>构建测试</h2><pre><code>mvn clean test
+</code></pre><blockquote>
+<p>在targe目录下生成文件,在执行test之前会先执行compile</p>
+</blockquote>
+<h2 id="打包"><a href="#打包" class="headerlink" title="打包"></a>打包</h2><pre><code>mvn clean package
+</code></pre><blockquote>
+<p>在targe目录下生成jar,执行package之前会先执行test</p>
+</blockquote>
+<h2 id="安装jar包到本地仓库"><a href="#安装jar包到本地仓库" class="headerlink" title="安装jar包到本地仓库"></a>安装jar包到本地仓库</h2><pre><code>mvn clean install
+</code></pre><blockquote>
+<p>执行install之前会先执行，package</p>
+</blockquote>
+<h2 id="下载源码"><a href="#下载源码" class="headerlink" title="下载源码"></a>下载源码</h2><pre><code>mvn dependency:sources
+</code></pre><h2 id="关联源码"><a href="#关联源码" class="headerlink" title="关联源码"></a>关联源码</h2><pre><code>mvn eclipse:eclipse 
+</code></pre><h2 id="在Eclipce中配置"><a href="#在Eclipce中配置" class="headerlink" title="在Eclipce中配置"></a>在Eclipce中配置</h2><p><img src="https://ln0491.github.io/img/maven.png" alt="mavensource.png"></p>
+  
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/test/">test</a>
+  <a class="article-category-link" href="/categories/java/">java</a>
 </div>
 
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/test/">test</a>
+  <span></span> <a href="/tags/maven/">maven</a>
   </div>
 
 </div>
@@ -125,7 +186,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="https://ln0491.github.io/2016/09/28/My-Test/" data-title="My Test | 刘楠的博客" data-tsina="null" class="share clearfix">
+	  <div data-url="https://ln0491.github.io/2016/09/28/MAVEN常用命令学习/" data-title="MAVEN常用命令学习 | 刘楠的博客" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -139,18 +200,18 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2016/09/28/MAVEN常用命令学习/" title="MAVEN常用命令学习">
+ <a href="/2016/09/28/Android-环境变量/" title="Android 环境变量">
   <strong>上一篇：</strong><br/>
   <span>
-  MAVEN常用命令学习</span>
+  Android 环境变量</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/2016/09/28/my-new-post/"  title="my new post">
+<a href="/2016/09/28/My-Test/"  title="My Test">
  <strong>下一篇：</strong><br/> 
- <span>my new post
+ <span>My Test
 </span>
 </a>
 </div>
@@ -159,7 +220,7 @@
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2016/09/28/My-Test/" data-title="My Test" data-url="https://ln0491.github.io/2016/09/28/My-Test/"></div>
+	<div class="ds-thread" data-thread-key="2016/09/28/MAVEN常用命令学习/" data-title="MAVEN常用命令学习" data-url="https://ln0491.github.io/2016/09/28/MAVEN常用命令学习/"></div>
 </section>
 
 
@@ -169,7 +230,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#MAVEN学习"><span class="toc-number">1.</span> <span class="toc-text">MAVEN学习</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#清理target目录下的所有文件"><span class="toc-number">2.</span> <span class="toc-text">清理target目录下的所有文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#项目构建与编译"><span class="toc-number">3.</span> <span class="toc-text">项目构建与编译</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#构建测试"><span class="toc-number">4.</span> <span class="toc-text">构建测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#打包"><span class="toc-number">5.</span> <span class="toc-text">打包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装jar包到本地仓库"><span class="toc-number">6.</span> <span class="toc-text">安装jar包到本地仓库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#下载源码"><span class="toc-number">7.</span> <span class="toc-text">下载源码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关联源码"><span class="toc-number">8.</span> <span class="toc-text">关联源码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#在Eclipce中配置"><span class="toc-number">9.</span> <span class="toc-text">在Eclipce中配置</span></a></li></ol>
  
   </div>
 
