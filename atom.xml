@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ln0491.github.io/"/>
-  <updated>2016-09-28T05:58:21.263Z</updated>
+  <updated>2016-09-28T06:16:22.313Z</updated>
   <id>https://ln0491.github.io/</id>
   
   <author>
@@ -14,6 +14,765 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Volley自定义Request</title>
+    <link href="https://ln0491.github.io/2016/09/28/Volley%E8%87%AA%E5%AE%9A%E4%B9%89Request/"/>
+    <id>https://ln0491.github.io/2016/09/28/Volley自定义Request/</id>
+    <published>2016-09-28T06:16:01.000Z</published>
+    <updated>2016-09-28T06:16:22.313Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="自定义Request"><a href="#自定义Request" class="headerlink" title="自定义Request"></a>自定义Request</h4><pre><code>public class StringRequest extends Request&lt;String&gt; {
+        //监听器
+    private final Listener&lt;String&gt; mListener;
+
+    //构造方法 这时一定要调用super
+    public StringRequest(int method, String url, Listener&lt;String&gt; listener, ErrorListener errorListener) {
+        super(method, url, errorListener);
+        this.mListener = listener;
+    }
+
+    //调用上面的方法
+    public StringRequest(String url, Listener&lt;String&gt; listener, ErrorListener errorListener) {
+        this(0, url, listener, errorListener);
+    }
+
+    //只是deliverResponse()方法中的实现很简单，仅仅是调用了mListener中的onResponse()方法，并将response内容传入即可，这样就可以将服务器响应的数据进行回调了
+    protected void deliverResponse(String response) {
+        this.mListener.onResponse(response);
+    }
+
+    protected Response&lt;String&gt; parseNetworkResponse(NetworkResponse response) {
+        String parsed;
+        try {
+            //parseCharset字符编码
+            parsed = new String(response.data, HttpHeaderParser.parseCharset(response.headers));
+        } catch (UnsupportedEncodingException var4) {
+            parsed = new String(response.data);
+        }
+        //头信息
+        return Response.success(parsed, HttpHeaderParser.parseCacheHeaders(response));
+    }
+}
+</code></pre><p>由于Request类中的deliverResponse()和parseNetworkResponse()是两个抽象方法，<br>因此StringRequest中需要对这两个方法进行实现。deliverResponse()方法中的实现很简单，仅仅是调用了mListener中的onResponse()方法，并将response内容传入即可，这样就可以将服务器响应的数据进行回调了。<br>parseNetworkResponse()方法中则应该对服务器响应的数据进行解析,其中数据是以字节的形式存放在NetworkResponse的data变量中的，这里将数据取出然后组装成一个String，并传入Response的success()方法中即可。</p>
+<p>#####自定义GsonRequest</p>
+<pre><code>package com.liu.volleydemo.requestion;
+
+import com.android.volley.NetworkResponse;
+import com.android.volley.ParseError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.toolbox.HttpHeaderParser;
+import com.google.gson.Gson;
+
+import java.io.UnsupportedEncodingException;
+
+/**
+ * @Description: 描述
+ * @AUTHOR 刘楠  Create By 2016/9/26 0026 18:11
+ */
+public class GsonRequest&lt;T&gt; extends Request&lt;T&gt; {
+    private final Response.Listener&lt;T&gt; mListener;
+    private       Gson                 mGson;
+    private       Class&lt;T&gt;             mClazz;
+
+    public GsonRequest(int method, String url, Class&lt;T&gt; clazz, Response.Listener&lt;T&gt; listener, Response.ErrorListener errorListener) {
+        super(method, url, errorListener);
+        this.mListener = listener;
+        mGson= new Gson();
+        mClazz = clazz;
+    }
+
+    public GsonRequest(String url, Class&lt;T&gt; clazz, Response.Listener&lt;T&gt; listener, Response.ErrorListener errorListener) {
+        this(Method.GET, url, clazz, listener, errorListener);
+    }
+
+    @Override
+    protected void deliverResponse(T response) {
+
+        mListener.onResponse(response);
+
+    }
+
+    @Override
+    protected Response&lt;T&gt; parseNetworkResponse(NetworkResponse response) {
+
+        try {
+            /**
+             * 获取数据
+             */
+            String jsonString = new String(response.data, HttpHeaderParser.parseCharset(response.headers));
+            // 转化反回
+            return Response.success(mGson.fromJson(jsonString, mClazz), HttpHeaderParser.parseCacheHeaders(response));
+
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+            return Response.error(new ParseError(e));
+        }
+
+    }
+
+}
+</code></pre><p>=================BEAN==========</p>
+<p>package com.liu.volleydemo.bean;</p>
+<p>import java.util.List;</p>
+<pre><code>/**
+ * @Description: 描述
+ * @AUTHOR 刘楠  Create By 2016/9/26 0026 18:36
+ */
+public class WeixinSelected {
+
+
+
+
+    public String       reason;
+
+
+    public ResultEntity result;
+    public int error_code;
+
+    @Override
+    public String toString() {
+        return &quot;WeixinSelected{&quot; +
+                &quot;reason=&apos;&quot; + reason + &apos;\&apos;&apos; +
+                &quot;, result=&quot; + result +
+                &quot;, error_code=&quot; + error_code +
+                &apos;}&apos;;
+    }
+
+    public static class ResultEntity {
+        public int totalPage;
+        public int ps;
+        public int pno;
+
+        @Override
+        public String toString() {
+            return &quot;ResultEntity{&quot; +
+                    &quot;totalPage=&quot; + totalPage +
+                    &quot;, ps=&quot; + ps +
+                    &quot;, pno=&quot; + pno +
+                    &quot;, list=&quot; + list +
+                    &apos;}&apos;;
+        }
+
+
+
+        public List&lt;ListEntity&gt; list;
+
+        public static class ListEntity {
+            public String firstImg;
+            public String id;
+            public String source;
+            public String title;
+            public String url;
+            public String mark;
+
+            @Override
+            public String toString() {
+                return &quot;ListEntity{&quot; +
+                        &quot;firstImg=&apos;&quot; + firstImg + &apos;\&apos;&apos; +
+                        &quot;, id=&apos;&quot; + id + &apos;\&apos;&apos; +
+                        &quot;, source=&apos;&quot; + source + &apos;\&apos;&apos; +
+                        &quot;, title=&apos;&quot; + title + &apos;\&apos;&apos; +
+                        &quot;, url=&apos;&quot; + url + &apos;\&apos;&apos; +
+                        &quot;, mark=&apos;&quot; + mark + &apos;\&apos;&apos; +
+                        &apos;}&apos;;
+            }
+        }
+    }
+}
+</code></pre><p>请求</p>
+<pre><code>final RequestQueue requestQueue = MyVolley.getRequestQueue(this);
+
+   String       url    =&quot;http://v.juhe.cn/weixin/query&quot;;
+   final String appkey =&quot;24834287692b8d54cf634668ce5de0b4&quot;;
+
+  GsonRequest&lt;WeixinSelected&gt; gsonRequest = new GsonRequest&lt;WeixinSelected&gt;(Request.Method.POST,url, WeixinSelected.class, new Response.Listener&lt;WeixinSelected&gt;() {
+       @Override
+       public void onResponse(WeixinSelected weixinSelected) {
+
+           Log.d(&quot;vivi&quot;, &quot;onResponse: &quot;+weixinSelected.toString());
+
+       }
+   }, new Response.ErrorListener() {
+       @Override
+       public void onErrorResponse(VolleyError volleyError) {
+
+           volleyError.printStackTrace();
+           Log.d(&quot;vivi&quot;, &quot;onErrorResponse: &quot;+volleyError.getMessage());
+       }
+   }){
+       @Override
+       protected Map&lt;String, String&gt; getParams() throws AuthFailureError {
+
+           Map&lt;String,String&gt; params = new HashMap&lt;&gt;();
+           params.put(&quot;key&quot;,appkey);
+           return params;
+       }
+   };
+
+   requestQueue.add(gsonRequest);
+</code></pre><blockquote>
+<p>日志</p>
+</blockquote>
+<pre><code>WeixinSelected{reason=&apos;success&apos;, result=ResultEntity{totalPage=25, ps=20, pno=1, list=[ListEntity{firstImg=&apos;http://zxpic.gtimg.com/infonew/0/wechat_pics_-8255071.jpg/640&apos;, id=&apos;wechat_20160915039850&apos;, source=&apos;功夫体育&apos;, title=&apos;女排冠军们“高”人一等，谁敢娶？&apos;, url=&apos;http://v.juhe.cn/weixin/redirect?wid=wechat_20160915039850&apos;, mark=&apos;&apos;}, ListEntity{firstImg=&apos;http://zxpic.gtimg.com/infonew/0/wechat_pics_-8575838.jpg/640&apos;, id=&apos;wechat_20151201058612&apos;, source=&apos;龍神迷失&apos;, title=&apos;中国首辆上牌的布加迪威龙，以为车牌很一般，最后发现车牌很霸气&apos;, url=&apos;http://v.juhe.cn/weixin/redirect?wid=wechat_20151201058612&apos;, mark=&apos;&apos;}, ListEntity{firstImg=&apos;http://zxpic.gtimg.com/infonew/0/wechat_pics_-8206632.jpg/640&apos;, id=&apos;wechat_20160102022165&apos;, source=&apos;篮球频道&apos;, title=&apos;【球迷关注点】书豪:一度想退役不再打球 曾被科比一句蔑视激怒&apos;, url=&apos;http://v.juhe.cn/weixin/redirect?wid=wechat_20160102022165&apos;, mark=&apos;&apos;}, ListEntity{firstImg=&apos;http://zxpic.gtimg.com/infonew/0/wechat_pics_-8064767.jpg/640&apos;, id=&apos;wechat_20160908053966&apos;, source=&apos;娱乐圈扒姐&apos;, title=&apos;某知名女星在节目中威胁选手收贿，私下爱搞潜规则&apos;, url=&apos;http://v.juhe.cn/weixin/redirect?wid=wechat_20160908053966&apos;, mark=&apos;&apos;}, ListEntity{firstImg=&apos;http://zxpic.gtimg.com/infonew/0/wechat_pics_-7986866.jpg/640&apos;, id=&apos;wechat_20160906017693&apos;, source=&apos;颜小白的篮球梦&apos;, title=&apos;科比跟乔丹比到底差在哪里？仅仅是身体素质吗&apos;, url=&apos;http://v.juhe.cn/weixin/redirect?wid=wechat_20160906017693&apos;, mark=&apos;&apos;}, ListEntity{firstImg=&apos;http://zxpic.gtimg.com/infonew/0/wechat_pics_-7986843.jpg/640&apos;, id=&apos;wechat_20160906017663&apos;, source=&apos;嘻嘻哈哈&apos;, title=&apos;神动图|这手感绝对不差！&apos;, url=&apos;http://v.juhe.cn/weixin/redirect?wid=wechat_20160906017663&apos;, mark=&apos;&apos;}, ListEntity{firstImg=&apos;http://zxpic.gtimg.com/infonew/0/wechat_pics_-7986833.jpg/640&apos;, id=&apos;wechat_20160906017658&apos;, source=&apos;嘻嘻哈哈&apos;, title=&apos;江湖流传的这些奇葩书，简直刷新我的三观~&apos;, url=&apos;http://v.juhe.cn/weixin/redirect?wid=wechat_20160906017658&apos;, mark=&apos;&apos;}, ListEntity{firstImg=&apos;http://zxpic.gtimg.com/infonew/0/wechat_pics_-7986819.jpg/640&apos;, id=&apos;wechat_20160906017552&apos;, source=&apos;笑你妹&apos;, title=&apos;【搞笑段子】有心无力啊，办起事来几分钟完事~&apos;, url=&apos;http://v.juhe.cn/weixin/redirect?wid=wechat_20160906017552&apos;, mark=&apos;&apos;}, ListEntity{firstImg=&apos;http://zxpic.gtimg.com/infonew/0/wechat_pics_-7986802.jpg/640&apos;, id=&apos;wechat_20160906017288&apos;, source=&apos;TechWeb&apos;, title=&apos;在iPhone7发布之前我们先来看看它的跑分吧&apos;, url=&apos;http://v.juhe.cn/weixin/redirect?wid=wechat_20160906017288&apos;, mark=&apos;&apos;}, ListEntity{firstImg=&apos;http://zxpic.gtimg.com/infonew/0/wechat_pics_-7986693.jpg/640&apos;, id=&apos;wechat_20160906016354&apos;, source=&apos;陇南生活网&apos;, title=&apos;甘肃：将发生严重腐败问题的地区部门直接评为“一般”&apos;, url=&apos;http://v.juhe.cn/weixin/redirect?wid=wechat_20160906016354&apos;, mark=&apos;&apos;}, ListEntity{firstImg=&apos;http://zxpic.gtimg.com/infonew/0/wechat_pics_-7986675.jpg/640&apos;, id=&apos;wechat_20160906016213&apos;, source=&apos;云上的空母&apos;, title=&apos;万吨两栖舰上的袖珍火炮，射速为每分钟200发&apos;, url=&apos;http://v.juhe.cn/weixin/redirect?wid=wechat_20160906016213&apos;, mark=&apos;&apos;}, ListEntity{firstImg=&apos;http://zxpic.gtimg.com/infonew/0/wechat_pics_-7986645.jpg/640&apos;, id=&apos;wechat_20160906016204&apos;, source=&apos;云上的空母&apos;, title=&apos;全球最大口径的加特林机关炮，一眨眼打出50发炮弹&apos;, url=&apos;http://v.juhe.cn/weixin/redirect?wid=wechat_20160906016204&apos;, mark=&apos;&apos;}, ListEntity{firstImg=&apos;http://zxpic.gtimg.com/infonew/0/wechat_pics_-7986534.jpg/640&apos;, id=&apos;wechat_20160906015882&apos;, source=&apos;钛媒体&apos;, title=&apos;三星耗10亿美元召回Note7，并称损失令人real心痛钛晨报&apos;, url=&apos;http://v.juhe.cn/weixin/redirect?wid=wechat_20160906015882&apos;, mark=&apos;&apos;}, ListEntity{firstImg=&apos;http://zxpic.gtimg.com/infonew/0/wechat_pics_-7986438.jpg/640&apos;, id=&apos;wechat_20160906015702&apos;, source=&apos;摄影笔记&apos;, title=&apos;一篇文章看懂尼康数码单反&apos;, url=&apos;http://v.juhe.cn/weixin/redirect?wid=wechat_20
+</code></pre><p>源码：<br><a href="https://github.com/ln0491/VolleyDemo" target="_blank" rel="external">https://github.com/ln0491/VolleyDemo</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;自定义Request&quot;&gt;&lt;a href=&quot;#自定义Request&quot; class=&quot;headerlink&quot; title=&quot;自定义Request&quot;&gt;&lt;/a&gt;自定义Request&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;public class StringRequest ext
+    
+    </summary>
+    
+      <category term="android" scheme="https://ln0491.github.io/categories/android/"/>
+    
+    
+      <category term="volley" scheme="https://ln0491.github.io/tags/volley/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Volley加载网络图片</title>
+    <link href="https://ln0491.github.io/2016/09/28/Volley%E5%8A%A0%E8%BD%BD%E7%BD%91%E7%BB%9C%E5%9B%BE%E7%89%87/"/>
+    <id>https://ln0491.github.io/2016/09/28/Volley加载网络图片/</id>
+    <published>2016-09-28T06:15:03.000Z</published>
+    <updated>2016-09-28T06:15:33.483Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Volley加载网络图片"><a href="#Volley加载网络图片" class="headerlink" title="Volley加载网络图片"></a>Volley加载网络图片</h2><p>#####ImageRequest用法</p>
+<ol>
+<li>创建一个RequestQueue对象。</li>
+<li>创建一个Request对象。</li>
+<li>将Request对象添加到RequestQueue里面。</li>
+</ol>
+<p>例子</p>
+<pre><code>String url =&quot;http://android.tgbus.com/news/UploadFiles_8153/201208/2012081013531630.jpg&quot;;
+
+  RequestQueue requestQueue = Volley.newRequestQueue(this);
+
+  /**
+   * ImageRequest的构造函数接收六个参数，
+   * 第一个参数就是图片的URL地址，
+   * 第二个参数是图片请求成功的回调，这里我们把返回的Bitmap参数设置到ImageView中。
+   * 第三第四个参数分别用于指定允许图片最大的宽度和高度，如果指定的网络图片的宽度或高度大于这里的最大值，则会对图片进行压    缩，指定成0的话就表示不管图片有多大，都不会进行压缩。
+   * 第五个参数用于指定图片的颜色属性，Bitmap.Config下的几个常量都可以在这里使用，其中ARGB_8888可以展示最好的颜色属性，每个图片像素占据4个字节的大小，而RGB_565则表示每个图片像素占据2个字节大小。
+   * 第六个参数是图片请求失败的回调
+   */
+  ImageRequest imageRequest = new ImageRequest(url, new Response.Listener&lt;Bitmap&gt;() {
+      @Override
+      public void onResponse(Bitmap bitmap) {
+
+          mIv1.setImageBitmap(bitmap);
+
+      }
+  }, 0, 0, ImageView.ScaleType.CENTER_CROP, Bitmap.Config.RGB_565, new Response.ErrorListener() {
+      @Override
+      public void onErrorResponse(VolleyError error) {
+          error.printStackTrace();
+          Log.d(&quot;vivi&quot;, &quot;onErrorResponse: &quot;+error.getMessage());
+      }
+  });
+
+  requestQueue.add(imageRequest);
+</code></pre><h5 id="使用ImageLoader加载图片"><a href="#使用ImageLoader加载图片" class="headerlink" title="使用ImageLoader加载图片"></a>使用ImageLoader加载图片</h5><ol>
+<li>创建一个RequestQueue对象。</li>
+<li>创建一个ImageLoader对象。</li>
+<li>获取一个ImageListener对象。</li>
+<li><p>调用ImageLoader的get()方法加载网络上的图片。</p>
+<pre><code>//创建请求队列
+ RequestQueue requestQueue = Volley.newRequestQueue(this);
+ //创建ImageLoader
+ImageLoader imageLoader = new ImageLoader(requestQueue, new ImageLoader.ImageCache() {
+    @Override
+    public Bitmap getBitmap(String url) {
+
+        return null;
+    }
+
+    @Override
+    public void putBitmap(String url, Bitmap bitmap) {
+
+    }
+});
+</code></pre></li>
+</ol>
+<p>第一个参数就是RequestQueue对象，第二个参数是一个ImageCache对象，这里是个空对象，没有实现<br>ImageCache对象是一个空的实现，完全没能起到图片缓存的作用。其实写一个ImageCache，但是如果想要写一个性能非常好的ImageCache，最好就要借助Android提供的LruCache功能了见最下面<br><a href="#overview">Overview</a><br>需要获取一个ImageListener对象</p>
+<pre><code>  /**
+ * 第一个要显示在哪个控件
+ * 第二个 默认的资源图片
+ * 第三个 错误的资源图片
+ */
+ImageLoader.ImageListener imageListener = ImageLoader.getImageListener(mIv2,R.mipmap.ic_launcher,R.mipmap.ic_launcher);
+
+//调用ImageLoader的get()方法来加载图片
+imageLoader.get(&quot;http://www.people.com.cn/mediafile/pic/20151010/79/16111083488036070527.jpg&quot;,imageListener);
+</code></pre><blockquote>
+<p>设置宽高</p>
+</blockquote>
+<pre><code>imageLoader.get(&quot;http://www.people.com.cn/mediafile/pic/20151010/79/16111083488036070527.jpg&quot;,imageListener,300,400);
+</code></pre><h5 id="Volley还有一个图片加载的控件"><a href="#Volley还有一个图片加载的控件" class="headerlink" title="Volley还有一个图片加载的控件"></a>Volley还有一个图片加载的控件</h5><p>NetworkImageView使用方法<br>NetworkImageView是一个自定义控制，它是继承自ImageView的，具备ImageView控件的所有功能，并且在原生的基础之上加入了加载网络图片的功能。NetworkImageView控件的用法要比前两种方式更加简单.在布局中使用</p>
+<pre><code>&lt;com.android.volley.toolbox.NetworkImageView
+    android:id=&quot;@+id/networkIv&quot;
+    android:layout_width=&quot;wrap_content&quot;
+    android:layout_height=&quot;wrap_content&quot;/&gt;
+</code></pre><blockquote>
+<p>步骤</p>
+</blockquote>
+<ol>
+<li>创建一个RequestQueue对象。</li>
+<li>创建一个ImageLoader对象。</li>
+<li>在布局文件中添加一个NetworkImageView控件。</li>
+<li>在代码中获取该控件的实例。</li>
+<li><p>设置要加载的图片地址。</p>
+<pre><code> //创建请求队列
+RequestQueue requestQueue = Volley.newRequestQueue(this);
+//设置默认资源
+mNetworkImageView.setDefaultImageResId(R.mipmap.ic_launcher);
+//设置加载失败的资源
+mNetworkImageView.setErrorImageResId(R.mipmap.ic_launcher);
+
+//创建ImageLoader
+ImageLoader imageLoader = new ImageLoader(requestQueue, new ImageLoader.ImageCache() {
+    @Override
+    public Bitmap getBitmap(String url) {
+
+        return null;
+    }
+
+    @Override
+    public void putBitmap(String url, Bitmap bitmap) {
+
+    }
+});
+//设置资源  setImageUrl()方法接收两个参数，第一个参数用于指定图片的URL地址，第二个参数则是前面创建好的ImageLoader对象。
+mNetworkImageView.setImageUrl(&quot;http://img0.imgtn.bdimg.com/it/u=560246235,1189337337&amp;fm=21&amp;gp=0.jpg&quot;,imageLoader);
+</code></pre></li>
+</ol>
+<p>NetworkImageView中则完全没有提供设置最大宽度和高度的方法<br>由于NetworkImageView是一个控件，在加载图片的时候它会自动获取自身的宽高，然后对比网络图片的宽度，再决定是否需要对图片进行压缩。也就是说，压缩过程是在内部完全自动化的，并不需要我们关心，NetworkImageView会始终给我们一张大小刚刚好的网络图片</p>
+<p><a name="overview">Overview</a></p>
+<h4 id="MyVolley"><a href="#MyVolley" class="headerlink" title="MyVolley"></a>MyVolley</h4><pre><code>    package com.liu.volleydemo.volley;
+
+import android.app.ActivityManager;
+import android.content.Context;
+import android.util.Log;
+
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.ImageLoader;
+import com.android.volley.toolbox.Volley;
+
+/**
+ * @Description: 单例
+ * @AUTHOR 刘楠  Create By 2016/9/26 0026 15:39
+ */
+public class MyVolley {
+
+    private static RequestQueue mRequestQueue;
+    private static ImageLoader  mImageLoader;
+
+    private MyVolley() {
+
+    }
+    public static RequestQueue getRequestQueue(Context context) {
+        if (mRequestQueue == null) {
+            init(context);
+        }
+        return mRequestQueue;
+    }
+
+    private static void init(Context context) {
+
+        mRequestQueue = Volley.newRequestQueue(context);
+
+        ActivityManager activityManager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
+        //获取内存大小
+        int memoryClass = activityManager.getMemoryClass();
+        Log.d(&quot;vivi&quot;, &quot;init: memoryClass&quot;+memoryClass);
+        //使用1/8的内存空间来做为缓存
+        int maxCacheSize = 1024*1024*memoryClass/8;
+
+        Log.d(&quot;vivi&quot;, &quot;init: maxCacheSize &quot;+maxCacheSize);
+
+        //初始化ImageLoad同时初始化自定义的ImageCache
+        mImageLoader = new ImageLoader(mRequestQueue,new BitmapLruCache(maxCacheSize));
+
+    }
+
+    public static ImageLoader getImageLoader() {
+        if (mImageLoader != null) {
+            return mImageLoader;
+        } else {
+            throw new IllegalStateException(&quot;ImageLoader not initialized&quot;);
+        }
+    }
+}
+</code></pre><h5 id="ImageCache"><a href="#ImageCache" class="headerlink" title="ImageCache"></a>ImageCache</h5><pre><code>package com.liu.volleydemo.volley;
+
+import android.graphics.Bitmap;
+import android.support.v4.util.LruCache;
+
+import com.android.volley.toolbox.ImageLoader;
+
+/**
+ * @Description: 描述
+ * @AUTHOR 刘楠  Create By 2016/9/26 0026 15:34
+ */
+public class BitmapLruCache extends LruCache&lt;String, Bitmap&gt; implements ImageLoader.ImageCache {
+
+
+    public BitmapLruCache(int maxSize) {
+
+        super(maxSize);
+    }
+
+
+
+    @Override
+    protected int sizeOf(String key, Bitmap value) {
+        //返回宽度与高度字节乖的结果大小
+        return value.getRowBytes() * value.getHeight();
+    }
+
+    @Override
+    public Bitmap getBitmap(String url) {
+        //根据KEY 获取BITMAP
+        return get(url);
+    }
+
+    @Override
+    public void putBitmap(String url, Bitmap bitmap) {
+
+        //保存图片key-url,vaule-bitmap
+        put(url,bitmap);
+    }
+}
+</code></pre><p>感谢郭霖大大<br><a href="http://blog.csdn.net/guolin_blog/article/details/17482095" target="_blank" rel="external">http://blog.csdn.net/guolin_blog/article/details/17482095</a><br>源码：<br><a href="https://github.com/ln0491/VolleyDemo" target="_blank" rel="external">https://github.com/ln0491/VolleyDemo</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Volley加载网络图片&quot;&gt;&lt;a href=&quot;#Volley加载网络图片&quot; class=&quot;headerlink&quot; title=&quot;Volley加载网络图片&quot;&gt;&lt;/a&gt;Volley加载网络图片&lt;/h2&gt;&lt;p&gt;#####ImageRequest用法&lt;/p&gt;
+&lt;ol&gt;
+&lt;
+    
+    </summary>
+    
+      <category term="android" scheme="https://ln0491.github.io/categories/android/"/>
+    
+    
+      <category term="volley" scheme="https://ln0491.github.io/tags/volley/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Volley基本用法</title>
+    <link href="https://ln0491.github.io/2016/09/28/Volley%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/"/>
+    <id>https://ln0491.github.io/2016/09/28/Volley基本用法/</id>
+    <published>2016-09-28T06:13:38.000Z</published>
+    <updated>2016-09-28T06:14:12.042Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Volley基本用法"><a href="#Volley基本用法" class="headerlink" title="Volley基本用法"></a>Volley基本用法</h2><h3 id="什么是volley"><a href="#什么是volley" class="headerlink" title="什么是volley"></a>什么是volley</h3><p>  Volley，是谷歌官方于2013年发布的用于Android平台的网络通信库.</p>
+<h3 id="下载Volley"><a href="#下载Volley" class="headerlink" title="下载Volley"></a>下载Volley</h3><pre><code>git clone https://android.googlesource.com/platform/frameworks/volley
+</code></pre><p>自备梯子<br>在AndroidStudio中Dependencies中搜索<br>或者访问</p>
+<p><a href="https://github.com/mcxiaoke/android-volley" target="_blank" rel="external">https://github.com/mcxiaoke/android-volley</a> 镜像地址</p>
+<p>添加依赖</p>
+<pre><code>compile &apos;com.android.volley:volley:1.0.0&apos;
+</code></pre><h3 id="Volley的基本使用"><a href="#Volley的基本使用" class="headerlink" title="Volley的基本使用"></a>Volley的基本使用</h3><h4 id="创建一个RequestQueue对象。"><a href="#创建一个RequestQueue对象。" class="headerlink" title="创建一个RequestQueue对象。"></a>创建一个RequestQueue对象。</h4><pre><code> //获取请求队列  传入上下文
+RequestQueue requestQueue = Volley.newRequestQueue(this/getApplicationContext());
+</code></pre><h4 id="创建一个Request对象"><a href="#创建一个Request对象" class="headerlink" title="创建一个Request对象"></a>创建一个Request对象</h4><h4 id="将Request对象添加到RequestQueue里面。"><a href="#将Request对象添加到RequestQueue里面。" class="headerlink" title="将Request对象添加到RequestQueue里面。"></a>将Request对象添加到RequestQueue里面。</h4><h5 id="StringRequest"><a href="#StringRequest" class="headerlink" title="StringRequest"></a>StringRequest</h5><pre><code> /**
+ *
+ * @param method 请求方法 get post   Request.Method.GET,Request.Method.POST
+ * @param url   请求的URL
+ * @param listener    请求成功的回调接口
+ * @param errorListener  请求失败的回调接口
+ */
+public StringRequest(int method, String url, Response.Listener&lt;String&gt; listener,
+                     Response.ErrorListener errorListener) {
+    super(method, url, errorListener);
+    mListener = listener;
+}
+
+//get请求可以不写请求方法
+public StringRequest(String url, Listener&lt;String&gt; listener, ErrorListener errorListener) {
+    this(Method.GET, url, listener, errorListener);
+}
+</code></pre><p>######GET请求</p>
+<p>例子: <a href="https://www.juhe.cn/" target="_blank" rel="external">https://www.juhe.cn/</a> 免费的接口可以申请</p>
+<pre><code> String url    = &quot;http://op.juhe.cn/onebox/weather/query&quot;;
+String appKey = &quot;9275deacf73ae4316f48caa251ec501e&quot;;
+
+url += &quot;?cityname=&quot; + &quot;深圳&amp;key=&quot; + appKey;
+
+//获取请求队列
+RequestQueue requestQueue = Volley.newRequestQueue(this);
+
+/**
+ * 第一个参数 Request.Method.GET
+ * 第二个url 请求URL
+ * 第三个  new Response.Listener&lt;String&gt; 请求成功回调接口
+ * 第四个请求失败回调接口
+ */
+//构建请求
+StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener&lt;String&gt;() {
+    @Override
+    public void onResponse(String response) {
+
+        Log.d(&quot;vivi&quot;, &quot;onResponse: &quot;+response.toString());
+
+        mTvResult.setText(response);
+
+    }
+}, new Response.ErrorListener() {
+    @Override
+    public void onErrorResponse(VolleyError error) {
+        error.printStackTrace();
+        Log.d(&quot;vivi&quot;, &quot;onResponse: &quot;+error.getMessage());
+
+        mTvResult.setText(error.getMessage());
+    }
+});
+
+//加入请求队列
+requestQueue.add(stringRequest);
+</code></pre><blockquote>
+<p>结果：</p>
+</blockquote>
+<pre><code>onResponse: {&quot;reason&quot;:&quot;successed!&quot;,&quot;result&quot;:{&quot;data&quot;:{&quot;realtime&quot;:{&quot;city_code&quot;:&quot;101280601&quot;,&quot;city_name&quot;:&quot;深圳&quot;,&quot;date&quot;:&quot;2016-09-26&quot;,&quot;time&quot;:&quot;12:00:00&quot;,&quot;week&quot;:1,&quot;moon&quot;:&quot;八月廿六&quot;,&quot;dataUptime&quot;:1474864566,&quot;weather&quot;:{&quot;temperature&quot;:&quot;30&quot;,&quot;humidity&quot;:&quot;76&quot;,&quot;info&quot;:&quot;多云&quot;,&quot;img&quot;:&quot;1&quot;},&quot;wind&quot;:{&quot;direct&quot;:&quot;西北风&quot;,&quot;power&quot;:&quot;1级&quot;,&quot;offset&quot;:null,&quot;windspeed&quot;:null}},&quot;life&quot;:{&quot;date&quot;:&quot;2016-9-26&quot;,&quot;info&quot;:{&quot;chuanyi&quot;:[&quot;炎热&quot;,&quot;天气炎热，建议着短衫、短裙、短裤、薄型T恤衫等清凉夏季服装。&quot;],&quot;ganmao&quot;:[&quot;少发&quot;,&quot;各项气象条件适宜，发生感冒机率较低。但请避免长期处于空调房间中，以防感冒。&quot;],&quot;kongtiao&quot;:[&quot;部分时间开启&quot;,&quot;天气热，到中午的时候您将会感到有点热，因此建议在午后较热时开启制冷空调。&quot;],&quot;wuran&quot;:[&quot;中&quot;,&quot;气象条件对空气污染物稀释、扩散和清除无明显影响，易感人群应适当减少室外活动时间。&quot;],&quot;xiche&quot;:[&quot;较适宜&quot;,&quot;较适宜洗车，未来一天无雨，风力较小，擦洗一新的汽车至少能保持一天。&quot;],&quot;yundong&quot;:[&quot;较适宜&quot;,&quot;天气较好，户外运动请注意防晒。推荐您进行室内运动。&quot;],&quot;ziwaixian&quot;:[&quot;中等&quot;,&quot;属中等强度紫外线辐射天气，外出时建议涂擦SPF高于15、PA+的防晒护肤品，戴帽子、太阳镜。&quot;]}},&quot;weather&quot;:[{&quot;date&quot;:&quot;2016-09-26&quot;,&quot;info&quot;:{&quot;day&quot;:[&quot;1&quot;,&quot;多云&quot;,&quot;33&quot;,&quot;&quot;,&quot;微风&quot;,&quot;06:13&quot;],&quot;night&quot;:[&quot;1&quot;,&quot;多云&quot;,&quot;27&quot;,&quot;&quot;,&quot;微风&quot;,&quot;18:16&quot;]},&quot;week&quot;:&quot;一&quot;,&quot;nongli&quot;:&quot;八月廿六&quot;},{&quot;date&quot;:&quot;2016-09-27&quot;,&quot;info&quot;:{&quot;dawn&quot;:[&quot;1&quot;,&quot;多云&quot;,&quot;27&quot;,&quot;无持续风向&quot;,&quot;微风&quot;,&quot;18:16&quot;],&quot;day&quot;:[&quot;3&quot;,&quot;阵雨&quot;,&quot;33&quot;,&quot;&quot;,&quot;微风&quot;,&quot;06:13&quot;],&quot;night&quot;:[&quot;3&quot;,&quot;阵雨&quot;,&quot;27&quot;,&quot;&quot;,&quot;微风&quot;,&quot;18:15&quot;]},&quot;week&quot;:&quot;二&quot;,&quot;nongli&quot;:&quot;八月廿七&quot;},{&quot;date&quot;:&quot;2016-09-28&quot;,&quot;info&quot;:{&quot;dawn&quot;:[&quot;3&quot;,&quot;阵雨&quot;,&quot;27&quot;,&quot;无持续风向&quot;,&quot;微风&quot;,&quot;18:15&quot;],&quot;day&quot;:[&quot;10&quot;,&quot;暴雨&quot;,&quot;29&quot;,&quot;西南风&quot;,&quot;5-6 级&quot;,&quot;06:14&quot;],&quot;night&quot;:[&quot;10&quot;,&quot;暴雨&quot;,&quot;26&quot;,&quot;西南风&quot;,&quot;5-6 级&quot;,&quot;18:14&quot;]},&quot;week&quot;:&quot;三&quot;,&quot;nongli&quot;:&quot;八月廿八&quot;},{&quot;date&quot;:&quot;2016-09-29&quot;,&quot;info&quot;:{&quot;dawn&quot;:[&quot;10&quot;,&quot;暴雨&quot;,&quot;26&quot;,&quot;西南风&quot;,&quot;5-6 级&quot;,&quot;18:14&quot;],&quot;day&quot;:[&quot;9&quot;,&quot;大雨&quot;,&quot;29&quot;,&quot;&quot;,&quot;微风&quot;,&quot;06:14&quot;],&quot;night&quot;:[&quot;3&quot;,&quot;阵雨&quot;,&quot;24&quot;,&quot;&quot;,&quot;微风&quot;,&quot;18:13&quot;]},&quot;week&quot;:&quot;四&quot;,&quot;nongli&quot;:&quot;八月廿九&quot;},{&quot;date&quot;:&quot;2016-09-30&quot;,&quot;info&quot;:{&quot;dawn&quot;:[&quot;3&quot;,&quot;阵雨&quot;,&quot;24&quot;,&quot;无持续风向&quot;,&quot;微风&quot;,&quot;18:13&quot;],&quot;day&quot;:[&quot;3&quot;,&quot;阵雨&quot;,&quot;29&quot;,&quot;&quot;,&quot;微风&quot;,&quot;06:14&quot;],&quot;night&quot;:[&quot;3&quot;,&quot;阵雨&quot;,&quot;25&quot;,&quot;&quot;,&quot;微风&quot;,&quot;18:12&quot;]},&quot;week&quot;:&quot;五&quot;,&quot;nongli&quot;:&quot;八月三十&quot;}],&quot;pm25&quot;:{&quot;key&quot;:&quot;Shenzhen&quot;,&quot;show_desc&quot;:0,&quot;pm25&quot;:{&quot;curPm&quot;:&quot;98&quot;,&quot;pm25&quot;:&quot;72&quot;,&quot;pm10&quot;:&quot;102&quot;,&quot;level&quot;:2,&quot;quality&quot;:&quot;良&quot;,&quot;des&quot;:&quot;可以接受的，除极少数对某种污染物特别敏感的人以外，对公众健康没有危害。&quot;},&quot;dateTime&quot;:&quot;2016年09月26日12时&quot;,&quot;cityName&quot;:&quot;深圳&quot;},&quot;jingqu&quot;:&quot;&quot;,&quot;date&quot;:&quot;&quot;,&quot;isForeign&quot;:&quot;0&quot;}},&quot;error_code&quot;:0}
+</code></pre><h6 id="POST请求"><a href="#POST请求" class="headerlink" title="POST请求"></a>POST请求</h6><pre><code>StringRequest stringRequest = new StringRequest(Method.POST, url,  listener, errorListener); 
+</code></pre><p>StringRequest中并没有提供设置POST参数的方法，但是当发出POST请求的时候，Volley会尝试调用StringRequest的父类——Request中的getParams()方法来获取POST参数,只需要在StringRequest的匿名类中重写getParams()方法</p>
+<pre><code>String       url    = &quot;http://op.juhe.cn/onebox/weather/query&quot;;
+final String appKey = &quot;9275deacf73ae4316f48caa251ec501e&quot;;
+
+//建立请求队列
+RequestQueue requestQueue = Volley.newRequestQueue(this);
+
+StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener&lt;String&gt;() {
+    @Override
+    public void onResponse(String response) {
+
+        Log.d(&quot;vivi&quot;, &quot;onResponse: &quot; + response.toString());
+
+        mTvResult.setText(response);
+
+    }
+}, new Response.ErrorListener() {
+    @Override
+    public void onErrorResponse(VolleyError volleyError) {
+        volleyError.printStackTrace();
+        Log.d(&quot;vivi&quot;, &quot;onResponse: &quot; + volleyError.getMessage());
+
+        mTvResult.setText(volleyError.getMessage());
+    }
+
+}){
+    @Override
+    protected Map&lt;String, String&gt; getParams() throws AuthFailureError {
+
+        Map&lt;String,String&gt; params = new HashMap&lt;&gt;();
+        params.put(&quot;cityname&quot;,&quot;深圳&quot;);
+        params.put(&quot;key&quot;,appKey);
+
+        return params;
+    }
+};
+
+//添加到队列
+requestQueue.add(stringRequest);
+</code></pre><h3 id="JsonRequest的用法"><a href="#JsonRequest的用法" class="headerlink" title="JsonRequest的用法"></a>JsonRequest的用法</h3><p>JsonRequest是一个抽象类,JsonRequest有两个直接的子类，JsonObjectRequest和JsonArrayRequest，一个是用于请求一段JSON数据的，一个是用于请求一段JSON数组的。</p>
+<h4 id="JsonObjectRequest"><a href="#JsonObjectRequest" class="headerlink" title="JsonObjectRequest"></a>JsonObjectRequest</h4><pre><code> /**
+ * 
+ * @param url 请求URL
+ * @param jsonRequest  JSON对象
+ * @param listener 成功回调
+ * @param errorListener  失败回调
+ */
+public JsonObjectRequest(String url, JSONObject jsonRequest, Response.Listener&lt;JSONObject&gt; listener,
+                         Response.ErrorListener errorListener) {
+    this(jsonRequest == null ? Request.Method.GET : Request.Method.POST, url, jsonRequest,
+            listener, errorListener);
+}
+
+/**
+ *  上面的会调下面的方法
+ * @param method  
+ * @param url
+ * @param jsonRequest
+ * @param listener
+ * @param errorListener
+ */
+public JsonObjectRequest(int method, String url, JSONObject jsonRequest,
+                         Response.Listener&lt;JSONObject&gt; listener, Response.ErrorListener errorListener) {
+    super(method, url, (jsonRequest == null) ? null : jsonRequest.toString(), listener,
+            errorListener);
+}
+</code></pre><h5 id="GET请求"><a href="#GET请求" class="headerlink" title="GET请求"></a>GET请求</h5><pre><code>String url =&quot;http://v.juhe.cn/weixin/query&quot;;
+   String appKey =&quot;24834287692b8d54cf634668ce5de0b4&quot;;
+   url += &quot;?key=&quot; + appKey;
+
+   RequestQueue requestQueue = Volley.newRequestQueue(this);
+
+   JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener&lt;JSONObject&gt;() {
+       @Override
+       public void onResponse(JSONObject response) {
+           Log.d(&quot;vivi&quot;, &quot;onResponse: &quot; + response.toString());
+
+           mTvResult.setText(response.toString());
+       }
+   }, new Response.ErrorListener() {
+       @Override
+       public void onErrorResponse(VolleyError error) {
+           error.printStackTrace();
+           Log.d(&quot;vivi&quot;, &quot;onResponse: &quot; + error.getMessage());
+
+           mTvResult.setText(error.getMessage());
+       }
+   });
+   //添加队列
+   requestQueue.add(jsonObjectRequest);
+</code></pre><blockquote>
+<p>日志</p>
+</blockquote>
+<pre><code>onResponse: {&quot;reason&quot;:&quot;success&quot;,&quot;result&quot;:{&quot;list&quot;:[{&quot;firstImg&quot;:&quot;http:\/\/zxpic.gtimg.com\/infonew\/0\/wechat_pics_-8255071.jpg\/640&quot;,&quot;id&quot;:&quot;wechat_20160915039850&quot;,&quot;source&quot;:&quot;功夫体育&quot;,&quot;title&quot;:&quot;女排冠军们“高”人一等，谁敢娶？&quot;,&quot;url&quot;:&quot;http:\/\/v.juhe.cn\/weixin\/redirect?wid=wechat_20160915039850&quot;,&quot;mark&quot;:&quot;&quot;},{&quot;firstImg&quot;:&quot;http:\/\/zxpic.gtimg.com\/infonew\/0\/wechat_pics_-8575838.jpg\/640&quot;,&quot;id&quot;:&quot;wechat_20151201058612&quot;,&quot;source&quot;:&quot;龍神迷失&quot;,&quot;title&quot;:&quot;中国首辆上牌的布加迪威龙，以为车牌很一般，最后发现车牌很霸气&quot;,&quot;url&quot;:&quot;http:\/\/v.juhe.cn\/weixin\/redirect?wid=wechat_20151201058612&quot;,&quot;mark&quot;:&quot;&quot;},{&quot;firstImg&quot;:&quot;http:\/\/zxpic.gtimg.com\/infonew\/0\/wechat_pics_-8206632.jpg\/640&quot;,&quot;id&quot;:&quot;wechat_20160102022165&quot;,&quot;source&quot;:&quot;篮球频道&quot;,&quot;title&quot;:&quot;【球迷关注点】书豪:一度想退役不再打球 曾被科比一句蔑视激怒&quot;,&quot;url&quot;:&quot;http:\/\/v.juhe.cn\/weixin\/redirect?wid=wechat_20160102022165&quot;,&quot;mark&quot;:&quot;&quot;},{&quot;firstImg&quot;:&quot;http:\/\/zxpic.gtimg.com\/infonew\/0\/wechat_pics_-8064767.jpg\/640&quot;,&quot;id&quot;:&quot;wechat_20160908053966&quot;,&quot;source&quot;:&quot;娱乐圈扒姐&quot;,&quot;title&quot;:&quot;某知名女星在节目中威胁选手收贿，私下爱搞潜规则&quot;,&quot;url&quot;:&quot;http:\/\/v.juhe.cn\/weixin\/redirect?wid=wechat_20160908053966&quot;,&quot;mark&quot;:&quot;&quot;},{&quot;firstImg&quot;:&quot;http:\/\/zxpic.gtimg.com\/infonew\/0\/wechat_pics_-7986866.jpg\/640&quot;,&quot;id&quot;:&quot;wechat_20160906017693&quot;,&quot;source&quot;:&quot;颜小白的篮球梦&quot;,&quot;title&quot;:&quot;科比跟乔丹比到底差在哪里？仅仅是身体素质吗&quot;,&quot;url&quot;:&quot;http:\/\/v.juhe.cn\/weixin\/redirect?wid=wechat_20160906017693&quot;,&quot;mark&quot;:&quot;&quot;},{&quot;firstImg&quot;:&quot;http:\/\/zxpic.gtimg.com\/infonew\/0\/wechat_pics_-7986843.jpg\/640&quot;,&quot;id&quot;:&quot;wechat_20160906017663&quot;,&quot;source&quot;:&quot;嘻嘻哈哈&quot;,&quot;title&quot;:&quot;神动图|这手感绝对不差！&quot;,&quot;url&quot;:&quot;http:\/\/v.juhe.cn\/weixin\/redirect?wid=wechat_20160906017663&quot;,&quot;mark&quot;:&quot;&quot;},{&quot;firstImg&quot;:&quot;http:\/\/zxpic.gtimg.com\/infonew\/0\/wechat_pics_-7986833.jpg\/640&quot;,&quot;id&quot;:&quot;wechat_20160906017658&quot;,&quot;source&quot;:&quot;嘻嘻哈哈&quot;,&quot;title&quot;:&quot;江湖流传的这些奇葩书，简直刷新我的三观~&quot;,&quot;url&quot;:&quot;http:\/\/v.juhe.cn\/weixin\/redirect?wid=wechat_20160906017658&quot;,&quot;mark&quot;:&quot;&quot;},{&quot;firstImg&quot;:&quot;http:\/\/zxpic.gtimg.com\/infonew\/0\/wechat_pics_-7986819.jpg\/640&quot;,&quot;id&quot;:&quot;wechat_20160906017552&quot;,&quot;source&quot;:&quot;笑你妹&quot;,&quot;title&quot;:&quot;【搞笑段子】有心无力啊，办起事来几分钟完事~&quot;,&quot;url&quot;:&quot;http:\/\/v.juhe.cn\/weixin\/redirect?wid=wechat_20160906017552&quot;,&quot;mark&quot;:&quot;&quot;},{&quot;firstImg&quot;:&quot;http:\/\/zxpic.gtimg.com\/infonew\/0\/wechat_pics_-7986802.jpg\/640&quot;,&quot;id&quot;:&quot;wechat_20160906017288&quot;,&quot;source&quot;:&quot;TechWeb&quot;,&quot;title&quot;:&quot;在iPhone7发布之前我们先来看看它的跑分吧&quot;,&quot;url&quot;:&quot;http:\/\/v.juhe.cn\/weixin\/redirect?wid=wechat_20160906017288&quot;,&quot;mark&quot;:&quot;&quot;},{&quot;firstImg&quot;:&quot;http:\/\/zxpic.gtimg.com\/infonew\/0\/wechat_pics_-7986693.jpg\/640&quot;,&quot;id&quot;:&quot;wechat_20160906016354&quot;,&quot;source&quot;:&quot;陇南生活网&quot;,&quot;title&quot;:&quot;甘肃：将发生严重腐败问题的地区部门直接评为“一般”&quot;,&quot;url&quot;:&quot;http:\/\/v.juhe.cn\/weixin\/redirect?wid=wechat_20160906016354&quot;,&quot;mark&quot;:&quot;&quot;},{&quot;firstImg&quot;:&quot;http:\/\/zxpic.gtimg.com\/infonew\/0\/wechat_pics_-7986675.jpg\/640&quot;,&quot;id&quot;:&quot;wechat_20160906016213&quot;,&quot;source&quot;:&quot;云上的空母&quot;,&quot;title&quot;:&quot;万吨两栖舰上的袖珍火炮，射速为每分钟200发&quot;,&quot;url&quot;:&quot;http:\/\/v.juhe.cn\/weixin\/redirect?wid=wechat_20160906016213&quot;,&quot;mark&quot;:&quot;&quot;},{&quot;firstImg&quot;:&quot;http:\/\/zxpic.gtimg.com\/infonew\/0\/wechat_pics_-7986645.jpg\/640&quot;,&quot;id&quot;:&quot;wechat_20160906016204&quot;,&quot;source&quot;:&quot;云上的空母&quot;,&quot;title&quot;:&quot;全球最大口径的加特林机关炮，一眨眼打出50发炮弹&quot;,&quot;url&quot;:&quot;http:\/\/v.juhe.cn\/weixin\/redirect?wid=wechat_20160906016204&quot;,&quot;mark&quot;:&quot;&quot;},{&quot;firstImg&quot;:&quot;http:\/\/zxpic.gtimg.com\/infonew\/0\/wechat_pics_-7986534.jpg\/640&quot;,&quot;id&quot;:&quot;wechat_20160906015882&quot;,&quot;source&quot;:&quot;钛媒体&quot;,&quot;title&quot;:&quot;三星耗10亿美元召回Note7，并称损失令人real心痛钛晨报&quot;,&quot;url&quot;:&quot;http:\/\/v.juhe.cn\/weixin\/redirect?wid=wechat_20160906015882&quot;,&quot;mark&quot;:&quot;&quot;},{&quot;firstImg&quot;:&quot;http:\/\/zxpic.gtimg.com\/infonew\/0\/wechat_pics_-7986438.jpg\/640&quot;,&quot;id&quot;:&quot;wechat_20160906015702&quot;,&quot;source&quot;:&quot;摄影笔记&quot;,&quot;title&quot;:&quot;一篇文章看懂尼康数码单反&quot;,&quot;url&quot;:&quot;http:\/\/v.juhe
+</code></pre><h5 id="POST请求-1"><a href="#POST请求-1" class="headerlink" title="POST请求"></a>POST请求</h5><pre><code>  String       url    =&quot;http://v.juhe.cn/weixin/query&quot;;
+final String appKey =&quot;24834287692b8d54cf634668ce5de0b4&quot;;
+
+RequestQueue requestQueue = Volley.newRequestQueue(this);
+JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, null, new Response.Listener&lt;JSONObject&gt;() {
+    @Override
+    public void onResponse(JSONObject response) {
+        Log.d(&quot;vivi&quot;, &quot;onResponse: &quot; + response.toString());
+
+        mTvResult.setText(response.toString());
+    }
+}, new Response.ErrorListener() {
+    @Override
+    public void onErrorResponse(VolleyError error) {
+        error.printStackTrace();
+        Log.d(&quot;vivi&quot;, &quot;onResponse: &quot; + error.getMessage());
+
+        mTvResult.setText(error.getMessage());
+    }
+}){
+
+    /**
+     * 重写这个方法添加POST请求的参数
+     * @return
+     * @throws AuthFailureError
+     */
+    @Override
+    protected Map&lt;String, String&gt; getParams() throws AuthFailureError {
+        Map&lt;String, String&gt; params = new HashMap&lt;&gt;();
+        params.put(&quot;key&quot;, appKey);
+
+        return params;
+    }
+};
+
+//添加队列
+requestQueue.add(jsonObjectRequest);
+</code></pre><p>可能会提示KEY错误</p>
+<h4 id="JsonArrayRequest"><a href="#JsonArrayRequest" class="headerlink" title="JsonArrayRequest"></a>JsonArrayRequest</h4><pre><code>public JsonArrayRequest(int method, String url, JSONArray jsonRequest,
+                        Listener&lt;JSONArray&gt; listener, ErrorListener errorListener) {
+    super(method, url, (jsonRequest == null) ? null : jsonRequest.toString(), listener,
+            errorListener);
+}
+
+ public JsonArrayRequest(String url, Listener&lt;JSONArray&gt; listener, ErrorListener errorListener) {
+    super(Method.GET, url, null, listener, errorListener);
+}
+</code></pre><h5 id="GET"><a href="#GET" class="headerlink" title="GET"></a>GET</h5><pre><code>String url =&quot;http://v.juhe.cn/toutiao/index&quot;;
+String appKey =&quot;97a25ce56b4d4563c86884738eed8502&quot;;
+
+RequestQueue requestQueue = Volley.newRequestQueue(this);
+
+url+=&quot;?key=&quot;+appKey;
+
+JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(url, new Response.Listener&lt;JSONArray&gt;() {
+    @Override
+    public void onResponse(JSONArray response) {
+        Log.d(&quot;vivi&quot;, &quot;onResponse: &quot; + response.toString());
+
+        mTvResult.setText(&quot;=====\n&quot;+response.toString());
+    }
+}, new Response.ErrorListener() {
+    @Override
+    public void onErrorResponse(VolleyError error) {
+        error.printStackTrace();
+        Log.d(&quot;vivi&quot;, &quot;onResponse: &quot; + error.getMessage());
+
+        mTvResult.setText(error.getMessage());
+    }
+});
+
+requestQueue.add(jsonArrayRequest);
+</code></pre><h5 id="POST"><a href="#POST" class="headerlink" title="POST"></a>POST</h5><pre><code>String       url    =&quot;http://v.juhe.cn/toutiao/index&quot;;
+   final String appKey =&quot;97a25ce56b4d4563c86884738eed8502&quot;;
+
+   RequestQueue requestQueue = Volley.newRequestQueue(this);
+   JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.POST, url, null, new Response.Listener&lt;JSONArray&gt;() {
+       @Override
+       public void onResponse(JSONArray response) {
+
+       }
+   }, new Response.ErrorListener() {
+       @Override
+       public void onErrorResponse(VolleyError error) {
+
+       }
+   }){
+       @Override
+       protected Map&lt;String, String&gt; getParams() throws AuthFailureError {
+           Map&lt;String, String&gt; params = new HashMap&lt;&gt;();
+           params.put(&quot;key&quot;, appKey);
+
+           return params;
+       }
+   };
+
+   requestQueue.add(jsonArrayRequest);
+</code></pre><p>可能会提示KEY错误</p>
+<h4 id="取消Request"><a href="#取消Request" class="headerlink" title="取消Request"></a>取消Request</h4><blockquote>
+<p>可以针对某些个request做取消操作</p>
+</blockquote>
+<pre><code>@Override
+protected void onStop() {
+    super.onStop();
+    for (Request &lt;?&gt; req : mRequestQueue) {          
+        req.cancel();         }     
+
+
+}
+</code></pre><blockquote>
+<p>取消这个队列里的所有请求：</p>
+</blockquote>
+<pre><code>mRequestQueue.cancelAll(this);
+</code></pre><blockquote>
+<p>可以根据RequestFilter或者Tag来终止某些请求</p>
+</blockquote>
+<pre><code>mRequestQueue.cancelAll( new RequestQueue.RequestFilter() {
+        @Override
+        public boolean apply(Request&lt;?&gt; request) {
+            return false;
+        }
+    });         
+    mRequestQueue.cancelAll(new Object());
+</code></pre><p>或者<br>通过使用tag来做到，在构造GET请求的时候，添加一个tag给它。<br>    request.setTag(“GET”);<br>    mRequestQueue.add(request);</p>
+<p>如果要取消GET请求，只需简单的添加下面的一行代码：    </p>
+<pre><code>mRequestQueue.cancelAll(&quot;GET&quot;);
+</code></pre><p>感谢郭霖大大<br><a href="http://blog.csdn.net/guolin_blog/article/details/17482095" target="_blank" rel="external">http://blog.csdn.net/guolin_blog/article/details/17482095</a><br>源码：<br><a href="https://github.com/ln0491/VolleyDemo" target="_blank" rel="external">https://github.com/ln0491/VolleyDemo</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Volley基本用法&quot;&gt;&lt;a href=&quot;#Volley基本用法&quot; class=&quot;headerlink&quot; title=&quot;Volley基本用法&quot;&gt;&lt;/a&gt;Volley基本用法&lt;/h2&gt;&lt;h3 id=&quot;什么是volley&quot;&gt;&lt;a href=&quot;#什么是volley&quot; c
+    
+    </summary>
+    
+      <category term="android" scheme="https://ln0491.github.io/categories/android/"/>
+    
+    
+      <category term="volley" scheme="https://ln0491.github.io/tags/volley/"/>
+    
+  </entry>
   
   <entry>
     <title>Android 环境变量</title>
