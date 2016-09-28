@@ -1,0 +1,647 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Android onTouch 事件 | 刘楠的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Liu Nan">
+    
+
+    
+    <meta name="description" content="onTouch事件##ViegGroup中有3个方法1234567891011121314151617181920212223242526272829303132/**    * 分发事件    * @param ev    * @return    */   @Override   public boolean dispatchTouchEvent(MotionEvent ev) &amp;#123;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android onTouch 事件">
+<meta property="og:url" content="https://ln0491.github.io/2016/09/28/Android onTouch 事件/index.html">
+<meta property="og:site_name" content="刘楠的博客">
+<meta property="og:description" content="onTouch事件##ViegGroup中有3个方法1234567891011121314151617181920212223242526272829303132/**    * 分发事件    * @param ev    * @return    */   @Override   public boolean dispatchTouchEvent(MotionEvent ev) &amp;#123;">
+<meta property="og:image" content="https://ln0491.github.io/img/mr.png">
+<meta property="og:image" content="https://ln0491.github.io/img/my.png">
+<meta property="og:updated_time" content="2016-09-28T10:32:23.446Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android onTouch 事件">
+<meta name="twitter:description" content="onTouch事件##ViegGroup中有3个方法1234567891011121314151617181920212223242526272829303132/**    * 分发事件    * @param ev    * @return    */   @Override   public boolean dispatchTouchEvent(MotionEvent ev) &amp;#123;">
+<meta name="twitter:image" content="https://ln0491.github.io/img/mr.png">
+
+    
+    <link rel="alternative" href="/atom.xml" title="刘楠的博客" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="刘楠的博客" title="刘楠的博客"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="刘楠的博客">刘楠的博客</a></h1>
+				<h2 class="blog-motto">热爱生活</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">首页</a></li>
+					
+						<li><a href="/archives">归档</a></li>
+					
+						<li><a href="/tags">标签</a></li>
+					
+						<li><a href="/categories">分类</a></li>
+					
+						<li><a href="/about">关于</a></li>
+					
+					<li>
+ 					
+						<form class="search" action="http://zhannei.baidu.com/cse/search" target="_blank">
+							<label>Search</label>
+						<input name="s" type="hidden" value= 9779949399098768934 ><input type="text" name="q" size="30" placeholder="搜索"><br>
+						</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/09/28/Android onTouch 事件/" title="Android onTouch 事件" itemprop="url">Android onTouch 事件</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Liu Nan" target="_blank" itemprop="author">Liu Nan</a>
+		
+  <p class="article-time">
+    <time datetime="2016-09-28T09:18:06.000Z" itemprop="datePublished"> 发表于 2016-09-28</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#onTouch事件"><span class="toc-number">1.</span> <span class="toc-text">onTouch事件</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#View中有2个方法"><span class="toc-number">1.1.</span> <span class="toc-text">View中有2个方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#dispatchTouchEvent"><span class="toc-number">1.2.</span> <span class="toc-text">dispatchTouchEvent</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#dispatchTouchEvent返回false"><span class="toc-number">1.2.1.</span> <span class="toc-text">dispatchTouchEvent返回false</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#dispatchTouchEvent返回true"><span class="toc-number">1.2.2.</span> <span class="toc-text">dispatchTouchEvent返回true</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#将dispatchTouchEvent设置为super"><span class="toc-number">1.3.</span> <span class="toc-text">将dispatchTouchEvent设置为super</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#onInterceptTouchEvent"><span class="toc-number">1.4.</span> <span class="toc-text">onInterceptTouchEvent</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#super时"><span class="toc-number">1.4.1.</span> <span class="toc-text">super时</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#false"><span class="toc-number">1.4.2.</span> <span class="toc-text">false</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#true"><span class="toc-number">1.4.3.</span> <span class="toc-text">true</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#结合onTouchEvent来看"><span class="toc-number">1.5.</span> <span class="toc-text">结合onTouchEvent来看</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#super-和上面一样了"><span class="toc-number">1.5.1.</span> <span class="toc-text">super 和上面一样了</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#false也和上面一样了，"><span class="toc-number">1.5.2.</span> <span class="toc-text">false也和上面一样了，</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#true-1"><span class="toc-number">1.5.3.</span> <span class="toc-text">true</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#onTouchEvent-小结"><span class="toc-number">1.5.4.</span> <span class="toc-text">onTouchEvent 小结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ViweGroup小结"><span class="toc-number">1.5.5.</span> <span class="toc-text">ViweGroup小结</span></a></li></ol></li></ol></li></ol>
+		
+		</div>
+		
+		<h1 id="onTouch事件"><a href="#onTouch事件" class="headerlink" title="onTouch事件"></a>onTouch事件</h1><p>##ViegGroup中有3个方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line">    * 分发事件</div><div class="line">    * @param ev</div><div class="line">    * @return</div><div class="line">    */</div><div class="line">   @Override</div><div class="line">   public boolean dispatchTouchEvent(MotionEvent ev) &#123;</div><div class="line">       Log.d(&quot;vivi&quot;, &quot;  MyRelativeLayout dispatchTouchEvent: &quot;+ TouchEventUtil.getTouchAction(ev.getAction()));</div><div class="line">       return super.dispatchTouchEvent(ev);</div><div class="line">   &#125;</div><div class="line"></div><div class="line">   /**</div><div class="line">    * 拦截事件</div><div class="line">    * @param ev</div><div class="line">    * @return</div><div class="line">    */</div><div class="line">   @Override</div><div class="line">   public boolean onInterceptTouchEvent(MotionEvent ev) &#123;</div><div class="line">       Log.d(&quot;vivi&quot;, &quot;  MyRelativeLayout onInterceptTouchEvent: &quot;+TouchEventUtil.getTouchAction(ev.getAction()));</div><div class="line">       return super.onInterceptTouchEvent(ev);</div><div class="line">   &#125;</div><div class="line"></div><div class="line">   /**</div><div class="line">    * 事件处理</div><div class="line">    * @param event</div><div class="line">    * @return</div><div class="line">    */</div><div class="line">   @Override</div><div class="line">   public boolean onTouchEvent(MotionEvent event) &#123;</div><div class="line">       Log.d(&quot;vivi&quot;, &quot;  MyRelativeLayout onTouchEvent: &quot;+TouchEventUtil.getTouchAction(event.getAction()));</div><div class="line">       return super.onTouchEvent(event);</div><div class="line">   &#125;</div></pre></td></tr></table></figure></p>
+<h2 id="View中有2个方法"><a href="#View中有2个方法" class="headerlink" title="View中有2个方法"></a>View中有2个方法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">   public boolean dispatchTouchEvent(MotionEvent event) &#123;</div><div class="line">       Log.d(&quot;vivi&quot;, &quot;    MyView      dispatchTouchEvent: &quot;+TouchEventUtil.getTouchAction(event.getAction()));</div><div class="line">       return super.dispatchTouchEvent(event);</div><div class="line">   &#125;</div><div class="line"></div><div class="line"></div><div class="line">   @Override</div><div class="line">   public boolean onTouchEvent(MotionEvent event) &#123;</div><div class="line">       Log.d(&quot;vivi&quot;, &quot;    MyView      onTouchEvent: &quot;+ TouchEventUtil.getTouchAction(event.getAction()));</div><div class="line">       return super.onTouchEvent(event);</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<p>布局很简单就放了一个自定义的RelativeLayout，重写了，3个方法什么也没有<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</div><div class="line"><span class="tag">&lt;<span class="name">RelativeLayout</span></span></div><div class="line">    <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></div><div class="line">    <span class="attr">xmlns:tools</span>=<span class="string">"http://schemas.android.com/tools"</span></div><div class="line">    <span class="attr">android:id</span>=<span class="string">"@+id/activity_main"</span></div><div class="line">    <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line">    <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></div><div class="line">    <span class="attr">android:paddingBottom</span>=<span class="string">"@dimen/activity_vertical_margin"</span></div><div class="line">    <span class="attr">android:paddingLeft</span>=<span class="string">"@dimen/activity_horizontal_margin"</span></div><div class="line">    <span class="attr">android:paddingRight</span>=<span class="string">"@dimen/activity_horizontal_margin"</span></div><div class="line">    <span class="attr">android:paddingTop</span>=<span class="string">"@dimen/activity_vertical_margin"</span></div><div class="line">    <span class="attr">tools:context</span>=<span class="string">"com.liu.ontouchdemo.MainActivity"</span>&gt;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">com.liu.ontouchdemo.view.MyRelativeLayout</span></span></div><div class="line">        <span class="attr">android:layout_centerInParent</span>=<span class="string">"true"</span></div><div class="line">        <span class="attr">android:background</span>=<span class="string">"@android:color/holo_blue_dark"</span></div><div class="line">        <span class="attr">android:layout_width</span>=<span class="string">"400dp"</span></div><div class="line">        <span class="attr">android:layout_height</span>=<span class="string">"400dp"</span>/&gt;</div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">RelativeLayout</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p><img src="https://ln0491.github.io/img/mr.png" alt="mr.png"></p>
+<h2 id="dispatchTouchEvent"><a href="#dispatchTouchEvent" class="headerlink" title="dispatchTouchEvent"></a>dispatchTouchEvent</h2><p>在蓝色部分点一下放开，默认情况<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">MyRelativeLayout dispatchTouchEvent: ACTION_DOWN</div><div class="line">MyRelativeLayout onInterceptTouchEvent: ACTION_DOWN</div><div class="line">MyRelativeLayout onTouchEvent: ACTION_DOWN</div><div class="line"> MainActivity  onTouchEvent: ACTION_DOWN</div><div class="line"> MainActivity  onTouchEvent: ACTION_UP</div></pre></td></tr></table></figure></p>
+<blockquote>
+<ul>
+<li>先走了ViewGroup中的dispatchTouchEvent</li>
+<li>再走ViewGroup中 onInterceptTouchEvent</li>
+<li>再走ViewGroup中 onTouchEvent</li>
+<li>回到Activity中 onTouchEvent</li>
+</ul>
+</blockquote>
+<h3 id="dispatchTouchEvent返回false"><a href="#dispatchTouchEvent返回false" class="headerlink" title="dispatchTouchEvent返回false"></a>dispatchTouchEvent返回false</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">MyRelativeLayout dispatchTouchEvent: ACTION_DOWN</div><div class="line"> MainActivity  onTouchEvent: ACTION_DOWN</div><div class="line"> MainActivity  onTouchEvent: ACTION_UP</div></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>ViewGroup中只走了 dispatchTouchEvent方法其它2个方法并没有走说明dispatchTouchEvent返回false，不分发把事件传递上层(这里Activity)去处理</li>
+<li>Activty中把事件消费处理掉了</li>
+</ul>
+</blockquote>
+<hr>
+<ul>
+<li>dispatchTouchEvent返回false,onInterceptTouchEvent/onTouchEvent方法不会执行也就不会向下传递了，直接返回上层的容器处理</li>
+</ul>
+<h3 id="dispatchTouchEvent返回true"><a href="#dispatchTouchEvent返回true" class="headerlink" title="dispatchTouchEvent返回true"></a>dispatchTouchEvent返回true</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">MyRelativeLayout dispatchTouchEvent: ACTION_DOWN</div><div class="line">MyRelativeLayout dispatchTouchEvent: ACTION_UP</div></pre></td></tr></table></figure>
+<hr>
+<blockquote>
+<ul>
+<li>只走了dispatchTouchEvent方法,说明dispatchTouchEvent返回true时，自己把事件消费了，也没有走onInterceptTouchEvent/onTouchEvent,同时也没有返回上层</li>
+</ul>
+</blockquote>
+<p>###dispatchTouchEvent小结</p>
+<blockquote>
+<ul>
+<li>true时,dispatchTouchEvent自己消费事件，不走onInterceptTouchEvent/onTouchEvent,同时也没有返回上层</li>
+<li>false时,dispatchTouchEvent不分发事件，直接返回上层容器，让上层容器自己处理，同时也不走onInterceptTouchEvent/onTouchEvent</li>
+<li>super.dispatchTouchEvent(ev) 才会分发事件,去走onInterceptTouchEvent方法</li>
+</ul>
+</blockquote>
+<h2 id="将dispatchTouchEvent设置为super"><a href="#将dispatchTouchEvent设置为super" class="headerlink" title="将dispatchTouchEvent设置为super"></a>将dispatchTouchEvent设置为super</h2><h2 id="onInterceptTouchEvent"><a href="#onInterceptTouchEvent" class="headerlink" title="onInterceptTouchEvent"></a>onInterceptTouchEvent</h2><p>更改下布局，添加一个自定义View重写2个方法都返回默认<br><img src="https://ln0491.github.io/img/my.png" alt="my.png"></p>
+<h3 id="super时"><a href="#super时" class="headerlink" title="super时"></a>super时</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">  MyView      dispatchTouchEvent: ACTION_DOWN</div><div class="line">  MyView      onTouchEvent: ACTION_DOWN</div><div class="line">MyRelativeLayout dispatchTouchEvent: ACTION_DOWN</div><div class="line">MyRelativeLayout onInterceptTouchEvent: ACTION_DOWN</div><div class="line">MyRelativeLayout onTouchEvent: ACTION_DOWN</div><div class="line"> MainActivity  onTouchEvent: ACTION_DOWN</div><div class="line"> MainActivity  onTouchEvent: ACTION_UP</div></pre></td></tr></table></figure>
+<blockquote>
+<p>*都是默认没什么说的，者会走一下，返回到顶级容器去处理</p>
+</blockquote>
+<h3 id="false"><a href="#false" class="headerlink" title="false"></a>false</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">  MyView      dispatchTouchEvent: ACTION_DOWN</div><div class="line">  MyView      onTouchEvent: ACTION_DOWN</div><div class="line">MyRelativeLayout dispatchTouchEvent: ACTION_DOWN</div><div class="line">MyRelativeLayout onInterceptTouchEvent: ACTION_DOWN</div><div class="line">MyRelativeLayout onTouchEvent: ACTION_DOWN</div><div class="line"> MainActivity  onTouchEvent: ACTION_DOWN</div><div class="line"> MainActivity  onTouchEvent: ACTION_UP</div></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>可以看到和默认的super一样</li>
+<li><p>onInterceptTouchEvent，super和false都回调有onTouchEvent</p>
+<h3 id="true"><a href="#true" class="headerlink" title="true"></a>true</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">  MyView      dispatchTouchEvent: ACTION_DOWN</div><div class="line">  MyView      onTouchEvent: ACTION_DOWN</div><div class="line">MyRelativeLayout dispatchTouchEvent: ACTION_DOWN</div><div class="line">MyRelativeLayout onInterceptTouchEvent: ACTION_DOWN</div><div class="line">MyRelativeLayout onTouchEvent: ACTION_DOWN</div><div class="line"> MainActivity  onTouchEvent: ACTION_DOWN</div><div class="line"> MainActivity  onTouchEvent: ACTION_UP</div></pre></td></tr></table></figure>
+</li>
+<li><p>这个和上像一样</p>
+</li>
+<li>这么看好像没什么区别，主要看true</li>
+</ul>
+<hr>
+<p>前提onInterceptTouchEvent返回true</p>
+<h2 id="结合onTouchEvent来看"><a href="#结合onTouchEvent来看" class="headerlink" title="结合onTouchEvent来看"></a>结合onTouchEvent来看</h2></blockquote>
+<h3 id="super-和上面一样了"><a href="#super-和上面一样了" class="headerlink" title="super 和上面一样了"></a>super 和上面一样了</h3><h3 id="false也和上面一样了，"><a href="#false也和上面一样了，" class="headerlink" title="false也和上面一样了，"></a>false也和上面一样了，</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"> MainActivity  onTouchEvent: ACTION_DOWN</div><div class="line">MyRelativeLayout dispatchTouchEvent: ACTION_DOWN</div><div class="line">MyRelativeLayout onInterceptTouchEvent: ACTION_DOWN</div><div class="line">MyRelativeLayout onTouchEvent: ACTION_DOWN</div><div class="line"> MainActivity  onTouchEvent: ACTION_DOWN</div><div class="line"> MainActivity  onTouchEvent: ACTION_UP</div><div class="line"> MainActivity  onTouchEvent: ACTION_UP</div></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>onTouchEvent的 super和fasle效果是一样的</li>
+<li>onInterceptTouchEvent返回true事件就会被截不再像子View去传递，而是走ViewGroup自己的onTouchEvent</li>
+</ul>
+</blockquote>
+<p>主要看true</p>
+<h3 id="true-1"><a href="#true-1" class="headerlink" title="true"></a>true</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">   MyRelativeLayout dispatchTouchEvent: ACTION_DOWN</div><div class="line">MyRelativeLayout onInterceptTouchEvent: ACTION_DOWN</div><div class="line">  MyView      dispatchTouchEvent: ACTION_DOWN</div><div class="line">  MyView      onTouchEvent: ACTION_DOWN</div><div class="line">MyRelativeLayout onTouchEvent: ACTION_DOWN</div><div class="line"> MainActivity  onTouchEvent: ACTION_UP</div><div class="line">MyRelativeLayout dispatchTouchEvent: ACTION_UP</div><div class="line">MyRelativeLayout onTouchEvent: ACTION_UP</div></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>看到事件没有再向Activity去传递而是在ViewGroup的onTouchEvent中消费完了</li>
+</ul>
+</blockquote>
+<hr>
+<h3 id="onTouchEvent-小结"><a href="#onTouchEvent-小结" class="headerlink" title="onTouchEvent 小结"></a>onTouchEvent 小结</h3><blockquote>
+<ul>
+<li>super和false结果一样都回再向上级去传递</li>
+<li>true就在ViewGroup中消费完毕不再传递了</li>
+</ul>
+</blockquote>
+<h3 id="ViweGroup小结"><a href="#ViweGroup小结" class="headerlink" title="ViweGroup小结"></a>ViweGroup小结</h3><p>dispatchTouchEvent</p>
+<blockquote>
+<ul>
+<li>false 事件不分发直接返回上级onTouchEvent去处理，同时也就不会调有onInterceptTouchEvent/onTouchEvent方法</li>
+<li><p>true 直接消费这个事件，不会返回上级，同时也不会 调有onInterceptTouchEvent/onTouchEvent方法</p>
+</li>
+<li><p>super时，再会调用onInterceptTouchEvent方法</p>
+</li>
+<li><p>这里onInterceptTouchEvent返回 false 和super是不拦截事件，<br>如果这个ViewGroup没有View就调onTouchEvent方法</p>
+</li>
+<li><p>true:就在自己就消费事件不再向上传递</p>
+</li>
+<li>false和 super：就向上级容器返回事件，调用上级容器的onTouchEvent</li>
+</ul>
+</blockquote>
+<p> 如果这个ViewGroup有子View就向子View(dispatchTouchEvent)传递事件,<br>子ViewdispatchTouchEvent:</p>
+<blockquote>
+<ul>
+<li>true就自己消费了</li>
+<li>false 就返回ViewGroup中调用onTouchEvent（false/super/true）方法</li>
+<li>super 就调用子View的onTouchEvent方法</li>
+</ul>
+</blockquote>
+<p>子View的onTouchEvent</p>
+<blockquote>
+<ul>
+<li><p>super/false 都向上调ViewGroup中调用onTouchEvent（false/super/true）方法</p>
+</li>
+<li><p>就在子View中消费这个事件不再传递</p>
+</li>
+</ul>
+</blockquote>
+<p>源码:<br><a href="https://github.com/ln0491/AndroidTouchDemo" target="_blank" rel="external">https://github.com/ln0491/AndroidTouchDemo</a></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/android/">android</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/android/">android</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="https://ln0491.github.io/2016/09/28/Android onTouch 事件/" data-title="Android onTouch 事件 | 刘楠的博客" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2016/09/28/Android-onTouch-事件/" title="Android onTouch 事件(一)">
+  <strong>上一篇：</strong><br/>
+  <span>
+  Android onTouch 事件(一)</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2016/09/28/Volley自定义Request/"  title="Volley自定义Request">
+ <strong>下一篇：</strong><br/> 
+ <span>Volley自定义Request
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="2016/09/28/Android onTouch 事件/" data-title="Android onTouch 事件" data-url="https://ln0491.github.io/2016/09/28/Android onTouch 事件/"></div>
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#onTouch事件"><span class="toc-number">1.</span> <span class="toc-text">onTouch事件</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#View中有2个方法"><span class="toc-number">1.1.</span> <span class="toc-text">View中有2个方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#dispatchTouchEvent"><span class="toc-number">1.2.</span> <span class="toc-text">dispatchTouchEvent</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#dispatchTouchEvent返回false"><span class="toc-number">1.2.1.</span> <span class="toc-text">dispatchTouchEvent返回false</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#dispatchTouchEvent返回true"><span class="toc-number">1.2.2.</span> <span class="toc-text">dispatchTouchEvent返回true</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#将dispatchTouchEvent设置为super"><span class="toc-number">1.3.</span> <span class="toc-text">将dispatchTouchEvent设置为super</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#onInterceptTouchEvent"><span class="toc-number">1.4.</span> <span class="toc-text">onInterceptTouchEvent</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#super时"><span class="toc-number">1.4.1.</span> <span class="toc-text">super时</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#false"><span class="toc-number">1.4.2.</span> <span class="toc-text">false</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#true"><span class="toc-number">1.4.3.</span> <span class="toc-text">true</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#结合onTouchEvent来看"><span class="toc-number">1.5.</span> <span class="toc-text">结合onTouchEvent来看</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#super-和上面一样了"><span class="toc-number">1.5.1.</span> <span class="toc-text">super 和上面一样了</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#false也和上面一样了，"><span class="toc-number">1.5.2.</span> <span class="toc-text">false也和上面一样了，</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#true-1"><span class="toc-number">1.5.3.</span> <span class="toc-text">true</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#onTouchEvent-小结"><span class="toc-number">1.5.4.</span> <span class="toc-text">onTouchEvent 小结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ViweGroup小结"><span class="toc-number">1.5.5.</span> <span class="toc-text">ViweGroup小结</span></a></li></ol></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/android/" title="android">android<sup>6</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/java/" title="java">java<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/test/" title="test">test<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/android/" title="android">android<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/volley/" title="volley">volley<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/test/" title="test">test<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/maven/" title="maven">maven<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  
+  <div class="tagcloudlist">
+    <p class="asidetitle">标签云</p>
+    <div class="tagcloudlist clearfix">
+       <a href="/tags/android/" style="font-size: 20px;">android</a> <a href="/tags/maven/" style="font-size: 10px;">maven</a> <a href="/tags/test/" style="font-size: 15px;">test</a> <a href="/tags/volley/" style="font-size: 20px;">volley</a>
+    </div>
+  </div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://www.cnblogs.com/" target="_blank" title="博客园">博客园</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.csdn.net/" target="_blank" title="CSDN">CSDN</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.cnblogs.com/liunanjava/" target="_blank" title="森林森">森林森</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.jianshu.com/" target="_blank" title="简书">简书</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> 爱生活爱编码. <br/>
+			This is my blog,Try to do better.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/ln0491" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<a href="mailto:153011784@qq.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+		
+		<a href="/about" target="_blank" title="Liu Nan">Liu Nan</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+	$('#toc.toc-aside').css('display', 'block').addClass('fadeIn'); //这个是我新加的，修改点
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+        getSize();
+        if (myWidth >= 1024) {
+          c.click();
+        }
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"ln0491"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?f9d3aff238126ad201a9a789a888d75a";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1260477305'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1260477305%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
