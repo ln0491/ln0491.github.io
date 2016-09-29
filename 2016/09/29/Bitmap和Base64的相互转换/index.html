@@ -4,26 +4,23 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>Hello World | 刘楠的博客</title>
+    <title>Bitmap和Base64的相互转换 | 刘楠的博客</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Liu Nan">
     
 
     
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
+    <meta name="description" content="Bitmap和Base64的相互转换12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182public class Base64Util &amp;#1">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="https://ln0491.github.io/2016/09/28/hello-world/index.html">
+<meta property="og:title" content="Bitmap和Base64的相互转换">
+<meta property="og:url" content="https://ln0491.github.io/2016/09/29/Bitmap和Base64的相互转换/index.html">
 <meta property="og:site_name" content="刘楠的博客">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
-<meta property="og:updated_time" content="2016-09-28T01:15:01.829Z">
+<meta property="og:description" content="Bitmap和Base64的相互转换12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182public class Base64Util &amp;#1">
+<meta property="og:updated_time" content="2016-09-29T08:00:04.728Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
+<meta name="twitter:title" content="Bitmap和Base64的相互转换">
+<meta name="twitter:description" content="Bitmap和Base64的相互转换12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182public class Base64Util &amp;#1">
 
     
     <link rel="alternative" href="/atom.xml" title="刘楠的博客" type="application/atom+xml">
@@ -86,14 +83,14 @@ Quick">
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2016/09/28/hello-world/" title="Hello World" itemprop="url">Hello World</a>
+      <a href="/2016/09/29/Bitmap和Base64的相互转换/" title="Bitmap和Base64的相互转换" itemprop="url">Bitmap和Base64的相互转换</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="Liu Nan" target="_blank" itemprop="author">Liu Nan</a>
 		
   <p class="article-time">
-    <time datetime="2016-09-28T01:15:01.829Z" itemprop="datePublished"> 发表于 2016-09-28</time>
+    <time datetime="2016-09-29T07:58:17.000Z" itemprop="datePublished"> 发表于 2016-09-29</time>
     
   </p>
 </header>
@@ -102,24 +99,27 @@ Quick">
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-number">1.</span> <span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-number">1.1.</span> <span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-number">1.2.</span> <span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-number">1.3.</span> <span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-number">1.4.</span> <span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Bitmap和Base64的相互转换"><span class="toc-number">1.</span> <span class="toc-text">Bitmap和Base64的相互转换</span></a></li></ol>
 		
 		</div>
 		
-		<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+		<h2 id="Bitmap和Base64的相互转换"><a href="#Bitmap和Base64的相互转换" class="headerlink" title="Bitmap和Base64的相互转换"></a>Bitmap和Base64的相互转换</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div></pre></td><td class="code"><pre><div class="line">public class Base64Util &#123;</div><div class="line">	public static void gcBitmap(Bitmap bitmap) &#123;</div><div class="line">		if (bitmap != null &amp;&amp; !bitmap.isRecycled()) &#123;</div><div class="line">			bitmap.recycle(); // 回收图片所占的内存</div><div class="line">			bitmap = null;</div><div class="line">			System.gc(); // 提醒系统及时回收</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	/**</div><div class="line">	 * </div><div class="line">	 * @Title: bitmapToBase64 </div><div class="line">	 * @Description: TODO(Bitmap 转换为字符串)       </div><div class="line">	 * @param @param bitmap</div><div class="line">	 * @param @return    设定文件</div><div class="line">	 * @return String    返回类型    </div><div class="line">	 * @throws</div><div class="line">	 */</div><div class="line"></div><div class="line">	@SuppressLint(&quot;NewApi&quot;)</div><div class="line">	public static String bitmapToBase64(Bitmap bitmap) &#123;</div><div class="line"></div><div class="line">		// 要返回的字符串</div><div class="line">		String reslut = null;</div><div class="line"></div><div class="line">		ByteArrayOutputStream baos = null;</div><div class="line"></div><div class="line">		try &#123;</div><div class="line">			</div><div class="line">			if (bitmap != null) &#123;</div><div class="line">				</div><div class="line">				baos = new ByteArrayOutputStream();</div><div class="line">				/**</div><div class="line">				 * 压缩只对保存有效果bitmap还是原来的大小</div><div class="line">				 */</div><div class="line">				bitmap.compress(CompressFormat.JPEG, 30, baos);</div><div class="line">				</div><div class="line">				baos.flush();</div><div class="line">				baos.close();</div><div class="line">				// 转换为字节数组</div><div class="line">				byte[] byteArray = baos.toByteArray();</div><div class="line">				</div><div class="line">				// 转换为字符串</div><div class="line">				reslut = Base64.encodeToString(byteArray, Base64.DEFAULT);</div><div class="line">			&#125; else &#123;</div><div class="line">				return null;</div><div class="line">			&#125;</div><div class="line">		&#125; catch (IOException e) &#123;</div><div class="line">			e.printStackTrace();</div><div class="line">		&#125; finally &#123;</div><div class="line"></div><div class="line">			try &#123;</div><div class="line">				if (baos != null) &#123;</div><div class="line">					baos.close();</div><div class="line">				&#125;</div><div class="line">			&#125; catch (IOException e) &#123;</div><div class="line">				e.printStackTrace();</div><div class="line">			&#125;</div><div class="line"></div><div class="line">		&#125;</div><div class="line">		return reslut;</div><div class="line"></div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	/**</div><div class="line">	 * </div><div class="line">	 * @Title: base64ToBitmap </div><div class="line">	 * @Description: TODO(base64l转换为Bitmap)       </div><div class="line">	 * @param @param base64String</div><div class="line">	 * @param @return    设定文件</div><div class="line">	 * @return Bitmap    返回类型    </div><div class="line">	 * @throws</div><div class="line">	 */</div><div class="line">	public static Bitmap base64ToBitmap(String base64String)&#123;</div><div class="line">		</div><div class="line">		byte[] decode = Base64.decode(base64String, Base64.DEFAULT);</div><div class="line">		</div><div class="line">		Bitmap bitmap = BitmapFactory.decodeByteArray(decode, 0, decode.length);</div><div class="line">		</div><div class="line">		return bitmap;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>将将bitmap转换成base64的字符串，直接把字符串传给服务器</p>
   
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
 
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/android/">android</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/工具类/">工具类</a>
+  </div>
 
 </div>
 
@@ -127,7 +127,7 @@ Quick">
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="https://ln0491.github.io/2016/09/28/hello-world/" data-title="Hello World | 刘楠的博客" data-tsina="null" class="share clearfix">
+	  <div data-url="https://ln0491.github.io/2016/09/29/Bitmap和Base64的相互转换/" data-title="Bitmap和Base64的相互转换 | 刘楠的博客" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -140,20 +140,20 @@ Quick">
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2016/09/28/my-new-post/" title="my new post">
-  <strong>上一篇：</strong><br/>
-  <span>
-  my new post</span>
+
+<div class="next">
+<a href="/2016/09/29/ViewPager的基本使用/"  title="ViewPager的基本使用">
+ <strong>下一篇：</strong><br/> 
+ <span>ViewPager的基本使用
+</span>
 </a>
 </div>
-
 
 </nav>
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2016/09/28/hello-world/" data-title="Hello World" data-url="https://ln0491.github.io/2016/09/28/hello-world/"></div>
+	<div class="ds-thread" data-thread-key="2016/09/29/Bitmap和Base64的相互转换/" data-title="Bitmap和Base64的相互转换" data-url="https://ln0491.github.io/2016/09/29/Bitmap和Base64的相互转换/"></div>
 </section>
 
 
@@ -163,7 +163,7 @@ Quick">
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-number">1.</span> <span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-number">1.1.</span> <span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-number">1.2.</span> <span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-number">1.3.</span> <span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-number">1.4.</span> <span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Bitmap和Base64的相互转换"><span class="toc-number">1.</span> <span class="toc-text">Bitmap和Base64的相互转换</span></a></li></ol>
  
   </div>
 

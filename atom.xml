@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ln0491.github.io/"/>
-  <updated>2016-09-29T06:57:40.736Z</updated>
+  <updated>2016-09-29T08:00:04.728Z</updated>
   <id>https://ln0491.github.io/</id>
   
   <author>
@@ -14,6 +14,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Bitmap和Base64的相互转换</title>
+    <link href="https://ln0491.github.io/2016/09/29/Bitmap%E5%92%8CBase64%E7%9A%84%E7%9B%B8%E4%BA%92%E8%BD%AC%E6%8D%A2/"/>
+    <id>https://ln0491.github.io/2016/09/29/Bitmap和Base64的相互转换/</id>
+    <published>2016-09-29T07:58:17.000Z</published>
+    <updated>2016-09-29T08:00:04.728Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Bitmap和Base64的相互转换"><a href="#Bitmap和Base64的相互转换" class="headerlink" title="Bitmap和Base64的相互转换"></a>Bitmap和Base64的相互转换</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div></pre></td><td class="code"><pre><div class="line">public class Base64Util &#123;</div><div class="line">	public static void gcBitmap(Bitmap bitmap) &#123;</div><div class="line">		if (bitmap != null &amp;&amp; !bitmap.isRecycled()) &#123;</div><div class="line">			bitmap.recycle(); // 回收图片所占的内存</div><div class="line">			bitmap = null;</div><div class="line">			System.gc(); // 提醒系统及时回收</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	/**</div><div class="line">	 * </div><div class="line">	 * @Title: bitmapToBase64 </div><div class="line">	 * @Description: TODO(Bitmap 转换为字符串)       </div><div class="line">	 * @param @param bitmap</div><div class="line">	 * @param @return    设定文件</div><div class="line">	 * @return String    返回类型    </div><div class="line">	 * @throws</div><div class="line">	 */</div><div class="line"></div><div class="line">	@SuppressLint(&quot;NewApi&quot;)</div><div class="line">	public static String bitmapToBase64(Bitmap bitmap) &#123;</div><div class="line"></div><div class="line">		// 要返回的字符串</div><div class="line">		String reslut = null;</div><div class="line"></div><div class="line">		ByteArrayOutputStream baos = null;</div><div class="line"></div><div class="line">		try &#123;</div><div class="line">			</div><div class="line">			if (bitmap != null) &#123;</div><div class="line">				</div><div class="line">				baos = new ByteArrayOutputStream();</div><div class="line">				/**</div><div class="line">				 * 压缩只对保存有效果bitmap还是原来的大小</div><div class="line">				 */</div><div class="line">				bitmap.compress(CompressFormat.JPEG, 30, baos);</div><div class="line">				</div><div class="line">				baos.flush();</div><div class="line">				baos.close();</div><div class="line">				// 转换为字节数组</div><div class="line">				byte[] byteArray = baos.toByteArray();</div><div class="line">				</div><div class="line">				// 转换为字符串</div><div class="line">				reslut = Base64.encodeToString(byteArray, Base64.DEFAULT);</div><div class="line">			&#125; else &#123;</div><div class="line">				return null;</div><div class="line">			&#125;</div><div class="line">		&#125; catch (IOException e) &#123;</div><div class="line">			e.printStackTrace();</div><div class="line">		&#125; finally &#123;</div><div class="line"></div><div class="line">			try &#123;</div><div class="line">				if (baos != null) &#123;</div><div class="line">					baos.close();</div><div class="line">				&#125;</div><div class="line">			&#125; catch (IOException e) &#123;</div><div class="line">				e.printStackTrace();</div><div class="line">			&#125;</div><div class="line"></div><div class="line">		&#125;</div><div class="line">		return reslut;</div><div class="line"></div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	/**</div><div class="line">	 * </div><div class="line">	 * @Title: base64ToBitmap </div><div class="line">	 * @Description: TODO(base64l转换为Bitmap)       </div><div class="line">	 * @param @param base64String</div><div class="line">	 * @param @return    设定文件</div><div class="line">	 * @return Bitmap    返回类型    </div><div class="line">	 * @throws</div><div class="line">	 */</div><div class="line">	public static Bitmap base64ToBitmap(String base64String)&#123;</div><div class="line">		</div><div class="line">		byte[] decode = Base64.decode(base64String, Base64.DEFAULT);</div><div class="line">		</div><div class="line">		Bitmap bitmap = BitmapFactory.decodeByteArray(decode, 0, decode.length);</div><div class="line">		</div><div class="line">		return bitmap;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>将将bitmap转换成base64的字符串，直接把字符串传给服务器</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Bitmap和Base64的相互转换&quot;&gt;&lt;a href=&quot;#Bitmap和Base64的相互转换&quot; class=&quot;headerlink&quot; title=&quot;Bitmap和Base64的相互转换&quot;&gt;&lt;/a&gt;Bitmap和Base64的相互转换&lt;/h2&gt;&lt;figure c
+    
+    </summary>
+    
+      <category term="android" scheme="https://ln0491.github.io/categories/android/"/>
+    
+    
+      <category term="工具类" scheme="https://ln0491.github.io/tags/%E5%B7%A5%E5%85%B7%E7%B1%BB/"/>
+    
+  </entry>
   
   <entry>
     <title>ViewPager的基本使用</title>
