@@ -17,7 +17,7 @@
 <meta property="og:url" content="https://ln0491.github.io/2016/10/08/viewpager在最后一页滑动之后跳转到主页面/index.html">
 <meta property="og:site_name" content="刘楠的博客">
 <meta property="og:description" content="viewpager在最后一页滑动之后跳转到主页面添加切换监听器1234567891011121314151617181920212223mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() &amp;#123;			//判断是不是要跳转下页一个标记位            private boolean flag;">
-<meta property="og:updated_time" content="2016-10-08T03:07:55.178Z">
+<meta property="og:updated_time" content="2016-10-08T05:20:05.882Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="viewpager在最后一页滑动之后跳转到主页面.">
 <meta name="twitter:description" content="viewpager在最后一页滑动之后跳转到主页面添加切换监听器1234567891011121314151617181920212223mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() &amp;#123;			//判断是不是要跳转下页一个标记位            private boolean flag;">
@@ -105,6 +105,7 @@
 		
 		<h2 id="viewpager在最后一页滑动之后跳转到主页面"><a href="#viewpager在最后一页滑动之后跳转到主页面" class="headerlink" title="viewpager在最后一页滑动之后跳转到主页面"></a>viewpager在最后一页滑动之后跳转到主页面</h2><h3 id="添加切换监听器"><a href="#添加切换监听器" class="headerlink" title="添加切换监听器"></a>添加切换监听器</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() &#123;</div><div class="line">			//判断是不是要跳转下页一个标记位</div><div class="line">            private boolean flag;</div><div class="line"></div><div class="line">            @Override</div><div class="line">            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) &#123;</div><div class="line">             </div><div class="line">            &#125;</div><div class="line"></div><div class="line">            @Override</div><div class="line">            public void onPageSelected(int position) &#123;</div><div class="line">            </div><div class="line"></div><div class="line"></div><div class="line">            &#125;</div><div class="line"></div><div class="line">            @Override</div><div class="line">            public void onPageScrollStateChanged(int state) &#123;</div><div class="line"></div><div class="line"></div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">`</div></pre></td></tr></table></figure>
 <h3 id="在onPageScrollStateChanged方法中判断是不是最后一个，同是是不是拖放状态"><a href="#在onPageScrollStateChanged方法中判断是不是最后一个，同是是不是拖放状态" class="headerlink" title="在onPageScrollStateChanged方法中判断是不是最后一个，同是是不是拖放状态"></a>在onPageScrollStateChanged方法中判断是不是最后一个，同是是不是拖放状态</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">         public void onPageScrollStateChanged(int state) &#123;</div><div class="line"></div><div class="line">             Log.d(&quot;vivi&quot;, &quot;onPageScrollStateChanged: &quot; + state);</div><div class="line">             switch(state) &#123;</div><div class="line">                 case ViewPager.SCROLL_STATE_DRAGGING:</div><div class="line">                     //拖的时候才进入下一页</div><div class="line">                     flag = false;</div><div class="line">                     Log.d(&quot;vivi&quot;, &quot;SCROLL_STATE_DRAGGING: &quot; + ViewPager.SCROLL_STATE_DRAGGING);</div><div class="line"></div><div class="line">                     break;</div><div class="line">                 case ViewPager.SCROLL_STATE_SETTLING:</div><div class="line">                     flag = true;</div><div class="line">                     Log.d(&quot;vivi&quot;, &quot;SCROLL_STATE_SETTLING: &quot; + ViewPager.SCROLL_STATE_SETTLING);</div><div class="line">                     break;</div><div class="line"></div><div class="line"></div><div class="line">                 case ViewPager.SCROLL_STATE_IDLE:</div><div class="line">                     Log.d(&quot;vivi&quot;, &quot;SCROLL_STATE_IDLE: &quot; + ViewPager.SCROLL_STATE_IDLE+&quot;  mViewPager.getCurrentItem() &quot;+mViewPager.getCurrentItem());</div><div class="line">                     /**</div><div class="line">                      * 判断是不是最后一页，同是是不是拖的状态</div><div class="line">                      */</div><div class="line">                     if(mViewPager.getCurrentItem() == mWelcomeViewpagerAdapter.getCount() - 1 &amp;&amp; !flag) &#123;</div><div class="line">                         Intent localIntent = new Intent();</div><div class="line"></div><div class="line">                         localIntent.setClass(WelcomeActivity.this, MainActivity.class);</div><div class="line">                         startActivity(localIntent);</div><div class="line">                         // overridePendingTransition(0, 0);</div><div class="line">                         finish();</div><div class="line">                     &#125;</div><div class="line">                     flag = true;</div><div class="line"></div><div class="line">                     break;</div><div class="line">             &#125;</div></pre></td></tr></table></figure>
+<p>源码<br><a href="https://github.com/ln0491/ViewPagerDemo" target="_blank" rel="external">https://github.com/ln0491/ViewPagerDemo</a></p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -140,6 +141,14 @@
 	
 <nav class="article-nav clearfix">
  
+ <div class="prev" >
+ <a href="/2016/10/08/viewpager自动滚动/" title="viewpager自动滚动">
+  <strong>上一篇：</strong><br/>
+  <span>
+  viewpager自动滚动</span>
+</a>
+</div>
+
 
 <div class="next">
 <a href="/2016/10/08/ViewPager添加指示器/"  title="ViewPager添加指示器">
@@ -177,7 +186,7 @@
 		<ul>
 		
 		  
-			<li><a href="/categories/android/" title="android">android<sup>9</sup></a></li>
+			<li><a href="/categories/android/" title="android">android<sup>10</sup></a></li>
 		  
 		
 		  
@@ -198,7 +207,7 @@
 		<ul class="clearfix">
 		
 			
-				<li><a href="/tags/viewpager/" title="viewpager">viewpager<sup>3</sup></a></li>
+				<li><a href="/tags/viewpager/" title="viewpager">viewpager<sup>4</sup></a></li>
 			
 		
 			
@@ -229,7 +238,7 @@
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
     <div class="tagcloudlist clearfix">
-       <a href="/tags/android/" style="font-size: 15px;">android</a> <a href="/tags/maven/" style="font-size: 10px;">maven</a> <a href="/tags/test/" style="font-size: 15px;">test</a> <a href="/tags/viewpager/" style="font-size: 20px;">viewpager</a> <a href="/tags/volley/" style="font-size: 20px;">volley</a> <a href="/tags/工具类/" style="font-size: 10px;">工具类</a>
+       <a href="/tags/android/" style="font-size: 13.33px;">android</a> <a href="/tags/maven/" style="font-size: 10px;">maven</a> <a href="/tags/test/" style="font-size: 13.33px;">test</a> <a href="/tags/viewpager/" style="font-size: 20px;">viewpager</a> <a href="/tags/volley/" style="font-size: 16.67px;">volley</a> <a href="/tags/工具类/" style="font-size: 10px;">工具类</a>
     </div>
   </div>
 
