@@ -4,23 +4,28 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>Bitmap和Base64的相互转换 | 刘楠的博客</title>
+    <title>ViewPager添加指示器 | 刘楠的博客</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Liu Nan">
     
 
     
-    <meta name="description" content="Bitmap和Base64的相互转换12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182public class Base64Util &amp;#1">
+    <meta name="description" content="ViewPager添加指示器接着基本使用的例子基本使用https://ln0491.github.io/2016/09/29/ViewPager%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/
+布局中添加存放揭示器的容器1234567891011121314&amp;lt;!--   存放指示器的容器   --&amp;gt;   &amp;lt;LinearLayout">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Bitmap和Base64的相互转换">
-<meta property="og:url" content="https://ln0491.github.io/2016/09/29/Bitmap和Base64的相互转换/index.html">
+<meta property="og:title" content="ViewPager添加指示器">
+<meta property="og:url" content="https://ln0491.github.io/2016/10/08/ViewPager添加指示器/index.html">
 <meta property="og:site_name" content="刘楠的博客">
-<meta property="og:description" content="Bitmap和Base64的相互转换12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182public class Base64Util &amp;#1">
-<meta property="og:updated_time" content="2016-09-29T08:00:04.728Z">
+<meta property="og:description" content="ViewPager添加指示器接着基本使用的例子基本使用https://ln0491.github.io/2016/09/29/ViewPager%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/
+布局中添加存放揭示器的容器1234567891011121314&amp;lt;!--   存放指示器的容器   --&amp;gt;   &amp;lt;LinearLayout">
+<meta property="og:image" content="https://ln0491.github.io/img/vpdots.gif">
+<meta property="og:updated_time" content="2016-10-08T02:17:02.379Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Bitmap和Base64的相互转换">
-<meta name="twitter:description" content="Bitmap和Base64的相互转换12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182public class Base64Util &amp;#1">
+<meta name="twitter:title" content="ViewPager添加指示器">
+<meta name="twitter:description" content="ViewPager添加指示器接着基本使用的例子基本使用https://ln0491.github.io/2016/09/29/ViewPager%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/
+布局中添加存放揭示器的容器1234567891011121314&amp;lt;!--   存放指示器的容器   --&amp;gt;   &amp;lt;LinearLayout">
+<meta name="twitter:image" content="https://ln0491.github.io/img/vpdots.gif">
 
     
     <link rel="alternative" href="/atom.xml" title="刘楠的博客" type="application/atom+xml">
@@ -83,14 +88,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2016/09/29/Bitmap和Base64的相互转换/" title="Bitmap和Base64的相互转换" itemprop="url">Bitmap和Base64的相互转换</a>
+      <a href="/2016/10/08/ViewPager添加指示器/" title="ViewPager添加指示器" itemprop="url">ViewPager添加指示器</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="Liu Nan" target="_blank" itemprop="author">Liu Nan</a>
 		
   <p class="article-time">
-    <time datetime="2016-09-29T07:58:17.000Z" itemprop="datePublished"> 发表于 2016-09-29</time>
+    <time datetime="2016-10-08T02:08:50.000Z" itemprop="datePublished"> 发表于 2016-10-08</time>
     
   </p>
 </header>
@@ -99,12 +104,21 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Bitmap和Base64的相互转换"><span class="toc-number">1.</span> <span class="toc-text">Bitmap和Base64的相互转换</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#ViewPager添加指示器"><span class="toc-number">1.</span> <span class="toc-text">ViewPager添加指示器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#布局中添加存放揭示器的容器"><span class="toc-number">1.1.</span> <span class="toc-text">布局中添加存放揭示器的容器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Activity中"><span class="toc-number">1.2.</span> <span class="toc-text">Activity中</span></a></li></ol></li></ol>
 		
 		</div>
 		
-		<h2 id="Bitmap和Base64的相互转换"><a href="#Bitmap和Base64的相互转换" class="headerlink" title="Bitmap和Base64的相互转换"></a>Bitmap和Base64的相互转换</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div></pre></td><td class="code"><pre><div class="line">public class Base64Util &#123;</div><div class="line">	public static void gcBitmap(Bitmap bitmap) &#123;</div><div class="line">		if (bitmap != null &amp;&amp; !bitmap.isRecycled()) &#123;</div><div class="line">			bitmap.recycle(); // 回收图片所占的内存</div><div class="line">			bitmap = null;</div><div class="line">			System.gc(); // 提醒系统及时回收</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	/**</div><div class="line">	 * </div><div class="line">	 * @Title: bitmapToBase64 </div><div class="line">	 * @Description: TODO(Bitmap 转换为字符串)       </div><div class="line">	 * @param @param bitmap</div><div class="line">	 * @param @return    设定文件</div><div class="line">	 * @return String    返回类型    </div><div class="line">	 * @throws</div><div class="line">	 */</div><div class="line"></div><div class="line">	@SuppressLint(&quot;NewApi&quot;)</div><div class="line">	public static String bitmapToBase64(Bitmap bitmap) &#123;</div><div class="line"></div><div class="line">		// 要返回的字符串</div><div class="line">		String reslut = null;</div><div class="line"></div><div class="line">		ByteArrayOutputStream baos = null;</div><div class="line"></div><div class="line">		try &#123;</div><div class="line">			</div><div class="line">			if (bitmap != null) &#123;</div><div class="line">				</div><div class="line">				baos = new ByteArrayOutputStream();</div><div class="line">				/**</div><div class="line">				 * 压缩只对保存有效果bitmap还是原来的大小</div><div class="line">				 */</div><div class="line">				bitmap.compress(CompressFormat.JPEG, 30, baos);</div><div class="line">				</div><div class="line">				baos.flush();</div><div class="line">				baos.close();</div><div class="line">				// 转换为字节数组</div><div class="line">				byte[] byteArray = baos.toByteArray();</div><div class="line">				</div><div class="line">				// 转换为字符串</div><div class="line">				reslut = Base64.encodeToString(byteArray, Base64.DEFAULT);</div><div class="line">			&#125; else &#123;</div><div class="line">				return null;</div><div class="line">			&#125;</div><div class="line">		&#125; catch (IOException e) &#123;</div><div class="line">			e.printStackTrace();</div><div class="line">		&#125; finally &#123;</div><div class="line"></div><div class="line">			try &#123;</div><div class="line">				if (baos != null) &#123;</div><div class="line">					baos.close();</div><div class="line">				&#125;</div><div class="line">			&#125; catch (IOException e) &#123;</div><div class="line">				e.printStackTrace();</div><div class="line">			&#125;</div><div class="line"></div><div class="line">		&#125;</div><div class="line">		return reslut;</div><div class="line"></div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	/**</div><div class="line">	 * </div><div class="line">	 * @Title: base64ToBitmap </div><div class="line">	 * @Description: TODO(base64l转换为Bitmap)       </div><div class="line">	 * @param @param base64String</div><div class="line">	 * @param @return    设定文件</div><div class="line">	 * @return Bitmap    返回类型    </div><div class="line">	 * @throws</div><div class="line">	 */</div><div class="line">	public static Bitmap base64ToBitmap(String base64String)&#123;</div><div class="line">		</div><div class="line">		byte[] decode = Base64.decode(base64String, Base64.DEFAULT);</div><div class="line">		</div><div class="line">		Bitmap bitmap = BitmapFactory.decodeByteArray(decode, 0, decode.length);</div><div class="line">		</div><div class="line">		return bitmap;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>将将bitmap转换成base64的字符串，直接把字符串传给服务器</p>
+		<h2 id="ViewPager添加指示器"><a href="#ViewPager添加指示器" class="headerlink" title="ViewPager添加指示器"></a>ViewPager添加指示器</h2><p>接着基本使用的例子<br>基本使用<a href="https://ln0491.github.io/2016/09/29/ViewPager%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/">https://ln0491.github.io/2016/09/29/ViewPager%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/</a></p>
+<h3 id="布局中添加存放揭示器的容器"><a href="#布局中添加存放揭示器的容器" class="headerlink" title="布局中添加存放揭示器的容器"></a>布局中添加存放揭示器的容器</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!--</span></div><div class="line">   存放指示器的容器</div><div class="line">   --&gt;</div><div class="line">   <span class="tag">&lt;<span class="name">LinearLayout</span></span></div><div class="line">       <span class="attr">android:id</span>=<span class="string">"@+id/llLayoutDots"</span></div><div class="line">       <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></div><div class="line">       <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">       <span class="attr">android:layout_alignParentBottom</span>=<span class="string">"true"</span></div><div class="line">       <span class="attr">android:layout_centerHorizontal</span>=<span class="string">"true"</span></div><div class="line">       <span class="attr">android:layout_marginBottom</span>=<span class="string">"20dp"</span></div><div class="line">       <span class="attr">android:orientation</span>=<span class="string">"horizontal"</span>&gt;</div><div class="line"></div><div class="line"></div><div class="line">   <span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></div></pre></td></tr></table></figure>
+<h3 id="Activity中"><a href="#Activity中" class="headerlink" title="Activity中"></a>Activity中</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">//dots容器</div><div class="line">   private LinearLayout mLlLayoutDots;</div><div class="line">//指示器布局参数</div><div class="line">   private LinearLayout.LayoutParams mDotParams;</div><div class="line"></div><div class="line">   //指示器容器列表</div><div class="line">   private List&lt;ImageView&gt; dots = new ArrayList&lt;ImageView&gt;();</div><div class="line">   //当前索引</div><div class="line">   private int currPageIndex;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>初始化指示器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">private void initDots() &#123;</div><div class="line">       mDotParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);</div><div class="line"></div><div class="line">       mDotParams.rightMargin = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 10, getResources().getDisplayMetrics());</div><div class="line"></div><div class="line">       //根据viewpager 的数据去添加指示器</div><div class="line">       for(int i = 0; i &lt; mDatas.size(); i++) &#123;</div><div class="line"></div><div class="line">           ImageView imageView = new ImageView(getApplicationContext());</div><div class="line"></div><div class="line">           //添加背景 选择器</div><div class="line">           //imageView.setBackgroundResource(R.drawable.dot_selector);</div><div class="line">           //添加图片选择器</div><div class="line">           imageView.setImageResource(R.drawable.dot_selector);</div><div class="line"></div><div class="line">           //默认为不选择灰色</div><div class="line"></div><div class="line">           imageView.setSelected(false);</div><div class="line"></div><div class="line">           //添加到dot容器</div><div class="line">           mLlLayoutDots.addView(imageView, mDotParams);</div><div class="line"></div><div class="line">           dots.add(imageView);</div><div class="line">       &#125;</div><div class="line"></div><div class="line">       //设置第一个为选择状态</div><div class="line">       dots.get(0).setSelected(true);</div><div class="line"></div><div class="line">   &#125;</div></pre></td></tr></table></figure></p>
+<p>viewpager设置监听<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">private void initViewPagerListener() &#123;</div><div class="line"></div><div class="line"></div><div class="line">        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() &#123;</div><div class="line">            @Override</div><div class="line">            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) &#123;</div><div class="line">                Log.d(&quot;vivi&quot;, &quot;onPageScrolled:  position    &quot; + position + &quot;   positionOffset   &quot; + positionOffset + &quot;  positionOffsetPixels &quot; + positionOffsetPixels);</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            @Override</div><div class="line">            public void onPageSelected(int position) &#123;</div><div class="line">               /* int childCount = mLlLayoutDots.getChildCount();</div><div class="line"></div><div class="line">                for(int i = 0; i &lt; childCount; i++) &#123;</div><div class="line">                    if(i == position) &#123;</div><div class="line">                        mLlLayoutDots.getChildAt(i).setSelected(true);</div><div class="line">                    &#125; else &#123;</div><div class="line">                        mLlLayoutDots.getChildAt(i).setSelected(false);</div><div class="line">                    &#125;</div><div class="line"></div><div class="line">                &#125;*/</div><div class="line"></div><div class="line">                //旧点不亮</div><div class="line">                dots.get(currPageIndex%mDatas.size()).setSelected(false);</div><div class="line">                //设置新的点</div><div class="line">                currPageIndex=position;</div><div class="line">                //新点亮起来</div><div class="line">                dots.get(currPageIndex%mDatas.size()).setSelected(true);</div><div class="line"></div><div class="line"></div><div class="line">            &#125;</div><div class="line"></div><div class="line">            @Override</div><div class="line">            public void onPageScrollStateChanged(int state) &#123;</div><div class="line"></div><div class="line">                Log.d(&quot;vivi&quot;, &quot;onPageScrollStateChanged: &quot; + state);</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<ul>
+<li>效果</li>
+</ul>
+</blockquote>
+<p><img src="https://ln0491.github.io/img/vpdots.gif" alt="vpdots.gif"></p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -118,7 +132,7 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/工具类/">工具类</a>
+  <span></span> <a href="/tags/viewpager/">viewpager</a>
   </div>
 
 </div>
@@ -127,7 +141,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="https://ln0491.github.io/2016/09/29/Bitmap和Base64的相互转换/" data-title="Bitmap和Base64的相互转换 | 刘楠的博客" data-tsina="null" class="share clearfix">
+	  <div data-url="https://ln0491.github.io/2016/10/08/ViewPager添加指示器/" data-title="ViewPager添加指示器 | 刘楠的博客" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -140,19 +154,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2016/10/08/ViewPager添加指示器/" title="ViewPager添加指示器">
-  <strong>上一篇：</strong><br/>
-  <span>
-  ViewPager添加指示器</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2016/09/29/ViewPager的基本使用/"  title="ViewPager的基本使用">
+<a href="/2016/09/29/Bitmap和Base64的相互转换/"  title="Bitmap和Base64的相互转换">
  <strong>下一篇：</strong><br/> 
- <span>ViewPager的基本使用
+ <span>Bitmap和Base64的相互转换
 </span>
 </a>
 </div>
@@ -161,7 +167,7 @@
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2016/09/29/Bitmap和Base64的相互转换/" data-title="Bitmap和Base64的相互转换" data-url="https://ln0491.github.io/2016/09/29/Bitmap和Base64的相互转换/"></div>
+	<div class="ds-thread" data-thread-key="2016/10/08/ViewPager添加指示器/" data-title="ViewPager添加指示器" data-url="https://ln0491.github.io/2016/10/08/ViewPager添加指示器/"></div>
 </section>
 
 
@@ -171,7 +177,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Bitmap和Base64的相互转换"><span class="toc-number">1.</span> <span class="toc-text">Bitmap和Base64的相互转换</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#ViewPager添加指示器"><span class="toc-number">1.</span> <span class="toc-text">ViewPager添加指示器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#布局中添加存放揭示器的容器"><span class="toc-number">1.1.</span> <span class="toc-text">布局中添加存放揭示器的容器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Activity中"><span class="toc-number">1.2.</span> <span class="toc-text">Activity中</span></a></li></ol></li></ol>
  
   </div>
 
