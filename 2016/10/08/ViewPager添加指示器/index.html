@@ -20,7 +20,7 @@
 <meta property="og:description" content="ViewPager添加指示器接着基本使用的例子基本使用https://ln0491.github.io/2016/09/29/ViewPager%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/
 布局中添加存放揭示器的容器1234567891011121314&amp;lt;!--   存放指示器的容器   --&amp;gt;   &amp;lt;LinearLayout">
 <meta property="og:image" content="https://ln0491.github.io/img/vpdots.gif">
-<meta property="og:updated_time" content="2016-10-08T02:29:22.910Z">
+<meta property="og:updated_time" content="2016-10-08T05:19:54.529Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ViewPager添加指示器">
 <meta name="twitter:description" content="ViewPager添加指示器接着基本使用的例子基本使用https://ln0491.github.io/2016/09/29/ViewPager%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/
@@ -114,6 +114,7 @@
 <h3 id="初始化指示器"><a href="#初始化指示器" class="headerlink" title="初始化指示器"></a>初始化指示器</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">private void initDots() &#123;</div><div class="line">       mDotParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);</div><div class="line"></div><div class="line">       mDotParams.rightMargin = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 10, getResources().getDisplayMetrics());</div><div class="line"></div><div class="line">       //根据viewpager 的数据去添加指示器</div><div class="line">       for(int i = 0; i &lt; mDatas.size(); i++) &#123;</div><div class="line"></div><div class="line">           ImageView imageView = new ImageView(getApplicationContext());</div><div class="line"></div><div class="line">           //添加背景 选择器</div><div class="line">           //imageView.setBackgroundResource(R.drawable.dot_selector);</div><div class="line">           //添加图片选择器</div><div class="line">           imageView.setImageResource(R.drawable.dot_selector);</div><div class="line"></div><div class="line">           //默认为不选择灰色</div><div class="line"></div><div class="line">           imageView.setSelected(false);</div><div class="line"></div><div class="line">           //添加到dot容器</div><div class="line">           mLlLayoutDots.addView(imageView, mDotParams);</div><div class="line"></div><div class="line">           dots.add(imageView);</div><div class="line">       &#125;</div><div class="line"></div><div class="line">       //设置第一个为选择状态</div><div class="line">       dots.get(0).setSelected(true);</div><div class="line"></div><div class="line">   &#125;</div></pre></td></tr></table></figure>
 <h3 id="viewpager设置监听"><a href="#viewpager设置监听" class="headerlink" title="viewpager设置监听"></a>viewpager设置监听</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">private void initViewPagerListener() &#123;</div><div class="line"></div><div class="line"></div><div class="line">        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() &#123;</div><div class="line">            @Override</div><div class="line">            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) &#123;</div><div class="line">                Log.d(&quot;vivi&quot;, &quot;onPageScrolled:  position    &quot; + position + &quot;   positionOffset   &quot; + positionOffset + &quot;  positionOffsetPixels &quot; + positionOffsetPixels);</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            @Override</div><div class="line">            public void onPageSelected(int position) &#123;</div><div class="line">               /* int childCount = mLlLayoutDots.getChildCount();</div><div class="line"></div><div class="line">                for(int i = 0; i &lt; childCount; i++) &#123;</div><div class="line">                    if(i == position) &#123;</div><div class="line">                        mLlLayoutDots.getChildAt(i).setSelected(true);</div><div class="line">                    &#125; else &#123;</div><div class="line">                        mLlLayoutDots.getChildAt(i).setSelected(false);</div><div class="line">                    &#125;</div><div class="line"></div><div class="line">                &#125;*/</div><div class="line"></div><div class="line">                //旧点不亮</div><div class="line">                dots.get(currPageIndex%mDatas.size()).setSelected(false);</div><div class="line">                //设置新的点</div><div class="line">                currPageIndex=position;</div><div class="line">                //新点亮起来</div><div class="line">                dots.get(currPageIndex%mDatas.size()).setSelected(true);</div><div class="line"></div><div class="line"></div><div class="line">            &#125;</div><div class="line"></div><div class="line">            @Override</div><div class="line">            public void onPageScrollStateChanged(int state) &#123;</div><div class="line"></div><div class="line">                Log.d(&quot;vivi&quot;, &quot;onPageScrollStateChanged: &quot; + state);</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
 <h3 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h3><p><img src="https://ln0491.github.io/img/vpdots.gif" alt="vpdots.gif"></p>
+<p>源码<br><a href="https://github.com/ln0491/ViewPagerDemo" target="_blank" rel="external">https://github.com/ln0491/ViewPagerDemo</a></p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -194,7 +195,7 @@
 		<ul>
 		
 		  
-			<li><a href="/categories/android/" title="android">android<sup>9</sup></a></li>
+			<li><a href="/categories/android/" title="android">android<sup>10</sup></a></li>
 		  
 		
 		  
@@ -215,7 +216,7 @@
 		<ul class="clearfix">
 		
 			
-				<li><a href="/tags/viewpager/" title="viewpager">viewpager<sup>3</sup></a></li>
+				<li><a href="/tags/viewpager/" title="viewpager">viewpager<sup>4</sup></a></li>
 			
 		
 			
@@ -246,7 +247,7 @@
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
     <div class="tagcloudlist clearfix">
-       <a href="/tags/android/" style="font-size: 15px;">android</a> <a href="/tags/maven/" style="font-size: 10px;">maven</a> <a href="/tags/test/" style="font-size: 15px;">test</a> <a href="/tags/viewpager/" style="font-size: 20px;">viewpager</a> <a href="/tags/volley/" style="font-size: 20px;">volley</a> <a href="/tags/工具类/" style="font-size: 10px;">工具类</a>
+       <a href="/tags/android/" style="font-size: 13.33px;">android</a> <a href="/tags/maven/" style="font-size: 10px;">maven</a> <a href="/tags/test/" style="font-size: 13.33px;">test</a> <a href="/tags/viewpager/" style="font-size: 20px;">viewpager</a> <a href="/tags/volley/" style="font-size: 16.67px;">volley</a> <a href="/tags/工具类/" style="font-size: 10px;">工具类</a>
     </div>
   </div>
 
