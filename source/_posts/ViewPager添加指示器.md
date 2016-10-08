@@ -122,3 +122,8 @@ private void initViewPagerListener() {
 ### 效果
 
 ![vpdots.gif](https://ln0491.github.io/img/vpdots.gif)
+
+
+
+源码
+<https://github.com/ln0491/ViewPagerDemo>
