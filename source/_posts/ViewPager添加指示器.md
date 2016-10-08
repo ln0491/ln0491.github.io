@@ -43,7 +43,7 @@ tags: viewpager
     private int currPageIndex;
 
 ```
-> 初始化指示器
+### 初始化指示器
 ```android
  private void initDots() {
         mDotParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
@@ -76,7 +76,7 @@ tags: viewpager
     }
 ```
 
-> viewpager设置监听
+### viewpager设置监听
 ```android
 private void initViewPagerListener() {
 
@@ -119,6 +119,6 @@ private void initViewPagerListener() {
     }
 ```
 
-> * 效果
+### 效果
 
 ![vpdots.gif](https://ln0491.github.io/img/vpdots.gif)
