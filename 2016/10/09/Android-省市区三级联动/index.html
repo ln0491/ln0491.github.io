@@ -1,0 +1,602 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Android-省市区三级联动 | 刘楠的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Liu Nan">
+    
+
+    
+    <meta name="description" content="省市区三级联动下载地址：https://code.google.com/p/android-wheel/自备梯子
+
+
+效果图
+
+
+如果想更改样式需要更改源码
+单级滚动把下载好的做为module导入项目，并添加依赖
+这样就可以像使用普通控件一样使用了
+123456&amp;lt;kankan.wheel.widget.WheelView    android:id=&quot;@+id/wheelviewTimer&quot;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android-省市区三级联动">
+<meta property="og:url" content="https://ln0491.github.io/2016/10/09/Android-省市区三级联动/index.html">
+<meta property="og:site_name" content="刘楠的博客">
+<meta property="og:description" content="省市区三级联动下载地址：https://code.google.com/p/android-wheel/自备梯子
+
+
+效果图
+
+
+如果想更改样式需要更改源码
+单级滚动把下载好的做为module导入项目，并添加依赖
+这样就可以像使用普通控件一样使用了
+123456&amp;lt;kankan.wheel.widget.WheelView    android:id=&quot;@+id/wheelviewTimer&quot;">
+<meta property="og:image" content="http://img.blog.csdn.net/20161009183700341">
+<meta property="og:image" content="http://img.blog.csdn.net/20161009184021852">
+<meta property="og:image" content="http://img.blog.csdn.net/20161009184515111">
+<meta property="og:updated_time" content="2016-10-09T11:00:19.378Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android-省市区三级联动">
+<meta name="twitter:description" content="省市区三级联动下载地址：https://code.google.com/p/android-wheel/自备梯子
+
+
+效果图
+
+
+如果想更改样式需要更改源码
+单级滚动把下载好的做为module导入项目，并添加依赖
+这样就可以像使用普通控件一样使用了
+123456&amp;lt;kankan.wheel.widget.WheelView    android:id=&quot;@+id/wheelviewTimer&quot;">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20161009183700341">
+
+    
+    <link rel="alternative" href="/atom.xml" title="刘楠的博客" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="刘楠的博客" title="刘楠的博客"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="刘楠的博客">刘楠的博客</a></h1>
+				<h2 class="blog-motto">热爱生活</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">首页</a></li>
+					
+						<li><a href="/archives">归档</a></li>
+					
+						<li><a href="/tags">标签</a></li>
+					
+						<li><a href="/categories">分类</a></li>
+					
+						<li><a href="/about">关于</a></li>
+					
+					<li>
+ 					
+						<form class="search" action="http://zhannei.baidu.com/cse/search" target="_blank">
+							<label>Search</label>
+						<input name="s" type="hidden" value= 9779949399098768934 ><input type="text" name="q" size="30" placeholder="搜索"><br>
+						</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/10/09/Android-省市区三级联动/" title="Android-省市区三级联动" itemprop="url">Android-省市区三级联动</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Liu Nan" target="_blank" itemprop="author">Liu Nan</a>
+		
+  <p class="article-time">
+    <time datetime="2016-10-09T10:59:41.000Z" itemprop="datePublished"> 发表于 2016-10-09</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#省市区三级联动"><span class="toc-number">1.</span> <span class="toc-text">省市区三级联动</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#单级滚动"><span class="toc-number">2.</span> <span class="toc-text">单级滚动</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Activty"><span class="toc-number">2.1.</span> <span class="toc-text">Activty</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#适配器"><span class="toc-number">2.2.</span> <span class="toc-text">适配器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三级联动"><span class="toc-number">3.</span> <span class="toc-text">三级联动</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#布局"><span class="toc-number">3.1.</span> <span class="toc-text">布局</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#适配器和上面一样"><span class="toc-number">3.2.</span> <span class="toc-text">适配器和上面一样</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Activity初始化数据"><span class="toc-number">3.3.</span> <span class="toc-text">Activity初始化数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置监听滚动完成里切换"><span class="toc-number">3.4.</span> <span class="toc-text">设置监听滚动完成里切换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#完善滚动中时也可以切换"><span class="toc-number">3.5.</span> <span class="toc-text">完善滚动中时也可以切换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#更新数据的2个方法"><span class="toc-number">3.6.</span> <span class="toc-text">更新数据的2个方法</span></a></li></ol></li></ol>
+		
+		</div>
+		
+		<h2 id="省市区三级联动"><a href="#省市区三级联动" class="headerlink" title="省市区三级联动"></a>省市区三级联动</h2><p>下载地址：<a href="https://code.google.com/p/android-wheel/" target="_blank" rel="external">https://code.google.com/p/android-wheel/</a>自备梯子</p>
+<blockquote>
+<ul>
+<li>效果图<br><img src="http://img.blog.csdn.net/20161009183700341" alt="三级联动"></li>
+</ul>
+</blockquote>
+<p>如果想更改样式需要更改源码</p>
+<h2 id="单级滚动"><a href="#单级滚动" class="headerlink" title="单级滚动"></a>单级滚动</h2><p>把下载好的做为module导入项目，并添加依赖</p>
+<p><img src="http://img.blog.csdn.net/20161009184021852" alt="这里写图片描述"><br>这样就可以像使用普通控件一样使用了</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">kankan.wheel.widget.WheelView</span></span></div><div class="line">    <span class="attr">android:id</span>=<span class="string">"@+id/wheelviewTimer"</span></div><div class="line">    <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line">    <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">    /&gt;</div></pre></td></tr></table></figure>
+<h3 id="Activty"><a href="#Activty" class="headerlink" title="Activty"></a>Activty</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">mWheelViewTimer = (WheelView) findViewById(R.id.wheelviewTimer);</div><div class="line"> <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;<span class="number">24</span> ; i++) &#123;</div><div class="line">          mDatas.add(i+<span class="string">""</span>);</div><div class="line">      &#125;</div><div class="line"></div><div class="line">      <span class="comment">//设置可以见的条目数量， 上中下</span></div><div class="line">      mWheelViewTimer.setVisibleItems(<span class="number">5</span>);</div><div class="line"></div><div class="line"></div><div class="line">      <span class="comment">//设置适配器</span></div><div class="line">      mTimerAdapter = <span class="keyword">new</span> TimerAdapter(<span class="keyword">this</span>,mDatas);</div><div class="line"></div><div class="line">      mWheelViewTimer.setViewAdapter(mTimerAdapter);</div><div class="line"></div><div class="line">      <span class="comment">//放在最后面 设置当前显示的</span></div><div class="line">      mWheelViewTimer.setCurrentItem(<span class="number">5</span>);</div></pre></td></tr></table></figure>
+<h3 id="适配器"><a href="#适配器" class="headerlink" title="适配器"></a>适配器</h3><p>感觉和ListView有没有一点像呢,都是要设置适配器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">public class TimerAdapter extends AbstractWheelTextAdapter &#123;</div><div class="line"></div><div class="line"></div><div class="line">    List&lt;String&gt; mDatas;</div><div class="line">    Context      mContext;</div><div class="line"> </div><div class="line"></div><div class="line">    public TimerAdapter(Context context, List&lt;String&gt; datas) &#123;</div><div class="line"></div><div class="line">        super(context, R.layout.item_time, NO_RESOURCE);</div><div class="line"></div><div class="line">        mContext = context;</div><div class="line">        mDatas = datas;</div><div class="line">        setItemTextResource(R.id.time);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected CharSequence getItemText(int index) &#123;</div><div class="line">        return mDatas.get(index);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public int getItemsCount() &#123;</div><div class="line">        return mDatas.size();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public View getItem(int index, View convertView, ViewGroup parent) &#123;</div><div class="line"></div><div class="line">        View view = super.getItem(index, convertView, parent);</div><div class="line"></div><div class="line">        return view;</div><div class="line"></div><div class="line"></div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<p>这样就完成了，一个滚动<br><img src="http://img.blog.csdn.net/20161009184515111" alt="这里写图片描述"></p>
+<h2 id="三级联动"><a href="#三级联动" class="headerlink" title="三级联动"></a>三级联动</h2><p>看了一级的，三级的说白了就是3个这个控件</p>
+<h3 id="布局"><a href="#布局" class="headerlink" title="布局"></a>布局</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">&lt;LinearLayout</div><div class="line">    android:layout_width="match_parent"</div><div class="line">    android:layout_height="wrap_content"</div><div class="line"></div><div class="line">    android:orientation="horizontal"&gt;</div><div class="line"></div><div class="line">    &lt;kankan.wheel.widget.WheelView</div><div class="line">        android:id="@+id/province"</div><div class="line">        android:layout_width="0dp"</div><div class="line">        android:layout_height="wrap_content"</div><div class="line">        android:layout_weight="1"</div><div class="line">        /&gt;</div><div class="line"></div><div class="line">    &lt;kankan.wheel.widget.WheelView</div><div class="line">        android:id="@+id/city"</div><div class="line">        android:layout_width="0dp"</div><div class="line">        android:layout_height="wrap_content"</div><div class="line">        android:layout_weight="1"</div><div class="line">        /&gt;</div><div class="line"></div><div class="line">    &lt;kankan.wheel.widget.WheelView</div><div class="line">        android:id="@+id/area"</div><div class="line">        android:layout_width="0dp"</div><div class="line">        android:layout_height="wrap_content"</div><div class="line">        android:layout_weight="1"</div><div class="line">        /&gt;</div><div class="line"></div><div class="line">&lt;/LinearLayout&gt;</div></pre></td></tr></table></figure>
+<h3 id="适配器和上面一样"><a href="#适配器和上面一样" class="headerlink" title="适配器和上面一样"></a>适配器和上面一样</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">public class AddressTextAdapter extends AbstractWheelTextAdapter &#123;</div><div class="line">    List&lt;String&gt; mDatas;</div><div class="line">    Context mContext;</div><div class="line"></div><div class="line">    public AddressTextAdapter(Context context, List&lt;String&gt; datas) &#123;</div><div class="line">        super(context, R.layout.item_address,NO_RESOURCE);</div><div class="line">        mContext = context;</div><div class="line">        mDatas=datas;</div><div class="line">        //设置资源要显示在那个控件上</div><div class="line">        setItemTextResource(R.id.tempValue);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected CharSequence getItemText(int index) &#123;</div><div class="line">        return mDatas.get(index);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public int getItemsCount() &#123;</div><div class="line">        return mDatas.size();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public View getItem(int index, View convertView, ViewGroup parent) &#123;</div><div class="line"></div><div class="line"></div><div class="line">        View view = super.getItem(index,convertView,parent);</div><div class="line"></div><div class="line">        return view;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public String getName(int index)&#123;</div><div class="line">        return mDatas.get(index);</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<h3 id="Activity初始化数据"><a href="#Activity初始化数据" class="headerlink" title="Activity初始化数据"></a>Activity初始化数据</h3><ul>
+<li><p>找到3个控件</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">mProvince = (WheelView) findViewById(R.id.province);</div><div class="line">       mCity = (WheelView) findViewById(city);</div><div class="line">       mArea = (WheelView) findViewById(R.id.area);</div></pre></td></tr></table></figure>
+</li>
+<li><p>初始化数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">//读取文件</div><div class="line">       String str = FileUtils.readAssetsFile(this, &quot;china-city-area-zip.min.json&quot;);</div><div class="line"></div><div class="line">       Log.d(&quot;vivi&quot;, &quot;initData:  &quot; + str);</div><div class="line"></div><div class="line">       //转化为对象集合</div><div class="line">       List&lt;RegionJson&gt; datas = JSON.parseArray(str, RegionJson.class);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>这里的数据放在Assets目录下的json文件，读取文件，解析就OK，数据在最下面可以找到</p>
+<ul>
+<li><p>分类数据</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span>(RegionJson data : datas) &#123;</div><div class="line"></div><div class="line"></div><div class="line">           <span class="comment">//省</span></div><div class="line">           mProvinceList.add(data.name);</div><div class="line"></div><div class="line">           List&lt;String&gt; mCitysList    = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line"></div><div class="line">           <span class="keyword">for</span>(RegionJson.ChildEntity city : data.child) &#123;</div><div class="line"></div><div class="line">               <span class="comment">//市</span></div><div class="line"></div><div class="line">               mCitysList.add(city.name);</div><div class="line">               List&lt;String&gt; mAreaList     = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">               <span class="keyword">for</span>(RegionJson.ChildEntity.ChildEntity2 area : city.child) &#123;</div><div class="line">                   <span class="comment">//区</span></div><div class="line"></div><div class="line">                   mAreaList.add(area.name);</div><div class="line">               &#125;</div><div class="line"></div><div class="line">               <span class="comment">//市-区对该 </span></div><div class="line">               mAreaDatasMap.put(city.name,mAreaList);</div><div class="line"></div><div class="line"></div><div class="line">           &#125;</div><div class="line">           <span class="comment">//省支市对应</span></div><div class="line">           mCitisDatasMap.put(data.name,mCitysList);</div><div class="line"></div><div class="line"></div><div class="line">       &#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>为三个控件设置适配器</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line">        *  省</div><div class="line">        */</div><div class="line"></div><div class="line">       mProvince.setVisibleItems(<span class="number">5</span>);</div><div class="line"></div><div class="line">       mProviceAdapter = <span class="keyword">new</span> AddressTextAdapter(<span class="keyword">this</span>, mProvinceList);</div><div class="line">       mProvince.setViewAdapter(mProviceAdapter);</div><div class="line">       mProvince.setCurrentItem(<span class="number">0</span>);</div><div class="line"></div><div class="line">       <span class="comment">/**</span></div><div class="line">        * 市</div><div class="line">        */</div><div class="line">       mCity.setVisibleItems(<span class="number">5</span>);</div><div class="line"></div><div class="line">       mCityAdapter = <span class="keyword">new</span> AddressTextAdapter(<span class="keyword">this</span>, mCitisDatasMap.get(mProvinceList.get(<span class="number">0</span>)));</div><div class="line">       mCity.setViewAdapter(mCityAdapter);</div><div class="line">       mCity.setCurrentItem(<span class="number">0</span>);</div><div class="line"></div><div class="line">       <span class="comment">/**</span></div><div class="line">        * 地区</div><div class="line">        */</div><div class="line"></div><div class="line">       mArea.setVisibleItems(<span class="number">5</span>);</div><div class="line"></div><div class="line">       mAreaAdapter = <span class="keyword">new</span> AddressTextAdapter(<span class="keyword">this</span>, mAreaDatasMap.get(mCitisDatasMap.get(mProvinceList.get(<span class="number">0</span>)).get(<span class="number">0</span>)));</div><div class="line">       mArea.setViewAdapter(mAreaAdapter);</div><div class="line">       mArea.setCurrentItem(<span class="number">0</span>);</div></pre></td></tr></table></figure>
+<h3 id="设置监听滚动完成里切换"><a href="#设置监听滚动完成里切换" class="headerlink" title="设置监听滚动完成里切换"></a>设置监听滚动完成里切换</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initScrllListener</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="comment">/**</span></div><div class="line">         * 省滚动完成时切换 城市与地区</div><div class="line">         */</div><div class="line">        mProvince.addScrollingListener(<span class="keyword">new</span> OnWheelScrollListener() &#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onScrollingStarted</span><span class="params">(WheelView wheel)</span> </span>&#123;</div><div class="line">                <span class="comment">//标记位-开始滚动</span></div><div class="line">                proviceScrolling =<span class="keyword">true</span>;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onScrollingFinished</span><span class="params">(WheelView wheel)</span> </span>&#123;</div><div class="line"></div><div class="line">                proviceScrolling =<span class="keyword">false</span>;</div><div class="line">                <span class="comment">//省滚动完成后切换市</span></div><div class="line">                updateCities(mCity,mCitisDatasMap.get(mProviceAdapter.getName(mProvince.getCurrentItem())));</div><div class="line">                <span class="comment">//更新地区</span></div><div class="line">                updateArea(mArea,mAreaDatasMap.get(mCityAdapter.getName(mCity.getCurrentItem())));</div><div class="line"></div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line"></div><div class="line">        <span class="comment">/**</span></div><div class="line">         * 市滚动 完成时切换地区</div><div class="line">         */</div><div class="line">        mCity.addScrollingListener(<span class="keyword">new</span> OnWheelScrollListener() &#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onScrollingStarted</span><span class="params">(WheelView wheel)</span> </span>&#123;</div><div class="line">                <span class="comment">//标记位-开始滚动</span></div><div class="line">                cityScrolling=<span class="keyword">true</span>;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onScrollingFinished</span><span class="params">(WheelView wheel)</span> </span>&#123;</div><div class="line">                cityScrolling =<span class="keyword">false</span>;</div><div class="line"></div><div class="line"></div><div class="line">                <span class="comment">//市滚动完成后切换</span></div><div class="line">               updateArea(mArea,mAreaDatasMap.get(mCityAdapter.getName(mCity.getCurrentItem())));</div><div class="line"></div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p>这样就基本完成了</p>
+<h3 id="完善滚动中时也可以切换"><a href="#完善滚动中时也可以切换" class="headerlink" title="完善滚动中时也可以切换"></a>完善滚动中时也可以切换</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line">      * 省滚动中切换市</div><div class="line">      */</div><div class="line">     mProvince.addChangingListener(<span class="keyword">new</span> OnWheelChangedListener() &#123;</div><div class="line">         <span class="meta">@Override</span></div><div class="line">         <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onChanged</span><span class="params">(WheelView wheel, <span class="keyword">int</span> oldValue, <span class="keyword">int</span> newValue)</span> </span>&#123;</div><div class="line"></div><div class="line">             <span class="comment">//省在滚动</span></div><div class="line">             <span class="keyword">if</span>(proviceScrolling)&#123;</div><div class="line">                 <span class="comment">//更新城市</span></div><div class="line">                 updateCities(mCity,mCitisDatasMap.get(mProviceAdapter.getName(newValue)));</div><div class="line"></div><div class="line">                     <span class="comment">//更新地区</span></div><div class="line">                     updateArea(mArea,mAreaDatasMap.get(mCityAdapter.getName(mCity.getCurrentItem())));</div><div class="line"></div><div class="line">             &#125;</div><div class="line"></div><div class="line">         &#125;</div><div class="line"></div><div class="line">     &#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">mCity.addChangingListener(new OnWheelChangedListener() &#123;</div><div class="line">          @Override</div><div class="line">          public void onChanged(WheelView wheel, int oldValue, int newValue) &#123;</div><div class="line"></div><div class="line">              if(cityScrolling)&#123;</div><div class="line">                  updateArea(mArea,mAreaDatasMap.get(mCityAdapter.getName(newValue)));</div><div class="line">              &#125;</div><div class="line">          &#125;</div><div class="line">      &#125;);</div></pre></td></tr></table></figure>
+<h3 id="更新数据的2个方法"><a href="#更新数据的2个方法" class="headerlink" title="更新数据的2个方法"></a>更新数据的2个方法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">    /**</div><div class="line">     * 切换城市</div><div class="line">     */</div><div class="line">    private void updateCities(WheelView city, List&lt;String&gt; cities) &#123;</div><div class="line"></div><div class="line">        mCityAdapter = new AddressTextAdapter(this,cities);</div><div class="line"></div><div class="line">        city.setViewAdapter(mCityAdapter);</div><div class="line">        city.setCurrentItem(0);</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">----------</div><div class="line"> private void updateArea(WheelView area,List&lt;String&gt; areas)&#123;</div><div class="line">       mAreaAdapter= new AddressTextAdapter(this,areas);</div><div class="line"></div><div class="line">        area.setViewAdapter(mAreaAdapter);</div><div class="line">        area.setCurrentItem(0);</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p>源码：<a href="https://github.com/ln0491/WheelDemo" target="_blank" rel="external">https://github.com/ln0491/WheelDemo</a></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/android/">android</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/android/">android</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="https://ln0491.github.io/2016/10/09/Android-省市区三级联动/" data-title="Android-省市区三级联动 | 刘楠的博客" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2016/10/08/viewpager自动滚动/"  title="viewpager自动滚动">
+ <strong>下一篇：</strong><br/> 
+ <span>viewpager自动滚动
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="2016/10/09/Android-省市区三级联动/" data-title="Android-省市区三级联动" data-url="https://ln0491.github.io/2016/10/09/Android-省市区三级联动/"></div>
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#省市区三级联动"><span class="toc-number">1.</span> <span class="toc-text">省市区三级联动</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#单级滚动"><span class="toc-number">2.</span> <span class="toc-text">单级滚动</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Activty"><span class="toc-number">2.1.</span> <span class="toc-text">Activty</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#适配器"><span class="toc-number">2.2.</span> <span class="toc-text">适配器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三级联动"><span class="toc-number">3.</span> <span class="toc-text">三级联动</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#布局"><span class="toc-number">3.1.</span> <span class="toc-text">布局</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#适配器和上面一样"><span class="toc-number">3.2.</span> <span class="toc-text">适配器和上面一样</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Activity初始化数据"><span class="toc-number">3.3.</span> <span class="toc-text">Activity初始化数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置监听滚动完成里切换"><span class="toc-number">3.4.</span> <span class="toc-text">设置监听滚动完成里切换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#完善滚动中时也可以切换"><span class="toc-number">3.5.</span> <span class="toc-text">完善滚动中时也可以切换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#更新数据的2个方法"><span class="toc-number">3.6.</span> <span class="toc-text">更新数据的2个方法</span></a></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/android/" title="android">android<sup>11</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/java/" title="java">java<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/test/" title="test">test<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/viewpager/" title="viewpager">viewpager<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/android/" title="android">android<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/volley/" title="volley">volley<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/test/" title="test">test<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/工具类/" title="工具类">工具类<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/maven/" title="maven">maven<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  
+  <div class="tagcloudlist">
+    <p class="asidetitle">标签云</p>
+    <div class="tagcloudlist clearfix">
+       <a href="/tags/android/" style="font-size: 16.67px;">android</a> <a href="/tags/maven/" style="font-size: 10px;">maven</a> <a href="/tags/test/" style="font-size: 13.33px;">test</a> <a href="/tags/viewpager/" style="font-size: 20px;">viewpager</a> <a href="/tags/volley/" style="font-size: 16.67px;">volley</a> <a href="/tags/工具类/" style="font-size: 10px;">工具类</a>
+    </div>
+  </div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://www.cnblogs.com/" target="_blank" title="博客园">博客园</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.csdn.net/" target="_blank" title="CSDN">CSDN</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.cnblogs.com/liunanjava/" target="_blank" title="森林森">森林森</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.jianshu.com/" target="_blank" title="简书">简书</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> 爱生活爱编码. <br/>
+			This is my blog,Try to do better.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/ln0491" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<a href="mailto:153011784@qq.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+		
+		<a href="/about" target="_blank" title="Liu Nan">Liu Nan</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+	$('#toc.toc-aside').css('display', 'block').addClass('fadeIn'); //这个是我新加的，修改点
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+        getSize();
+        if (myWidth >= 1024) {
+          c.click();
+        }
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"ln0491"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?f9d3aff238126ad201a9a789a888d75a";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1260477305'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1260477305%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
