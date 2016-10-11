@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ln0491.github.io/"/>
-  <updated>2016-10-11T05:54:32.689Z</updated>
+  <updated>2016-10-11T06:40:15.682Z</updated>
   <id>https://ln0491.github.io/</id>
   
   <author>
@@ -14,6 +14,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Android-按二次返回键退出.</title>
+    <link href="https://ln0491.github.io/2016/10/11/Android-%E6%8C%89%E4%BA%8C%E6%AC%A1%E8%BF%94%E5%9B%9E%E9%94%AE%E9%80%80%E5%87%BA/"/>
+    <id>https://ln0491.github.io/2016/10/11/Android-按二次返回键退出/</id>
+    <published>2016-10-11T06:39:56.000Z</published>
+    <updated>2016-10-11T06:40:15.682Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="按二次返回键退出的功能"><a href="#按二次返回键退出的功能" class="headerlink" title="按二次返回键退出的功能"></a>按二次返回键退出的功能</h2><h4 id="在onBackPressed-方法中做下时间判断"><a href="#在onBackPressed-方法中做下时间判断" class="headerlink" title="在onBackPressed 方法中做下时间判断"></a>在onBackPressed 方法中做下时间判断</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line">  * 最后按下的时间</div><div class="line">  */</div><div class="line"> private  long lastTime ;</div><div class="line"></div><div class="line"> /**</div><div class="line">  * 按二次返回键退出应用</div><div class="line">  */</div><div class="line"> @Override</div><div class="line"> public void onBackPressed() &#123;</div><div class="line">     long currentTime = System.currentTimeMillis();</div><div class="line"></div><div class="line">     if(currentTime-lastTime&lt;2*1000)&#123;</div><div class="line">         super.onBackPressed();</div><div class="line">     &#125;else &#123;</div><div class="line">         Toast.makeText(this, &quot;再按一次退出应用&quot;, Toast.LENGTH_SHORT).show();</div><div class="line">         lastTime=currentTime;</div><div class="line">     &#125;</div><div class="line"></div><div class="line"></div><div class="line"> &#125;</div></pre></td></tr></table></figure>
+<h4 id="第二种在onKeyDown-方法中做下判断"><a href="#第二种在onKeyDown-方法中做下判断" class="headerlink" title="第二种在onKeyDown 方法中做下判断"></a>第二种在onKeyDown 方法中做下判断</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">   public boolean onKeyDown(int keyCode, KeyEvent event) &#123;</div><div class="line"></div><div class="line">       if(keyCode==KeyEvent.KEYCODE_BACK)&#123;</div><div class="line">           //禁用返回键</div><div class="line">           exit();</div><div class="line">           return false;</div><div class="line">       &#125;</div><div class="line"></div><div class="line">       return super.onKeyDown(keyCode, event);</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<p>exit方法就是第一种的写法</p>
+<h4 id="有些页面不让用返回键可以禁用"><a href="#有些页面不让用返回键可以禁用" class="headerlink" title="有些页面不让用返回键可以禁用"></a>有些页面不让用返回键可以禁用</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">    public boolean onKeyDown(int keyCode, KeyEvent event) &#123;</div><div class="line"></div><div class="line">        if(keyCode==KeyEvent.KEYCODE_BACK)&#123;</div><div class="line">            //禁用返回键</div><div class="line">            return false;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        return super.onKeyDown(keyCode, event);</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;按二次返回键退出的功能&quot;&gt;&lt;a href=&quot;#按二次返回键退出的功能&quot; class=&quot;headerlink&quot; title=&quot;按二次返回键退出的功能&quot;&gt;&lt;/a&gt;按二次返回键退出的功能&lt;/h2&gt;&lt;h4 id=&quot;在onBackPressed-方法中做下时间判断&quot;&gt;&lt;a 
+    
+    </summary>
+    
+      <category term="android" scheme="https://ln0491.github.io/categories/android/"/>
+    
+    
+      <category term="android" scheme="https://ln0491.github.io/tags/android/"/>
+    
+  </entry>
   
   <entry>
     <title>ViewPager填充Fragment和懒加载</title>
