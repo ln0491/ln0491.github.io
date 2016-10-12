@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ln0491.github.io/"/>
-  <updated>2016-10-11T06:40:15.682Z</updated>
+  <updated>2016-10-12T09:01:21.914Z</updated>
   <id>https://ln0491.github.io/</id>
   
   <author>
@@ -14,6 +14,190 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Android自定义属性-format</title>
+    <link href="https://ln0491.github.io/2016/10/12/Android%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B1%9E%E6%80%A7-format/"/>
+    <id>https://ln0491.github.io/2016/10/12/Android自定义属性-format/</id>
+    <published>2016-10-12T08:57:39.000Z</published>
+    <updated>2016-10-12T09:01:21.914Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Android自定义属性-format"><a href="#Android自定义属性-format" class="headerlink" title="Android自定义属性-format"></a>Android自定义属性-format</h2><h4 id="string-字符串"><a href="#string-字符串" class="headerlink" title="string 字符串"></a>string 字符串</h4><blockquote>
+<ul>
+<li>定义</li>
+</ul>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">    <span class="tag">&lt;<span class="name">declare-styleable</span> <span class="attr">name</span>=<span class="string">"MyTextView"</span>&gt;</span></div><div class="line"><span class="comment">&lt;!--字符串--&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">attr</span> <span class="attr">name</span>=<span class="string">"my_textname"</span> <span class="attr">format</span>=<span class="string">"string"</span>/&gt;</span></div><div class="line"></div><div class="line"></div><div class="line">    <span class="tag">&lt;/<span class="name">declare-styleable</span>&gt;</span></div></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>获取</li>
+</ul>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.MyTextView);</div><div class="line"></div><div class="line"></div><div class="line">        //获取文字</div><div class="line">        String textName = typedArray.getString(R.styleable.MyTextView_my_textname);</div><div class="line"></div><div class="line">        this.setText(textName);</div></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>使用</li>
+</ul>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;com.liu.myviewformatdemo.view.MyTextView</div><div class="line">           android:layout_width=&quot;match_parent&quot;</div><div class="line">           android:layout_height=&quot;wrap_content&quot;</div><div class="line">           app:my_textname=&quot;无可奈何花落去枯萎地&quot;</div><div class="line">           /&gt;</div></pre></td></tr></table></figure>
+<h4 id="dimension-尺寸值"><a href="#dimension-尺寸值" class="headerlink" title="dimension 尺寸值"></a>dimension 尺寸值</h4><blockquote>
+<ul>
+<li>定义</li>
+</ul>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">    <span class="tag">&lt;<span class="name">declare-styleable</span> <span class="attr">name</span>=<span class="string">"MyTextView"</span>&gt;</span></div><div class="line"><span class="comment">&lt;!--字符串--&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">attr</span> <span class="attr">name</span>=<span class="string">"my_textname"</span> <span class="attr">format</span>=<span class="string">"string"</span>/&gt;</span></div><div class="line">        <span class="comment">&lt;!--        尺寸值        --&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">attr</span> <span class="attr">name</span>=<span class="string">"my_textsize"</span> <span class="attr">format</span>=<span class="string">"dimension"</span>/&gt;</span></div><div class="line"></div><div class="line"></div><div class="line">    <span class="tag">&lt;/<span class="name">declare-styleable</span>&gt;</span></div></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>获取</li>
+</ul>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.MyTextView);</div><div class="line"></div><div class="line"></div><div class="line">        //获取文字</div><div class="line">        String textName = typedArray.getString(R.styleable.MyTextView_my_textname);</div><div class="line"></div><div class="line">        this.setText(textName);</div><div class="line"></div><div class="line">        //获取文字大小</div><div class="line">        float textsize = typedArray.getDimensionPixelSize(R.styleable.MyTextView_my_textsize, 14);</div><div class="line"></div><div class="line">        this.setTextSize(textsize);</div></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>使用</li>
+</ul>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;com.liu.myviewformatdemo.view.MyTextView</div><div class="line">           android:layout_width=&quot;match_parent&quot;</div><div class="line">           android:layout_height=&quot;wrap_content&quot;</div><div class="line">           app:my_textname=&quot;无可奈何花落去枯萎地&quot;</div><div class="line">           app:my_textsize=&quot;10sp&quot;</div><div class="line">           /&gt;</div></pre></td></tr></table></figure>
+<h4 id="color：颜色值"><a href="#color：颜色值" class="headerlink" title="color：颜色值"></a>color：颜色值</h4><blockquote>
+<ul>
+<li>定义</li>
+</ul>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">    <span class="tag">&lt;<span class="name">declare-styleable</span> <span class="attr">name</span>=<span class="string">"MyTextView"</span>&gt;</span></div><div class="line"><span class="comment">&lt;!--字符串--&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">attr</span> <span class="attr">name</span>=<span class="string">"my_textname"</span> <span class="attr">format</span>=<span class="string">"string"</span>/&gt;</span></div><div class="line">        <span class="comment">&lt;!--        尺寸值        --&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">attr</span> <span class="attr">name</span>=<span class="string">"my_textsize"</span> <span class="attr">format</span>=<span class="string">"dimension"</span>/&gt;</span></div><div class="line">        <span class="comment">&lt;!--颜色--&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">attr</span> <span class="attr">name</span>=<span class="string">"my_textcolor"</span> <span class="attr">format</span>=<span class="string">"color"</span>/&gt;</span></div><div class="line"></div><div class="line"></div><div class="line">    <span class="tag">&lt;/<span class="name">declare-styleable</span>&gt;</span></div></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>获取</li>
+</ul>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.MyTextView);</div><div class="line"></div><div class="line"></div><div class="line">        //获取文字</div><div class="line">        String textName = typedArray.getString(R.styleable.MyTextView_my_textname);</div><div class="line"></div><div class="line">        this.setText(textName);</div><div class="line"></div><div class="line">        //获取文字大小</div><div class="line">        float textsize = typedArray.getDimensionPixelSize(R.styleable.MyTextView_my_textsize, 14);</div><div class="line"></div><div class="line">        this.setTextSize(textsize);</div><div class="line"></div><div class="line"></div><div class="line">        //获取文字颜色</div><div class="line">        int color = typedArray.getColor(R.styleable.MyTextView_my_textcolor, 0xff00ff00);</div><div class="line">        this.setTextColor(color);</div></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>使用</li>
+</ul>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;com.liu.myviewformatdemo.view.MyTextView</div><div class="line">           android:layout_width=&quot;match_parent&quot;</div><div class="line">           android:layout_height=&quot;wrap_content&quot;</div><div class="line">           app:my_textname=&quot;无可奈何花落去枯萎地&quot;</div><div class="line">           app:my_textsize=&quot;10sp&quot;</div><div class="line">           app:my_textcolor=&quot;#f00&quot;</div><div class="line">           /&gt;</div></pre></td></tr></table></figure>
+<h4 id="reference：参考某一资源ID。"><a href="#reference：参考某一资源ID。" class="headerlink" title="reference：参考某一资源ID。"></a>reference：参考某一资源ID。</h4><blockquote>
+<ul>
+<li>定义</li>
+</ul>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">declare-styleable</span> <span class="attr">name</span>=<span class="string">"MyTextView"</span>&gt;</span></div><div class="line"><span class="comment">&lt;!--字符串--&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">attr</span> <span class="attr">name</span>=<span class="string">"my_textname"</span> <span class="attr">format</span>=<span class="string">"string"</span>/&gt;</span></div><div class="line">    <span class="comment">&lt;!--        尺寸值        --&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">attr</span> <span class="attr">name</span>=<span class="string">"my_textsize"</span> <span class="attr">format</span>=<span class="string">"dimension"</span>/&gt;</span></div><div class="line">    <span class="comment">&lt;!--颜色--&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">attr</span> <span class="attr">name</span>=<span class="string">"my_textcolor"</span> <span class="attr">format</span>=<span class="string">"color"</span>/&gt;</span></div><div class="line">    <span class="comment">&lt;!--引用某个资源的ID--&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">attr</span> <span class="attr">name</span>=<span class="string">"my_background"</span> <span class="attr">format</span>=<span class="string">"reference"</span>/&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">declare-styleable</span>&gt;</span></div></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>获取</li>
+</ul>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.MyTextView);</div><div class="line"></div><div class="line"></div><div class="line">        //获取文字</div><div class="line">        String textName = typedArray.getString(R.styleable.MyTextView_my_textname);</div><div class="line"></div><div class="line">        this.setText(textName);</div><div class="line"></div><div class="line">        //获取文字大小</div><div class="line">        float textsize = typedArray.getDimensionPixelSize(R.styleable.MyTextView_my_textsize, 14);</div><div class="line"></div><div class="line">        this.setTextSize(textsize);</div><div class="line"></div><div class="line"></div><div class="line">        //获取文字颜色</div><div class="line">        int color = typedArray.getColor(R.styleable.MyTextView_my_textcolor, 0xff00ff00);</div><div class="line">        this.setTextColor(color);</div><div class="line"></div><div class="line"></div><div class="line">        //获取背景</div><div class="line">        int resourceId = typedArray.getResourceId(R.styleable.MyTextView_my_background, R.mipmap.ic_launcher);</div><div class="line"></div><div class="line">        this.setBackgroundResource(resourceId);</div></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>使用</li>
+</ul>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;com.liu.myviewformatdemo.view.MyTextView</div><div class="line">           android:layout_width=&quot;match_parent&quot;</div><div class="line">           android:layout_height=&quot;wrap_content&quot;</div><div class="line">           app:my_textname=&quot;无可奈何花落去枯萎地&quot;</div><div class="line">           app:my_textsize=&quot;10sp&quot;</div><div class="line">           app:my_textcolor=&quot;#f00&quot;</div><div class="line">           app:my_background=&quot;@drawable/bg_shap&quot;</div><div class="line">           /&gt;</div></pre></td></tr></table></figure>
+<p><img src="mytextview.png" alt="mytextview.png"></p>
+<h4 id="boolean：布尔值"><a href="#boolean：布尔值" class="headerlink" title="boolean：布尔值."></a>boolean：布尔值.</h4><blockquote>
+<ul>
+<li>定义</li>
+</ul>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;declare-styleable name=&quot;MyImageView&quot;&gt;</div><div class="line"></div><div class="line">    &lt;!--Boolean 是否显示--&gt;</div><div class="line">    &lt;attr name=&quot;my_display&quot; format=&quot;boolean&quot;/&gt;</div><div class="line"></div><div class="line">&lt;/declare-styleable&gt;</div></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li><p>获取</p>
+</li>
+<li><p>使用</p>
+</li>
+</ul>
+</blockquote>
+<h4 id="integer：整型值"><a href="#integer：整型值" class="headerlink" title="integer：整型值"></a>integer：整型值</h4><blockquote>
+<ul>
+<li>定义</li>
+</ul>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;declare-styleable name = &quot;AnimatedRotateDrawable&quot;&gt;</div><div class="line"></div><div class="line">    &lt;attr name = &quot;visible&quot; /&gt;</div><div class="line">    &lt;attr name = &quot;frameDuration&quot; format=&quot;integer&quot; /&gt;</div><div class="line">    &lt;attr name = &quot;framesCount&quot; format=&quot;integer&quot; /&gt;</div><div class="line">    &lt;attr name = &quot;pivotX&quot; /&gt;</div><div class="line">    &lt;attr name = &quot;pivotY&quot; /&gt;</div><div class="line">    &lt;attr name = &quot;drawable&quot; /&gt;</div><div class="line"></div><div class="line">&lt;/declare-styleable&gt;</div></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>获取</li>
+</ul>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">typedArray.getInteger(R.styleable.名称,默认值)</div></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>使用<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;animated-rotate</div><div class="line">    xmlns:android =&quot;http://schemas.android.com/apk/res/android&quot;</div><div class="line">    android:drawable = &quot;@drawable/图片ID&quot;</div><div class="line">    android:pivotX = &quot;50%&quot;</div><div class="line">    android:pivotY = &quot;50%&quot;</div><div class="line">    android:framesCount = &quot;12&quot;</div><div class="line">    android:frameDuration = &quot;100&quot;/&gt;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</blockquote>
+<h4 id="float：浮点值"><a href="#float：浮点值" class="headerlink" title="float：浮点值"></a>float：浮点值</h4><blockquote>
+<ul>
+<li>定义</li>
+</ul>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;declare-styleable name = &quot;AlphaAnimation&quot;&gt;</div><div class="line"></div><div class="line">    &lt;attr name = &quot;fromAlpha&quot; format = &quot;float&quot; /&gt;</div><div class="line">    &lt;attr name = &quot;toAlpha&quot; format = &quot;float&quot; /&gt;</div><div class="line"></div><div class="line">&lt;/declare-styleable&gt;</div></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>获取</li>
+</ul>
+</blockquote>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">typedArray.getFloat(R.styleable.名称,默认值)</div></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>使用</li>
+</ul>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;alpha</div><div class="line">    android:fromAlpha = &quot;1.0&quot;</div><div class="line">    android:toAlpha = &quot;0.7&quot;/&gt;</div></pre></td></tr></table></figure>
+<h4 id="fraction：百分数"><a href="#fraction：百分数" class="headerlink" title="fraction：百分数"></a>fraction：百分数</h4><blockquote>
+<ul>
+<li>定义</li>
+</ul>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;declare-styleable name=&quot;RotateDrawable&quot;&gt;</div><div class="line">  &lt;attr name = &quot;visible&quot; /&gt;</div><div class="line">  &lt;attr name = &quot;fromDegrees&quot; format = &quot;float&quot; /&gt;</div><div class="line">  &lt;attr name = &quot;toDegrees&quot; format = &quot;float&quot; /&gt;</div><div class="line">  &lt;attr name = &quot;pivotX&quot; format = &quot;fraction&quot; /&gt;</div><div class="line">  &lt;attr name = &quot;pivotY&quot; format = &quot;fraction&quot; /&gt;</div><div class="line">  &lt;attr name = &quot;drawable&quot; /&gt;</div><div class="line">&lt;/declare-styleable&gt;</div></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>使用</li>
+</ul>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;rotate</div><div class="line">    xmlns:android =&quot;http://schemas.android.com/apk/res/android&quot;</div><div class="line">    android:interpolator = &quot;@anim/动画ID&quot;</div><div class="line">    android:fromDegrees = &quot;0&quot;</div><div class="line">    android:toDegrees = &quot;360&quot;</div><div class="line">    android:pivotX = &quot;200%&quot;</div><div class="line">    android:pivotY = &quot;300%&quot;</div><div class="line">    android:duration = &quot;5000&quot;</div><div class="line">    android:repeatMode = &quot;restart&quot;</div><div class="line">    android:repeatCount = &quot;infinite&quot;</div><div class="line">/&gt;</div></pre></td></tr></table></figure>
+<h4 id="enum：枚举值"><a href="#enum：枚举值" class="headerlink" title="enum：枚举值"></a>enum：枚举值</h4><blockquote>
+<ul>
+<li>定义</li>
+</ul>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;declare-styleable name=&quot;名称&quot;&gt;</div><div class="line">    &lt;attr name=&quot;orientation&quot;&gt;</div><div class="line">    &lt;enum name=&quot;horizontal&quot; value=&quot;0&quot; /&gt;</div><div class="line">    &lt;enum name=&quot;vertical&quot; value=&quot;1&quot; /&gt;</div><div class="line">    &lt;/attr&gt;</div><div class="line">&lt;/declare-styleable&gt;</div></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>使用<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;LinearLayout</div><div class="line">    xmlns:android = &quot;http://schemas.android.com/apk/res/android&quot;</div><div class="line">    android:orientation = &quot;vertical&quot;</div><div class="line">    android:layout_width = &quot;fill_parent&quot;</div><div class="line">    android:layout_height = &quot;fill_parent&quot; &gt;</div><div class="line">&lt;/LinearLayout&gt;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</blockquote>
+<h4 id="flag：位或运算"><a href="#flag：位或运算" class="headerlink" title="flag：位或运算"></a>flag：位或运算</h4><blockquote>
+<ul>
+<li>定义</li>
+</ul>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&lt;declare-styleable name=&quot;名称&quot;&gt;</div><div class="line">&lt;attr name=&quot;windowSoftInputMode&quot;&gt;</div><div class="line">&lt;flag name = &quot;stateUnspecified&quot; value = &quot;0&quot; /&gt;</div><div class="line">&lt;flag name = &quot;stateUnchanged&quot; value = &quot;1&quot; /&gt;</div><div class="line">&lt;flag name = &quot;stateHidden&quot; value = &quot;2&quot; /&gt;</div><div class="line">&lt;flag name = &quot;stateAlwaysHidden&quot; value = &quot;3&quot; /&gt;</div><div class="line">&lt;flag name = &quot;stateVisible&quot; value = &quot;4&quot; /&gt;</div><div class="line">&lt;flag name = &quot;stateAlwaysVisible&quot; value = &quot;5&quot; /&gt;</div><div class="line">&lt;flag name = &quot;adjustUnspecified&quot; value = &quot;0x00&quot; /&gt;</div><div class="line">&lt;flag name = &quot;adjustResize&quot; value = &quot;0x10&quot; /&gt;</div><div class="line">&lt;flag name = &quot;adjustPan&quot; value = &quot;0x20&quot; /&gt;</div><div class="line">&lt;flag name = &quot;adjustNothing&quot; value = &quot;0x30&quot; /&gt;</div><div class="line">&lt;/attr&gt;</div><div class="line"></div><div class="line">&lt;/declare-styleable&gt;</div></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>使用<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;activity</div><div class="line">    android:name = &quot;.StyleAndThemeActivity&quot;</div><div class="line">    android:label = &quot;@string/app_name&quot;</div><div class="line">    android:windowSoftInputMode = &quot;stateUnspecified | stateUnchanged　|　stateHidden&quot;&gt;</div><div class="line">    &lt;intent-filter&gt;</div><div class="line">        &lt;action android:name = &quot;android.intent.action.MAIN&quot; /&gt;</div><div class="line">        &lt;category android:name = &quot;android.intent.category.LAUNCHER&quot; /&gt;</div><div class="line">    &lt;/intent-filter&gt;</div><div class="line">&lt;/activity&gt;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</blockquote>
+<h4 id="属性定义时可以指定多种类型值"><a href="#属性定义时可以指定多种类型值" class="headerlink" title="属性定义时可以指定多种类型值"></a>属性定义时可以指定多种类型值</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;declare-styleable name = &quot;名称&quot;&gt;</div><div class="line"></div><div class="line">&lt;attr name = &quot;background&quot; format = &quot;reference|color&quot; /&gt;</div><div class="line"></div><div class="line">&lt;/declare-styleable&gt;</div></pre></td></tr></table></figure>
+<p>个人主页：</p>
+<p><a href="https://ln0491.github.io/">https://ln0491.github.io/</a><br><a href="http://ln0491.coding.me/" target="_blank" rel="external">http://ln0491.coding.me/</a><br>博客:<br><a href="http://blog.csdn.net/ko0491" target="_blank" rel="external">http://blog.csdn.net/ko0491</a><br><a href="http://www.cnblogs.com/liunanjava/" target="_blank" rel="external">http://www.cnblogs.com/liunanjava/</a><br>源码： <a href="https://github.com/ln0491/MyViewFormatDemo" target="_blank" rel="external">https://github.com/ln0491/MyViewFormatDemo</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Android自定义属性-format&quot;&gt;&lt;a href=&quot;#Android自定义属性-format&quot; class=&quot;headerlink&quot; title=&quot;Android自定义属性-format&quot;&gt;&lt;/a&gt;Android自定义属性-format&lt;/h2&gt;&lt;h4 i
+    
+    </summary>
+    
+      <category term="android" scheme="https://ln0491.github.io/categories/android/"/>
+    
+    
+      <category term="自定义View" scheme="https://ln0491.github.io/tags/%E8%87%AA%E5%AE%9A%E4%B9%89View/"/>
+    
+  </entry>
   
   <entry>
     <title>Android-按二次返回键退出.</title>
