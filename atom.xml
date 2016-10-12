@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ln0491.github.io/"/>
-  <updated>2016-10-12T09:01:21.914Z</updated>
+  <updated>2016-10-12T09:18:25.658Z</updated>
   <id>https://ln0491.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://ln0491.github.io/2016/10/12/Android%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B1%9E%E6%80%A7-format/"/>
     <id>https://ln0491.github.io/2016/10/12/Android自定义属性-format/</id>
     <published>2016-10-12T08:57:39.000Z</published>
-    <updated>2016-10-12T09:01:21.914Z</updated>
+    <updated>2016-10-12T09:18:25.658Z</updated>
     
     <content type="html"><![CDATA[<h2 id="Android自定义属性-format"><a href="#Android自定义属性-format" class="headerlink" title="Android自定义属性-format"></a>Android自定义属性-format</h2><h4 id="string-字符串"><a href="#string-字符串" class="headerlink" title="string 字符串"></a>string 字符串</h4><blockquote>
 <ul>
@@ -94,7 +94,7 @@
 </ul>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;com.liu.myviewformatdemo.view.MyTextView</div><div class="line">           android:layout_width=&quot;match_parent&quot;</div><div class="line">           android:layout_height=&quot;wrap_content&quot;</div><div class="line">           app:my_textname=&quot;无可奈何花落去枯萎地&quot;</div><div class="line">           app:my_textsize=&quot;10sp&quot;</div><div class="line">           app:my_textcolor=&quot;#f00&quot;</div><div class="line">           app:my_background=&quot;@drawable/bg_shap&quot;</div><div class="line">           /&gt;</div></pre></td></tr></table></figure>
-<p><img src="mytextview.png" alt="mytextview.png"></p>
+<p><img src="http://img.blog.csdn.net/20161012171531531" alt="这里写图片描述"></p>
 <h4 id="boolean：布尔值"><a href="#boolean：布尔值" class="headerlink" title="boolean：布尔值."></a>boolean：布尔值.</h4><blockquote>
 <ul>
 <li>定义</li>
@@ -104,8 +104,10 @@
 <blockquote>
 <ul>
 <li><p>获取</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">//获取是还是显示boolean值boolean isDisplay = typedArray.getBoolean(R.styleable.MyImageView_my_display, true);</div></pre></td></tr></table></figure>
 </li>
 <li><p>使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;com.liu.myviewformatdemo.view.MyImageView    android:layout_marginTop=&quot;5dp&quot;    android:layout_width=&quot;match_parent&quot;    android:layout_height=&quot;50dp&quot;    android:scaleType=&quot;centerCrop&quot;    android:src=&quot;@mipmap/img_home_banner1&quot;    app:my_display=&quot;true&quot;    /&gt;</div></pre></td></tr></table></figure>
 </li>
 </ul>
 </blockquote>
