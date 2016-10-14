@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ln0491.github.io/"/>
-  <updated>2016-10-14T05:46:51.433Z</updated>
+  <updated>2016-10-14T09:12:03.777Z</updated>
   <id>https://ln0491.github.io/</id>
   
   <author>
@@ -16,11 +16,121 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Glide入门教程五-加载gif-视频快照-缩略图</title>
+    <link href="https://ln0491.github.io/2016/10/14/Glide%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B%E4%BA%94-%E5%8A%A0%E8%BD%BDgif-%E8%A7%86%E9%A2%91%E5%BF%AB%E7%85%A7-%E7%BC%A9%E7%95%A5%E5%9B%BE/"/>
+    <id>https://ln0491.github.io/2016/10/14/Glide入门教程五-加载gif-视频快照-缩略图/</id>
+    <published>2016-10-14T09:11:40.000Z</published>
+    <updated>2016-10-14T09:12:03.777Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Glide入门教程五-加载gif-视频快照-缩略图"><a href="#Glide入门教程五-加载gif-视频快照-缩略图" class="headerlink" title="Glide入门教程五-加载gif-视频快照-缩略图"></a>Glide入门教程五-加载gif-视频快照-缩略图</h2><h3 id="播放-网络Gif动画"><a href="#播放-网络Gif动画" class="headerlink" title="播放 网络Gif动画"></a>播放 网络Gif动画</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">//加载网络gif</div><div class="line">       String gifUrl = &quot;http://b.hiphotos.baidu.com/zhidao/pic/item/faedab64034f78f066abccc57b310a55b3191c67.jpg&quot;;</div><div class="line">       Glide.with(this).load(gifUrl).placeholder(R.mipmap.pictures_no).into(mIv4);</div></pre></td></tr></table></figure>
+<h3 id="本地资源gif"><a href="#本地资源gif" class="headerlink" title="本地资源gif"></a>本地资源gif</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">//加载资源gif</div><div class="line">       Glide.with(this).load(R.mipmap.loading).asGif().placeholder(R.mipmap.pictures_no).into(mIv5);</div></pre></td></tr></table></figure>
+<h3 id="加载本地gif文件"><a href="#加载本地gif文件" class="headerlink" title="加载本地gif文件"></a>加载本地gif文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">//加载本地gif文件</div><div class="line">String gifPath = Environment.getExternalStorageDirectory().getAbsolutePath()+&quot;/Movies/test.gif&quot;;</div><div class="line">//test.gif  animate.gif Starry_Night.mp4 test.mp4</div><div class="line"></div><div class="line">File gifFile = new File(gifPath);</div><div class="line"></div><div class="line">Glide.with(this).load(gifFile).placeholder(R.mipmap.ic_launcher).into(mIv6);</div></pre></td></tr></table></figure>
+<h3 id="加载本地视频快照"><a href="#加载本地视频快照" class="headerlink" title="加载本地视频快照"></a>加载本地视频快照</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">//加载本地小视频 快照，只是快照 并不能播放</div><div class="line">       String videoPath =Environment.getExternalStorageDirectory().getAbsolutePath()+&quot;/Movies/test.mp4&quot;;;</div><div class="line"></div><div class="line">       File videoFile = new File(videoPath);</div><div class="line"></div><div class="line">       Glide.with(this).load(Uri.fromFile(videoFile)).placeholder(R.mipmap.ic_launcher).into(mIv7);</div></pre></td></tr></table></figure>
+<h3 id="加载缩略图一"><a href="#加载缩略图一" class="headerlink" title="加载缩略图一"></a>加载缩略图一</h3><p>如果你传递一个0.1f作为参数，Glide会加载原始图片大小的10%的图片。如果原始图片有1000x1000像素，缩略图的分辨率为100x100像素</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">String urlPath=&quot;/storage/emulated/0/MagazineUnlock/magazine-unlock-03-2.3.311-bigpicture_03_20.jpg&quot;;</div><div class="line">        //第一种 设置缩略图比例</div><div class="line">        Glide.with(this).load(new File(urlPath)).thumbnail(0.1f).centerCrop().placeholder(R.mipmap.pictures_no).into(mIv8);</div></pre></td></tr></table></figure>
+<h3 id="加载缩略图二-高级缩略图请求：原图与缩略图完全不同"><a href="#加载缩略图二-高级缩略图请求：原图与缩略图完全不同" class="headerlink" title="加载缩略图二 高级缩略图请求：原图与缩略图完全不同"></a>加载缩略图二 高级缩略图请求：原图与缩略图完全不同</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//先建立一个缩略图对象 先加载缩略图，再加载原图</div><div class="line">       DrawableRequestBuilder thumbnailRequest=  Glide.with(this).load(&quot;http://img1.imgtn.bdimg.com/it/u=2615772929,948758168&amp;fm=21&amp;gp=0.jpg&quot;);</div><div class="line"></div><div class="line">       Glide.with(this).load(Uri.fromFile(videoFile)).thumbnail(thumbnailRequest).centerCrop().placeholder(R.mipmap.pictures_no).into(mIv9);</div></pre></td></tr></table></figure>
+<p>源码<br><a href="https://github.com/ln0491/GlideDemo" target="_blank" rel="external">https://github.com/ln0491/GlideDemo</a>&gt;</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Glide入门教程五-加载gif-视频快照-缩略图&quot;&gt;&lt;a href=&quot;#Glide入门教程五-加载gif-视频快照-缩略图&quot; class=&quot;headerlink&quot; title=&quot;Glide入门教程五-加载gif-视频快照-缩略图&quot;&gt;&lt;/a&gt;Glide入门教程五-
+    
+    </summary>
+    
+      <category term="android" scheme="https://ln0491.github.io/categories/android/"/>
+    
+    
+      <category term="图片加载" scheme="https://ln0491.github.io/tags/%E5%9B%BE%E7%89%87%E5%8A%A0%E8%BD%BD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Glide入门教程四-调整图片大小</title>
+    <link href="https://ln0491.github.io/2016/10/14/Glide%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B%E5%9B%9B-%E8%B0%83%E6%95%B4%E5%9B%BE%E7%89%87%E5%A4%A7%E5%B0%8F/"/>
+    <id>https://ln0491.github.io/2016/10/14/Glide入门教程四-调整图片大小/</id>
+    <published>2016-10-14T06:26:07.000Z</published>
+    <updated>2016-10-14T06:41:54.598Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Glide入门教程四-调整图片大小"><a href="#Glide入门教程四-调整图片大小" class="headerlink" title="Glide入门教程四-调整图片大小"></a>Glide入门教程四-调整图片大小</h2><h3 id="调整图片大小-override"><a href="#调整图片大小-override" class="headerlink" title="调整图片大小 override()"></a>调整图片大小 override()</h3><p>Picasso也有同样的能力,resize(x, y)但需要调用fit()方法</p>
+<p>用Glide时，如果图片不需要自动适配ImageView，调用override(horizontalSize, verticalSize)，它会在将图片显示在ImageView之前调整图片的大小。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">int width = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 200, mContext.getResources().getDisplayMetrics());</div><div class="line">     int height   = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 200f, mContext.getResources().getDisplayMetrics());</div><div class="line">     Glide.with(mContext) //上下文</div><div class="line">             .load(url) //图片地址</div><div class="line">             .placeholder(R.mipmap.pictures_no) //占位图</div><div class="line">             .error(R.mipmap.ic_launcher)  //出错的占位图</div><div class="line">             .override(width,height) //图片显示的分辨率 ，像素值 可以转化为DP再设置</div><div class="line">             .animate(R.anim.my_alpha)</div><div class="line"></div><div class="line">              .into(holder.mIv); //显示在哪个控件中</div></pre></td></tr></table></figure>
+<h3 id="缩放图片-centerCrop"><a href="#缩放图片-centerCrop" class="headerlink" title="缩放图片-centerCrop"></a>缩放图片-centerCrop</h3><p>Glide提供了变换去处理图片显示，通过设置centerCrop 和 fitCenter，可以得到两个不同的效果。</p>
+<p>CenterCrop()会缩放图片让图片充满整个ImageView的边框，然后裁掉超出的部分。ImageVIew会被完全填充满，但是图片可能不能完全显示出。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">String url = mDatas[position];</div><div class="line"></div><div class="line"></div><div class="line">      int width = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 200, mContext.getResources().getDisplayMetrics());</div><div class="line">      int height   = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 200f, mContext.getResources().getDisplayMetrics());</div><div class="line">      Glide.with(mContext) //上下文</div><div class="line">              .load(url) //图片地址</div><div class="line">              .placeholder(R.mipmap.pictures_no) //占位图</div><div class="line">              .error(R.mipmap.ic_launcher)  //出错的占位图</div><div class="line">              .override(width,height) //图片显示的分辨率 ，像素值 可以转化为DP再设置</div><div class="line">              .animate(R.anim.my_alpha)</div><div class="line">              .centerCrop()</div><div class="line">               .into(holder.mIv); //显示在哪个控件中</div></pre></td></tr></table></figure></p>
+<p><img src="https://ln0491.github.io/img/animate.gif" alt="animate.gif"></p>
+<h3 id="缩放图片-fitCenter"><a href="#缩放图片-fitCenter" class="headerlink" title="缩放图片-fitCenter"></a>缩放图片-fitCenter</h3><p>为ImageView加个背景色<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">ImageView</span></span></div><div class="line">    <span class="attr">android:background</span>=<span class="string">"#ff0000"</span></div><div class="line">           <span class="attr">android:layout_margin</span>=<span class="string">"2dp"</span></div><div class="line">           <span class="attr">android:id</span>=<span class="string">"@+id/iv"</span></div><div class="line">           <span class="attr">android:layout_width</span>=<span class="string">"200dp"</span></div><div class="line">           <span class="attr">android:layout_height</span>=<span class="string">"200dp"</span>/&gt;</div></pre></td></tr></table></figure></p>
+<p>fitCenter()会缩放图片让两边都相等或小于ImageView的所需求的边框。图片会被完整显示，可能不能完全填充整个ImageView。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">Glide.with(mContext) //上下文</div><div class="line">                .load(url) //图片地址</div><div class="line">                .placeholder(R.mipmap.pictures_no) //占位图</div><div class="line">                .error(R.mipmap.ic_launcher)  //出错的占位图</div><div class="line">                .override(width,height) //图片显示的分辨率 ，像素值 可以转化为DP再设置</div><div class="line">                .animate(R.anim.my_alpha)</div><div class="line">                .centerCrop()</div><div class="line">                .fitCenter()</div><div class="line">                 .into(holder.mIv); //显示在哪个控件中</div></pre></td></tr></table></figure>
+<p><img src="https://ln0491.github.io/img/fitcenter.gif" alt="fitcenter.gif"></p>
+<p><img src="https://ln0491.github.io/img/fitcenter1.png" alt="fitcenter1.png"></p>
+<p>centerCrop-fitCenter会相互覆盖，后面调用的后覆盖前面调用的效果</p>
+<p>源码<br><a href="https://github.com/ln0491/GlideDemo" target="_blank" rel="external">https://github.com/ln0491/GlideDemo</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Glide入门教程四-调整图片大小&quot;&gt;&lt;a href=&quot;#Glide入门教程四-调整图片大小&quot; class=&quot;headerlink&quot; title=&quot;Glide入门教程四-调整图片大小&quot;&gt;&lt;/a&gt;Glide入门教程四-调整图片大小&lt;/h2&gt;&lt;h3 id=&quot;调整图片大
+    
+    </summary>
+    
+      <category term="android" scheme="https://ln0491.github.io/categories/android/"/>
+    
+    
+      <category term="图片加载" scheme="https://ln0491.github.io/tags/%E5%9B%BE%E7%89%87%E5%8A%A0%E8%BD%BD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Glide入门教程三 占位图-淡入淡出效果-添加动画.</title>
+    <link href="https://ln0491.github.io/2016/10/14/Glide%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B%E4%B8%89-%E5%8D%A0%E4%BD%8D%E5%9B%BE-%E6%B7%A1%E5%85%A5%E6%B7%A1%E5%87%BA%E6%95%88%E6%9E%9C-%E6%B7%BB%E5%8A%A0%E5%8A%A8%E7%94%BB/"/>
+    <id>https://ln0491.github.io/2016/10/14/Glide入门教程三-占位图-淡入淡出效果-添加动画/</id>
+    <published>2016-10-14T05:51:42.000Z</published>
+    <updated>2016-10-14T06:35:54.863Z</updated>
+    
+    <content type="html"><![CDATA[<ul>
+<li>占位图<br>网络的环境不好，加载过程可能需要花费大量的时间。这时候就需要一个占位图先显示出来，直到实际的图片加载并处理完毕。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Glide.with(mContext) //上下文</div><div class="line">                .load(url) //图片地址</div><div class="line">                .placeholder(R.mipmap.pictures_no) //占位图</div><div class="line">                .into(holder.mIv); //显示在哪个控件中</div></pre></td></tr></table></figure>
+<ul>
+<li>出错的占位图 .error()<br>假设我们的app尝试从网页加载一张图片，但网页不可访问,Glide会给我们选项去进行出错的回调，并采取合适的行动</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Glide.with(mContext) //上下文</div><div class="line">              .load(url) //图片地址</div><div class="line">              .placeholder(R.mipmap.pictures_no) //占位图</div><div class="line">              .error(R.mipmap.ic_launcher)  //出错的占位图</div><div class="line">               .into(holder.mIv); //显示在哪个控件中</div></pre></td></tr></table></figure>
+<p>加载前显示placeholder中的图片资源，加载失败就显示error中的图片资源<br>error()可以接受的只能是已经被初始化的图片资源或者指向图片资源的id</p>
+<h3 id="渐变动画-crossFade"><a href="#渐变动画-crossFade" class="headerlink" title="渐变动画 .crossFade()"></a>渐变动画 .crossFade()</h3><p>crossFade()<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">Glide.with(mContext) //上下文</div><div class="line">        .load(url) //图片地址</div><div class="line">        .placeholder(R.mipmap.pictures_no) //占位图</div><div class="line">        .error(R.mipmap.ic_launcher)  //出错的占位图</div><div class="line">        .crossFade(5000)                 //淡入淡出 可以不写默认300</div><div class="line">         .into(holder.mIv); //显示在哪个控件中</div></pre></td></tr></table></figure></p>
+<p>淡入淡出 -不写默认也会有值是300毫秒<br>crossFade()方法有另外一个特征：.crossFade(int duration),如果你想要减慢（或加快）动画，随便传入一个毫秒级的时间进去感受一下。<br><img src="https://ln0491.github.io/img/crossfade.gif" alt="crossfade.gif"></p>
+<h4 id="dontAnimate-的使用"><a href="#dontAnimate-的使用" class="headerlink" title="dontAnimate()的使用"></a>dontAnimate()的使用</h4><p>如果你只是直接显示图片，而不需要crossfade效果，那就在Glide的请求构造里调用.dontAnimate()</p>
+<h3 id="animate-添加自定义的动画"><a href="#animate-添加自定义的动画" class="headerlink" title="animate 添加自定义的动画"></a>animate 添加自定义的动画</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</div><div class="line">&lt;set xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;&gt;</div><div class="line"></div><div class="line">    &lt;alpha android:fromAlpha=&quot;0&quot;</div><div class="line">           android:duration=&quot;3000&quot;</div><div class="line">            android:toAlpha=&quot;1&quot;/&gt;</div><div class="line"></div><div class="line">    &lt;scale android:fromXScale=&quot;0&quot;</div><div class="line">           android:fromYScale=&quot;0&quot;</div><div class="line">           android:pivotX=&quot;50%&quot;</div><div class="line">           android:pivotY=&quot;50%&quot;</div><div class="line">           android:toXScale=&quot;100%&quot;</div><div class="line">           android:toYScale=&quot;100%&quot;</div><div class="line">           android:duration=&quot;3000&quot;/&gt;</div><div class="line"></div><div class="line">    &lt;rotate android:pivotY=&quot;50%&quot;</div><div class="line">            android:pivotX=&quot;50%&quot;</div><div class="line">            android:fromDegrees=&quot;30&quot;</div><div class="line">            android:toDegrees=&quot;360&quot;</div><div class="line">            android:duration=&quot;3000&quot;</div><div class="line">        /&gt;</div><div class="line"></div><div class="line">&lt;/set&gt;</div></pre></td></tr></table></figure>
+<ul>
+<li>添加<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">Glide.with(mContext) //上下文</div><div class="line">        .load(url) //图片地址</div><div class="line">        .placeholder(R.mipmap.pictures_no) //占位图</div><div class="line">        .error(R.mipmap.ic_launcher)  //出错的占位图</div><div class="line"></div><div class="line">        .animate(R.anim.my_alpha)</div><div class="line">         .into(holder.mIv); //显示在哪个控件中</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><img src="https://ln0491.github.io/img/animate.gif" alt="animate.gif"></p>
+<p>这些参数都是独立的，并且设置不依赖彼此。例如，你可以只设置.error()，而不用调用.placeholder()。你可以设置crossFade()动画，而不用设置占位图。参数的任意结合都是可行的</p>
+<p>源码<br><a href="https://github.com/ln0491/GlideDemo" target="_blank" rel="external">https://github.com/ln0491/GlideDemo</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;ul&gt;
+&lt;li&gt;占位图&lt;br&gt;网络的环境不好，加载过程可能需要花费大量的时间。这时候就需要一个占位图先显示出来，直到实际的图片加载并处理完毕。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gu
+    
+    </summary>
+    
+      <category term="android" scheme="https://ln0491.github.io/categories/android/"/>
+    
+    
+      <category term="图片加载" scheme="https://ln0491.github.io/tags/%E5%9B%BE%E7%89%87%E5%8A%A0%E8%BD%BD/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Glide入门教程二ListView使用</title>
     <link href="https://ln0491.github.io/2016/10/14/Glide%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B%E4%BA%8CListView%E4%BD%BF%E7%94%A8/"/>
     <id>https://ln0491.github.io/2016/10/14/Glide入门教程二ListView使用/</id>
     <published>2016-10-14T02:51:20.000Z</published>
-    <updated>2016-10-14T05:46:51.433Z</updated>
+    <updated>2016-10-14T06:35:46.854Z</updated>
     
     <content type="html"><![CDATA[<h2 id="Glide入门教程二ListView使用"><a href="#Glide入门教程二ListView使用" class="headerlink" title="Glide入门教程二ListView使用"></a>Glide入门教程二ListView使用</h2><h2 id="Glide入门教程二ListView中使用"><a href="#Glide入门教程二ListView中使用" class="headerlink" title="Glide入门教程二ListView中使用"></a>Glide入门教程二ListView中使用</h2><h3 id="添加RecyclerView"><a href="#添加RecyclerView" class="headerlink" title="添加RecyclerView"></a>添加RecyclerView</h3><ul>
 <li>准备数据</li>
@@ -38,6 +148,7 @@
 <p>adapter<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line">public class GlideListUseAdapter extends RecyclerView.Adapter&lt;GlideListUseAdapter.ViewHolder&gt; &#123;</div><div class="line"></div><div class="line"></div><div class="line">    Context      mContext;</div><div class="line">    String [] mDatas;</div><div class="line"></div><div class="line">    LayoutInflater mInflater;</div><div class="line"></div><div class="line">    public GlideListUseAdapter(Context context, String [] datas) &#123;</div><div class="line">        this.mContext = context;</div><div class="line">        this.mDatas = datas;</div><div class="line">        mInflater= LayoutInflater.from(context);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) &#123;</div><div class="line"></div><div class="line">        View itemView = mInflater.inflate(R.layout.item_glide_list_use,parent,false);</div><div class="line"></div><div class="line">        return new ViewHolder(itemView);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void onBindViewHolder(ViewHolder holder, int position) &#123;</div><div class="line"></div><div class="line">        String url = mDatas[position];</div><div class="line"></div><div class="line"></div><div class="line">        Glide.with(mContext).load(url).into(holder.mIv);</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public int getItemCount() &#123;</div><div class="line">        if(mDatas!=null)&#123;</div><div class="line"></div><div class="line">           return mDatas.length;</div><div class="line">        &#125;</div><div class="line">        return 0;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public class  ViewHolder extends RecyclerView.ViewHolder &#123;</div><div class="line">        ImageView mIv;</div><div class="line">        public ViewHolder(View itemView) &#123;</div><div class="line"></div><div class="line">            super(itemView);</div><div class="line"></div><div class="line">            mIv = (ImageView) itemView.findViewById(R.id.iv);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 </blockquote>
 <p>这样图片就显示出来了</p>
+<p>源码<br><a href="https://github.com/ln0491/GlideDemo" target="_blank" rel="external">https://github.com/ln0491/GlideDemo</a></p>
 ]]></content>
     
     <summary type="html">
@@ -58,7 +169,7 @@
     <link href="https://ln0491.github.io/2016/10/14/Glide%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B%E4%B8%80%EF%BC%88%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/"/>
     <id>https://ln0491.github.io/2016/10/14/Glide入门教程一（基本使用/</id>
     <published>2016-10-14T02:43:20.000Z</published>
-    <updated>2016-10-14T02:45:03.148Z</updated>
+    <updated>2016-10-14T06:35:34.257Z</updated>
     
     <content type="html"><![CDATA[<h2 id="Glide入门教程一（基本使用）"><a href="#Glide入门教程一（基本使用）" class="headerlink" title="Glide入门教程一（基本使用）"></a>Glide入门教程一（基本使用）</h2><h3 id="添加依赖"><a href="#添加依赖" class="headerlink" title="添加依赖"></a>添加依赖</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">compile &apos;com.github.bumptech.glide:glide:3.7.0&apos;</div></pre></td></tr></table></figure>
 <h3 id="简单介绍"><a href="#简单介绍" class="headerlink" title="简单介绍"></a>简单介绍</h3><ul>
@@ -85,6 +196,7 @@
 </ul>
 <p>如果图片不显示建议设置要控件的宽与高，后面再说怎么解决</p>
 <h3 id="加载资源图片"><a href="#加载资源图片" class="headerlink" title="加载资源图片"></a>加载资源图片</h3><p>这里是一个Int型的的资源id。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Glide.with(this).load(R.mipmap.test).into(mIv2);</div></pre></td></tr></table></figure></p>
+<p>源码<br><a href="https://github.com/ln0491/GlideDemo" target="_blank" rel="external">https://github.com/ln0491/GlideDemo</a></p>
 ]]></content>
     
     <summary type="html">
@@ -1683,90 +1795,6 @@ protected void onStop() {
     
     
       <category term="android" scheme="https://ln0491.github.io/tags/android/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>MAVEN常用命令学习</title>
-    <link href="https://ln0491.github.io/2016/09/28/MAVEN%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0/"/>
-    <id>https://ln0491.github.io/2016/09/28/MAVEN常用命令学习/</id>
-    <published>2016-09-28T05:49:57.000Z</published>
-    <updated>2016-09-28T05:52:45.480Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="MAVEN学习"><a href="#MAVEN学习" class="headerlink" title="MAVEN学习"></a>MAVEN学习</h2><h2 id="清理target目录下的所有文件"><a href="#清理target目录下的所有文件" class="headerlink" title="清理target目录下的所有文件"></a>清理target目录下的所有文件</h2><pre><code>mvn clean
-</code></pre><h2 id="项目构建与编译"><a href="#项目构建与编译" class="headerlink" title="项目构建与编译"></a>项目构建与编译</h2><pre><code>mvn clean compile
-</code></pre><blockquote>
-<p>在targe目录下生成文件</p>
-</blockquote>
-<h2 id="构建测试"><a href="#构建测试" class="headerlink" title="构建测试"></a>构建测试</h2><pre><code>mvn clean test
-</code></pre><blockquote>
-<p>在targe目录下生成文件,在执行test之前会先执行compile</p>
-</blockquote>
-<h2 id="打包"><a href="#打包" class="headerlink" title="打包"></a>打包</h2><pre><code>mvn clean package
-</code></pre><blockquote>
-<p>在targe目录下生成jar,执行package之前会先执行test</p>
-</blockquote>
-<h2 id="安装jar包到本地仓库"><a href="#安装jar包到本地仓库" class="headerlink" title="安装jar包到本地仓库"></a>安装jar包到本地仓库</h2><pre><code>mvn clean install
-</code></pre><blockquote>
-<p>执行install之前会先执行，package</p>
-</blockquote>
-<h2 id="下载源码"><a href="#下载源码" class="headerlink" title="下载源码"></a>下载源码</h2><pre><code>mvn dependency:sources
-</code></pre><h2 id="关联源码"><a href="#关联源码" class="headerlink" title="关联源码"></a>关联源码</h2><pre><code>mvn eclipse:eclipse 
-</code></pre><h2 id="在Eclipce中配置"><a href="#在Eclipce中配置" class="headerlink" title="在Eclipce中配置"></a>在Eclipce中配置</h2><p><img src="https://ln0491.github.io/img/maven.png" alt="mavensource.png"></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;MAVEN学习&quot;&gt;&lt;a href=&quot;#MAVEN学习&quot; class=&quot;headerlink&quot; title=&quot;MAVEN学习&quot;&gt;&lt;/a&gt;MAVEN学习&lt;/h2&gt;&lt;h2 id=&quot;清理target目录下的所有文件&quot;&gt;&lt;a href=&quot;#清理target目录下的所有文件&quot;
-    
-    </summary>
-    
-      <category term="java" scheme="https://ln0491.github.io/categories/java/"/>
-    
-    
-      <category term="maven" scheme="https://ln0491.github.io/tags/maven/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>My Test</title>
-    <link href="https://ln0491.github.io/2016/09/28/My-Test/"/>
-    <id>https://ln0491.github.io/2016/09/28/My-Test/</id>
-    <published>2016-09-28T02:11:58.000Z</published>
-    <updated>2016-09-28T02:12:19.148Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-      <category term="test" scheme="https://ln0491.github.io/categories/test/"/>
-    
-    
-      <category term="test" scheme="https://ln0491.github.io/tags/test/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>my new post</title>
-    <link href="https://ln0491.github.io/2016/09/28/my-new-post/"/>
-    <id>https://ln0491.github.io/2016/09/28/my-new-post/</id>
-    <published>2016-09-28T01:35:12.000Z</published>
-    <updated>2016-09-28T01:46:47.386Z</updated>
-    
-    <content type="html"><![CDATA[<pre><code>Volley自定义Reques
-&lt;!--more--&gt;
-</code></pre><h3 id="Volley自定义Reques"><a href="#Volley自定义Reques" class="headerlink" title="Volley自定义Reques"></a>Volley自定义Reques</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line">public class GsonRequest&lt;T&gt; extends Request&lt;T&gt; &#123;</div><div class="line"></div><div class="line">	private final Listener&lt;T&gt; mListener;</div><div class="line">	private Gson mGson;</div><div class="line">	private Class&lt;T&gt; mClazz;</div><div class="line"></div><div class="line">	public GsonRequest(int method, String url, Class&lt;T&gt; clazz, Listener&lt;T&gt; listener, ErrorListener errorListener) &#123;</div><div class="line">		super(method, url, errorListener);</div><div class="line">		this.mListener = listener;</div><div class="line">		mClazz = clazz;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	public GsonRequest(String url, Class&lt;T&gt; clazz, Listener&lt;T&gt; listener, ErrorListener errorListener) &#123;</div><div class="line">		this(Method.GET, url, clazz, listener, errorListener);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	@Override</div><div class="line">	protected void deliverResponse(T response) &#123;</div><div class="line"></div><div class="line">		mListener.onResponse(response);</div><div class="line"></div><div class="line">	&#125;</div><div class="line"></div><div class="line">	@Override</div><div class="line">	protected Response&lt;T&gt; parseNetworkResponse(NetworkResponse response) &#123;</div><div class="line"></div><div class="line">		try &#123;</div><div class="line">			/**</div><div class="line">			 * 获取数据</div><div class="line">			 */</div><div class="line">			String jsonString = new String(response.data, HttpHeaderParser.parseCharset(response.headers));</div><div class="line">			// 转化反回</div><div class="line">			return Response.success(mGson.fromJson(jsonString, mClazz), HttpHeaderParser.parseCacheHeaders(response));</div><div class="line"></div><div class="line">		&#125; catch (UnsupportedEncodingException e) &#123;</div><div class="line">			e.printStackTrace();</div><div class="line">			return Response.error(new ParseError(e));</div><div class="line">		&#125;</div><div class="line"></div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;pre&gt;&lt;code&gt;Volley自定义Reques
-&amp;lt;!--more--&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;Volley自定义Reques&quot;&gt;&lt;a href=&quot;#Volley自定义Reques&quot; class=&quot;headerlink&quot; title=&quot;Voll
-    
-    </summary>
-    
-    
-      <category term="test" scheme="https://ln0491.github.io/tags/test/"/>
     
   </entry>
   

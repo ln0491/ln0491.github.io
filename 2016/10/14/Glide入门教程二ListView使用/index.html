@@ -23,7 +23,7 @@
 准备数据
 
 1234567891011121314151617181920212223242526/** * 准备数据 */String [] mDatas = new String[]&amp;#123;        &amp;quot;http://b337.photo.store.qq.com/">
-<meta property="og:updated_time" content="2016-10-14T05:46:51.433Z">
+<meta property="og:updated_time" content="2016-10-14T06:35:46.854Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Glide入门教程二ListView使用">
 <meta name="twitter:description" content="Glide入门教程二ListView使用Glide入门教程二ListView中使用添加RecyclerView
@@ -128,6 +128,7 @@
 <p>adapter<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line">public class GlideListUseAdapter extends RecyclerView.Adapter&lt;GlideListUseAdapter.ViewHolder&gt; &#123;</div><div class="line"></div><div class="line"></div><div class="line">    Context      mContext;</div><div class="line">    String [] mDatas;</div><div class="line"></div><div class="line">    LayoutInflater mInflater;</div><div class="line"></div><div class="line">    public GlideListUseAdapter(Context context, String [] datas) &#123;</div><div class="line">        this.mContext = context;</div><div class="line">        this.mDatas = datas;</div><div class="line">        mInflater= LayoutInflater.from(context);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) &#123;</div><div class="line"></div><div class="line">        View itemView = mInflater.inflate(R.layout.item_glide_list_use,parent,false);</div><div class="line"></div><div class="line">        return new ViewHolder(itemView);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void onBindViewHolder(ViewHolder holder, int position) &#123;</div><div class="line"></div><div class="line">        String url = mDatas[position];</div><div class="line"></div><div class="line"></div><div class="line">        Glide.with(mContext).load(url).into(holder.mIv);</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public int getItemCount() &#123;</div><div class="line">        if(mDatas!=null)&#123;</div><div class="line"></div><div class="line">           return mDatas.length;</div><div class="line">        &#125;</div><div class="line">        return 0;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public class  ViewHolder extends RecyclerView.ViewHolder &#123;</div><div class="line">        ImageView mIv;</div><div class="line">        public ViewHolder(View itemView) &#123;</div><div class="line"></div><div class="line">            super(itemView);</div><div class="line"></div><div class="line">            mIv = (ImageView) itemView.findViewById(R.id.iv);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 </blockquote>
 <p>这样图片就显示出来了</p>
+<p>源码<br><a href="https://github.com/ln0491/GlideDemo" target="_blank" rel="external">https://github.com/ln0491/GlideDemo</a></p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -163,6 +164,14 @@
 	
 <nav class="article-nav clearfix">
  
+ <div class="prev" >
+ <a href="/2016/10/14/Glide入门教程三-占位图-淡入淡出效果-添加动画/" title="Glide入门教程三 占位图-淡入淡出效果-添加动画.">
+  <strong>上一篇：</strong><br/>
+  <span>
+  Glide入门教程三 占位图-淡入淡出效果-添加动画.</span>
+</a>
+</div>
+
 
 <div class="next">
 <a href="/2016/10/14/Glide入门教程一（基本使用/"  title="Glide入门教程一（基本使用)">
@@ -200,7 +209,7 @@
 		<ul>
 		
 		  
-			<li><a href="/categories/android/" title="android">android<sup>17</sup></a></li>
+			<li><a href="/categories/android/" title="android">android<sup>20</sup></a></li>
 		  
 		
 		  
@@ -225,15 +234,15 @@
 			
 		
 			
+				<li><a href="/tags/图片加载/" title="图片加载">图片加载<sup>5</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/viewpager/" title="viewpager">viewpager<sup>5</sup></a></li>
 			
 		
 			
 				<li><a href="/tags/volley/" title="volley">volley<sup>3</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/图片加载/" title="图片加载">图片加载<sup>2</sup></a></li>
 			
 		
 			
@@ -260,7 +269,7 @@
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
     <div class="tagcloudlist clearfix">
-       <a href="/tags/android/" style="font-size: 20px;">android</a> <a href="/tags/maven/" style="font-size: 10px;">maven</a> <a href="/tags/test/" style="font-size: 13.33px;">test</a> <a href="/tags/viewpager/" style="font-size: 20px;">viewpager</a> <a href="/tags/volley/" style="font-size: 16.67px;">volley</a> <a href="/tags/图片加载/" style="font-size: 13.33px;">图片加载</a> <a href="/tags/工具类/" style="font-size: 10px;">工具类</a> <a href="/tags/自定义View/" style="font-size: 10px;">自定义View</a>
+       <a href="/tags/android/" style="font-size: 20px;">android</a> <a href="/tags/maven/" style="font-size: 10px;">maven</a> <a href="/tags/test/" style="font-size: 13.33px;">test</a> <a href="/tags/viewpager/" style="font-size: 20px;">viewpager</a> <a href="/tags/volley/" style="font-size: 16.67px;">volley</a> <a href="/tags/图片加载/" style="font-size: 20px;">图片加载</a> <a href="/tags/工具类/" style="font-size: 10px;">工具类</a> <a href="/tags/自定义View/" style="font-size: 10px;">自定义View</a>
     </div>
   </div>
 
