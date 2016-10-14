@@ -66,3 +66,5 @@ compile 'com.github.bumptech.glide:glide:3.7.0'
 Glide.with(this).load(R.mipmap.test).into(mIv2);
 ```
 
+源码
+<https://github.com/ln0491/GlideDemo>

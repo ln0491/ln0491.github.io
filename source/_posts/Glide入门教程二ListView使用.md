@@ -134,3 +134,6 @@ public class GlideListUseAdapter extends RecyclerView.Adapter<GlideListUseAdapte
 ```
 
 这样图片就显示出来了
+
+源码
+<https://github.com/ln0491/GlideDemo>
