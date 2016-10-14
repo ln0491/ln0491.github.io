@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ln0491.github.io/"/>
-  <updated>2016-10-12T09:18:25.658Z</updated>
+  <updated>2016-10-14T02:45:03.148Z</updated>
   <id>https://ln0491.github.io/</id>
   
   <author>
@@ -14,6 +14,53 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Glide入门教程一（基本使用)</title>
+    <link href="https://ln0491.github.io/2016/10/14/Glide%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B%E4%B8%80%EF%BC%88%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/"/>
+    <id>https://ln0491.github.io/2016/10/14/Glide入门教程一（基本使用/</id>
+    <published>2016-10-14T02:43:20.000Z</published>
+    <updated>2016-10-14T02:45:03.148Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Glide入门教程一（基本使用）"><a href="#Glide入门教程一（基本使用）" class="headerlink" title="Glide入门教程一（基本使用）"></a>Glide入门教程一（基本使用）</h2><h3 id="添加依赖"><a href="#添加依赖" class="headerlink" title="添加依赖"></a>添加依赖</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">compile &apos;com.github.bumptech.glide:glide:3.7.0&apos;</div></pre></td></tr></table></figure>
+<h3 id="简单介绍"><a href="#简单介绍" class="headerlink" title="简单介绍"></a>简单介绍</h3><ul>
+<li>with(Context context)- Context是许多Android API需要调用的， Glide也不例外。这里Glide非常方便，你可以任意传递一个Activity或者Fragment对象，它都可以自动提取出上下文。</li>
+<li>load(String imageUrl) - 这里传入的是你要加载的图片的URL，大多数情况下这个String类型的变量会链接到一个网络图片。</li>
+<li>into(ImageView targetImageView) - 将你所希望解析的图片传递给所要显示的ImageView</li>
+</ul>
+<h3 id="加载url网络图片"><a href="#加载url网络图片" class="headerlink" title="加载url网络图片"></a>加载url网络图片</h3><ul>
+<li><p>权限</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;uses-permission android:name=&quot;android.permission.INTERNET&quot;/&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>加载图片</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Glide.with(this).load(&quot;http://img1.imgtn.bdimg.com/it/u=2615772929,948758168&amp;fm=21&amp;gp=0.jpg&quot;).into(mIv1);</div></pre></td></tr></table></figure>
+<p>这几行！如果这个URL链接的图片的确存在，并且你的ImageView可见，你将会在1~2秒见到这张图片被加载。假如这张图片不存在，Glide会回调相应的出错接口下面说</p>
+<h3 id="加载本地图片"><a href="#加载本地图片" class="headerlink" title="加载本地图片"></a>加载本地图片</h3><ul>
+<li><p>File 文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">//本地图片路径 /storage/emulated/0/1470634823290.jpg</div><div class="line">       String path =&quot;/storage/emulated/0/1470634823290.jpg&quot;;</div><div class="line"></div><div class="line">       File file = new File(path);</div><div class="line"></div><div class="line">       Glide.with(this).load(file).into(mIv3);</div></pre></td></tr></table></figure>
+</li>
+<li><p>转换的URI</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">//本地图片路径 /storage/emulated/0/1470634823290.jpg</div><div class="line">       String path =&quot;/storage/emulated/0/1470634823290.jpg&quot;;</div><div class="line"></div><div class="line">       File file = new File(path);</div><div class="line"></div><div class="line">      // Glide.with(this).load(file).into(mIv3);</div><div class="line">       Uri uri = Uri.fromFile(file);</div><div class="line"></div><div class="line"></div><div class="line">      Glide.with(this).load(uri).into(mIv3);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>如果图片不显示建议设置要控件的宽与高，后面再说怎么解决</p>
+<h3 id="加载资源图片"><a href="#加载资源图片" class="headerlink" title="加载资源图片"></a>加载资源图片</h3><p>这里是一个Int型的的资源id。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Glide.with(this).load(R.mipmap.test).into(mIv2);</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Glide入门教程一（基本使用）&quot;&gt;&lt;a href=&quot;#Glide入门教程一（基本使用）&quot; class=&quot;headerlink&quot; title=&quot;Glide入门教程一（基本使用）&quot;&gt;&lt;/a&gt;Glide入门教程一（基本使用）&lt;/h2&gt;&lt;h3 id=&quot;添加依赖&quot;&gt;&lt;a 
+    
+    </summary>
+    
+      <category term="android" scheme="https://ln0491.github.io/categories/android/"/>
+    
+    
+      <category term="图片加载" scheme="https://ln0491.github.io/tags/%E5%9B%BE%E7%89%87%E5%8A%A0%E8%BD%BD/"/>
+    
+  </entry>
   
   <entry>
     <title>Android自定义属性-format</title>
