@@ -4,29 +4,32 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>my new post | 刘楠的博客</title>
+    <title>Glide入门教程二ListView使用 | 刘楠的博客</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Liu Nan">
     
 
     
-    <meta name="description" content="Volley自定义Reques
-&amp;lt;!--more--&amp;gt;
-Volley自定义Reques123456789101112131415161718192021222324252627282930313233343536373839404142public class GsonRequest&amp;lt;T&amp;gt; extends Request&amp;lt;T&amp;gt; &amp;#123;	private fi">
+    <meta name="description" content="Glide入门教程二ListView使用Glide入门教程二ListView中使用添加RecyclerView
+准备数据
+
+1234567891011121314151617181920212223242526/** * 准备数据 */String [] mDatas = new String[]&amp;#123;        &amp;quot;http://b337.photo.store.qq.com/">
 <meta property="og:type" content="article">
-<meta property="og:title" content="my new post">
-<meta property="og:url" content="https://ln0491.github.io/2016/09/28/my-new-post/index.html">
+<meta property="og:title" content="Glide入门教程二ListView使用">
+<meta property="og:url" content="https://ln0491.github.io/2016/10/14/Glide入门教程二ListView使用/index.html">
 <meta property="og:site_name" content="刘楠的博客">
-<meta property="og:description" content="Volley自定义Reques
-&amp;lt;!--more--&amp;gt;
-Volley自定义Reques123456789101112131415161718192021222324252627282930313233343536373839404142public class GsonRequest&amp;lt;T&amp;gt; extends Request&amp;lt;T&amp;gt; &amp;#123;	private fi">
-<meta property="og:updated_time" content="2016-09-28T01:46:47.386Z">
+<meta property="og:description" content="Glide入门教程二ListView使用Glide入门教程二ListView中使用添加RecyclerView
+准备数据
+
+1234567891011121314151617181920212223242526/** * 准备数据 */String [] mDatas = new String[]&amp;#123;        &amp;quot;http://b337.photo.store.qq.com/">
+<meta property="og:updated_time" content="2016-10-14T05:46:51.433Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="my new post">
-<meta name="twitter:description" content="Volley自定义Reques
-&amp;lt;!--more--&amp;gt;
-Volley自定义Reques123456789101112131415161718192021222324252627282930313233343536373839404142public class GsonRequest&amp;lt;T&amp;gt; extends Request&amp;lt;T&amp;gt; &amp;#123;	private fi">
+<meta name="twitter:title" content="Glide入门教程二ListView使用">
+<meta name="twitter:description" content="Glide入门教程二ListView使用Glide入门教程二ListView中使用添加RecyclerView
+准备数据
+
+1234567891011121314151617181920212223242526/** * 准备数据 */String [] mDatas = new String[]&amp;#123;        &amp;quot;http://b337.photo.store.qq.com/">
 
     
     <link rel="alternative" href="/atom.xml" title="刘楠的博客" type="application/atom+xml">
@@ -89,14 +92,14 @@ Volley自定义Reques12345678910111213141516171819202122232425262728293031323334
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2016/09/28/my-new-post/" title="my new post" itemprop="url">my new post</a>
+      <a href="/2016/10/14/Glide入门教程二ListView使用/" title="Glide入门教程二ListView使用" itemprop="url">Glide入门教程二ListView使用</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="Liu Nan" target="_blank" itemprop="author">Liu Nan</a>
 		
   <p class="article-time">
-    <time datetime="2016-09-28T01:35:12.000Z" itemprop="datePublished"> 发表于 2016-09-28</time>
+    <time datetime="2016-10-14T02:51:20.000Z" itemprop="datePublished"> 发表于 2016-10-14</time>
     
   </p>
 </header>
@@ -105,21 +108,40 @@ Volley自定义Reques12345678910111213141516171819202122232425262728293031323334
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Volley自定义Reques"><span class="toc-number">1.</span> <span class="toc-text">Volley自定义Reques</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Glide入门教程二ListView使用"><span class="toc-number">1.</span> <span class="toc-text">Glide入门教程二ListView使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Glide入门教程二ListView中使用"><span class="toc-number">2.</span> <span class="toc-text">Glide入门教程二ListView中使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#添加RecyclerView"><span class="toc-number">2.1.</span> <span class="toc-text">添加RecyclerView</span></a></li></ol></li></ol>
 		
 		</div>
 		
-		<pre><code>Volley自定义Reques
-&lt;!--more--&gt;
-</code></pre><h3 id="Volley自定义Reques"><a href="#Volley自定义Reques" class="headerlink" title="Volley自定义Reques"></a>Volley自定义Reques</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line">public class GsonRequest&lt;T&gt; extends Request&lt;T&gt; &#123;</div><div class="line"></div><div class="line">	private final Listener&lt;T&gt; mListener;</div><div class="line">	private Gson mGson;</div><div class="line">	private Class&lt;T&gt; mClazz;</div><div class="line"></div><div class="line">	public GsonRequest(int method, String url, Class&lt;T&gt; clazz, Listener&lt;T&gt; listener, ErrorListener errorListener) &#123;</div><div class="line">		super(method, url, errorListener);</div><div class="line">		this.mListener = listener;</div><div class="line">		mClazz = clazz;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	public GsonRequest(String url, Class&lt;T&gt; clazz, Listener&lt;T&gt; listener, ErrorListener errorListener) &#123;</div><div class="line">		this(Method.GET, url, clazz, listener, errorListener);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	@Override</div><div class="line">	protected void deliverResponse(T response) &#123;</div><div class="line"></div><div class="line">		mListener.onResponse(response);</div><div class="line"></div><div class="line">	&#125;</div><div class="line"></div><div class="line">	@Override</div><div class="line">	protected Response&lt;T&gt; parseNetworkResponse(NetworkResponse response) &#123;</div><div class="line"></div><div class="line">		try &#123;</div><div class="line">			/**</div><div class="line">			 * 获取数据</div><div class="line">			 */</div><div class="line">			String jsonString = new String(response.data, HttpHeaderParser.parseCharset(response.headers));</div><div class="line">			// 转化反回</div><div class="line">			return Response.success(mGson.fromJson(jsonString, mClazz), HttpHeaderParser.parseCacheHeaders(response));</div><div class="line"></div><div class="line">		&#125; catch (UnsupportedEncodingException e) &#123;</div><div class="line">			e.printStackTrace();</div><div class="line">			return Response.error(new ParseError(e));</div><div class="line">		&#125;</div><div class="line"></div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>  
+		<h2 id="Glide入门教程二ListView使用"><a href="#Glide入门教程二ListView使用" class="headerlink" title="Glide入门教程二ListView使用"></a>Glide入门教程二ListView使用</h2><h2 id="Glide入门教程二ListView中使用"><a href="#Glide入门教程二ListView中使用" class="headerlink" title="Glide入门教程二ListView中使用"></a>Glide入门教程二ListView中使用</h2><h3 id="添加RecyclerView"><a href="#添加RecyclerView" class="headerlink" title="添加RecyclerView"></a>添加RecyclerView</h3><ul>
+<li>准备数据</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">/**</div><div class="line"> * 准备数据</div><div class="line"> */</div><div class="line">String [] mDatas = new String[]&#123;</div><div class="line"></div><div class="line">        &quot;http://b337.photo.store.qq.com/psb?/V10FcMmY1Ttz2o/7.fo01qLQ*SI59*E2Wq.j82HuPfes*efgiyEi7mrJdk!/b/dLHI5cioAQAA&amp;bo=VQOAAgAAAAABB*Q!&amp;rf=viewer_4&quot;,</div><div class="line">        &quot;http://b118.photo.store.qq.com/psb?/V10FcMmY2gHuOI/8*6eK6PHCNTx1utXooId*KAWgwPTllj.b6uBg4McCwM!/b/dAt8W0YJJAAA&amp;bo=VQOAAgAAAAABB*Q!&amp;rf=viewer_4&quot;,</div><div class="line">        &quot;http://img1.imgtn.bdimg.com/it/u=488611129,2377736106&amp;fm=11&amp;gp=0.jpg&quot;,</div><div class="line">        &quot;http://img2.imgtn.bdimg.com/it/u=3398443685,2594061265&amp;fm=11&amp;gp=0.jpg&quot;,</div><div class="line">        &quot;http://img3.imgtn.bdimg.com/it/u=2271902832,1324672617&amp;fm=21&amp;gp=0.jpg&quot;,</div><div class="line">        &quot;http://a.hiphotos.baidu.com/image/h%3D200/sign=d20242020e24ab18ff16e63705fae69a/267f9e2f070828389f547b30bf99a9014c08f1bd.jpg&quot;,</div><div class="line">        &quot;http://img5.duitang.com/uploads/item/201406/28/20140628132554_UNE4n.thumb.700_0.jpeg&quot;,</div><div class="line">        &quot;http://cdn.duitang.com/uploads/item/201309/22/20130922202150_ntvAB.thumb.600_0.jpeg&quot;,</div><div class="line">        &quot;http://cdn.duitang.com/uploads/item/201208/04/20120804013554_yRGfe.jpeg&quot;,</div><div class="line">        &quot;http://img5.imgtn.bdimg.com/it/u=2050390856,2980742959&amp;fm=21&amp;gp=0.jpg&quot;,</div><div class="line">        &quot;http://img3.duitang.com/uploads/item/201501/23/20150123204322_N8nw5.jpeg&quot;,</div><div class="line">        &quot;http://img4q.duitang.com/uploads/item/201505/09/20150509204813_nEwxF.jpeg&quot;,</div><div class="line">        &quot;http://img1.imgtn.bdimg.com/it/u=2432702027,3704029716&amp;fm=21&amp;gp=0.jpg&quot;,</div><div class="line">        &quot;http://i.imgur.com/syELajx.jpg&quot;,</div><div class="line">        &quot;http://i.imgur.com/COzBnru.jpg&quot;,</div><div class="line">        &quot;http://i.imgur.com/Z3QjilA.jpg&quot;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<ul>
+<li>Activity</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">private void initData() &#123;</div><div class="line"></div><div class="line"></div><div class="line">       mGlideListUseAdapter = new GlideListUseAdapter(this,mDatas);</div><div class="line"></div><div class="line">       LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);</div><div class="line"></div><div class="line">       mRecyclerView.setLayoutManager(linearLayoutManager);</div><div class="line"></div><div class="line"></div><div class="line">       mRecyclerView.setAdapter(mGlideListUseAdapter);</div><div class="line"></div><div class="line"></div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>adapter</li>
+</ul>
+<blockquote>
+<p>布局<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div><div class="line">&lt;ImageView</div><div class="line">           android:layout_margin=&quot;2dp&quot;</div><div class="line">           android:id=&quot;@+id/iv&quot;</div><div class="line">           android:layout_width=&quot;200dp&quot;</div><div class="line">           android:layout_height=&quot;200dp&quot;&gt;</div><div class="line"></div><div class="line">&lt;/ImageView&gt;</div></pre></td></tr></table></figure></p>
+<p>adapter<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line">public class GlideListUseAdapter extends RecyclerView.Adapter&lt;GlideListUseAdapter.ViewHolder&gt; &#123;</div><div class="line"></div><div class="line"></div><div class="line">    Context      mContext;</div><div class="line">    String [] mDatas;</div><div class="line"></div><div class="line">    LayoutInflater mInflater;</div><div class="line"></div><div class="line">    public GlideListUseAdapter(Context context, String [] datas) &#123;</div><div class="line">        this.mContext = context;</div><div class="line">        this.mDatas = datas;</div><div class="line">        mInflater= LayoutInflater.from(context);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) &#123;</div><div class="line"></div><div class="line">        View itemView = mInflater.inflate(R.layout.item_glide_list_use,parent,false);</div><div class="line"></div><div class="line">        return new ViewHolder(itemView);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void onBindViewHolder(ViewHolder holder, int position) &#123;</div><div class="line"></div><div class="line">        String url = mDatas[position];</div><div class="line"></div><div class="line"></div><div class="line">        Glide.with(mContext).load(url).into(holder.mIv);</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public int getItemCount() &#123;</div><div class="line">        if(mDatas!=null)&#123;</div><div class="line"></div><div class="line">           return mDatas.length;</div><div class="line">        &#125;</div><div class="line">        return 0;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public class  ViewHolder extends RecyclerView.ViewHolder &#123;</div><div class="line">        ImageView mIv;</div><div class="line">        public ViewHolder(View itemView) &#123;</div><div class="line"></div><div class="line">            super(itemView);</div><div class="line"></div><div class="line">            mIv = (ImageView) itemView.findViewById(R.id.iv);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+</blockquote>
+<p>这样图片就显示出来了</p>
+  
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
 
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/android/">android</a>
+</div>
+
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/test/">test</a>
+  <span></span> <a href="/tags/图片加载/">图片加载</a>
   </div>
 
 </div>
@@ -128,7 +150,7 @@ Volley自定义Reques12345678910111213141516171819202122232425262728293031323334
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="https://ln0491.github.io/2016/09/28/my-new-post/" data-title="my new post | 刘楠的博客" data-tsina="null" class="share clearfix">
+	  <div data-url="https://ln0491.github.io/2016/10/14/Glide入门教程二ListView使用/" data-title="Glide入门教程二ListView使用 | 刘楠的博客" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -141,19 +163,11 @@ Volley自定义Reques12345678910111213141516171819202122232425262728293031323334
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2016/09/28/My-Test/" title="My Test">
-  <strong>上一篇：</strong><br/>
-  <span>
-  My Test</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2016/09/28/hello-world/"  title="Hello World">
+<a href="/2016/10/14/Glide入门教程一（基本使用/"  title="Glide入门教程一（基本使用)">
  <strong>下一篇：</strong><br/> 
- <span>Hello World
+ <span>Glide入门教程一（基本使用)
 </span>
 </a>
 </div>
@@ -162,7 +176,7 @@ Volley自定义Reques12345678910111213141516171819202122232425262728293031323334
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2016/09/28/my-new-post/" data-title="my new post" data-url="https://ln0491.github.io/2016/09/28/my-new-post/"></div>
+	<div class="ds-thread" data-thread-key="2016/10/14/Glide入门教程二ListView使用/" data-title="Glide入门教程二ListView使用" data-url="https://ln0491.github.io/2016/10/14/Glide入门教程二ListView使用/"></div>
 </section>
 
 
@@ -172,7 +186,7 @@ Volley自定义Reques12345678910111213141516171819202122232425262728293031323334
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Volley自定义Reques"><span class="toc-number">1.</span> <span class="toc-text">Volley自定义Reques</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Glide入门教程二ListView使用"><span class="toc-number">1.</span> <span class="toc-text">Glide入门教程二ListView使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Glide入门教程二ListView中使用"><span class="toc-number">2.</span> <span class="toc-text">Glide入门教程二ListView中使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#添加RecyclerView"><span class="toc-number">2.1.</span> <span class="toc-text">添加RecyclerView</span></a></li></ol></li></ol>
  
   </div>
 
