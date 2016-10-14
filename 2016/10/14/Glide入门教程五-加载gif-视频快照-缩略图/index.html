@@ -4,23 +4,23 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>viewpager在最后一页滑动之后跳转到主页面. | 刘楠的博客</title>
+    <title>Glide入门教程五-加载gif-视频快照-缩略图 | 刘楠的博客</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Liu Nan">
     
 
     
-    <meta name="description" content="viewpager在最后一页滑动之后跳转到主页面添加切换监听器1234567891011121314151617181920212223mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() &amp;#123;			//判断是不是要跳转下页一个标记位            private boolean flag;">
+    <meta name="description" content="Glide入门教程五-加载gif-视频快照-缩略图播放 网络Gif动画123//加载网络gif       String gifUrl = &amp;quot;http://b.hiphotos.baidu.com/zhidao/pic/item/faedab64034f78f066abccc57b310a55b3191c67.jpg&amp;quot;;       Glide.with(this).load(">
 <meta property="og:type" content="article">
-<meta property="og:title" content="viewpager在最后一页滑动之后跳转到主页面.">
-<meta property="og:url" content="https://ln0491.github.io/2016/10/08/viewpager在最后一页滑动之后跳转到主页面/index.html">
+<meta property="og:title" content="Glide入门教程五-加载gif-视频快照-缩略图">
+<meta property="og:url" content="https://ln0491.github.io/2016/10/14/Glide入门教程五-加载gif-视频快照-缩略图/index.html">
 <meta property="og:site_name" content="刘楠的博客">
-<meta property="og:description" content="viewpager在最后一页滑动之后跳转到主页面添加切换监听器1234567891011121314151617181920212223mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() &amp;#123;			//判断是不是要跳转下页一个标记位            private boolean flag;">
-<meta property="og:updated_time" content="2016-10-08T05:20:05.882Z">
+<meta property="og:description" content="Glide入门教程五-加载gif-视频快照-缩略图播放 网络Gif动画123//加载网络gif       String gifUrl = &amp;quot;http://b.hiphotos.baidu.com/zhidao/pic/item/faedab64034f78f066abccc57b310a55b3191c67.jpg&amp;quot;;       Glide.with(this).load(">
+<meta property="og:updated_time" content="2016-10-14T09:12:03.777Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="viewpager在最后一页滑动之后跳转到主页面.">
-<meta name="twitter:description" content="viewpager在最后一页滑动之后跳转到主页面添加切换监听器1234567891011121314151617181920212223mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() &amp;#123;			//判断是不是要跳转下页一个标记位            private boolean flag;">
+<meta name="twitter:title" content="Glide入门教程五-加载gif-视频快照-缩略图">
+<meta name="twitter:description" content="Glide入门教程五-加载gif-视频快照-缩略图播放 网络Gif动画123//加载网络gif       String gifUrl = &amp;quot;http://b.hiphotos.baidu.com/zhidao/pic/item/faedab64034f78f066abccc57b310a55b3191c67.jpg&amp;quot;;       Glide.with(this).load(">
 
     
     <link rel="alternative" href="/atom.xml" title="刘楠的博客" type="application/atom+xml">
@@ -83,14 +83,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2016/10/08/viewpager在最后一页滑动之后跳转到主页面/" title="viewpager在最后一页滑动之后跳转到主页面." itemprop="url">viewpager在最后一页滑动之后跳转到主页面.</a>
+      <a href="/2016/10/14/Glide入门教程五-加载gif-视频快照-缩略图/" title="Glide入门教程五-加载gif-视频快照-缩略图" itemprop="url">Glide入门教程五-加载gif-视频快照-缩略图</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="Liu Nan" target="_blank" itemprop="author">Liu Nan</a>
 		
   <p class="article-time">
-    <time datetime="2016-10-08T03:03:59.000Z" itemprop="datePublished"> 发表于 2016-10-08</time>
+    <time datetime="2016-10-14T09:11:40.000Z" itemprop="datePublished"> 发表于 2016-10-14</time>
     
   </p>
 </header>
@@ -99,13 +99,18 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#viewpager在最后一页滑动之后跳转到主页面"><span class="toc-number">1.</span> <span class="toc-text">viewpager在最后一页滑动之后跳转到主页面</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#添加切换监听器"><span class="toc-number">1.1.</span> <span class="toc-text">添加切换监听器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在onPageScrollStateChanged方法中判断是不是最后一个，同是是不是拖放状态"><span class="toc-number">1.2.</span> <span class="toc-text">在onPageScrollStateChanged方法中判断是不是最后一个，同是是不是拖放状态</span></a></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Glide入门教程五-加载gif-视频快照-缩略图"><span class="toc-number">1.</span> <span class="toc-text">Glide入门教程五-加载gif-视频快照-缩略图</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#播放-网络Gif动画"><span class="toc-number">1.1.</span> <span class="toc-text">播放 网络Gif动画</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#本地资源gif"><span class="toc-number">1.2.</span> <span class="toc-text">本地资源gif</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#加载本地gif文件"><span class="toc-number">1.3.</span> <span class="toc-text">加载本地gif文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#加载本地视频快照"><span class="toc-number">1.4.</span> <span class="toc-text">加载本地视频快照</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#加载缩略图一"><span class="toc-number">1.5.</span> <span class="toc-text">加载缩略图一</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#加载缩略图二-高级缩略图请求：原图与缩略图完全不同"><span class="toc-number">1.6.</span> <span class="toc-text">加载缩略图二 高级缩略图请求：原图与缩略图完全不同</span></a></li></ol></li></ol>
 		
 		</div>
 		
-		<h2 id="viewpager在最后一页滑动之后跳转到主页面"><a href="#viewpager在最后一页滑动之后跳转到主页面" class="headerlink" title="viewpager在最后一页滑动之后跳转到主页面"></a>viewpager在最后一页滑动之后跳转到主页面</h2><h3 id="添加切换监听器"><a href="#添加切换监听器" class="headerlink" title="添加切换监听器"></a>添加切换监听器</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() &#123;</div><div class="line">			//判断是不是要跳转下页一个标记位</div><div class="line">            private boolean flag;</div><div class="line"></div><div class="line">            @Override</div><div class="line">            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) &#123;</div><div class="line">             </div><div class="line">            &#125;</div><div class="line"></div><div class="line">            @Override</div><div class="line">            public void onPageSelected(int position) &#123;</div><div class="line">            </div><div class="line"></div><div class="line"></div><div class="line">            &#125;</div><div class="line"></div><div class="line">            @Override</div><div class="line">            public void onPageScrollStateChanged(int state) &#123;</div><div class="line"></div><div class="line"></div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">`</div></pre></td></tr></table></figure>
-<h3 id="在onPageScrollStateChanged方法中判断是不是最后一个，同是是不是拖放状态"><a href="#在onPageScrollStateChanged方法中判断是不是最后一个，同是是不是拖放状态" class="headerlink" title="在onPageScrollStateChanged方法中判断是不是最后一个，同是是不是拖放状态"></a>在onPageScrollStateChanged方法中判断是不是最后一个，同是是不是拖放状态</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">         public void onPageScrollStateChanged(int state) &#123;</div><div class="line"></div><div class="line">             Log.d(&quot;vivi&quot;, &quot;onPageScrollStateChanged: &quot; + state);</div><div class="line">             switch(state) &#123;</div><div class="line">                 case ViewPager.SCROLL_STATE_DRAGGING:</div><div class="line">                     //拖的时候才进入下一页</div><div class="line">                     flag = false;</div><div class="line">                     Log.d(&quot;vivi&quot;, &quot;SCROLL_STATE_DRAGGING: &quot; + ViewPager.SCROLL_STATE_DRAGGING);</div><div class="line"></div><div class="line">                     break;</div><div class="line">                 case ViewPager.SCROLL_STATE_SETTLING:</div><div class="line">                     flag = true;</div><div class="line">                     Log.d(&quot;vivi&quot;, &quot;SCROLL_STATE_SETTLING: &quot; + ViewPager.SCROLL_STATE_SETTLING);</div><div class="line">                     break;</div><div class="line"></div><div class="line"></div><div class="line">                 case ViewPager.SCROLL_STATE_IDLE:</div><div class="line">                     Log.d(&quot;vivi&quot;, &quot;SCROLL_STATE_IDLE: &quot; + ViewPager.SCROLL_STATE_IDLE+&quot;  mViewPager.getCurrentItem() &quot;+mViewPager.getCurrentItem());</div><div class="line">                     /**</div><div class="line">                      * 判断是不是最后一页，同是是不是拖的状态</div><div class="line">                      */</div><div class="line">                     if(mViewPager.getCurrentItem() == mWelcomeViewpagerAdapter.getCount() - 1 &amp;&amp; !flag) &#123;</div><div class="line">                         Intent localIntent = new Intent();</div><div class="line"></div><div class="line">                         localIntent.setClass(WelcomeActivity.this, MainActivity.class);</div><div class="line">                         startActivity(localIntent);</div><div class="line">                         // overridePendingTransition(0, 0);</div><div class="line">                         finish();</div><div class="line">                     &#125;</div><div class="line">                     flag = true;</div><div class="line"></div><div class="line">                     break;</div><div class="line">             &#125;</div></pre></td></tr></table></figure>
-<p>源码<br><a href="https://github.com/ln0491/ViewPagerDemo" target="_blank" rel="external">https://github.com/ln0491/ViewPagerDemo</a></p>
+		<h2 id="Glide入门教程五-加载gif-视频快照-缩略图"><a href="#Glide入门教程五-加载gif-视频快照-缩略图" class="headerlink" title="Glide入门教程五-加载gif-视频快照-缩略图"></a>Glide入门教程五-加载gif-视频快照-缩略图</h2><h3 id="播放-网络Gif动画"><a href="#播放-网络Gif动画" class="headerlink" title="播放 网络Gif动画"></a>播放 网络Gif动画</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">//加载网络gif</div><div class="line">       String gifUrl = &quot;http://b.hiphotos.baidu.com/zhidao/pic/item/faedab64034f78f066abccc57b310a55b3191c67.jpg&quot;;</div><div class="line">       Glide.with(this).load(gifUrl).placeholder(R.mipmap.pictures_no).into(mIv4);</div></pre></td></tr></table></figure>
+<h3 id="本地资源gif"><a href="#本地资源gif" class="headerlink" title="本地资源gif"></a>本地资源gif</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">//加载资源gif</div><div class="line">       Glide.with(this).load(R.mipmap.loading).asGif().placeholder(R.mipmap.pictures_no).into(mIv5);</div></pre></td></tr></table></figure>
+<h3 id="加载本地gif文件"><a href="#加载本地gif文件" class="headerlink" title="加载本地gif文件"></a>加载本地gif文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">//加载本地gif文件</div><div class="line">String gifPath = Environment.getExternalStorageDirectory().getAbsolutePath()+&quot;/Movies/test.gif&quot;;</div><div class="line">//test.gif  animate.gif Starry_Night.mp4 test.mp4</div><div class="line"></div><div class="line">File gifFile = new File(gifPath);</div><div class="line"></div><div class="line">Glide.with(this).load(gifFile).placeholder(R.mipmap.ic_launcher).into(mIv6);</div></pre></td></tr></table></figure>
+<h3 id="加载本地视频快照"><a href="#加载本地视频快照" class="headerlink" title="加载本地视频快照"></a>加载本地视频快照</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">//加载本地小视频 快照，只是快照 并不能播放</div><div class="line">       String videoPath =Environment.getExternalStorageDirectory().getAbsolutePath()+&quot;/Movies/test.mp4&quot;;;</div><div class="line"></div><div class="line">       File videoFile = new File(videoPath);</div><div class="line"></div><div class="line">       Glide.with(this).load(Uri.fromFile(videoFile)).placeholder(R.mipmap.ic_launcher).into(mIv7);</div></pre></td></tr></table></figure>
+<h3 id="加载缩略图一"><a href="#加载缩略图一" class="headerlink" title="加载缩略图一"></a>加载缩略图一</h3><p>如果你传递一个0.1f作为参数，Glide会加载原始图片大小的10%的图片。如果原始图片有1000x1000像素，缩略图的分辨率为100x100像素</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">String urlPath=&quot;/storage/emulated/0/MagazineUnlock/magazine-unlock-03-2.3.311-bigpicture_03_20.jpg&quot;;</div><div class="line">        //第一种 设置缩略图比例</div><div class="line">        Glide.with(this).load(new File(urlPath)).thumbnail(0.1f).centerCrop().placeholder(R.mipmap.pictures_no).into(mIv8);</div></pre></td></tr></table></figure>
+<h3 id="加载缩略图二-高级缩略图请求：原图与缩略图完全不同"><a href="#加载缩略图二-高级缩略图请求：原图与缩略图完全不同" class="headerlink" title="加载缩略图二 高级缩略图请求：原图与缩略图完全不同"></a>加载缩略图二 高级缩略图请求：原图与缩略图完全不同</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//先建立一个缩略图对象 先加载缩略图，再加载原图</div><div class="line">       DrawableRequestBuilder thumbnailRequest=  Glide.with(this).load(&quot;http://img1.imgtn.bdimg.com/it/u=2615772929,948758168&amp;fm=21&amp;gp=0.jpg&quot;);</div><div class="line"></div><div class="line">       Glide.with(this).load(Uri.fromFile(videoFile)).thumbnail(thumbnailRequest).centerCrop().placeholder(R.mipmap.pictures_no).into(mIv9);</div></pre></td></tr></table></figure>
+<p>源码<br><a href="https://github.com/ln0491/GlideDemo" target="_blank" rel="external">https://github.com/ln0491/GlideDemo</a>&gt;</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -119,7 +124,7 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/viewpager/">viewpager</a>
+  <span></span> <a href="/tags/图片加载/">图片加载</a>
   </div>
 
 </div>
@@ -128,7 +133,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="https://ln0491.github.io/2016/10/08/viewpager在最后一页滑动之后跳转到主页面/" data-title="viewpager在最后一页滑动之后跳转到主页面. | 刘楠的博客" data-tsina="null" class="share clearfix">
+	  <div data-url="https://ln0491.github.io/2016/10/14/Glide入门教程五-加载gif-视频快照-缩略图/" data-title="Glide入门教程五-加载gif-视频快照-缩略图 | 刘楠的博客" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -141,19 +146,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2016/10/08/viewpager自动滚动/" title="viewpager自动滚动">
-  <strong>上一篇：</strong><br/>
-  <span>
-  viewpager自动滚动</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2016/10/08/ViewPager添加指示器/"  title="ViewPager添加指示器">
+<a href="/2016/10/14/Glide入门教程四-调整图片大小/"  title="Glide入门教程四-调整图片大小">
  <strong>下一篇：</strong><br/> 
- <span>ViewPager添加指示器
+ <span>Glide入门教程四-调整图片大小
 </span>
 </a>
 </div>
@@ -162,7 +159,7 @@
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2016/10/08/viewpager在最后一页滑动之后跳转到主页面/" data-title="viewpager在最后一页滑动之后跳转到主页面." data-url="https://ln0491.github.io/2016/10/08/viewpager在最后一页滑动之后跳转到主页面/"></div>
+	<div class="ds-thread" data-thread-key="2016/10/14/Glide入门教程五-加载gif-视频快照-缩略图/" data-title="Glide入门教程五-加载gif-视频快照-缩略图" data-url="https://ln0491.github.io/2016/10/14/Glide入门教程五-加载gif-视频快照-缩略图/"></div>
 </section>
 
 
@@ -172,7 +169,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#viewpager在最后一页滑动之后跳转到主页面"><span class="toc-number">1.</span> <span class="toc-text">viewpager在最后一页滑动之后跳转到主页面</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#添加切换监听器"><span class="toc-number">1.1.</span> <span class="toc-text">添加切换监听器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在onPageScrollStateChanged方法中判断是不是最后一个，同是是不是拖放状态"><span class="toc-number">1.2.</span> <span class="toc-text">在onPageScrollStateChanged方法中判断是不是最后一个，同是是不是拖放状态</span></a></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Glide入门教程五-加载gif-视频快照-缩略图"><span class="toc-number">1.</span> <span class="toc-text">Glide入门教程五-加载gif-视频快照-缩略图</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#播放-网络Gif动画"><span class="toc-number">1.1.</span> <span class="toc-text">播放 网络Gif动画</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#本地资源gif"><span class="toc-number">1.2.</span> <span class="toc-text">本地资源gif</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#加载本地gif文件"><span class="toc-number">1.3.</span> <span class="toc-text">加载本地gif文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#加载本地视频快照"><span class="toc-number">1.4.</span> <span class="toc-text">加载本地视频快照</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#加载缩略图一"><span class="toc-number">1.5.</span> <span class="toc-text">加载缩略图一</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#加载缩略图二-高级缩略图请求：原图与缩略图完全不同"><span class="toc-number">1.6.</span> <span class="toc-text">加载缩略图二 高级缩略图请求：原图与缩略图完全不同</span></a></li></ol></li></ol>
  
   </div>
 
