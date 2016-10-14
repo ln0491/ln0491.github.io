@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ln0491.github.io/"/>
-  <updated>2016-10-14T02:45:03.148Z</updated>
+  <updated>2016-10-14T05:46:51.433Z</updated>
   <id>https://ln0491.github.io/</id>
   
   <author>
@@ -14,6 +14,44 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Glide入门教程二ListView使用</title>
+    <link href="https://ln0491.github.io/2016/10/14/Glide%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B%E4%BA%8CListView%E4%BD%BF%E7%94%A8/"/>
+    <id>https://ln0491.github.io/2016/10/14/Glide入门教程二ListView使用/</id>
+    <published>2016-10-14T02:51:20.000Z</published>
+    <updated>2016-10-14T05:46:51.433Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Glide入门教程二ListView使用"><a href="#Glide入门教程二ListView使用" class="headerlink" title="Glide入门教程二ListView使用"></a>Glide入门教程二ListView使用</h2><h2 id="Glide入门教程二ListView中使用"><a href="#Glide入门教程二ListView中使用" class="headerlink" title="Glide入门教程二ListView中使用"></a>Glide入门教程二ListView中使用</h2><h3 id="添加RecyclerView"><a href="#添加RecyclerView" class="headerlink" title="添加RecyclerView"></a>添加RecyclerView</h3><ul>
+<li>准备数据</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">/**</div><div class="line"> * 准备数据</div><div class="line"> */</div><div class="line">String [] mDatas = new String[]&#123;</div><div class="line"></div><div class="line">        &quot;http://b337.photo.store.qq.com/psb?/V10FcMmY1Ttz2o/7.fo01qLQ*SI59*E2Wq.j82HuPfes*efgiyEi7mrJdk!/b/dLHI5cioAQAA&amp;bo=VQOAAgAAAAABB*Q!&amp;rf=viewer_4&quot;,</div><div class="line">        &quot;http://b118.photo.store.qq.com/psb?/V10FcMmY2gHuOI/8*6eK6PHCNTx1utXooId*KAWgwPTllj.b6uBg4McCwM!/b/dAt8W0YJJAAA&amp;bo=VQOAAgAAAAABB*Q!&amp;rf=viewer_4&quot;,</div><div class="line">        &quot;http://img1.imgtn.bdimg.com/it/u=488611129,2377736106&amp;fm=11&amp;gp=0.jpg&quot;,</div><div class="line">        &quot;http://img2.imgtn.bdimg.com/it/u=3398443685,2594061265&amp;fm=11&amp;gp=0.jpg&quot;,</div><div class="line">        &quot;http://img3.imgtn.bdimg.com/it/u=2271902832,1324672617&amp;fm=21&amp;gp=0.jpg&quot;,</div><div class="line">        &quot;http://a.hiphotos.baidu.com/image/h%3D200/sign=d20242020e24ab18ff16e63705fae69a/267f9e2f070828389f547b30bf99a9014c08f1bd.jpg&quot;,</div><div class="line">        &quot;http://img5.duitang.com/uploads/item/201406/28/20140628132554_UNE4n.thumb.700_0.jpeg&quot;,</div><div class="line">        &quot;http://cdn.duitang.com/uploads/item/201309/22/20130922202150_ntvAB.thumb.600_0.jpeg&quot;,</div><div class="line">        &quot;http://cdn.duitang.com/uploads/item/201208/04/20120804013554_yRGfe.jpeg&quot;,</div><div class="line">        &quot;http://img5.imgtn.bdimg.com/it/u=2050390856,2980742959&amp;fm=21&amp;gp=0.jpg&quot;,</div><div class="line">        &quot;http://img3.duitang.com/uploads/item/201501/23/20150123204322_N8nw5.jpeg&quot;,</div><div class="line">        &quot;http://img4q.duitang.com/uploads/item/201505/09/20150509204813_nEwxF.jpeg&quot;,</div><div class="line">        &quot;http://img1.imgtn.bdimg.com/it/u=2432702027,3704029716&amp;fm=21&amp;gp=0.jpg&quot;,</div><div class="line">        &quot;http://i.imgur.com/syELajx.jpg&quot;,</div><div class="line">        &quot;http://i.imgur.com/COzBnru.jpg&quot;,</div><div class="line">        &quot;http://i.imgur.com/Z3QjilA.jpg&quot;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<ul>
+<li>Activity</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">private void initData() &#123;</div><div class="line"></div><div class="line"></div><div class="line">       mGlideListUseAdapter = new GlideListUseAdapter(this,mDatas);</div><div class="line"></div><div class="line">       LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);</div><div class="line"></div><div class="line">       mRecyclerView.setLayoutManager(linearLayoutManager);</div><div class="line"></div><div class="line"></div><div class="line">       mRecyclerView.setAdapter(mGlideListUseAdapter);</div><div class="line"></div><div class="line"></div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>adapter</li>
+</ul>
+<blockquote>
+<p>布局<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div><div class="line">&lt;ImageView</div><div class="line">           android:layout_margin=&quot;2dp&quot;</div><div class="line">           android:id=&quot;@+id/iv&quot;</div><div class="line">           android:layout_width=&quot;200dp&quot;</div><div class="line">           android:layout_height=&quot;200dp&quot;&gt;</div><div class="line"></div><div class="line">&lt;/ImageView&gt;</div></pre></td></tr></table></figure></p>
+<p>adapter<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line">public class GlideListUseAdapter extends RecyclerView.Adapter&lt;GlideListUseAdapter.ViewHolder&gt; &#123;</div><div class="line"></div><div class="line"></div><div class="line">    Context      mContext;</div><div class="line">    String [] mDatas;</div><div class="line"></div><div class="line">    LayoutInflater mInflater;</div><div class="line"></div><div class="line">    public GlideListUseAdapter(Context context, String [] datas) &#123;</div><div class="line">        this.mContext = context;</div><div class="line">        this.mDatas = datas;</div><div class="line">        mInflater= LayoutInflater.from(context);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) &#123;</div><div class="line"></div><div class="line">        View itemView = mInflater.inflate(R.layout.item_glide_list_use,parent,false);</div><div class="line"></div><div class="line">        return new ViewHolder(itemView);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void onBindViewHolder(ViewHolder holder, int position) &#123;</div><div class="line"></div><div class="line">        String url = mDatas[position];</div><div class="line"></div><div class="line"></div><div class="line">        Glide.with(mContext).load(url).into(holder.mIv);</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public int getItemCount() &#123;</div><div class="line">        if(mDatas!=null)&#123;</div><div class="line"></div><div class="line">           return mDatas.length;</div><div class="line">        &#125;</div><div class="line">        return 0;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public class  ViewHolder extends RecyclerView.ViewHolder &#123;</div><div class="line">        ImageView mIv;</div><div class="line">        public ViewHolder(View itemView) &#123;</div><div class="line"></div><div class="line">            super(itemView);</div><div class="line"></div><div class="line">            mIv = (ImageView) itemView.findViewById(R.id.iv);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+</blockquote>
+<p>这样图片就显示出来了</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Glide入门教程二ListView使用&quot;&gt;&lt;a href=&quot;#Glide入门教程二ListView使用&quot; class=&quot;headerlink&quot; title=&quot;Glide入门教程二ListView使用&quot;&gt;&lt;/a&gt;Glide入门教程二ListView使用&lt;/h2&gt;&lt;
+    
+    </summary>
+    
+      <category term="android" scheme="https://ln0491.github.io/categories/android/"/>
+    
+    
+      <category term="图片加载" scheme="https://ln0491.github.io/tags/%E5%9B%BE%E7%89%87%E5%8A%A0%E8%BD%BD/"/>
+    
+  </entry>
   
   <entry>
     <title>Glide入门教程一（基本使用)</title>
@@ -1729,33 +1767,6 @@ protected void onStop() {
     
     
       <category term="test" scheme="https://ln0491.github.io/tags/test/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="https://ln0491.github.io/2016/09/28/hello-world/"/>
-    <id>https://ln0491.github.io/2016/09/28/hello-world/</id>
-    <published>2016-09-28T01:15:01.829Z</published>
-    <updated>2016-09-28T01:15:01.829Z</updated>
-    
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
-    
-    </summary>
-    
     
   </entry>
   
