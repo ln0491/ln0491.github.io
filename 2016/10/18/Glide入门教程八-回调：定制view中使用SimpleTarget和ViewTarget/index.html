@@ -25,7 +25,7 @@ Glide中的回调：Target
 
 假设我们并没有ImageView作为图片加载的目标。我们只需要Bitmap本身。Glide提供了一个用Target获取Bitmap资源的方法。Target只是用来回调，它会在所有的加载和处理完毕时返回想要的结果。
 1234567891011121314151617181">
-<meta property="og:updated_time" content="2016-10-18T11:34:33.266Z">
+<meta property="og:updated_time" content="2016-10-18T11:39:23.736Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Glide入门教程八-回调：定制view中使用SimpleTarget和ViewTarget">
 <meta name="twitter:description" content="Glide入门教程八-回调：定制view中使用SimpleTarget和ViewTarget
@@ -133,6 +133,7 @@ Glide中的回调：Target
 <p>由于我们定制的view并不是继承自ImageView，这里不能使用常规的.into()方法。因此，我们只能创建一个ViewTarget，用来传递给.into()方法：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">private void loadImageViewTarget() &#123;</div><div class="line"> String targetUrl = &quot;http://photo.enterdesk.com/2009-4-21/200901241609531378.png&quot;;</div><div class="line">    FutureStudioView customView = (FutureStudioView) findViewById( R.id.custom_view );</div><div class="line"></div><div class="line">    viewTarget = new ViewTarget&lt;FutureStudioView, GlideDrawable&gt;( customView ) &#123;</div><div class="line">        @Override</div><div class="line">        public void onResourceReady(GlideDrawable resource, GlideAnimation&lt;? super GlideDrawable&gt; glideAnimation) &#123;</div><div class="line">            this.view.setImage( resource.getCurrent() );</div><div class="line">        &#125;</div><div class="line">    &#125;;</div><div class="line"></div><div class="line">    Glide.with(this)</div><div class="line">                   .load(targetUrl)</div><div class="line">                   .centerCrop()</div><div class="line">                   .override(300,300)</div><div class="line">                   //显示自定义控件中</div><div class="line">                   .into(viewTarget);</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>在target的回调方法中，我们在定制view上使用我们创建的setImage(Drawable drawable)方法设置图片。同时，确保你注意到我们已经在ViewTarget的构造方法里传递了我们的定制view:new ViewTarget<futurestudioview, glidedrawable="">( customView )。</futurestudioview,></p>
+<p>源码<br><a href="https://github.com/ln0491/GlideDemo" target="_blank" rel="external">https://github.com/ln0491/GlideDemo</a></p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -246,11 +247,11 @@ Glide中的回调：Target
 			
 		
 			
-				<li><a href="/tags/工具类/" title="工具类">工具类<sup>1</sup></a></li>
+				<li><a href="/tags/自定义View/" title="自定义View">自定义View<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/自定义View/" title="自定义View">自定义View<sup>1</sup></a></li>
+				<li><a href="/tags/工具类/" title="工具类">工具类<sup>1</sup></a></li>
 			
 		
 			
