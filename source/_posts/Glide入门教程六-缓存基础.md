@@ -44,3 +44,6 @@ Glide默认使用内存和磁盘缓存来避免不必要的网络请求,所有�
     * DiskCacheStrategy.ALL 缓存所有类型的图片 (默认行为)
 
 官方wiki<https://github.com/bumptech/glide/wiki/Caching-and-Cache-Invalidation>
+
+源码
+<https://github.com/ln0491/GlideDemo>

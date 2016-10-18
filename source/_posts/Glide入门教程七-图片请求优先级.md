@@ -24,3 +24,7 @@ tags: 图片加载
                 .priority(Priority.HIGH)   //添加高优先级
                 .into(mIv10);
 ```
+
+
+源码
+<https://github.com/ln0491/GlideDemo>

@@ -130,3 +130,5 @@ private void loadImageViewTarget() {
 
 在target的回调方法中，我们在定制view上使用我们创建的setImage(Drawable drawable)方法设置图片。同时，确保你注意到我们已经在ViewTarget的构造方法里传递了我们的定制view:new ViewTarget<FutureStudioView, GlideDrawable>( customView )。
 
+源码
+<https://github.com/ln0491/GlideDemo>

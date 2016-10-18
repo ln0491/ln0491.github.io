@@ -27,7 +27,7 @@
 * Priority.HIGH
 * Priority.IMMEDIATE
 12345678Glide.with(this)               .load(url10)">
-<meta property="og:updated_time" content="2016-10-18T11:34:15.219Z">
+<meta property="og:updated_time" content="2016-10-18T11:39:16.313Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Glide入门教程七-图片请求优先级">
 <meta name="twitter:description" content="Glide入门教程七-图片请求优先级.priority()方法参数的Priority的枚举变量一共有四个不同的枚举变量。下面以递增方式列出：
@@ -124,6 +124,7 @@
 * Priority.HIGH
 * Priority.IMMEDIATE
 </code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Glide.with(this)</div><div class="line">               .load(url10)</div><div class="line">               .placeholder(R.mipmap.pictures_no)</div><div class="line">               .override(300,300)</div><div class="line">               .skipMemoryCache(true)   //跳过内存缓存，不在内存中保存图片</div><div class="line">               .diskCacheStrategy(DiskCacheStrategy.ALL)</div><div class="line">               .priority(Priority.HIGH)   //添加高优先级</div><div class="line">               .into(mIv10);</div></pre></td></tr></table></figure>
+<p>源码<br><a href="https://github.com/ln0491/GlideDemo" target="_blank" rel="external">https://github.com/ln0491/GlideDemo</a></p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -245,11 +246,11 @@
 			
 		
 			
-				<li><a href="/tags/工具类/" title="工具类">工具类<sup>1</sup></a></li>
+				<li><a href="/tags/自定义View/" title="自定义View">自定义View<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/自定义View/" title="自定义View">自定义View<sup>1</sup></a></li>
+				<li><a href="/tags/工具类/" title="工具类">工具类<sup>1</sup></a></li>
 			
 		
 			

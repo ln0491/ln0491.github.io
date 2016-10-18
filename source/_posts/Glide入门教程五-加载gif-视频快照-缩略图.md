@@ -71,6 +71,6 @@ String urlPath="/storage/emulated/0/MagazineUnlock/magazine-unlock-03-2.3.311-bi
 
 
 源码
-<https://github.com/ln0491/GlideDemo>>
+<https://github.com/ln0491/GlideDemo>
 
 
