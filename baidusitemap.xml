@@ -4,14 +4,34 @@
 
     
   <url>
+    <loc>https://ln0491.github.io/2016/10/18/Glide%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B%E5%85%AB-%E5%9B%9E%E8%B0%83%EF%BC%9A%E5%AE%9A%E5%88%B6view%E4%B8%AD%E4%BD%BF%E7%94%A8SimpleTarget%E5%92%8CViewTarget/</loc>
+    <lastmod>2016-10-18T11:34:33.266Z</lastmod>
+    <data>
+        <display>
+        <title>Glide入门教程八-回调：定制view中使用SimpleTarget和ViewTarget</title>
+        <pubTime>2016-10-18T11:33:22.000Z</pubTime>
+        
+        <tag>图片加载</tag>
+         
+         
+           
+             
+              <breadCrumb title="android" url="https://ln0491.github.io/categories/android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://ln0491.github.io/2016/10/17/Glide%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B%E4%B8%83-%E5%9B%BE%E7%89%87%E8%AF%B7%E6%B1%82%E4%BC%98%E5%85%88%E7%BA%A7/</loc>
-    <lastmod>2016-10-17T08:18:29.031Z</lastmod>
+    <lastmod>2016-10-18T11:34:15.219Z</lastmod>
     <data>
         <display>
         <title>Glide入门教程七-图片请求优先级</title>
         <pubTime>2016-10-17T08:16:33.000Z</pubTime>
         
-        <tag>图片缓存</tag>
+        <tag>图片加载</tag>
          
          
            
@@ -25,13 +45,13 @@
     
   <url>
     <loc>https://ln0491.github.io/2016/10/17/Glide%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B%E5%85%AD-%E7%BC%93%E5%AD%98%E5%9F%BA%E7%A1%80/</loc>
-    <lastmod>2016-10-17T08:17:56.511Z</lastmod>
+    <lastmod>2016-10-18T11:34:11.642Z</lastmod>
     <data>
         <display>
         <title>Glide入门教程六-缓存基础</title>
         <pubTime>2016-10-17T08:15:44.000Z</pubTime>
         
-        <tag>图片缓存</tag>
+        <tag>图片加载</tag>
          
          
            
