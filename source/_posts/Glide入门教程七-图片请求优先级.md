@@ -2,7 +2,7 @@
 title: Glide入门教程七-图片请求优先级
 date: 2016-10-17 16:16:33
 categories: android
-tags: 图片缓存
+tags: 图片加载
 ---
 
 ## Glide入门教程七-图片请求优先级

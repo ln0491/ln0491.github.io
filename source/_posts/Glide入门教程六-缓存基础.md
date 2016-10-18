@@ -2,7 +2,7 @@
 title: Glide入门教程六-缓存基础
 date: 2016-10-17 16:15:44
 categories: android
-tags: 图片缓存
+tags: 图片加载
 ---
 ## Glide入门教程六-缓存基础
 
