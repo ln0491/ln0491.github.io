@@ -4,23 +4,23 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>Glide入门教程五-加载gif-视频快照-缩略图 | 刘楠的博客</title>
+    <title>Glide — 用Modules定制Glide | 刘楠的博客</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Liu Nan">
     
 
     
-    <meta name="description" content="Glide入门教程五-加载gif-视频快照-缩略图播放 网络Gif动画123//加载网络gif       String gifUrl = &amp;quot;http://b.hiphotos.baidu.com/zhidao/pic/item/faedab64034f78f066abccc57b310a55b3191c67.jpg&amp;quot;;       Glide.with(this).load(">
+    <meta name="description" content="Glide — 用Modules定制GlideGlide ModulesGlide modules是一个全局改变Glide行为的抽象的方式。你需要创建Glide的实例，来访问GlideBuilder。可以通过创建一个公共的类，实现GlideModule的接口来定制Glide12345678910public class SimpleGlideModule implements GlideModul">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Glide入门教程五-加载gif-视频快照-缩略图">
-<meta property="og:url" content="https://ln0491.github.io/2016/10/14/Glide入门教程五-加载gif-视频快照-缩略图/index.html">
+<meta property="og:title" content="Glide — 用Modules定制Glide">
+<meta property="og:url" content="https://ln0491.github.io/2016/10/19/Glide-—-用Modules定制Glide/index.html">
 <meta property="og:site_name" content="刘楠的博客">
-<meta property="og:description" content="Glide入门教程五-加载gif-视频快照-缩略图播放 网络Gif动画123//加载网络gif       String gifUrl = &amp;quot;http://b.hiphotos.baidu.com/zhidao/pic/item/faedab64034f78f066abccc57b310a55b3191c67.jpg&amp;quot;;       Glide.with(this).load(">
-<meta property="og:updated_time" content="2016-10-18T11:39:06.999Z">
+<meta property="og:description" content="Glide — 用Modules定制GlideGlide ModulesGlide modules是一个全局改变Glide行为的抽象的方式。你需要创建Glide的实例，来访问GlideBuilder。可以通过创建一个公共的类，实现GlideModule的接口来定制Glide12345678910public class SimpleGlideModule implements GlideModul">
+<meta property="og:updated_time" content="2016-10-19T06:20:24.752Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Glide入门教程五-加载gif-视频快照-缩略图">
-<meta name="twitter:description" content="Glide入门教程五-加载gif-视频快照-缩略图播放 网络Gif动画123//加载网络gif       String gifUrl = &amp;quot;http://b.hiphotos.baidu.com/zhidao/pic/item/faedab64034f78f066abccc57b310a55b3191c67.jpg&amp;quot;;       Glide.with(this).load(">
+<meta name="twitter:title" content="Glide — 用Modules定制Glide">
+<meta name="twitter:description" content="Glide — 用Modules定制GlideGlide ModulesGlide modules是一个全局改变Glide行为的抽象的方式。你需要创建Glide的实例，来访问GlideBuilder。可以通过创建一个公共的类，实现GlideModule的接口来定制Glide12345678910public class SimpleGlideModule implements GlideModul">
 
     
     <link rel="alternative" href="/atom.xml" title="刘楠的博客" type="application/atom+xml">
@@ -83,14 +83,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2016/10/14/Glide入门教程五-加载gif-视频快照-缩略图/" title="Glide入门教程五-加载gif-视频快照-缩略图" itemprop="url">Glide入门教程五-加载gif-视频快照-缩略图</a>
+      <a href="/2016/10/19/Glide-—-用Modules定制Glide/" title="Glide — 用Modules定制Glide" itemprop="url">Glide — 用Modules定制Glide</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="Liu Nan" target="_blank" itemprop="author">Liu Nan</a>
 		
   <p class="article-time">
-    <time datetime="2016-10-14T09:11:40.000Z" itemprop="datePublished"> 发表于 2016-10-14</time>
+    <time datetime="2016-10-19T06:19:56.000Z" itemprop="datePublished"> 发表于 2016-10-19</time>
     
   </p>
 </header>
@@ -99,18 +99,27 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Glide入门教程五-加载gif-视频快照-缩略图"><span class="toc-number">1.</span> <span class="toc-text">Glide入门教程五-加载gif-视频快照-缩略图</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#播放-网络Gif动画"><span class="toc-number">1.1.</span> <span class="toc-text">播放 网络Gif动画</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#本地资源gif"><span class="toc-number">1.2.</span> <span class="toc-text">本地资源gif</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#加载本地gif文件"><span class="toc-number">1.3.</span> <span class="toc-text">加载本地gif文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#加载本地视频快照"><span class="toc-number">1.4.</span> <span class="toc-text">加载本地视频快照</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#加载缩略图一"><span class="toc-number">1.5.</span> <span class="toc-text">加载缩略图一</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#加载缩略图二-高级缩略图请求：原图与缩略图完全不同"><span class="toc-number">1.6.</span> <span class="toc-text">加载缩略图二 高级缩略图请求：原图与缩略图完全不同</span></a></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Glide-—-用Modules定制Glide"><span class="toc-number">1.</span> <span class="toc-text">Glide — 用Modules定制Glide</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Glide-Modules"><span class="toc-number">1.1.</span> <span class="toc-text">Glide Modules</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GlideBuilder"><span class="toc-number">1.2.</span> <span class="toc-text">GlideBuilder</span></a></li></ol></li></ol>
 		
 		</div>
 		
-		<h2 id="Glide入门教程五-加载gif-视频快照-缩略图"><a href="#Glide入门教程五-加载gif-视频快照-缩略图" class="headerlink" title="Glide入门教程五-加载gif-视频快照-缩略图"></a>Glide入门教程五-加载gif-视频快照-缩略图</h2><h3 id="播放-网络Gif动画"><a href="#播放-网络Gif动画" class="headerlink" title="播放 网络Gif动画"></a>播放 网络Gif动画</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">//加载网络gif</div><div class="line">       String gifUrl = &quot;http://b.hiphotos.baidu.com/zhidao/pic/item/faedab64034f78f066abccc57b310a55b3191c67.jpg&quot;;</div><div class="line">       Glide.with(this).load(gifUrl).placeholder(R.mipmap.pictures_no).into(mIv4);</div></pre></td></tr></table></figure>
-<h3 id="本地资源gif"><a href="#本地资源gif" class="headerlink" title="本地资源gif"></a>本地资源gif</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">//加载资源gif</div><div class="line">       Glide.with(this).load(R.mipmap.loading).asGif().placeholder(R.mipmap.pictures_no).into(mIv5);</div></pre></td></tr></table></figure>
-<h3 id="加载本地gif文件"><a href="#加载本地gif文件" class="headerlink" title="加载本地gif文件"></a>加载本地gif文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">//加载本地gif文件</div><div class="line">String gifPath = Environment.getExternalStorageDirectory().getAbsolutePath()+&quot;/Movies/test.gif&quot;;</div><div class="line">//test.gif  animate.gif Starry_Night.mp4 test.mp4</div><div class="line"></div><div class="line">File gifFile = new File(gifPath);</div><div class="line"></div><div class="line">Glide.with(this).load(gifFile).placeholder(R.mipmap.ic_launcher).into(mIv6);</div></pre></td></tr></table></figure>
-<h3 id="加载本地视频快照"><a href="#加载本地视频快照" class="headerlink" title="加载本地视频快照"></a>加载本地视频快照</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">//加载本地小视频 快照，只是快照 并不能播放</div><div class="line">       String videoPath =Environment.getExternalStorageDirectory().getAbsolutePath()+&quot;/Movies/test.mp4&quot;;;</div><div class="line"></div><div class="line">       File videoFile = new File(videoPath);</div><div class="line"></div><div class="line">       Glide.with(this).load(Uri.fromFile(videoFile)).placeholder(R.mipmap.ic_launcher).into(mIv7);</div></pre></td></tr></table></figure>
-<h3 id="加载缩略图一"><a href="#加载缩略图一" class="headerlink" title="加载缩略图一"></a>加载缩略图一</h3><p>如果你传递一个0.1f作为参数，Glide会加载原始图片大小的10%的图片。如果原始图片有1000x1000像素，缩略图的分辨率为100x100像素</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">String urlPath=&quot;/storage/emulated/0/MagazineUnlock/magazine-unlock-03-2.3.311-bigpicture_03_20.jpg&quot;;</div><div class="line">        //第一种 设置缩略图比例</div><div class="line">        Glide.with(this).load(new File(urlPath)).thumbnail(0.1f).centerCrop().placeholder(R.mipmap.pictures_no).into(mIv8);</div></pre></td></tr></table></figure>
-<h3 id="加载缩略图二-高级缩略图请求：原图与缩略图完全不同"><a href="#加载缩略图二-高级缩略图请求：原图与缩略图完全不同" class="headerlink" title="加载缩略图二 高级缩略图请求：原图与缩略图完全不同"></a>加载缩略图二 高级缩略图请求：原图与缩略图完全不同</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//先建立一个缩略图对象 先加载缩略图，再加载原图</div><div class="line">       DrawableRequestBuilder thumbnailRequest=  Glide.with(this).load(&quot;http://img1.imgtn.bdimg.com/it/u=2615772929,948758168&amp;fm=21&amp;gp=0.jpg&quot;);</div><div class="line"></div><div class="line">       Glide.with(this).load(Uri.fromFile(videoFile)).thumbnail(thumbnailRequest).centerCrop().placeholder(R.mipmap.pictures_no).into(mIv9);</div></pre></td></tr></table></figure>
-<p>源码<br><a href="https://github.com/ln0491/GlideDemo" target="_blank" rel="external">https://github.com/ln0491/GlideDemo</a></p>
+		<h2 id="Glide-—-用Modules定制Glide"><a href="#Glide-—-用Modules定制Glide" class="headerlink" title="Glide — 用Modules定制Glide"></a>Glide — 用Modules定制Glide</h2><h3 id="Glide-Modules"><a href="#Glide-Modules" class="headerlink" title="Glide Modules"></a>Glide Modules</h3><p>Glide modules是一个全局改变Glide行为的抽象的方式。你需要创建Glide的实例，来访问GlideBuilder。可以通过创建一个公共的类，实现GlideModule的接口来定制Glide<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">public class SimpleGlideModule implements GlideModule &#123;</div><div class="line">    @Override public void applyOptions(Context context, GlideBuilder builder) &#123;</div><div class="line">        // todo</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override public void registerComponents(Context context, Glide glide) &#123;</div><div class="line">        // todo</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>接口提供了两个方法去调节Glide的不同部分，大部分内容只研究第一个方法：applyOptions(Context context, GlideBuilder builder)</p>
+<p>需要创建一个额外的类去自定义Glide。下一步是要在全局中声明这个类，这样Glide知道它应该加载并使用它。Glide会扫描AndroidManifest.xml的Glide modules的meta定义。这样，你必须在AndroidManifest.xml里的<application>标签下声明刚创建的Glide module。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&lt;manifest</div><div class="line"></div><div class="line">    ...</div><div class="line"></div><div class="line">    &lt;application&gt;</div><div class="line"></div><div class="line">        &lt;meta-data</div><div class="line">            android:name=&quot;io.futurestud.tutorials.glide.glidemodule.SimpleGlideModule&quot;</div><div class="line">            android:value=&quot;GlideModule&quot; /&gt;</div><div class="line"></div><div class="line">        ...</div><div class="line"></div><div class="line">    &lt;/application&gt;</div><div class="line">&lt;/manifest&gt;</div></pre></td></tr></table></figure></application></p>
+<p>确保你设置android:name为你自己的包名+类名，这样才能正确引用。你不需要添加其他的代码到其中。如果你想要禁止Glide Module，只要从AndroidManifest.xml里移除它。Java类里的代码可以留着供以后使用。当在AndroidManifest.xml里没有引用的时候，它永远不会被加载。</p>
+<p>Glide推荐实现自定义module的方式有一个好处：你可以一次同时声明多个Glide Module。Glide会（没有特殊的顺序）都遍历所有声明的module。由于你当前未定义顺序，确保你的定制不会造成冲突！</p>
+<h3 id="GlideBuilder"><a href="#GlideBuilder" class="headerlink" title="GlideBuilder"></a>GlideBuilder</h3><p>接口的第一个方法：applyOptions(Context context, GlideBuilder builder)。这个方法将GlideBuilder的对象当作参数，并且是void返回类型，所以你在这个方法里能调用GlideBuilder可以用的方法。</p>
+<ul>
+<li>.setMemoryCache(MemoryCache memoryCache)</li>
+<li>.setBitmapPool(BitmapPool bitmapPool)</li>
+<li>.setDiskCache(DiskCache.Factory diskCacheFactory)</li>
+<li>.setDiskCacheService(ExecutorService service)</li>
+<li>.setResizeService(ExecutorService service)</li>
+<li>.setDecodeFormat(DecodeFormat decodeFormat)</li>
+</ul>
+<p>Android里有两个方法去解析图片：ARGB8888和RGB565。第一个为每个像素采用4 byte表示，后面一个则用2 byte表示。ARG8888有更高的图片质量，并且能够存储一个alpha通道。当Picasso使用ARGB888时，Glide默认使用低质量的RGB565。Glide用户的好消息：你可以通过使用Glide module方法改变解析格式。</p>
+<p>你只要简单地实现一个GlideModule，像之前提到的一样，然后调用builder.setDecodeFormat(DecodeFormat.PREFER_ARGB_8888)，并传入正确的枚举型参数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">public class SimpleGlideModule implements GlideModule &#123;</div><div class="line">    @Override public void applyOptions(Context context, GlideBuilder builder) &#123;</div><div class="line">        builder.setDecodeFormat(DecodeFormat.PREFER_ARGB_8888);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override public void registerComponents(Context context, Glide glide) &#123;</div><div class="line">        // nothing to do here</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -133,7 +142,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="https://ln0491.github.io/2016/10/14/Glide入门教程五-加载gif-视频快照-缩略图/" data-title="Glide入门教程五-加载gif-视频快照-缩略图 | 刘楠的博客" data-tsina="null" class="share clearfix">
+	  <div data-url="https://ln0491.github.io/2016/10/19/Glide-—-用Modules定制Glide/" data-title="Glide — 用Modules定制Glide | 刘楠的博客" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -146,19 +155,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2016/10/17/Glide入门教程六-缓存基础/" title="Glide入门教程六-缓存基础">
-  <strong>上一篇：</strong><br/>
-  <span>
-  Glide入门教程六-缓存基础</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2016/10/14/Glide入门教程四-调整图片大小/"  title="Glide入门教程四-调整图片大小">
+<a href="/2016/10/19/Glide入门教程十一变换/"  title="Glide入门教程十一变换">
  <strong>下一篇：</strong><br/> 
- <span>Glide入门教程四-调整图片大小
+ <span>Glide入门教程十一变换
 </span>
 </a>
 </div>
@@ -167,7 +168,7 @@
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2016/10/14/Glide入门教程五-加载gif-视频快照-缩略图/" data-title="Glide入门教程五-加载gif-视频快照-缩略图" data-url="https://ln0491.github.io/2016/10/14/Glide入门教程五-加载gif-视频快照-缩略图/"></div>
+	<div class="ds-thread" data-thread-key="2016/10/19/Glide-—-用Modules定制Glide/" data-title="Glide — 用Modules定制Glide" data-url="https://ln0491.github.io/2016/10/19/Glide-—-用Modules定制Glide/"></div>
 </section>
 
 
@@ -177,7 +178,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Glide入门教程五-加载gif-视频快照-缩略图"><span class="toc-number">1.</span> <span class="toc-text">Glide入门教程五-加载gif-视频快照-缩略图</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#播放-网络Gif动画"><span class="toc-number">1.1.</span> <span class="toc-text">播放 网络Gif动画</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#本地资源gif"><span class="toc-number">1.2.</span> <span class="toc-text">本地资源gif</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#加载本地gif文件"><span class="toc-number">1.3.</span> <span class="toc-text">加载本地gif文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#加载本地视频快照"><span class="toc-number">1.4.</span> <span class="toc-text">加载本地视频快照</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#加载缩略图一"><span class="toc-number">1.5.</span> <span class="toc-text">加载缩略图一</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#加载缩略图二-高级缩略图请求：原图与缩略图完全不同"><span class="toc-number">1.6.</span> <span class="toc-text">加载缩略图二 高级缩略图请求：原图与缩略图完全不同</span></a></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Glide-—-用Modules定制Glide"><span class="toc-number">1.</span> <span class="toc-text">Glide — 用Modules定制Glide</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Glide-Modules"><span class="toc-number">1.1.</span> <span class="toc-text">Glide Modules</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GlideBuilder"><span class="toc-number">1.2.</span> <span class="toc-text">GlideBuilder</span></a></li></ol></li></ol>
  
   </div>
 
