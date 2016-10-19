@@ -4,29 +4,35 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>Glide入门教程六-缓存基础 | 刘楠的博客</title>
+    <title>Glide入门教程九-通知栏图片加载 | 刘楠的博客</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Liu Nan">
     
 
     
-    <meta name="description" content="Glide入门教程六-缓存基础Glide默认使用内存和磁盘缓存来避免不必要的网络请求,所有的图片请求都会被缓存在内存和磁盘上.
+    <meta name="description" content="Glide入门教程九-通知栏图片加载系统通知的图标为用户传递了重要的内容。用NotificationCompat.Builder为通知图片传递一个图片是最直接方式，但是这个图片必须是Bitmap格式的。如果这个图片已经在手机上，那没问题。但，如果这个图片还不在手机上，需要从网络下载，想要用这个标准的工具是不现实的。
 
-内存缓存12345Glide.with(this)               .load(url10)               .placeholder(R.mipmap.pictures_no)               .skipMemoryCache(tr">
+自定义的通知布局
+
+123456789101112131415161718192">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Glide入门教程六-缓存基础">
-<meta property="og:url" content="https://ln0491.github.io/2016/10/17/Glide入门教程六-缓存基础/index.html">
+<meta property="og:title" content="Glide入门教程九-通知栏图片加载">
+<meta property="og:url" content="https://ln0491.github.io/2016/10/19/Glide入门教程九-通知栏图片加载/index.html">
 <meta property="og:site_name" content="刘楠的博客">
-<meta property="og:description" content="Glide入门教程六-缓存基础Glide默认使用内存和磁盘缓存来避免不必要的网络请求,所有的图片请求都会被缓存在内存和磁盘上.
+<meta property="og:description" content="Glide入门教程九-通知栏图片加载系统通知的图标为用户传递了重要的内容。用NotificationCompat.Builder为通知图片传递一个图片是最直接方式，但是这个图片必须是Bitmap格式的。如果这个图片已经在手机上，那没问题。但，如果这个图片还不在手机上，需要从网络下载，想要用这个标准的工具是不现实的。
 
-内存缓存12345Glide.with(this)               .load(url10)               .placeholder(R.mipmap.pictures_no)               .skipMemoryCache(tr">
-<meta property="og:updated_time" content="2016-10-18T11:39:12.855Z">
+自定义的通知布局
+
+123456789101112131415161718192">
+<meta property="og:updated_time" content="2016-10-19T03:26:04.673Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Glide入门教程六-缓存基础">
-<meta name="twitter:description" content="Glide入门教程六-缓存基础Glide默认使用内存和磁盘缓存来避免不必要的网络请求,所有的图片请求都会被缓存在内存和磁盘上.
+<meta name="twitter:title" content="Glide入门教程九-通知栏图片加载">
+<meta name="twitter:description" content="Glide入门教程九-通知栏图片加载系统通知的图标为用户传递了重要的内容。用NotificationCompat.Builder为通知图片传递一个图片是最直接方式，但是这个图片必须是Bitmap格式的。如果这个图片已经在手机上，那没问题。但，如果这个图片还不在手机上，需要从网络下载，想要用这个标准的工具是不现实的。
 
-内存缓存12345Glide.with(this)               .load(url10)               .placeholder(R.mipmap.pictures_no)               .skipMemoryCache(tr">
+自定义的通知布局
+
+123456789101112131415161718192">
 
     
     <link rel="alternative" href="/atom.xml" title="刘楠的博客" type="application/atom+xml">
@@ -89,14 +95,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2016/10/17/Glide入门教程六-缓存基础/" title="Glide入门教程六-缓存基础" itemprop="url">Glide入门教程六-缓存基础</a>
+      <a href="/2016/10/19/Glide入门教程九-通知栏图片加载/" title="Glide入门教程九-通知栏图片加载" itemprop="url">Glide入门教程九-通知栏图片加载</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="Liu Nan" target="_blank" itemprop="author">Liu Nan</a>
 		
   <p class="article-time">
-    <time datetime="2016-10-17T08:15:44.000Z" itemprop="datePublished"> 发表于 2016-10-17</time>
+    <time datetime="2016-10-19T03:25:31.000Z" itemprop="datePublished"> 发表于 2016-10-19</time>
     
   </p>
 </header>
@@ -105,33 +111,20 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Glide入门教程六-缓存基础"><span class="toc-number">1.</span> <span class="toc-text">Glide入门教程六-缓存基础</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Glide入门教程九-通知栏图片加载"><span class="toc-number">1.</span> <span class="toc-text">Glide入门教程九-通知栏图片加载</span></a></li></ol>
 		
 		</div>
 		
-		<h2 id="Glide入门教程六-缓存基础"><a href="#Glide入门教程六-缓存基础" class="headerlink" title="Glide入门教程六-缓存基础"></a>Glide入门教程六-缓存基础</h2><p>Glide默认使用内存和磁盘缓存来避免不必要的网络请求,所有的图片请求都会被缓存在内存和磁盘上.</p>
+		<h2 id="Glide入门教程九-通知栏图片加载"><a href="#Glide入门教程九-通知栏图片加载" class="headerlink" title="Glide入门教程九-通知栏图片加载"></a>Glide入门教程九-通知栏图片加载</h2><p>系统通知的图标为用户传递了重要的内容。用NotificationCompat.Builder为通知图片传递一个图片是最直接方式，但是这个图片必须是<b>Bitmap</b>格式的。如果这个图片已经在手机上，那没问题。但，如果这个图片还不在手机上，需要从网络下载，想要用这个标准的工具是不现实的。</p>
 <ul>
-<li>内存缓存<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Glide.with(this)</div><div class="line">               .load(url10)</div><div class="line">               .placeholder(R.mipmap.pictures_no)</div><div class="line">               .skipMemoryCache(true)   //跳过内存缓存，不在内存中保存图片</div><div class="line">               .into(mIv10);</div></pre></td></tr></table></figure>
-</li>
+<li>自定义的通知布局</li>
 </ul>
-<p>调用了.skipMemoryCache( true )去特意告诉Glide跳过内存缓存。这意味着Glide不会把这个图片缓存到内存里。重要是，这个只影响内存缓存！Glide为了避免以后的网络请求，仍然会缓存到磁盘。<br>由于Glide默认会将所有的图片资源缓存到内存中，因此，没有必要手动调用.skipMemoryCache( false )了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</div><div class="line">&lt;LinearLayout</div><div class="line">    xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</div><div class="line">    android:layout_width=&quot;match_parent&quot;</div><div class="line">    android:layout_height=&quot;wrap_content&quot;</div><div class="line">    android:background=&quot;@android:color/white&quot;</div><div class="line">    android:orientation=&quot;vertical&quot;&gt;</div><div class="line"></div><div class="line">    &lt;LinearLayout</div><div class="line">        android:layout_width=&quot;match_parent&quot;</div><div class="line">        android:layout_height=&quot;wrap_content&quot;</div><div class="line">        android:orientation=&quot;horizontal&quot;</div><div class="line">        android:padding=&quot;2dp&quot;&gt;</div><div class="line"></div><div class="line">        &lt;ImageView</div><div class="line">            android:id=&quot;@+id/remoteview_notification_icon&quot;</div><div class="line">            android:layout_width=&quot;50dp&quot;</div><div class="line">            android:layout_height=&quot;50dp&quot;</div><div class="line">            android:layout_marginRight=&quot;2dp&quot;</div><div class="line">            android:layout_weight=&quot;0&quot;</div><div class="line">            android:scaleType=&quot;centerCrop&quot;/&gt;</div><div class="line"></div><div class="line">        &lt;LinearLayout</div><div class="line">            android:layout_width=&quot;0dp&quot;</div><div class="line">            android:layout_height=&quot;wrap_content&quot;</div><div class="line">            android:layout_weight=&quot;1&quot;</div><div class="line">            android:orientation=&quot;vertical&quot;&gt;</div><div class="line"></div><div class="line">            &lt;TextView</div><div class="line">                android:id=&quot;@+id/remoteview_notification_headline&quot;</div><div class="line">                android:layout_width=&quot;match_parent&quot;</div><div class="line">                android:layout_height=&quot;wrap_content&quot;</div><div class="line">                android:ellipsize=&quot;end&quot;</div><div class="line">                android:singleLine=&quot;true&quot;</div><div class="line">                android:textSize=&quot;12sp&quot;/&gt;</div><div class="line"></div><div class="line">            &lt;TextView</div><div class="line">                android:id=&quot;@+id/remoteview_notification_short_message&quot;</div><div class="line">                android:layout_width=&quot;match_parent&quot;</div><div class="line">                android:layout_height=&quot;wrap_content&quot;</div><div class="line">                android:ellipsize=&quot;end&quot;</div><div class="line">                android:paddingBottom=&quot;2dp&quot;</div><div class="line">                android:singleLine=&quot;true&quot;</div><div class="line">                android:textSize=&quot;14sp&quot;</div><div class="line">                android:textStyle=&quot;bold&quot;/&gt;</div><div class="line"></div><div class="line">        &lt;/LinearLayout&gt;</div><div class="line">    &lt;/LinearLayout&gt;</div><div class="line"></div><div class="line">&lt;/LinearLayout&gt;</div></pre></td></tr></table></figure>
 <ul>
-<li>跳过磁盘缓存</li>
+<li>初始化</li>
 </ul>
-<p>即使你关闭了内存缓存，所请求的图片仍然会被保存在设备的磁盘存储上。如果你有一张不段变化的图片，但是都是用的同一个URL，你可能需要禁止磁盘缓存了。<br>可以用.diskCacheStrategy()方法改变Glide的行为。不同于.skipMemoryCache()方法，它将需要从枚举型变量中选择一个，而不是一个简单的boolean。如果你想要禁止请求的磁盘缓存，使用枚举型变量DiskCacheStrategy.NONE作为参数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Glide.with(this)</div><div class="line">               .load(url10)</div><div class="line">               .placeholder(R.mipmap.pictures_no)</div><div class="line"></div><div class="line">               .skipMemoryCache(true)   //跳过内存缓存，不在内存中保存图片</div><div class="line">               .diskCacheStrategy(DiskCacheStrategy.NONE)  //跳这磁盘缓存</div><div class="line">               .into(mIv10);</div></pre></td></tr></table></figure>
-<ul>
-<li><p>DiskCacheStrategy</p>
-<ul>
-<li>DiskCacheStrategy.NONE 不在磁盘下保存图片没有磁盘缓存</li>
-<li>DiskCacheStrategy.SOURCE 只缓存全尺寸图，原图是多大就保存多大</li>
-<li>DiskCacheStrategy.RESULT 只缓存最终降低分辨后用到的图片   例:  .override(300,300),300*300像素</li>
-<li>DiskCacheStrategy.ALL 缓存所有类型的图片 (默认行为)</li>
-</ul>
-</li>
-</ul>
-<p>官方wiki<a href="https://github.com/bumptech/glide/wiki/Caching-and-Cache-Invalidation" target="_blank" rel="external">https://github.com/bumptech/glide/wiki/Caching-and-Cache-Invalidation</a></p>
-<p>源码<br><a href="https://github.com/ln0491/GlideDemo" target="_blank" rel="external">https://github.com/ln0491/GlideDemo</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line">//创建通知布局</div><div class="line">       RemoteViews remoteViews = new RemoteViews(getPackageName(),R.layout.remoteview_notification);</div><div class="line"></div><div class="line"></div><div class="line">       remoteViews.setImageViewResource(R.id.remoteview_notification_icon,R.mipmap.ic_launcher);</div><div class="line"></div><div class="line">       remoteViews.setTextViewText(R.id.remoteview_notification_headline,&quot;头部分标题&quot;);</div><div class="line">       remoteViews.setTextViewText(R.id.remoteview_notification_short_message,&quot;二级标题内容&quot;);</div><div class="line"></div><div class="line"></div><div class="line">       NotificationCompat.Builder builder =</div><div class="line">               new NotificationCompat.Builder(getApplicationContext())</div><div class="line">                                  .setSmallIcon(R.mipmap.ic_launcher)</div><div class="line">                                   .setTicker(&quot;ticker&quot;)</div><div class="line">                                   .setContentText(&quot;contenttext&quot;)</div><div class="line">                                   .setContentTitle(&quot;contenttitle&quot;)</div><div class="line">                                   .setContent(remoteViews)</div><div class="line">                                   .setPriority(NotificationCompat.PRIORITY_HIGH);</div><div class="line"></div><div class="line">       Notification notification = builder.build();</div><div class="line"></div><div class="line">       if(Build.VERSION.SDK_INT&gt;16)&#123;</div><div class="line">           notification.bigContentView = remoteViews;</div><div class="line">       &#125;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">       NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);</div><div class="line"></div><div class="line">       notificationManager.notify(NOTIFICATION_ID,notification);</div><div class="line">       //这个类是Glide自带的</div><div class="line">       NotificationTarget notificationTarget =</div><div class="line">               new NotificationTarget(getApplicationContext(),remoteViews,R.id.remoteview_notification_icon,notification,NOTIFICATION_ID);</div><div class="line"></div><div class="line"></div><div class="line">       String notUrl = &quot;http://photo.enterdesk.com/2009-4-21/200901241609531378.png&quot;;</div><div class="line">       Glide.with(getApplicationContext())</div><div class="line">               .load(notUrl)</div><div class="line">               .asBitmap()</div><div class="line">               .into(notificationTarget);</div></pre></td></tr></table></figure>
+<p>只要图片被加载了，我们定制的通知栏就会显示</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -154,7 +147,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="https://ln0491.github.io/2016/10/17/Glide入门教程六-缓存基础/" data-title="Glide入门教程六-缓存基础 | 刘楠的博客" data-tsina="null" class="share clearfix">
+	  <div data-url="https://ln0491.github.io/2016/10/19/Glide入门教程九-通知栏图片加载/" data-title="Glide入门教程九-通知栏图片加载 | 刘楠的博客" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -167,19 +160,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2016/10/17/Glide入门教程七-图片请求优先级/" title="Glide入门教程七-图片请求优先级">
-  <strong>上一篇：</strong><br/>
-  <span>
-  Glide入门教程七-图片请求优先级</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2016/10/14/Glide入门教程五-加载gif-视频快照-缩略图/"  title="Glide入门教程五-加载gif-视频快照-缩略图">
+<a href="/2016/10/18/Glide入门教程八-回调：定制view中使用SimpleTarget和ViewTarget/"  title="Glide入门教程八-回调：定制view中使用SimpleTarget和ViewTarget">
  <strong>下一篇：</strong><br/> 
- <span>Glide入门教程五-加载gif-视频快照-缩略图
+ <span>Glide入门教程八-回调：定制view中使用SimpleTarget和ViewTarget
 </span>
 </a>
 </div>
@@ -188,7 +173,7 @@
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2016/10/17/Glide入门教程六-缓存基础/" data-title="Glide入门教程六-缓存基础" data-url="https://ln0491.github.io/2016/10/17/Glide入门教程六-缓存基础/"></div>
+	<div class="ds-thread" data-thread-key="2016/10/19/Glide入门教程九-通知栏图片加载/" data-title="Glide入门教程九-通知栏图片加载" data-url="https://ln0491.github.io/2016/10/19/Glide入门教程九-通知栏图片加载/"></div>
 </section>
 
 
@@ -198,7 +183,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Glide入门教程六-缓存基础"><span class="toc-number">1.</span> <span class="toc-text">Glide入门教程六-缓存基础</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Glide入门教程九-通知栏图片加载"><span class="toc-number">1.</span> <span class="toc-text">Glide入门教程九-通知栏图片加载</span></a></li></ol>
  
   </div>
 
