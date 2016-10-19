@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ln0491.github.io/"/>
-  <updated>2016-10-18T11:39:23.736Z</updated>
+  <updated>2016-10-19T03:26:04.673Z</updated>
   <id>https://ln0491.github.io/</id>
   
   <author>
@@ -14,6 +14,38 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Glide入门教程九-通知栏图片加载</title>
+    <link href="https://ln0491.github.io/2016/10/19/Glide%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B%E4%B9%9D-%E9%80%9A%E7%9F%A5%E6%A0%8F%E5%9B%BE%E7%89%87%E5%8A%A0%E8%BD%BD/"/>
+    <id>https://ln0491.github.io/2016/10/19/Glide入门教程九-通知栏图片加载/</id>
+    <published>2016-10-19T03:25:31.000Z</published>
+    <updated>2016-10-19T03:26:04.673Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Glide入门教程九-通知栏图片加载"><a href="#Glide入门教程九-通知栏图片加载" class="headerlink" title="Glide入门教程九-通知栏图片加载"></a>Glide入门教程九-通知栏图片加载</h2><p>系统通知的图标为用户传递了重要的内容。用NotificationCompat.Builder为通知图片传递一个图片是最直接方式，但是这个图片必须是<b>Bitmap</b>格式的。如果这个图片已经在手机上，那没问题。但，如果这个图片还不在手机上，需要从网络下载，想要用这个标准的工具是不现实的。</p>
+<ul>
+<li>自定义的通知布局</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</div><div class="line">&lt;LinearLayout</div><div class="line">    xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</div><div class="line">    android:layout_width=&quot;match_parent&quot;</div><div class="line">    android:layout_height=&quot;wrap_content&quot;</div><div class="line">    android:background=&quot;@android:color/white&quot;</div><div class="line">    android:orientation=&quot;vertical&quot;&gt;</div><div class="line"></div><div class="line">    &lt;LinearLayout</div><div class="line">        android:layout_width=&quot;match_parent&quot;</div><div class="line">        android:layout_height=&quot;wrap_content&quot;</div><div class="line">        android:orientation=&quot;horizontal&quot;</div><div class="line">        android:padding=&quot;2dp&quot;&gt;</div><div class="line"></div><div class="line">        &lt;ImageView</div><div class="line">            android:id=&quot;@+id/remoteview_notification_icon&quot;</div><div class="line">            android:layout_width=&quot;50dp&quot;</div><div class="line">            android:layout_height=&quot;50dp&quot;</div><div class="line">            android:layout_marginRight=&quot;2dp&quot;</div><div class="line">            android:layout_weight=&quot;0&quot;</div><div class="line">            android:scaleType=&quot;centerCrop&quot;/&gt;</div><div class="line"></div><div class="line">        &lt;LinearLayout</div><div class="line">            android:layout_width=&quot;0dp&quot;</div><div class="line">            android:layout_height=&quot;wrap_content&quot;</div><div class="line">            android:layout_weight=&quot;1&quot;</div><div class="line">            android:orientation=&quot;vertical&quot;&gt;</div><div class="line"></div><div class="line">            &lt;TextView</div><div class="line">                android:id=&quot;@+id/remoteview_notification_headline&quot;</div><div class="line">                android:layout_width=&quot;match_parent&quot;</div><div class="line">                android:layout_height=&quot;wrap_content&quot;</div><div class="line">                android:ellipsize=&quot;end&quot;</div><div class="line">                android:singleLine=&quot;true&quot;</div><div class="line">                android:textSize=&quot;12sp&quot;/&gt;</div><div class="line"></div><div class="line">            &lt;TextView</div><div class="line">                android:id=&quot;@+id/remoteview_notification_short_message&quot;</div><div class="line">                android:layout_width=&quot;match_parent&quot;</div><div class="line">                android:layout_height=&quot;wrap_content&quot;</div><div class="line">                android:ellipsize=&quot;end&quot;</div><div class="line">                android:paddingBottom=&quot;2dp&quot;</div><div class="line">                android:singleLine=&quot;true&quot;</div><div class="line">                android:textSize=&quot;14sp&quot;</div><div class="line">                android:textStyle=&quot;bold&quot;/&gt;</div><div class="line"></div><div class="line">        &lt;/LinearLayout&gt;</div><div class="line">    &lt;/LinearLayout&gt;</div><div class="line"></div><div class="line">&lt;/LinearLayout&gt;</div></pre></td></tr></table></figure>
+<ul>
+<li>初始化</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line">//创建通知布局</div><div class="line">       RemoteViews remoteViews = new RemoteViews(getPackageName(),R.layout.remoteview_notification);</div><div class="line"></div><div class="line"></div><div class="line">       remoteViews.setImageViewResource(R.id.remoteview_notification_icon,R.mipmap.ic_launcher);</div><div class="line"></div><div class="line">       remoteViews.setTextViewText(R.id.remoteview_notification_headline,&quot;头部分标题&quot;);</div><div class="line">       remoteViews.setTextViewText(R.id.remoteview_notification_short_message,&quot;二级标题内容&quot;);</div><div class="line"></div><div class="line"></div><div class="line">       NotificationCompat.Builder builder =</div><div class="line">               new NotificationCompat.Builder(getApplicationContext())</div><div class="line">                                  .setSmallIcon(R.mipmap.ic_launcher)</div><div class="line">                                   .setTicker(&quot;ticker&quot;)</div><div class="line">                                   .setContentText(&quot;contenttext&quot;)</div><div class="line">                                   .setContentTitle(&quot;contenttitle&quot;)</div><div class="line">                                   .setContent(remoteViews)</div><div class="line">                                   .setPriority(NotificationCompat.PRIORITY_HIGH);</div><div class="line"></div><div class="line">       Notification notification = builder.build();</div><div class="line"></div><div class="line">       if(Build.VERSION.SDK_INT&gt;16)&#123;</div><div class="line">           notification.bigContentView = remoteViews;</div><div class="line">       &#125;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">       NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);</div><div class="line"></div><div class="line">       notificationManager.notify(NOTIFICATION_ID,notification);</div><div class="line">       //这个类是Glide自带的</div><div class="line">       NotificationTarget notificationTarget =</div><div class="line">               new NotificationTarget(getApplicationContext(),remoteViews,R.id.remoteview_notification_icon,notification,NOTIFICATION_ID);</div><div class="line"></div><div class="line"></div><div class="line">       String notUrl = &quot;http://photo.enterdesk.com/2009-4-21/200901241609531378.png&quot;;</div><div class="line">       Glide.with(getApplicationContext())</div><div class="line">               .load(notUrl)</div><div class="line">               .asBitmap()</div><div class="line">               .into(notificationTarget);</div></pre></td></tr></table></figure>
+<p>只要图片被加载了，我们定制的通知栏就会显示</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Glide入门教程九-通知栏图片加载&quot;&gt;&lt;a href=&quot;#Glide入门教程九-通知栏图片加载&quot; class=&quot;headerlink&quot; title=&quot;Glide入门教程九-通知栏图片加载&quot;&gt;&lt;/a&gt;Glide入门教程九-通知栏图片加载&lt;/h2&gt;&lt;p&gt;系统通知的图
+    
+    </summary>
+    
+      <category term="android" scheme="https://ln0491.github.io/categories/android/"/>
+    
+    
+      <category term="图片加载" scheme="https://ln0491.github.io/tags/%E5%9B%BE%E7%89%87%E5%8A%A0%E8%BD%BD/"/>
+    
+  </entry>
   
   <entry>
     <title>Glide入门教程八-回调：定制view中使用SimpleTarget和ViewTarget</title>
@@ -1074,223 +1106,6 @@ mCurrPageIndex = mDatas.size()*1000;
     
     
       <category term="android" scheme="https://ln0491.github.io/tags/android/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Volley自定义Request</title>
-    <link href="https://ln0491.github.io/2016/09/28/Volley%E8%87%AA%E5%AE%9A%E4%B9%89Request/"/>
-    <id>https://ln0491.github.io/2016/09/28/Volley自定义Request/</id>
-    <published>2016-09-28T06:16:01.000Z</published>
-    <updated>2016-09-28T06:16:22.313Z</updated>
-    
-    <content type="html"><![CDATA[<h4 id="自定义Request"><a href="#自定义Request" class="headerlink" title="自定义Request"></a>自定义Request</h4><pre><code>public class StringRequest extends Request&lt;String&gt; {
-        //监听器
-    private final Listener&lt;String&gt; mListener;
-
-    //构造方法 这时一定要调用super
-    public StringRequest(int method, String url, Listener&lt;String&gt; listener, ErrorListener errorListener) {
-        super(method, url, errorListener);
-        this.mListener = listener;
-    }
-
-    //调用上面的方法
-    public StringRequest(String url, Listener&lt;String&gt; listener, ErrorListener errorListener) {
-        this(0, url, listener, errorListener);
-    }
-
-    //只是deliverResponse()方法中的实现很简单，仅仅是调用了mListener中的onResponse()方法，并将response内容传入即可，这样就可以将服务器响应的数据进行回调了
-    protected void deliverResponse(String response) {
-        this.mListener.onResponse(response);
-    }
-
-    protected Response&lt;String&gt; parseNetworkResponse(NetworkResponse response) {
-        String parsed;
-        try {
-            //parseCharset字符编码
-            parsed = new String(response.data, HttpHeaderParser.parseCharset(response.headers));
-        } catch (UnsupportedEncodingException var4) {
-            parsed = new String(response.data);
-        }
-        //头信息
-        return Response.success(parsed, HttpHeaderParser.parseCacheHeaders(response));
-    }
-}
-</code></pre><p>由于Request类中的deliverResponse()和parseNetworkResponse()是两个抽象方法，<br>因此StringRequest中需要对这两个方法进行实现。deliverResponse()方法中的实现很简单，仅仅是调用了mListener中的onResponse()方法，并将response内容传入即可，这样就可以将服务器响应的数据进行回调了。<br>parseNetworkResponse()方法中则应该对服务器响应的数据进行解析,其中数据是以字节的形式存放在NetworkResponse的data变量中的，这里将数据取出然后组装成一个String，并传入Response的success()方法中即可。</p>
-<p>#####自定义GsonRequest</p>
-<pre><code>package com.liu.volleydemo.requestion;
-
-import com.android.volley.NetworkResponse;
-import com.android.volley.ParseError;
-import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.toolbox.HttpHeaderParser;
-import com.google.gson.Gson;
-
-import java.io.UnsupportedEncodingException;
-
-/**
- * @Description: 描述
- * @AUTHOR 刘楠  Create By 2016/9/26 0026 18:11
- */
-public class GsonRequest&lt;T&gt; extends Request&lt;T&gt; {
-    private final Response.Listener&lt;T&gt; mListener;
-    private       Gson                 mGson;
-    private       Class&lt;T&gt;             mClazz;
-
-    public GsonRequest(int method, String url, Class&lt;T&gt; clazz, Response.Listener&lt;T&gt; listener, Response.ErrorListener errorListener) {
-        super(method, url, errorListener);
-        this.mListener = listener;
-        mGson= new Gson();
-        mClazz = clazz;
-    }
-
-    public GsonRequest(String url, Class&lt;T&gt; clazz, Response.Listener&lt;T&gt; listener, Response.ErrorListener errorListener) {
-        this(Method.GET, url, clazz, listener, errorListener);
-    }
-
-    @Override
-    protected void deliverResponse(T response) {
-
-        mListener.onResponse(response);
-
-    }
-
-    @Override
-    protected Response&lt;T&gt; parseNetworkResponse(NetworkResponse response) {
-
-        try {
-            /**
-             * 获取数据
-             */
-            String jsonString = new String(response.data, HttpHeaderParser.parseCharset(response.headers));
-            // 转化反回
-            return Response.success(mGson.fromJson(jsonString, mClazz), HttpHeaderParser.parseCacheHeaders(response));
-
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-            return Response.error(new ParseError(e));
-        }
-
-    }
-
-}
-</code></pre><p>=================BEAN==========</p>
-<p>package com.liu.volleydemo.bean;</p>
-<p>import java.util.List;</p>
-<pre><code>/**
- * @Description: 描述
- * @AUTHOR 刘楠  Create By 2016/9/26 0026 18:36
- */
-public class WeixinSelected {
-
-
-
-
-    public String       reason;
-
-
-    public ResultEntity result;
-    public int error_code;
-
-    @Override
-    public String toString() {
-        return &quot;WeixinSelected{&quot; +
-                &quot;reason=&apos;&quot; + reason + &apos;\&apos;&apos; +
-                &quot;, result=&quot; + result +
-                &quot;, error_code=&quot; + error_code +
-                &apos;}&apos;;
-    }
-
-    public static class ResultEntity {
-        public int totalPage;
-        public int ps;
-        public int pno;
-
-        @Override
-        public String toString() {
-            return &quot;ResultEntity{&quot; +
-                    &quot;totalPage=&quot; + totalPage +
-                    &quot;, ps=&quot; + ps +
-                    &quot;, pno=&quot; + pno +
-                    &quot;, list=&quot; + list +
-                    &apos;}&apos;;
-        }
-
-
-
-        public List&lt;ListEntity&gt; list;
-
-        public static class ListEntity {
-            public String firstImg;
-            public String id;
-            public String source;
-            public String title;
-            public String url;
-            public String mark;
-
-            @Override
-            public String toString() {
-                return &quot;ListEntity{&quot; +
-                        &quot;firstImg=&apos;&quot; + firstImg + &apos;\&apos;&apos; +
-                        &quot;, id=&apos;&quot; + id + &apos;\&apos;&apos; +
-                        &quot;, source=&apos;&quot; + source + &apos;\&apos;&apos; +
-                        &quot;, title=&apos;&quot; + title + &apos;\&apos;&apos; +
-                        &quot;, url=&apos;&quot; + url + &apos;\&apos;&apos; +
-                        &quot;, mark=&apos;&quot; + mark + &apos;\&apos;&apos; +
-                        &apos;}&apos;;
-            }
-        }
-    }
-}
-</code></pre><p>请求</p>
-<pre><code>final RequestQueue requestQueue = MyVolley.getRequestQueue(this);
-
-   String       url    =&quot;http://v.juhe.cn/weixin/query&quot;;
-   final String appkey =&quot;24834287692b8d54cf634668ce5de0b4&quot;;
-
-  GsonRequest&lt;WeixinSelected&gt; gsonRequest = new GsonRequest&lt;WeixinSelected&gt;(Request.Method.POST,url, WeixinSelected.class, new Response.Listener&lt;WeixinSelected&gt;() {
-       @Override
-       public void onResponse(WeixinSelected weixinSelected) {
-
-           Log.d(&quot;vivi&quot;, &quot;onResponse: &quot;+weixinSelected.toString());
-
-       }
-   }, new Response.ErrorListener() {
-       @Override
-       public void onErrorResponse(VolleyError volleyError) {
-
-           volleyError.printStackTrace();
-           Log.d(&quot;vivi&quot;, &quot;onErrorResponse: &quot;+volleyError.getMessage());
-       }
-   }){
-       @Override
-       protected Map&lt;String, String&gt; getParams() throws AuthFailureError {
-
-           Map&lt;String,String&gt; params = new HashMap&lt;&gt;();
-           params.put(&quot;key&quot;,appkey);
-           return params;
-       }
-   };
-
-   requestQueue.add(gsonRequest);
-</code></pre><blockquote>
-<p>日志</p>
-</blockquote>
-<pre><code>WeixinSelected{reason=&apos;success&apos;, result=ResultEntity{totalPage=25, ps=20, pno=1, list=[ListEntity{firstImg=&apos;http://zxpic.gtimg.com/infonew/0/wechat_pics_-8255071.jpg/640&apos;, id=&apos;wechat_20160915039850&apos;, source=&apos;功夫体育&apos;, title=&apos;女排冠军们“高”人一等，谁敢娶？&apos;, url=&apos;http://v.juhe.cn/weixin/redirect?wid=wechat_20160915039850&apos;, mark=&apos;&apos;}, ListEntity{firstImg=&apos;http://zxpic.gtimg.com/infonew/0/wechat_pics_-8575838.jpg/640&apos;, id=&apos;wechat_20151201058612&apos;, source=&apos;龍神迷失&apos;, title=&apos;中国首辆上牌的布加迪威龙，以为车牌很一般，最后发现车牌很霸气&apos;, url=&apos;http://v.juhe.cn/weixin/redirect?wid=wechat_20151201058612&apos;, mark=&apos;&apos;}, ListEntity{firstImg=&apos;http://zxpic.gtimg.com/infonew/0/wechat_pics_-8206632.jpg/640&apos;, id=&apos;wechat_20160102022165&apos;, source=&apos;篮球频道&apos;, title=&apos;【球迷关注点】书豪:一度想退役不再打球 曾被科比一句蔑视激怒&apos;, url=&apos;http://v.juhe.cn/weixin/redirect?wid=wechat_20160102022165&apos;, mark=&apos;&apos;}, ListEntity{firstImg=&apos;http://zxpic.gtimg.com/infonew/0/wechat_pics_-8064767.jpg/640&apos;, id=&apos;wechat_20160908053966&apos;, source=&apos;娱乐圈扒姐&apos;, title=&apos;某知名女星在节目中威胁选手收贿，私下爱搞潜规则&apos;, url=&apos;http://v.juhe.cn/weixin/redirect?wid=wechat_20160908053966&apos;, mark=&apos;&apos;}, ListEntity{firstImg=&apos;http://zxpic.gtimg.com/infonew/0/wechat_pics_-7986866.jpg/640&apos;, id=&apos;wechat_20160906017693&apos;, source=&apos;颜小白的篮球梦&apos;, title=&apos;科比跟乔丹比到底差在哪里？仅仅是身体素质吗&apos;, url=&apos;http://v.juhe.cn/weixin/redirect?wid=wechat_20160906017693&apos;, mark=&apos;&apos;}, ListEntity{firstImg=&apos;http://zxpic.gtimg.com/infonew/0/wechat_pics_-7986843.jpg/640&apos;, id=&apos;wechat_20160906017663&apos;, source=&apos;嘻嘻哈哈&apos;, title=&apos;神动图|这手感绝对不差！&apos;, url=&apos;http://v.juhe.cn/weixin/redirect?wid=wechat_20160906017663&apos;, mark=&apos;&apos;}, ListEntity{firstImg=&apos;http://zxpic.gtimg.com/infonew/0/wechat_pics_-7986833.jpg/640&apos;, id=&apos;wechat_20160906017658&apos;, source=&apos;嘻嘻哈哈&apos;, title=&apos;江湖流传的这些奇葩书，简直刷新我的三观~&apos;, url=&apos;http://v.juhe.cn/weixin/redirect?wid=wechat_20160906017658&apos;, mark=&apos;&apos;}, ListEntity{firstImg=&apos;http://zxpic.gtimg.com/infonew/0/wechat_pics_-7986819.jpg/640&apos;, id=&apos;wechat_20160906017552&apos;, source=&apos;笑你妹&apos;, title=&apos;【搞笑段子】有心无力啊，办起事来几分钟完事~&apos;, url=&apos;http://v.juhe.cn/weixin/redirect?wid=wechat_20160906017552&apos;, mark=&apos;&apos;}, ListEntity{firstImg=&apos;http://zxpic.gtimg.com/infonew/0/wechat_pics_-7986802.jpg/640&apos;, id=&apos;wechat_20160906017288&apos;, source=&apos;TechWeb&apos;, title=&apos;在iPhone7发布之前我们先来看看它的跑分吧&apos;, url=&apos;http://v.juhe.cn/weixin/redirect?wid=wechat_20160906017288&apos;, mark=&apos;&apos;}, ListEntity{firstImg=&apos;http://zxpic.gtimg.com/infonew/0/wechat_pics_-7986693.jpg/640&apos;, id=&apos;wechat_20160906016354&apos;, source=&apos;陇南生活网&apos;, title=&apos;甘肃：将发生严重腐败问题的地区部门直接评为“一般”&apos;, url=&apos;http://v.juhe.cn/weixin/redirect?wid=wechat_20160906016354&apos;, mark=&apos;&apos;}, ListEntity{firstImg=&apos;http://zxpic.gtimg.com/infonew/0/wechat_pics_-7986675.jpg/640&apos;, id=&apos;wechat_20160906016213&apos;, source=&apos;云上的空母&apos;, title=&apos;万吨两栖舰上的袖珍火炮，射速为每分钟200发&apos;, url=&apos;http://v.juhe.cn/weixin/redirect?wid=wechat_20160906016213&apos;, mark=&apos;&apos;}, ListEntity{firstImg=&apos;http://zxpic.gtimg.com/infonew/0/wechat_pics_-7986645.jpg/640&apos;, id=&apos;wechat_20160906016204&apos;, source=&apos;云上的空母&apos;, title=&apos;全球最大口径的加特林机关炮，一眨眼打出50发炮弹&apos;, url=&apos;http://v.juhe.cn/weixin/redirect?wid=wechat_20160906016204&apos;, mark=&apos;&apos;}, ListEntity{firstImg=&apos;http://zxpic.gtimg.com/infonew/0/wechat_pics_-7986534.jpg/640&apos;, id=&apos;wechat_20160906015882&apos;, source=&apos;钛媒体&apos;, title=&apos;三星耗10亿美元召回Note7，并称损失令人real心痛钛晨报&apos;, url=&apos;http://v.juhe.cn/weixin/redirect?wid=wechat_20160906015882&apos;, mark=&apos;&apos;}, ListEntity{firstImg=&apos;http://zxpic.gtimg.com/infonew/0/wechat_pics_-7986438.jpg/640&apos;, id=&apos;wechat_20160906015702&apos;, source=&apos;摄影笔记&apos;, title=&apos;一篇文章看懂尼康数码单反&apos;, url=&apos;http://v.juhe.cn/weixin/redirect?wid=wechat_20
-</code></pre><p>源码：<br><a href="https://github.com/ln0491/VolleyDemo" target="_blank" rel="external">https://github.com/ln0491/VolleyDemo</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h4 id=&quot;自定义Request&quot;&gt;&lt;a href=&quot;#自定义Request&quot; class=&quot;headerlink&quot; title=&quot;自定义Request&quot;&gt;&lt;/a&gt;自定义Request&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;public class StringRequest ext
-    
-    </summary>
-    
-      <category term="android" scheme="https://ln0491.github.io/categories/android/"/>
-    
-    
-      <category term="volley" scheme="https://ln0491.github.io/tags/volley/"/>
     
   </entry>
   
