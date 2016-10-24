@@ -4,29 +4,38 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>Glide入门教程六-缓存基础 | 刘楠的博客</title>
+    <title>GRADLE命令简单学习 | 刘楠的博客</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Liu Nan">
     
 
     
-    <meta name="description" content="Glide入门教程六-缓存基础Glide默认使用内存和磁盘缓存来避免不必要的网络请求,所有的图片请求都会被缓存在内存和磁盘上.
-
-内存缓存12345Glide.with(this)               .load(url10)               .placeholder(R.mipmap.pictures_no)               .skipMemoryCache(tr">
+    <meta name="description" content="##GRADLE命令简单学习
+1、./gradlew -v 来查看下项目所用的Gradle版本如果你是第一次执行会去下载Gradle，这个过程如果不翻墙非常慢，建议翻墙
+紧接着下载成功会看到如下信息：
+------------------------------------------------------------
+Gradle 2.2.1
+-------------------------">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Glide入门教程六-缓存基础">
-<meta property="og:url" content="https://ln0491.github.io/2016/10/17/Glide入门教程六-缓存基础/index.html">
+<meta property="og:title" content="GRADLE命令简单学习">
+<meta property="og:url" content="https://ln0491.github.io/2016/10/24/GRADLE命令简单学习/index.html">
 <meta property="og:site_name" content="刘楠的博客">
-<meta property="og:description" content="Glide入门教程六-缓存基础Glide默认使用内存和磁盘缓存来避免不必要的网络请求,所有的图片请求都会被缓存在内存和磁盘上.
-
-内存缓存12345Glide.with(this)               .load(url10)               .placeholder(R.mipmap.pictures_no)               .skipMemoryCache(tr">
-<meta property="og:updated_time" content="2016-10-18T11:39:12.855Z">
+<meta property="og:description" content="##GRADLE命令简单学习
+1、./gradlew -v 来查看下项目所用的Gradle版本如果你是第一次执行会去下载Gradle，这个过程如果不翻墙非常慢，建议翻墙
+紧接着下载成功会看到如下信息：
+------------------------------------------------------------
+Gradle 2.2.1
+-------------------------">
+<meta property="og:updated_time" content="2016-10-24T09:44:13.356Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Glide入门教程六-缓存基础">
-<meta name="twitter:description" content="Glide入门教程六-缓存基础Glide默认使用内存和磁盘缓存来避免不必要的网络请求,所有的图片请求都会被缓存在内存和磁盘上.
-
-内存缓存12345Glide.with(this)               .load(url10)               .placeholder(R.mipmap.pictures_no)               .skipMemoryCache(tr">
+<meta name="twitter:title" content="GRADLE命令简单学习">
+<meta name="twitter:description" content="##GRADLE命令简单学习
+1、./gradlew -v 来查看下项目所用的Gradle版本如果你是第一次执行会去下载Gradle，这个过程如果不翻墙非常慢，建议翻墙
+紧接着下载成功会看到如下信息：
+------------------------------------------------------------
+Gradle 2.2.1
+-------------------------">
 
     
     <link rel="alternative" href="/atom.xml" title="刘楠的博客" type="application/atom+xml">
@@ -89,14 +98,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2016/10/17/Glide入门教程六-缓存基础/" title="Glide入门教程六-缓存基础" itemprop="url">Glide入门教程六-缓存基础</a>
+      <a href="/2016/10/24/GRADLE命令简单学习/" title="GRADLE命令简单学习" itemprop="url">GRADLE命令简单学习</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="Liu Nan" target="_blank" itemprop="author">Liu Nan</a>
 		
   <p class="article-time">
-    <time datetime="2016-10-17T08:15:44.000Z" itemprop="datePublished"> 发表于 2016-10-17</time>
+    <time datetime="2016-10-24T09:43:24.000Z" itemprop="datePublished"> 发表于 2016-10-24</time>
     
   </p>
 </header>
@@ -105,34 +114,72 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Glide入门教程六-缓存基础"><span class="toc-number">1.</span> <span class="toc-text">Glide入门教程六-缓存基础</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、-gradlew-v-来查看下项目所用的Gradle版本"><span class="toc-number">1.</span> <span class="toc-text">1、./gradlew -v 来查看下项目所用的Gradle版本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、接着执行-gradlew-clean"><span class="toc-number">2.</span> <span class="toc-text">2、接着执行 ./gradlew clean</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、最后执行-gradlew-build"><span class="toc-number">3.</span> <span class="toc-text">3、最后执行 ./gradlew build</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#很有用的命令-assemble"><span class="toc-number">4.</span> <span class="toc-text">很有用的命令 assemble</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-友盟多渠道打包"><span class="toc-number">5.</span> <span class="toc-text">4.友盟多渠道打包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#assemble结合Build-Variants来创建task"><span class="toc-number">6.</span> <span class="toc-text">assemble结合Build Variants来创建task</span></a></li></ol>
 		
 		</div>
 		
-		<h2 id="Glide入门教程六-缓存基础"><a href="#Glide入门教程六-缓存基础" class="headerlink" title="Glide入门教程六-缓存基础"></a>Glide入门教程六-缓存基础</h2><p>Glide默认使用内存和磁盘缓存来避免不必要的网络请求,所有的图片请求都会被缓存在内存和磁盘上.</p>
+		<p>##GRADLE命令简单学习</p>
+<h3 id="1、-gradlew-v-来查看下项目所用的Gradle版本"><a href="#1、-gradlew-v-来查看下项目所用的Gradle版本" class="headerlink" title="1、./gradlew -v 来查看下项目所用的Gradle版本"></a>1、./gradlew -v 来查看下项目所用的Gradle版本</h3><p>如果你是第一次执行会去下载Gradle，这个过程如果不翻墙非常慢，建议翻墙</p>
+<p>紧接着下载成功会看到如下信息：</p>
+<pre><code>------------------------------------------------------------
+Gradle 2.2.1
+------------------------------------------------------------
+
+Build time:   2014-11-24 09:45:35 UTC
+Build number: none
+Revision:     6fcb59c06f43a4e6b1bcb401f7686a8601a1fb4a
+
+Groovy:       2.3.6
+Ant:          Apache Ant(TM) version 1.9.3 compiled on December 23 2013
+JVM:          1.7.0_60 (Oracle Corporation 24.60-b09)
+OS:           Mac OS X 10.9.5 x86_64
+</code></pre><h3 id="2、接着执行-gradlew-clean"><a href="#2、接着执行-gradlew-clean" class="headerlink" title="2、接着执行 ./gradlew clean"></a>2、接着执行 ./gradlew clean</h3><p>BUILD SUCCESSFUL</p>
+<h3 id="3、最后执行-gradlew-build"><a href="#3、最后执行-gradlew-build" class="headerlink" title="3、最后执行 ./gradlew build"></a>3、最后执行 ./gradlew build</h3><p>这个命令会直接编译并生成相应的apk文件，如果看到如下字样就代表build成功了</p>
+<h3 id="很有用的命令-assemble"><a href="#很有用的命令-assemble" class="headerlink" title="很有用的命令 assemble"></a>很有用的命令 <strong>assemble</strong></h3><ul>
+<li>./gradlew assembleDebug 编译并打Debug包</li>
+<li><p>./gradlew assembleRelease 编译并打Release的包除此之外，assemble还可以和productFlavors结合使用，具体在下一篇多渠道打包进一步解释。</p>
+</li>
+<li><p>./gradlew installRelease Release模式打包并安装</p>
+</li>
+<li>./gradlew uninstallRelease 卸载Release模式包</li>
+</ul>
+<h3 id="4-友盟多渠道打包"><a href="#4-友盟多渠道打包" class="headerlink" title="4.友盟多渠道打包"></a>4.友盟多渠道打包</h3><p>在AndroidManifest.xml里面会有这么一段<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;meta-data</div><div class="line">    android:name=&quot;UMENG_CHANNEL&quot;</div><div class="line">    android:value=&quot;Channel_ID&quot; /&gt;</div></pre></td></tr></table></figure></p>
+<p>里面的Channel_ID就是渠道标示。</p>
 <ul>
-<li>内存缓存<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Glide.with(this)</div><div class="line">               .load(url10)</div><div class="line">               .placeholder(R.mipmap.pictures_no)</div><div class="line">               .skipMemoryCache(true)   //跳过内存缓存，不在内存中保存图片</div><div class="line">               .into(mIv10);</div></pre></td></tr></table></figure>
+<li><p>第一步 在AndroidManifest.xml里配置PlaceHolder</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;meta-data</div><div class="line">    android:name=&quot;UMENG_CHANNEL&quot;</div><div class="line">    android:value=&quot;$&#123;UMENG_CHANNEL_VALUE&#125;&quot; /&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>第二步 在build.gradle设置productFlavors</p>
 </li>
 </ul>
-<p>调用了.skipMemoryCache( true )去特意告诉Glide跳过内存缓存。这意味着Glide不会把这个图片缓存到内存里。重要是，这个只影响内存缓存！Glide为了避免以后的网络请求，仍然会缓存到磁盘。<br>由于Glide默认会将所有的图片资源缓存到内存中，因此，没有必要手动调用.skipMemoryCache( false )了</p>
-<ul>
-<li>跳过磁盘缓存</li>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">android &#123;  </div><div class="line">    productFlavors &#123;</div><div class="line">        xiaomi &#123;</div><div class="line">            manifestPlaceholders = [UMENG_CHANNEL_VALUE: &quot;xiaomi&quot;]</div><div class="line">        &#125;</div><div class="line">        _360 &#123;</div><div class="line">            manifestPlaceholders = [UMENG_CHANNEL_VALUE: &quot;_360&quot;]</div><div class="line">        &#125;</div><div class="line">        baidu &#123;</div><div class="line">            manifestPlaceholders = [UMENG_CHANNEL_VALUE: &quot;baidu&quot;]</div><div class="line">        &#125;</div><div class="line">        wandoujia &#123;</div><div class="line">            manifestPlaceholders = [UMENG_CHANNEL_VALUE: &quot;wandoujia&quot;]</div><div class="line">        &#125;</div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>或者批量修改<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">android &#123;  </div><div class="line">    productFlavors &#123;</div><div class="line">        xiaomi &#123;&#125;</div><div class="line">        _360 &#123;&#125;</div><div class="line">        baidu &#123;&#125;</div><div class="line">        wandoujia &#123;&#125;</div><div class="line">    &#125;  </div><div class="line"></div><div class="line">    productFlavors.all &#123; </div><div class="line">        flavor -&gt; flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name] </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>直接执行 ./gradlew assembleRelease打包</p>
+<h3 id="assemble结合Build-Variants来创建task"><a href="#assemble结合Build-Variants来创建task" class="headerlink" title="assemble结合Build Variants来创建task"></a>assemble结合Build Variants来创建task</h3><ul>
+<li>./gradlew assembleDebug</li>
+<li>./gradlew assembleRelease</li>
 </ul>
-<p>即使你关闭了内存缓存，所请求的图片仍然会被保存在设备的磁盘存储上。如果你有一张不段变化的图片，但是都是用的同一个URL，你可能需要禁止磁盘缓存了。<br>可以用.diskCacheStrategy()方法改变Glide的行为。不同于.skipMemoryCache()方法，它将需要从枚举型变量中选择一个，而不是一个简单的boolean。如果你想要禁止请求的磁盘缓存，使用枚举型变量DiskCacheStrategy.NONE作为参数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Glide.with(this)</div><div class="line">               .load(url10)</div><div class="line">               .placeholder(R.mipmap.pictures_no)</div><div class="line"></div><div class="line">               .skipMemoryCache(true)   //跳过内存缓存，不在内存中保存图片</div><div class="line">               .diskCacheStrategy(DiskCacheStrategy.NONE)  //跳这磁盘缓存</div><div class="line">               .into(mIv10);</div></pre></td></tr></table></figure>
+<p>assemble 还能和 Product Flavor 结合创建新的任务，其实 assemble 是和 Build Variants 一起结合使用的，而 Build Variants = Build Type + Product Flavor</p>
 <ul>
-<li><p>DiskCacheStrategy</p>
-<ul>
-<li>DiskCacheStrategy.NONE 不在磁盘下保存图片没有磁盘缓存</li>
-<li>DiskCacheStrategy.SOURCE 只缓存全尺寸图，原图是多大就保存多大</li>
-<li>DiskCacheStrategy.RESULT 只缓存最终降低分辨后用到的图片   例:  .override(300,300),300*300像素</li>
-<li>DiskCacheStrategy.ALL 缓存所有类型的图片 (默认行为)</li>
-</ul>
+<li><p>如果我们想打包wandoujia渠道的release版本，执行如下命令就好了：</p>
+<p>  ./gradlew assembleWandoujiaRelease</p>
 </li>
 </ul>
-<p>官方wiki<a href="https://github.com/bumptech/glide/wiki/Caching-and-Cache-Invalidation" target="_blank" rel="external">https://github.com/bumptech/glide/wiki/Caching-and-Cache-Invalidation</a></p>
-<p>源码<br><a href="https://github.com/ln0491/GlideDemo" target="_blank" rel="external">https://github.com/ln0491/GlideDemo</a></p>
-  
+<p>如果我们只打wandoujia渠道版本，则：</p>
+<pre><code>./gradlew assembleWandoujia
+</code></pre><ul>
+<li><p>同理我想打全部Release版本：</p>
+<p>  ./gradlew assembleRelease</p>
+</li>
+</ul>
+<p>这条命令会把Product Flavor下的所有渠道的Release版本都打出来。</p>
+<p>总之，assemble 命令创建task有如下用法</p>
+<ul>
+<li><strong>assemble</strong>： 允许直接构建一个Variant版本，例如assembleFlavor1Debug。</li>
+<li><strong>assemble</strong>： 允许构建指定Build Type的所有APK，例如assembleDebug将会构建Flavor1Debug和Flavor2Debug两个Variant版本。</li>
+<li><strong>assemble</strong>： 允许构建指定flavor的所有APK，例如assembleFlavor1将会构建Flavor1Debug和Flavor1Release两个Variant版本。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">defaultConfig &#123;</div><div class="line">     </div><div class="line">      </div><div class="line">      // dex突破65535的限制</div><div class="line">      multiDexEnabled true</div><div class="line">      // 默认是umeng的渠道</div><div class="line">      manifestPlaceholders = [UMENG_CHANNEL_VALUE: &quot;umeng&quot;]</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  lintOptions &#123;</div><div class="line">      abortOnError false</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  signingConfigs &#123;</div><div class="line">      debug &#123;</div><div class="line">          // No debug config</div><div class="line">      &#125;</div><div class="line"></div><div class="line">      release &#123;</div><div class="line">          storeFile file(&quot;../yourapp.keystore&quot;)</div><div class="line">          storePassword &quot;your password&quot;</div><div class="line">          keyAlias &quot;your alias&quot;</div><div class="line">          keyPassword &quot;your password&quot;</div><div class="line">      &#125;</div><div class="line">  &#125;</div></pre></td></tr></table></figure>  
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
@@ -145,7 +192,7 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/图片加载/">图片加载</a>
+  <span></span> <a href="/tags/工具/">工具</a>
   </div>
 
 </div>
@@ -154,7 +201,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="https://ln0491.github.io/2016/10/17/Glide入门教程六-缓存基础/" data-title="Glide入门教程六-缓存基础 | 刘楠的博客" data-tsina="null" class="share clearfix">
+	  <div data-url="https://ln0491.github.io/2016/10/24/GRADLE命令简单学习/" data-title="GRADLE命令简单学习 | 刘楠的博客" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -167,19 +214,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2016/10/17/Glide入门教程七-图片请求优先级/" title="Glide入门教程七-图片请求优先级">
-  <strong>上一篇：</strong><br/>
-  <span>
-  Glide入门教程七-图片请求优先级</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2016/10/14/Glide入门教程五-加载gif-视频快照-缩略图/"  title="Glide入门教程五-加载gif-视频快照-缩略图">
+<a href="/2016/10/24/Glide-源码浅析/"  title="Glide 源码浅析">
  <strong>下一篇：</strong><br/> 
- <span>Glide入门教程五-加载gif-视频快照-缩略图
+ <span>Glide 源码浅析
 </span>
 </a>
 </div>
@@ -188,7 +227,7 @@
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2016/10/17/Glide入门教程六-缓存基础/" data-title="Glide入门教程六-缓存基础" data-url="https://ln0491.github.io/2016/10/17/Glide入门教程六-缓存基础/"></div>
+	<div class="ds-thread" data-thread-key="2016/10/24/GRADLE命令简单学习/" data-title="GRADLE命令简单学习" data-url="https://ln0491.github.io/2016/10/24/GRADLE命令简单学习/"></div>
 </section>
 
 
@@ -198,7 +237,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Glide入门教程六-缓存基础"><span class="toc-number">1.</span> <span class="toc-text">Glide入门教程六-缓存基础</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、-gradlew-v-来查看下项目所用的Gradle版本"><span class="toc-number">1.</span> <span class="toc-text">1、./gradlew -v 来查看下项目所用的Gradle版本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、接着执行-gradlew-clean"><span class="toc-number">2.</span> <span class="toc-text">2、接着执行 ./gradlew clean</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、最后执行-gradlew-build"><span class="toc-number">3.</span> <span class="toc-text">3、最后执行 ./gradlew build</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#很有用的命令-assemble"><span class="toc-number">4.</span> <span class="toc-text">很有用的命令 assemble</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-友盟多渠道打包"><span class="toc-number">5.</span> <span class="toc-text">4.友盟多渠道打包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#assemble结合Build-Variants来创建task"><span class="toc-number">6.</span> <span class="toc-text">assemble结合Build Variants来创建task</span></a></li></ol>
  
   </div>
 
