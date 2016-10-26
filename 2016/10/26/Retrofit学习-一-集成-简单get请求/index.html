@@ -23,15 +23,13 @@
 集成githubhttps://github.com/square/retrofit
 在studio在添加依赖
 123456 //添加retrofit-会自动下载okhttpcompile &amp;apos;com.squareup.retrofit2:retrofit:2.1.0&amp;apos;    //添加retrofit gson转换会自动下载gs">
-<meta property="og:image" content="https://ln0491.github.io/img/first.png">
-<meta property="og:updated_time" content="2016-10-26T04:25:01.602Z">
+<meta property="og:updated_time" content="2016-10-26T05:16:00.701Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Retrofit学习(一)集成-简单get请求">
 <meta name="twitter:description" content="##Retrofit学习(一)集成-简单get请求
 集成githubhttps://github.com/square/retrofit
 在studio在添加依赖
 123456 //添加retrofit-会自动下载okhttpcompile &amp;apos;com.squareup.retrofit2:retrofit:2.1.0&amp;apos;    //添加retrofit gson转换会自动下载gs">
-<meta name="twitter:image" content="https://ln0491.github.io/img/first.png">
 
     
     <link rel="alternative" href="/atom.xml" title="刘楠的博客" type="application/atom+xml">
@@ -132,7 +130,10 @@
 <p>记得添加toString方法方法查看</p>
 <p>更改接口返回值<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">public interface GitHubService &#123;</div><div class="line"></div><div class="line"></div><div class="line">    @GET(&quot;users/&#123;user&#125;/repos&quot;)</div><div class="line">    Call&lt;List&lt;Repo&gt;&gt; listRepos(@Path(&quot;user&quot;) String user);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>再次请求<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div><div class="line">    //建立retrofit对象</div><div class="line">    Retrofit retrofit = new Retrofit.Builder().baseUrl(&quot;https://api.github.com/&quot;)</div><div class="line">            //添加返回字符串的支持--不知道返回的是什么，添加字符串支持</div><div class="line">            .addConverterFactory(ScalarsConverterFactory.create())</div><div class="line">            //添加GSON转换支持</div><div class="line">            .addConverterFactory(GsonConverterFactory.create())</div><div class="line">            .build();</div><div class="line"></div><div class="line">    //获取接口</div><div class="line">    GitHubService service = retrofit.create(GitHubService.class);</div><div class="line"></div><div class="line">    //调用方法-返回 回调更换为对象</div><div class="line">    Call&lt;List&lt;Repo&gt;&gt; call = service.listRepos(&quot;octocat&quot;);</div><div class="line"></div><div class="line">    //异步调用</div><div class="line">    call.enqueue(new Callback&lt;List&lt;Repo&gt;&gt;() &#123;</div><div class="line">        @Override</div><div class="line">        public void onResponse(Call&lt;List&lt;Repo&gt;&gt; call, Response&lt;List&lt;Repo&gt;&gt; response) &#123;</div><div class="line"></div><div class="line">            L.d(&quot;vivi&quot;,response.message()+&quot;  &quot;+response.body());</div><div class="line">            mTvResult.setText(response.message()+&quot; \n结果: &quot;+response.body().toString());</div><div class="line">            Toast.makeText(FirstActivity.this, &quot;结果:\n &quot;+response.body().toString(), Toast.LENGTH_SHORT).show();</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        @Override</div><div class="line">        public void onFailure(Call&lt;List&lt;Repo&gt;&gt; call, Throwable t) &#123;</div><div class="line"></div><div class="line">            t.printStackTrace();</div><div class="line">            mTvResult.setText(t.getMessage());</div><div class="line"></div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p><img src="https://ln0491.github.io/img/first.png" alt="first.png"></p>
+<p>简单封装</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">public class RetrofitWrapper &#123;</div><div class="line">    //单例</div><div class="line">    private static RetrofitWrapper INSTANCE;</div><div class="line">    // Retrofit 对象</div><div class="line">    private Retrofit mRetrofit;</div><div class="line"></div><div class="line">    private RetrofitWrapper()&#123;</div><div class="line">        mRetrofit = new Retrofit.Builder()</div><div class="line">                .baseUrl(Constant.BASE_URL)  //添加baseurl</div><div class="line">                .addConverterFactory(ScalarsConverterFactory.create()) //添加返回为字符串的支持</div><div class="line">                .addConverterFactory(GsonConverterFactory.create()) //create中可以传入其它json对象，默认Gson</div><div class="line">                .build();</div><div class="line">    &#125;</div><div class="line">    public static RetrofitWrapper getInstance() &#123;</div><div class="line"></div><div class="line">        if(INSTANCE == null) &#123;</div><div class="line">            synchronized(RetrofitWrapper.class) &#123;</div><div class="line">                if(INSTANCE == null) &#123;</div><div class="line">                    INSTANCE = new RetrofitWrapper();</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        return INSTANCE;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    /**</div><div class="line">     * 转换为对象的Service</div><div class="line">     * @param service</div><div class="line">     * @param &lt;T&gt;</div><div class="line">     * @return 传入的类型</div><div class="line">     */</div><div class="line">    public &lt;T&gt; T create(Class&lt;T&gt; service)&#123;</div><div class="line">        return mRetrofit.create(service);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">Call&lt;List&lt;Repo&gt;&gt; callLn0941 = RetrofitWrapper.getInstance().create(GitHubService.class).listRepos(&quot;octocat&quot;);</div><div class="line"></div><div class="line">callLn0941.enqueue(new Callback&lt;List&lt;Repo&gt;&gt;() &#123;</div><div class="line">    @Override</div><div class="line">    public void onResponse(Call&lt;List&lt;Repo&gt;&gt; call, Response&lt;List&lt;Repo&gt;&gt; response) &#123;</div><div class="line">        // ...do something</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void onFailure(Call&lt;List&lt;Repo&gt;&gt; call, Throwable t) &#123;</div><div class="line">          // ...do something</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>这样用着方便很多<br>源码：<br><a href="https://github.com/ln0491/RetrofitDemo2" target="_blank" rel="external">https://github.com/ln0491/RetrofitDemo2</a></p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -242,27 +243,11 @@
 			
 		
 			
-				<li><a href="/tags/自定义View/" title="自定义View">自定义View<sup>2</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/test/" title="test">test<sup>2</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/工具类/" title="工具类">工具类<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Retrofit/" title="Retrofit">Retrofit<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/源码/" title="源码">源码<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/工具/" title="工具">工具<sup>1</sup></a></li>
+				<li><a href="/tags/自定义View/" title="自定义View">自定义View<sup>2</sup></a></li>
 			
 		
 			
@@ -271,6 +256,22 @@
 		
 			
 				<li><a href="/tags/PorterDuffXfermode/" title="PorterDuffXfermode">PorterDuffXfermode<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/工具/" title="工具">工具<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Retrofit/" title="Retrofit">Retrofit<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/工具类/" title="工具类">工具类<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/源码/" title="源码">源码<sup>1</sup></a></li>
 			
 		
 		</ul>
