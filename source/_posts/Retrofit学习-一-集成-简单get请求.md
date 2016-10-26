@@ -235,9 +235,72 @@ public interface GitHubService {
     }
 ```
 
-![first.png](https://ln0491.github.io/img/first.png)
+
+简单封装
+
+```
+public class RetrofitWrapper {
+    //单例
+    private static RetrofitWrapper INSTANCE;
+    // Retrofit 对象
+    private Retrofit mRetrofit;
+
+    private RetrofitWrapper(){
+        mRetrofit = new Retrofit.Builder()
+                .baseUrl(Constant.BASE_URL)  //添加baseurl
+                .addConverterFactory(ScalarsConverterFactory.create()) //添加返回为字符串的支持
+                .addConverterFactory(GsonConverterFactory.create()) //create中可以传入其它json对象，默认Gson
+                .build();
+    }
+    public static RetrofitWrapper getInstance() {
+
+        if(INSTANCE == null) {
+            synchronized(RetrofitWrapper.class) {
+                if(INSTANCE == null) {
+                    INSTANCE = new RetrofitWrapper();
+                }
+            }
+        }
+
+        return INSTANCE;
+    }
 
 
+    /**
+     * 转换为对象的Service
+     * @param service
+     * @param <T>
+     * @return 传入的类型
+     */
+    public <T> T create(Class<T> service){
+        return mRetrofit.create(service);
+    }
+}
+
+```
+
+使用
+```
+
+        Call<List<Repo>> callLn0941 = RetrofitWrapper.getInstance().create(GitHubService.class).listRepos("octocat");
+
+        callLn0941.enqueue(new Callback<List<Repo>>() {
+            @Override
+            public void onResponse(Call<List<Repo>> call, Response<List<Repo>> response) {
+                // ...do something
+            }
+
+            @Override
+            public void onFailure(Call<List<Repo>> call, Throwable t) {
+                  // ...do something
+
+            }
+        });
+```
+
+这样用着方便很多
+源码：
+<https://github.com/ln0491/RetrofitDemo2>
 
 
 
