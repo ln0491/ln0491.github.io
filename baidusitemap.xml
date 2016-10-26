@@ -4,8 +4,28 @@
 
     
   <url>
+    <loc>https://ln0491.github.io/2016/10/26/Retrofit%E5%AD%A6%E4%B9%A0-%E4%BA%8C-get%E8%AF%B7%E6%B1%82/</loc>
+    <lastmod>2016-10-26T09:25:11.811Z</lastmod>
+    <data>
+        <display>
+        <title>Retrofit学习(二)-get请求.</title>
+        <pubTime>2016-10-26T05:29:32.000Z</pubTime>
+        
+        <tag>Retrofit</tag>
+         
+         
+           
+             
+              <breadCrumb title="android" url="https://ln0491.github.io/categories/android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://ln0491.github.io/2016/10/26/Retrofit%E5%AD%A6%E4%B9%A0-%E4%B8%80-%E9%9B%86%E6%88%90-%E7%AE%80%E5%8D%95get%E8%AF%B7%E6%B1%82/</loc>
-    <lastmod>2016-10-26T05:16:00.701Z</lastmod>
+    <lastmod>2016-10-26T05:26:30.484Z</lastmod>
     <data>
         <display>
         <title>Retrofit学习(一)集成-简单get请求</title>
