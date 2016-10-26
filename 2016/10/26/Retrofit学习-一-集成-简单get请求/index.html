@@ -1,0 +1,586 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Retrofit学习(一)集成-简单get请求 | 刘楠的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Liu Nan">
+    
+
+    
+    <meta name="description" content="##Retrofit学习(一)集成-简单get请求
+集成githubhttps://github.com/square/retrofit
+在studio在添加依赖
+123456 //添加retrofit-会自动下载okhttpcompile &amp;apos;com.squareup.retrofit2:retrofit:2.1.0&amp;apos;    //添加retrofit gson转换会自动下载gs">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Retrofit学习(一)集成-简单get请求">
+<meta property="og:url" content="https://ln0491.github.io/2016/10/26/Retrofit学习-一-集成-简单get请求/index.html">
+<meta property="og:site_name" content="刘楠的博客">
+<meta property="og:description" content="##Retrofit学习(一)集成-简单get请求
+集成githubhttps://github.com/square/retrofit
+在studio在添加依赖
+123456 //添加retrofit-会自动下载okhttpcompile &amp;apos;com.squareup.retrofit2:retrofit:2.1.0&amp;apos;    //添加retrofit gson转换会自动下载gs">
+<meta property="og:image" content="https://ln0491.github.io/img/first.png">
+<meta property="og:updated_time" content="2016-10-26T04:25:01.602Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Retrofit学习(一)集成-简单get请求">
+<meta name="twitter:description" content="##Retrofit学习(一)集成-简单get请求
+集成githubhttps://github.com/square/retrofit
+在studio在添加依赖
+123456 //添加retrofit-会自动下载okhttpcompile &amp;apos;com.squareup.retrofit2:retrofit:2.1.0&amp;apos;    //添加retrofit gson转换会自动下载gs">
+<meta name="twitter:image" content="https://ln0491.github.io/img/first.png">
+
+    
+    <link rel="alternative" href="/atom.xml" title="刘楠的博客" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="刘楠的博客" title="刘楠的博客"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="刘楠的博客">刘楠的博客</a></h1>
+				<h2 class="blog-motto">热爱生活</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">首页</a></li>
+					
+						<li><a href="/archives">归档</a></li>
+					
+						<li><a href="/tags">标签</a></li>
+					
+						<li><a href="/categories">分类</a></li>
+					
+						<li><a href="/about">关于</a></li>
+					
+					<li>
+ 					
+						<form class="search" action="http://zhannei.baidu.com/cse/search" target="_blank">
+							<label>Search</label>
+						<input name="s" type="hidden" value= 9779949399098768934 ><input type="text" name="q" size="30" placeholder="搜索"><br>
+						</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/10/26/Retrofit学习-一-集成-简单get请求/" title="Retrofit学习(一)集成-简单get请求" itemprop="url">Retrofit学习(一)集成-简单get请求</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Liu Nan" target="_blank" itemprop="author">Liu Nan</a>
+		
+  <p class="article-time">
+    <time datetime="2016-10-26T04:24:38.000Z" itemprop="datePublished"> 发表于 2016-10-26</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#集成"><span class="toc-number">1.</span> <span class="toc-text">集成</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第一个get请求"><span class="toc-number">2.</span> <span class="toc-text">第一个get请求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#开始请求"><span class="toc-number">3.</span> <span class="toc-text">开始请求</span></a></li></ol>
+		
+		</div>
+		
+		<p>##Retrofit学习(一)集成-简单get请求</p>
+<h3 id="集成"><a href="#集成" class="headerlink" title="集成"></a>集成</h3><p>github<a href="https://github.com/square/retrofit" target="_blank" rel="external">https://github.com/square/retrofit</a></p>
+<p>在studio在添加依赖</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"> //添加retrofit-会自动下载okhttp</div><div class="line">compile &apos;com.squareup.retrofit2:retrofit:2.1.0&apos;</div><div class="line">    //添加retrofit gson转换会自动下载gson</div><div class="line">compile &apos;com.squareup.retrofit2:converter-gson:2.1.0&apos;</div><div class="line">    //添加返回的字符串支付</div><div class="line">compile &apos;com.squareup.retrofit2:converter-scalars:2.1.0&apos;</div></pre></td></tr></table></figure>
+<p>可以用其它的retrofit2支付的替代见连接<br>转换可以在API处找到<br><a href="http://square.github.io/retrofit/#api-declaration" target="_blank" rel="external">http://square.github.io/retrofit/#api-declaration</a><br>右侧点击Retrofit Configuration版本与retrofit2保持一直即可<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Gson: com.squareup.retrofit2:converter-gson</div><div class="line">Jackson: com.squareup.retrofit2:converter-jackson</div><div class="line">Moshi: com.squareup.retrofit2:converter-moshi</div><div class="line">Protobuf: com.squareup.retrofit2:converter-protobuf</div><div class="line">Wire: com.squareup.retrofit2:converter-wire</div><div class="line">Simple XML: com.squareup.retrofit2:converter-simplexml</div><div class="line">Scalars (primitives, boxed, and String): com.squareup.retrofit2:converter-scalars</div></pre></td></tr></table></figure></p>
+<h3 id="第一个get请求"><a href="#第一个get请求" class="headerlink" title="第一个get请求"></a>第一个get请求</h3><p>添加网络权限<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;uses-permission android:name=&quot;android.permission.INTERNET&quot;/&gt;</div></pre></td></tr></table></figure></p>
+<p>建立接口<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">public interface GitHubService &#123;</div><div class="line"></div><div class="line"></div><div class="line">    @GET(&quot;users/&#123;user&#125;/repos&quot;)</div><div class="line">    Call&lt;String&gt; listRepos(@Path(&quot;user&quot;) String user);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>简单说明一下<br>@GET表示为get请求，还会有@POST<br>@PATH 表示后面的参数要添加到@GETR后面对应的{user}中，{user}相当于一个占位符<br>学习spring MVC都知道这种做学法把请求参数添加到请求路径中去，</p>
+<p>@Query就是我们的请求的键值对的设置<br>@QueryMap 和@Query相似 就是个传个map集合,也是键值对</p>
+<h3 id="开始请求"><a href="#开始请求" class="headerlink" title="开始请求"></a>开始请求</h3><p>界面就一个按键点击可以请求</p>
+<blockquote>
+<p>结果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">OK  [&#123;&quot;id&quot;:18221276,&quot;name&quot;:&quot;git-consortium&quot;,&quot;full_name&quot;:&quot;octocat/git-consortium&quot;,&quot;owner&quot;:&#123;&quot;login&quot;:&quot;octocat&quot;,&quot;id&quot;:583231,&quot;avatar_url&quot;:&quot;https://avatars.githubusercontent.com/u/583231?v=3&quot;,&quot;gravatar_id&quot;:&quot;&quot;,&quot;url&quot;:&quot;https://api.github.com/users/octocat&quot;,&quot;html_url&quot;:&quot;https://github.com/octocat&quot;,&quot;followers_url&quot;:&quot;https://api.github.com/users/octocat/followers&quot;,&quot;following_url&quot;:&quot;https://api.github.com/users/octocat/following&#123;/other_user&#125;&quot;,&quot;gists_url&quot;:&quot;https://api.github.com/users/octocat/gists&#123;/gist_id&#125;&quot;,&quot;starred_url&quot;:&quot;https://api.github.com/users/octocat/starred&#123;/owner&#125;&#123;/repo&#125;&quot;,&quot;subscriptions_url&quot;:&quot;https://api.github.com/users/octocat/subscriptions&quot;,&quot;organizations_url&quot;:&quot;https://api.github.com/users/octocat/orgs&quot;,&quot;repos_url&quot;:&quot;https://api.github.com/users/octocat/repos&quot;,&quot;events_url&quot;:&quot;https://api.github.com/users/octocat/events&#123;/privacy&#125;&quot;,&quot;received_events_url&quot;:&quot;https://api.github.com/users/octocat/received_events&quot;,&quot;type&quot;:&quot;User&quot;,&quot;site_admin&quot;:false&#125;,&quot;private&quot;:false,&quot;html_url&quot;:&quot;https://github.com/octocat/git-consortium&quot;,&quot;description&quot;:&quot;This repo is for demonstration purposes only.&quot;,&quot;fork&quot;:false,&quot;url&quot;:&quot;https://api.github.com/repos/octocat/git-consortium&quot;,&quot;forks_url&quot;:&quot;https://api.github.com/repos/octocat/git-consortium/forks&quot;,&quot;keys_url&quot;:&quot;https://api.github.com/repos/octocat/git-consortium/keys&#123;/key_id&#125;&quot;,&quot;collaborators_url&quot;:&quot;https://api.github.com/repos/octocat/git-consortium/collaborators&#123;/collaborator&#125;&quot;,&quot;teams_url&quot;:&quot;https://api.github.com/repos/octocat/git-consortium/teams&quot;,&quot;hooks_url&quot;:&quot;https://api.github.com/repos/octocat/git-consortium/hooks&quot;,&quot;issue_events_url&quot;:&quot;https://api.github.com/repos/octocat/git-consortium/issues/events&#123;/number&#125;&quot;,&quot;events_url&quot;:&quot;https://api.github.com/repos/octocat/git-consortium/events&quot;,&quot;assignees_url&quot;:&quot;https://api.github.com/repos/octocat/git-consortium/assignees&#123;/user&#125;&quot;,&quot;branches_url&quot;:&quot;https://api.github.com/repos/octocat/git-consortium/branches&#123;/branch&#125;&quot;,&quot;tags_url&quot;:&quot;https://api.github.com/repos/octocat/git-consortium/tags&quot;,&quot;blobs_url&quot;:&quot;https://api.github.com/repos/octocat/git-consortium/git/blobs&#123;/sha&#125;&quot;,&quot;git_tags_url&quot;:&quot;https://api.github.com/repos/octocat/git-consortium/git/tags&#123;/sha&#125;&quot;,&quot;git_refs_url&quot;:&quot;https://api.github.com/repos/octocat/git-consortium/git/refs&#123;/sha&#125;&quot;,&quot;trees_url&quot;:&quot;https://api.github.com/repos/octocat/git-consortium/git/trees&#123;/sha&#125;&quot;,&quot;statuses_url&quot;:&quot;https://api.github.com/repos/octocat/git-consortium/statuses/&#123;sha&#125;&quot;,&quot;languages_url&quot;:&quot;https://api.github.com/repos/octocat/git-consortium/languages&quot;,&quot;stargazers_url&quot;:&quot;https://api.github.com/repos/octocat/git-consortium/stargazers&quot;,&quot;contributors_url&quot;:&quot;https://api.github.com/repos/octocat/git-consortium/contributors&quot;,&quot;subscribers_url&quot;:&quot;https://api.github.com/repos/octocat/git-consortium/subscribers&quot;,&quot;subscription_url&quot;:&quot;https://api.github.com/repos/octocat/git-consortium/subscription&quot;,&quot;commits_url&quot;:&quot;https://api.github.com/repos/octocat/git-consortium/commits&#123;/sha&#125;&quot;,&quot;git_commits_url&quot;:&quot;https://api.github.com/repos/octocat/git-consortium/git/commits&#123;/sha&#125;&quot;,&quot;comments_url&quot;:&quot;https://api.github.com/repos/octocat/git-consortium/comments&#123;/number&#125;&quot;,&quot;issue_comment_url&quot;:&quot;https://api.github.com/repos/octocat/git-consortium/issues/comments&#123;/number&#125;&quot;,&quot;contents_url&quot;:&quot;https://api.github.com/repos/octocat/git-consortium/contents/&#123;+path&#125;&quot;,&quot;compare_url&quot;:&quot;https://api.github.com/repos/octocat/git-consortium/compare/&#123;base&#125;...&#123;head&#125;&quot;,&quot;merges_url&quot;:&quot;https://api.github.com/repos/octocat/git-consortium/merges&quot;,&quot;archive_url&quot;:&quot;https://api.github.com/repos/octocat/git-consortium/&#123;archive_format&#125;&#123;/ref&#125;&quot;,&quot;downloads_url&quot;:&quot;https://api.github.com/repos/octocat/git-consortium/downloads&quot;,&quot;issues_url&quot;:&quot;https://api.github.com/repos/octocat/git-consortium/issues&#123;/number&#125;&quot;,&quot;pulls_url&quot;:&quot;https://api.github.com/repos/octocat/git-consortium/pulls&#123;/number&#125;&quot;,&quot;milestones_url&quot;:&quot;https://api.github.com/repos/octocat/git-consortium/milestones&#123;/number&#125;&quot;,&quot;notifications_url&quot;:&quot;https://api.github.com/repos/octocat/git-consortium/notifications&#123;?since,all,participating&#125;&quot;,&quot;labels_url&quot;:&quot;https://api.github.com/repos/octocat/git-consortium/labels&#123;/name&#125;&quot;,&quot;releases_url&quot;:&quot;https://api.github.com</div></pre></td></tr></table></figure></p>
+</blockquote>
+<p>这样一个网络请求就完成了</p>
+<p>把返回字符串返回实体类使用Gson<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div></pre></td><td class="code"><pre><div class="line">package com.liu.retrofitdemo2.bean;</div><div class="line"></div><div class="line">import com.google.gson.annotations.SerializedName;</div><div class="line"></div><div class="line">/**</div><div class="line"> * @Description: 描述</div><div class="line"> * @AUTHOR 刘楠  Create By 2016/10/26 0026 10:54</div><div class="line"> */</div><div class="line">public class Repo &#123;</div><div class="line"></div><div class="line"></div><div class="line">    public int id;</div><div class="line">    public String name;</div><div class="line">    public String full_name;</div><div class="line">    public OwnerEntity owner;</div><div class="line">    @SerializedName(&quot;private&quot;)</div><div class="line">    public boolean privateX;</div><div class="line">    public String  html_url;</div><div class="line">    public Object  description;</div><div class="line">    public boolean fork;</div><div class="line">    public String  url;</div><div class="line">    public String  forks_url;</div><div class="line">    public String  keys_url;</div><div class="line">    public String  collaborators_url;</div><div class="line">    public String  teams_url;</div><div class="line">    public String  hooks_url;</div><div class="line">    public String  issue_events_url;</div><div class="line">    public String  events_url;</div><div class="line">    public String  assignees_url;</div><div class="line">    public String  branches_url;</div><div class="line">    public String  tags_url;</div><div class="line">    public String  blobs_url;</div><div class="line">    public String  git_tags_url;</div><div class="line">    public String  git_refs_url;</div><div class="line">    public String  trees_url;</div><div class="line">    public String  statuses_url;</div><div class="line">    public String  languages_url;</div><div class="line">    public String  stargazers_url;</div><div class="line">    public String  contributors_url;</div><div class="line">    public String  subscribers_url;</div><div class="line">    public String  subscription_url;</div><div class="line">    public String  commits_url;</div><div class="line">    public String  git_commits_url;</div><div class="line">    public String  comments_url;</div><div class="line">    public String  issue_comment_url;</div><div class="line">    public String  contents_url;</div><div class="line">    public String  compare_url;</div><div class="line">    public String  merges_url;</div><div class="line">    public String  archive_url;</div><div class="line">    public String  downloads_url;</div><div class="line">    public String  issues_url;</div><div class="line">    public String  pulls_url;</div><div class="line">    public String  milestones_url;</div><div class="line">    public String  notifications_url;</div><div class="line">    public String  labels_url;</div><div class="line">    public String  releases_url;</div><div class="line">    public String  deployments_url;</div><div class="line">    public String  created_at;</div><div class="line">    public String  updated_at;</div><div class="line">    public String  pushed_at;</div><div class="line">    public String  git_url;</div><div class="line">    public String  ssh_url;</div><div class="line">    public String  clone_url;</div><div class="line">    public String  svn_url;</div><div class="line">    public Object  homepage;</div><div class="line">    public int     size;</div><div class="line">    public int     stargazers_count;</div><div class="line">    public int     watchers_count;</div><div class="line">    public String  language;</div><div class="line">    public boolean has_issues;</div><div class="line">    public boolean has_downloads;</div><div class="line">    public boolean has_wiki;</div><div class="line">    public boolean has_pages;</div><div class="line">    public int     forks_count;</div><div class="line">    public Object  mirror_url;</div><div class="line">    public int     open_issues_count;</div><div class="line">    public int     forks;</div><div class="line">    public int     open_issues;</div><div class="line">    public int     watchers;</div><div class="line">    public String  default_branch;</div><div class="line"></div><div class="line">    public static class OwnerEntity &#123;</div><div class="line">        public String  login;</div><div class="line">        public int     id;</div><div class="line">        public String  avatar_url;</div><div class="line">        public String  gravatar_id;</div><div class="line">        public String  url;</div><div class="line">        public String  html_url;</div><div class="line">        public String  followers_url;</div><div class="line">        public String  following_url;</div><div class="line">        public String  gists_url;</div><div class="line">        public String  starred_url;</div><div class="line">        public String  subscriptions_url;</div><div class="line">        public String  organizations_url;</div><div class="line">        public String  repos_url;</div><div class="line">        public String  events_url;</div><div class="line">        public String  received_events_url;</div><div class="line">        public String  type;</div><div class="line">        public boolean site_admin;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>记得添加toString方法方法查看</p>
+<p>更改接口返回值<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">public interface GitHubService &#123;</div><div class="line"></div><div class="line"></div><div class="line">    @GET(&quot;users/&#123;user&#125;/repos&quot;)</div><div class="line">    Call&lt;List&lt;Repo&gt;&gt; listRepos(@Path(&quot;user&quot;) String user);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>再次请求<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div><div class="line">    //建立retrofit对象</div><div class="line">    Retrofit retrofit = new Retrofit.Builder().baseUrl(&quot;https://api.github.com/&quot;)</div><div class="line">            //添加返回字符串的支持--不知道返回的是什么，添加字符串支持</div><div class="line">            .addConverterFactory(ScalarsConverterFactory.create())</div><div class="line">            //添加GSON转换支持</div><div class="line">            .addConverterFactory(GsonConverterFactory.create())</div><div class="line">            .build();</div><div class="line"></div><div class="line">    //获取接口</div><div class="line">    GitHubService service = retrofit.create(GitHubService.class);</div><div class="line"></div><div class="line">    //调用方法-返回 回调更换为对象</div><div class="line">    Call&lt;List&lt;Repo&gt;&gt; call = service.listRepos(&quot;octocat&quot;);</div><div class="line"></div><div class="line">    //异步调用</div><div class="line">    call.enqueue(new Callback&lt;List&lt;Repo&gt;&gt;() &#123;</div><div class="line">        @Override</div><div class="line">        public void onResponse(Call&lt;List&lt;Repo&gt;&gt; call, Response&lt;List&lt;Repo&gt;&gt; response) &#123;</div><div class="line"></div><div class="line">            L.d(&quot;vivi&quot;,response.message()+&quot;  &quot;+response.body());</div><div class="line">            mTvResult.setText(response.message()+&quot; \n结果: &quot;+response.body().toString());</div><div class="line">            Toast.makeText(FirstActivity.this, &quot;结果:\n &quot;+response.body().toString(), Toast.LENGTH_SHORT).show();</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        @Override</div><div class="line">        public void onFailure(Call&lt;List&lt;Repo&gt;&gt; call, Throwable t) &#123;</div><div class="line"></div><div class="line">            t.printStackTrace();</div><div class="line">            mTvResult.setText(t.getMessage());</div><div class="line"></div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><img src="https://ln0491.github.io/img/first.png" alt="first.png"></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/android/">android</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Retrofit/">Retrofit</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="https://ln0491.github.io/2016/10/26/Retrofit学习-一-集成-简单get请求/" data-title="Retrofit学习(一)集成-简单get请求 | 刘楠的博客" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2016/10/25/PorterDuffXfermode模式学习/"  title="PorterDuffXfermode模式学习">
+ <strong>下一篇：</strong><br/> 
+ <span>PorterDuffXfermode模式学习
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="2016/10/26/Retrofit学习-一-集成-简单get请求/" data-title="Retrofit学习(一)集成-简单get请求" data-url="https://ln0491.github.io/2016/10/26/Retrofit学习-一-集成-简单get请求/"></div>
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#集成"><span class="toc-number">1.</span> <span class="toc-text">集成</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第一个get请求"><span class="toc-number">2.</span> <span class="toc-text">第一个get请求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#开始请求"><span class="toc-number">3.</span> <span class="toc-text">开始请求</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/android/" title="android">android<sup>32</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/java/" title="java">java<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/test/" title="test">test<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/图片加载/" title="图片加载">图片加载<sup>12</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/android/" title="android">android<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/viewpager/" title="viewpager">viewpager<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/volley/" title="volley">volley<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/自定义View/" title="自定义View">自定义View<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/test/" title="test">test<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/工具类/" title="工具类">工具类<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Retrofit/" title="Retrofit">Retrofit<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/源码/" title="源码">源码<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/工具/" title="工具">工具<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/maven/" title="maven">maven<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/PorterDuffXfermode/" title="PorterDuffXfermode">PorterDuffXfermode<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  
+  <div class="tagcloudlist">
+    <p class="asidetitle">标签云</p>
+    <div class="tagcloudlist clearfix">
+       <a href="/tags/PorterDuffXfermode/" style="font-size: 10px;">PorterDuffXfermode</a> <a href="/tags/Retrofit/" style="font-size: 10px;">Retrofit</a> <a href="/tags/android/" style="font-size: 17.5px;">android</a> <a href="/tags/maven/" style="font-size: 10px;">maven</a> <a href="/tags/test/" style="font-size: 12.5px;">test</a> <a href="/tags/viewpager/" style="font-size: 17.5px;">viewpager</a> <a href="/tags/volley/" style="font-size: 15px;">volley</a> <a href="/tags/图片加载/" style="font-size: 20px;">图片加载</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/工具类/" style="font-size: 10px;">工具类</a> <a href="/tags/源码/" style="font-size: 10px;">源码</a> <a href="/tags/自定义View/" style="font-size: 12.5px;">自定义View</a>
+    </div>
+  </div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://www.cnblogs.com/" target="_blank" title="博客园">博客园</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.csdn.net/" target="_blank" title="CSDN">CSDN</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.cnblogs.com/liunanjava/" target="_blank" title="森林森">森林森</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.jianshu.com/" target="_blank" title="简书">简书</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> 爱生活爱编码. <br/>
+			This is my blog,Try to do better.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/ln0491" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<a href="mailto:153011784@qq.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+		
+		<a href="/about" target="_blank" title="Liu Nan">Liu Nan</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+	$('#toc.toc-aside').css('display', 'block').addClass('fadeIn'); //这个是我新加的，修改点
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+        getSize();
+        if (myWidth >= 1024) {
+          c.click();
+        }
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"ln0491"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?f9d3aff238126ad201a9a789a888d75a";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1260477305'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1260477305%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
