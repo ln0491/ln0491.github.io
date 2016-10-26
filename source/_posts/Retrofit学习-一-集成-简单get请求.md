@@ -78,17 +78,9 @@ OK  [{"id":18221276,"name":"git-consortium","full_name":"octocat/git-consortium"
 这样一个网络请求就完成了
 
 把返回字符串返回实体类使用Gson
+
 ```
-package com.liu.retrofitdemo2.bean;
-
-import com.google.gson.annotations.SerializedName;
-
-/**
- * @Description: 描述
- * @AUTHOR 刘楠  Create By 2016/10/26 0026 10:54
- */
 public class Repo {
-
 
     public int id;
     public String name;
@@ -187,6 +179,7 @@ public class Repo {
 记得添加toString方法方法查看
 
 更改接口返回值
+
 ```
 public interface GitHubService {
 
@@ -196,7 +189,8 @@ public interface GitHubService {
 }
 ```
 
-再次请求
+* 再次请求
+* 
 ```
 
 
@@ -236,7 +230,7 @@ public interface GitHubService {
 ```
 
 
-简单封装
+* 简单封装
 
 ```
 public class RetrofitWrapper {
@@ -279,10 +273,11 @@ public class RetrofitWrapper {
 
 ```
 
-使用
+* 使用
+
 ```
 
-        Call<List<Repo>> callLn0941 = RetrofitWrapper.getInstance().create(GitHubService.class).listRepos("octocat");
+        Call<List<Repo>> call = RetrofitWrapper.getInstance().create(GitHubService.class).listRepos("octocat");
 
         callLn0941.enqueue(new Callback<List<Repo>>() {
             @Override
