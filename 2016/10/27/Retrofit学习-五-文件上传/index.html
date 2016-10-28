@@ -4,32 +4,23 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>Glide入门教程二ListView使用 | 刘楠的博客</title>
+    <title>Retrofit学习(五)-文件上传 | 刘楠的博客</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Liu Nan">
     
 
     
-    <meta name="description" content="Glide入门教程二ListView使用Glide入门教程二ListView中使用添加RecyclerView
-准备数据
-
-1234567891011121314151617181920212223242526/** * 准备数据 */String [] mDatas = new String[]&amp;#123;        &amp;quot;http://b337.photo.store.qq.com/">
+    <meta name="description" content="Retrofit学习(五)-文件上传Retrofit学习(一)-集成http://www.jianshu.com/p/86e5cddcc753Retrofit学习(二)-get请求http://www.jianshu.com/p/cdde02a0777cRetrofit学习(三)-普通post请求http://www.jianshu.com/p/7f252d10fd41Retrofit学习(四)-">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Glide入门教程二ListView使用">
-<meta property="og:url" content="https://ln0491.github.io/2016/10/14/Glide入门教程二ListView使用/index.html">
+<meta property="og:title" content="Retrofit学习(五)-文件上传">
+<meta property="og:url" content="https://ln0491.github.io/2016/10/27/Retrofit学习-五-文件上传/index.html">
 <meta property="og:site_name" content="刘楠的博客">
-<meta property="og:description" content="Glide入门教程二ListView使用Glide入门教程二ListView中使用添加RecyclerView
-准备数据
-
-1234567891011121314151617181920212223242526/** * 准备数据 */String [] mDatas = new String[]&amp;#123;        &amp;quot;http://b337.photo.store.qq.com/">
-<meta property="og:updated_time" content="2016-10-14T06:35:46.854Z">
+<meta property="og:description" content="Retrofit学习(五)-文件上传Retrofit学习(一)-集成http://www.jianshu.com/p/86e5cddcc753Retrofit学习(二)-get请求http://www.jianshu.com/p/cdde02a0777cRetrofit学习(三)-普通post请求http://www.jianshu.com/p/7f252d10fd41Retrofit学习(四)-">
+<meta property="og:updated_time" content="2016-10-28T08:11:17.970Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Glide入门教程二ListView使用">
-<meta name="twitter:description" content="Glide入门教程二ListView使用Glide入门教程二ListView中使用添加RecyclerView
-准备数据
-
-1234567891011121314151617181920212223242526/** * 准备数据 */String [] mDatas = new String[]&amp;#123;        &amp;quot;http://b337.photo.store.qq.com/">
+<meta name="twitter:title" content="Retrofit学习(五)-文件上传">
+<meta name="twitter:description" content="Retrofit学习(五)-文件上传Retrofit学习(一)-集成http://www.jianshu.com/p/86e5cddcc753Retrofit学习(二)-get请求http://www.jianshu.com/p/cdde02a0777cRetrofit学习(三)-普通post请求http://www.jianshu.com/p/7f252d10fd41Retrofit学习(四)-">
 
     
     <link rel="alternative" href="/atom.xml" title="刘楠的博客" type="application/atom+xml">
@@ -92,14 +83,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2016/10/14/Glide入门教程二ListView使用/" title="Glide入门教程二ListView使用" itemprop="url">Glide入门教程二ListView使用</a>
+      <a href="/2016/10/27/Retrofit学习-五-文件上传/" title="Retrofit学习(五)-文件上传" itemprop="url">Retrofit学习(五)-文件上传</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="Liu Nan" target="_blank" itemprop="author">Liu Nan</a>
 		
   <p class="article-time">
-    <time datetime="2016-10-14T02:51:20.000Z" itemprop="datePublished"> 发表于 2016-10-14</time>
+    <time datetime="2016-10-27T10:31:00.000Z" itemprop="datePublished"> 发表于 2016-10-27</time>
     
   </p>
 </header>
@@ -108,28 +99,26 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Glide入门教程二ListView使用"><span class="toc-number">1.</span> <span class="toc-text">Glide入门教程二ListView使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Glide入门教程二ListView中使用"><span class="toc-number">2.</span> <span class="toc-text">Glide入门教程二ListView中使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#添加RecyclerView"><span class="toc-number">2.1.</span> <span class="toc-text">添加RecyclerView</span></a></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Retrofit学习-五-文件上传"><span class="toc-number">1.</span> <span class="toc-text">Retrofit学习(五)-文件上传</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#单个文件上传-Multipart-Part"><span class="toc-number">1.1.</span> <span class="toc-text">单个文件上传 @Multipart @Part</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#多个文件上传"><span class="toc-number">1.2.</span> <span class="toc-text">多个文件上传</span></a></li></ol></li></ol>
 		
 		</div>
 		
-		<h2 id="Glide入门教程二ListView使用"><a href="#Glide入门教程二ListView使用" class="headerlink" title="Glide入门教程二ListView使用"></a>Glide入门教程二ListView使用</h2><h2 id="Glide入门教程二ListView中使用"><a href="#Glide入门教程二ListView中使用" class="headerlink" title="Glide入门教程二ListView中使用"></a>Glide入门教程二ListView中使用</h2><h3 id="添加RecyclerView"><a href="#添加RecyclerView" class="headerlink" title="添加RecyclerView"></a>添加RecyclerView</h3><ul>
-<li>准备数据</li>
+		<h2 id="Retrofit学习-五-文件上传"><a href="#Retrofit学习-五-文件上传" class="headerlink" title="Retrofit学习(五)-文件上传"></a>Retrofit学习(五)-文件上传</h2><p>Retrofit学习(一)-集成<br><a href="http://www.jianshu.com/p/86e5cddcc753" target="_blank" rel="external">http://www.jianshu.com/p/86e5cddcc753</a><br>Retrofit学习(二)-get请求<br><a href="http://www.jianshu.com/p/cdde02a0777c" target="_blank" rel="external">http://www.jianshu.com/p/cdde02a0777c</a><br>Retrofit学习(三)-普通post请求<br><a href="http://www.jianshu.com/p/7f252d10fd41" target="_blank" rel="external">http://www.jianshu.com/p/7f252d10fd41</a><br>Retrofit学习(四)-下载文件<br><a href="http://www.jianshu.com/p/f61645a770ae" target="_blank" rel="external">http://www.jianshu.com/p/f61645a770ae</a></p>
+<h3 id="单个文件上传-Multipart-Part"><a href="#单个文件上传-Multipart-Part" class="headerlink" title="单个文件上传 @Multipart @Part"></a>单个文件上传 @Multipart @Part</h3><ul>
+<li>接口</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">/**</div><div class="line"> * 准备数据</div><div class="line"> */</div><div class="line">String [] mDatas = new String[]&#123;</div><div class="line"></div><div class="line">        &quot;http://b337.photo.store.qq.com/psb?/V10FcMmY1Ttz2o/7.fo01qLQ*SI59*E2Wq.j82HuPfes*efgiyEi7mrJdk!/b/dLHI5cioAQAA&amp;bo=VQOAAgAAAAABB*Q!&amp;rf=viewer_4&quot;,</div><div class="line">        &quot;http://b118.photo.store.qq.com/psb?/V10FcMmY2gHuOI/8*6eK6PHCNTx1utXooId*KAWgwPTllj.b6uBg4McCwM!/b/dAt8W0YJJAAA&amp;bo=VQOAAgAAAAABB*Q!&amp;rf=viewer_4&quot;,</div><div class="line">        &quot;http://img1.imgtn.bdimg.com/it/u=488611129,2377736106&amp;fm=11&amp;gp=0.jpg&quot;,</div><div class="line">        &quot;http://img2.imgtn.bdimg.com/it/u=3398443685,2594061265&amp;fm=11&amp;gp=0.jpg&quot;,</div><div class="line">        &quot;http://img3.imgtn.bdimg.com/it/u=2271902832,1324672617&amp;fm=21&amp;gp=0.jpg&quot;,</div><div class="line">        &quot;http://a.hiphotos.baidu.com/image/h%3D200/sign=d20242020e24ab18ff16e63705fae69a/267f9e2f070828389f547b30bf99a9014c08f1bd.jpg&quot;,</div><div class="line">        &quot;http://img5.duitang.com/uploads/item/201406/28/20140628132554_UNE4n.thumb.700_0.jpeg&quot;,</div><div class="line">        &quot;http://cdn.duitang.com/uploads/item/201309/22/20130922202150_ntvAB.thumb.600_0.jpeg&quot;,</div><div class="line">        &quot;http://cdn.duitang.com/uploads/item/201208/04/20120804013554_yRGfe.jpeg&quot;,</div><div class="line">        &quot;http://img5.imgtn.bdimg.com/it/u=2050390856,2980742959&amp;fm=21&amp;gp=0.jpg&quot;,</div><div class="line">        &quot;http://img3.duitang.com/uploads/item/201501/23/20150123204322_N8nw5.jpeg&quot;,</div><div class="line">        &quot;http://img4q.duitang.com/uploads/item/201505/09/20150509204813_nEwxF.jpeg&quot;,</div><div class="line">        &quot;http://img1.imgtn.bdimg.com/it/u=2432702027,3704029716&amp;fm=21&amp;gp=0.jpg&quot;,</div><div class="line">        &quot;http://i.imgur.com/syELajx.jpg&quot;,</div><div class="line">        &quot;http://i.imgur.com/COzBnru.jpg&quot;,</div><div class="line">        &quot;http://i.imgur.com/Z3QjilA.jpg&quot;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">    @Multipart</div><div class="line">    @POST(&quot;user/imgUpLoad&quot;)</div><div class="line">//    Call&lt;String&gt; uploadOne(@Part(&quot;sign&quot;) String sign,@Part(&quot;appKey&quot;) String appKey,@Part(&quot;osName&quot;) String osName,@Part(&quot;memberNo&quot;) String memberNo, @Part  MultipartBody.Part file);</div><div class="line">//    Call&lt;String&gt; uploadOne(@PartMap Map&lt;String,String&gt; params, @Part  MultipartBody.Part file);</div><div class="line"></div><div class="line">//    Call&lt;String&gt; uploadOne(@Query(&quot;sign&quot;) String sign, @Query(&quot;appKey&quot;) String appKey, @Query(&quot;osName&quot;) String osName, @Query(&quot;memberNo&quot;) String memberNo, @Part  MultipartBody.Part file);</div><div class="line">    Call&lt;String&gt; uploadOne(@QueryMap Map&lt;String,String&gt; params, @Part  MultipartBody.Part file);</div></pre></td></tr></table></figure>
+<p>需要添加@Multipart表示支持文件上传的表单，Content-Type: multipart/form-data<br>以上4种写法都可以<br>普通参数@Query，@QueryMap<br>或者也@Part，这样</p>
+<p>文件要使用<br>@Part  MultipartBody.Part file</p>
 <ul>
-<li>Activity</li>
+<li>实现</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">private void initData() &#123;</div><div class="line"></div><div class="line"></div><div class="line">       mGlideListUseAdapter = new GlideListUseAdapter(this,mDatas);</div><div class="line"></div><div class="line">       LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);</div><div class="line"></div><div class="line">       mRecyclerView.setLayoutManager(linearLayoutManager);</div><div class="line"></div><div class="line"></div><div class="line">       mRecyclerView.setAdapter(mGlideListUseAdapter);</div><div class="line"></div><div class="line"></div><div class="line">   &#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>adapter</li>
-</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div><div class="line">        String path = &quot;/storage/emulated/0/Pictures/1477553156332.jpg&quot;;</div><div class="line">        File file = new File(path);</div><div class="line"></div><div class="line">        /**</div><div class="line">         * 创建请求体，内容是文件</div><div class="line">         */</div><div class="line">        RequestBody requestFile = RequestBody.create(MediaType.parse(&quot;multipart/form-data&quot;), file);</div><div class="line">//        final RequestBody requestFile = RequestBody.create(MediaType.parse(&quot;image/*&quot;), file);</div><div class="line"></div><div class="line"></div><div class="line">        /**</div><div class="line">         * 创建多部分拿上面的请求体做参数</div><div class="line">         * img 是上传是的参数key,根据需要更改为自己的</div><div class="line">         */</div><div class="line">        MultipartBody.Part body =</div><div class="line">                MultipartBody.Part.createFormData(&quot;img&quot;, file.getName(), requestFile);</div><div class="line"></div><div class="line"></div><div class="line">        Map&lt;String,String&gt; params = new HashMap&lt;&gt;();</div><div class="line">        params.put(&quot;sign&quot;, SIGN);</div><div class="line">        params.put(&quot;appKey&quot;, APP_KEY);</div><div class="line">        params.put(&quot;osName&quot;, OS_NAME);</div><div class="line">        params.put(&quot;memberNo&quot;, &quot;13410111258&quot;);</div><div class="line"></div><div class="line">        /**</div><div class="line">         * 初始化</div><div class="line">         */</div><div class="line">        Retrofit retrofit = new Retrofit.Builder()</div><div class="line">                .baseUrl(BASE_URL)</div><div class="line">                .addConverterFactory(ScalarsConverterFactory.create())</div><div class="line">                .addConverterFactory(GsonConverterFactory.create())</div><div class="line">                .build();</div><div class="line"></div><div class="line">        UploadService uploadService = retrofit.create(UploadService.class);</div><div class="line">        Call&lt;String&gt; call  = uploadService.uploadOne(params,body);</div><div class="line">       // Call&lt;String&gt; call  = uploadService.uploadOne(SIGN,APP_KEY,OS_NAME,&quot;13410111258&quot;,body);</div><div class="line">        call.enqueue(new Callback&lt;String&gt;() &#123;</div><div class="line">            @Override</div><div class="line">            public void onResponse(Call&lt;String&gt; call, Response&lt;String&gt; response) &#123;</div><div class="line">                L.d(&quot;vivi&quot;,response.message()+&quot;    &quot;+response.body());</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            @Override</div><div class="line">            public void onFailure(Call&lt;String&gt; call, Throwable t) &#123;</div><div class="line">                t.printStackTrace();</div><div class="line">L.d(&quot;vivi&quot;,t.getMessage());</div><div class="line">            &#125;</div><div class="line">        &#125;);</div></pre></td></tr></table></figure>
+<p>其中创建Part部分为重要<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"> String path = &quot;/storage/emulated/0/Pictures/1477553156332.jpg&quot;;</div><div class="line">        File file = new File(path);</div><div class="line"></div><div class="line">        /**</div><div class="line">         * 创建请求体，内容是文件</div><div class="line">         */</div><div class="line"> RequestBody requestFile = RequestBody.create(MediaType.parse(&quot;multipart/form-data&quot;), file);</div><div class="line">//        final RequestBody requestFile = RequestBody.create(MediaType.parse(&quot;image/*&quot;), file);</div><div class="line"></div><div class="line"></div><div class="line">        /**</div><div class="line">         * 创建多部分拿上面的请求体做参数</div><div class="line">         * img 是上传是的参数key,根据需要更改为自己的</div><div class="line">         */</div><div class="line">        MultipartBody.Part body =</div><div class="line">                MultipartBody.Part.createFormData(&quot;img&quot;, file.getName(), requestFile);</div></pre></td></tr></table></figure></p>
 <blockquote>
-<p>布局<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div><div class="line">&lt;ImageView</div><div class="line">           android:layout_margin=&quot;2dp&quot;</div><div class="line">           android:id=&quot;@+id/iv&quot;</div><div class="line">           android:layout_width=&quot;200dp&quot;</div><div class="line">           android:layout_height=&quot;200dp&quot;&gt;</div><div class="line"></div><div class="line">&lt;/ImageView&gt;</div></pre></td></tr></table></figure></p>
-<p>adapter<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line">public class GlideListUseAdapter extends RecyclerView.Adapter&lt;GlideListUseAdapter.ViewHolder&gt; &#123;</div><div class="line"></div><div class="line"></div><div class="line">    Context      mContext;</div><div class="line">    String [] mDatas;</div><div class="line"></div><div class="line">    LayoutInflater mInflater;</div><div class="line"></div><div class="line">    public GlideListUseAdapter(Context context, String [] datas) &#123;</div><div class="line">        this.mContext = context;</div><div class="line">        this.mDatas = datas;</div><div class="line">        mInflater= LayoutInflater.from(context);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) &#123;</div><div class="line"></div><div class="line">        View itemView = mInflater.inflate(R.layout.item_glide_list_use,parent,false);</div><div class="line"></div><div class="line">        return new ViewHolder(itemView);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void onBindViewHolder(ViewHolder holder, int position) &#123;</div><div class="line"></div><div class="line">        String url = mDatas[position];</div><div class="line"></div><div class="line"></div><div class="line">        Glide.with(mContext).load(url).into(holder.mIv);</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public int getItemCount() &#123;</div><div class="line">        if(mDatas!=null)&#123;</div><div class="line"></div><div class="line">           return mDatas.length;</div><div class="line">        &#125;</div><div class="line">        return 0;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public class  ViewHolder extends RecyclerView.ViewHolder &#123;</div><div class="line">        ImageView mIv;</div><div class="line">        public ViewHolder(View itemView) &#123;</div><div class="line"></div><div class="line">            super(itemView);</div><div class="line"></div><div class="line">            mIv = (ImageView) itemView.findViewById(R.id.iv);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>结果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">OK    &#123;&quot;code&quot;:&quot;M100001&quot;,&quot;msg&quot;:&quot;成功&quot;,&quot;info&quot;:&#123;&quot;successMessage&quot;:&quot;更改成功&quot;,&quot;memberHeadImg&quot;:&quot;http://10.18.200.24:8080/image/cd-img/20161027183654155618134101112581.jpg&quot;&#125;,&quot;sign&quot;:&quot;&quot;&#125;</div></pre></td></tr></table></figure></p>
 </blockquote>
-<p>这样图片就显示出来了</p>
-<p>源码<br><a href="https://github.com/ln0491/GlideDemo" target="_blank" rel="external">https://github.com/ln0491/GlideDemo</a></p>
-  
+<h3 id="多个文件上传"><a href="#多个文件上传" class="headerlink" title="多个文件上传"></a>多个文件上传</h3>  
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
@@ -142,7 +131,7 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/图片加载/">图片加载</a>
+  <span></span> <a href="/tags/Retrofit/">Retrofit</a>
   </div>
 
 </div>
@@ -151,7 +140,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="https://ln0491.github.io/2016/10/14/Glide入门教程二ListView使用/" data-title="Glide入门教程二ListView使用 | 刘楠的博客" data-tsina="null" class="share clearfix">
+	  <div data-url="https://ln0491.github.io/2016/10/27/Retrofit学习-五-文件上传/" data-title="Retrofit学习(五)-文件上传 | 刘楠的博客" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -164,19 +153,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2016/10/14/Glide入门教程三-占位图-淡入淡出效果-添加动画/" title="Glide入门教程三 占位图-淡入淡出效果-添加动画.">
-  <strong>上一篇：</strong><br/>
-  <span>
-  Glide入门教程三 占位图-淡入淡出效果-添加动画.</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2016/10/14/Glide入门教程一（基本使用/"  title="Glide入门教程一（基本使用)">
+<a href="/2016/10/27/Retrofit学习-四-下载文件/"  title="Retrofit学习(四)-下载文件">
  <strong>下一篇：</strong><br/> 
- <span>Glide入门教程一（基本使用)
+ <span>Retrofit学习(四)-下载文件
 </span>
 </a>
 </div>
@@ -185,7 +166,7 @@
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2016/10/14/Glide入门教程二ListView使用/" data-title="Glide入门教程二ListView使用" data-url="https://ln0491.github.io/2016/10/14/Glide入门教程二ListView使用/"></div>
+	<div class="ds-thread" data-thread-key="2016/10/27/Retrofit学习-五-文件上传/" data-title="Retrofit学习(五)-文件上传" data-url="https://ln0491.github.io/2016/10/27/Retrofit学习-五-文件上传/"></div>
 </section>
 
 
@@ -195,7 +176,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Glide入门教程二ListView使用"><span class="toc-number">1.</span> <span class="toc-text">Glide入门教程二ListView使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Glide入门教程二ListView中使用"><span class="toc-number">2.</span> <span class="toc-text">Glide入门教程二ListView中使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#添加RecyclerView"><span class="toc-number">2.1.</span> <span class="toc-text">添加RecyclerView</span></a></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Retrofit学习-五-文件上传"><span class="toc-number">1.</span> <span class="toc-text">Retrofit学习(五)-文件上传</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#单个文件上传-Multipart-Part"><span class="toc-number">1.1.</span> <span class="toc-text">单个文件上传 @Multipart @Part</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#多个文件上传"><span class="toc-number">1.2.</span> <span class="toc-text">多个文件上传</span></a></li></ol></li></ol>
  
   </div>
 
