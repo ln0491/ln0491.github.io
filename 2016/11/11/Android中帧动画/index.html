@@ -4,38 +4,23 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>Glide入门教程十一变换 | 刘楠的博客</title>
+    <title>Android中帧动画 | 刘楠的博客</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Liu Nan">
     
 
     
-    <meta name="description" content="Glide入门教程十一变换在图片显示出之前可以对图片进行变换处理。例如，如果你的app需要显示一张灰度图，但只能获取到一个原始全色彩的版本，你可以使用一个变换去将图片从有明艳色彩的版本转换成惨淡的黑白版
-推荐一个库Glide变换https://github.com/wasabeef/glide-transformations里面有很实现的效果
-
-引入
-
-1234//glide 变换    comp">
+    <meta name="description" content="Android中帧动画Android中的逐帧动画，逐帧动画是一种常见的动画形式（Frame By Frame），其原理是在“连续的关键帧”中分解动画动作，也就是在时间轴的每帧上逐帧绘制不同的内容，使其连续播放而成动画。 因为逐帧动画的帧序列内容不一样，不但给制作增加了负担而且最终输出的文件量也很大，但它的优势也很明显：逐帧动画具有非常大的灵活性，几乎可以表现任何想表现的内容，而它类似与电影的播放模">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Glide入门教程十一变换">
-<meta property="og:url" content="https://ln0491.github.io/2016/10/19/Glide入门教程十一变换/index.html">
+<meta property="og:title" content="Android中帧动画">
+<meta property="og:url" content="https://ln0491.github.io/2016/11/11/Android中帧动画/index.html">
 <meta property="og:site_name" content="刘楠的博客">
-<meta property="og:description" content="Glide入门教程十一变换在图片显示出之前可以对图片进行变换处理。例如，如果你的app需要显示一张灰度图，但只能获取到一个原始全色彩的版本，你可以使用一个变换去将图片从有明艳色彩的版本转换成惨淡的黑白版
-推荐一个库Glide变换https://github.com/wasabeef/glide-transformations里面有很实现的效果
-
-引入
-
-1234//glide 变换    comp">
-<meta property="og:updated_time" content="2016-10-19T06:09:51.627Z">
+<meta property="og:description" content="Android中帧动画Android中的逐帧动画，逐帧动画是一种常见的动画形式（Frame By Frame），其原理是在“连续的关键帧”中分解动画动作，也就是在时间轴的每帧上逐帧绘制不同的内容，使其连续播放而成动画。 因为逐帧动画的帧序列内容不一样，不但给制作增加了负担而且最终输出的文件量也很大，但它的优势也很明显：逐帧动画具有非常大的灵活性，几乎可以表现任何想表现的内容，而它类似与电影的播放模">
+<meta property="og:updated_time" content="2016-11-11T02:15:03.735Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Glide入门教程十一变换">
-<meta name="twitter:description" content="Glide入门教程十一变换在图片显示出之前可以对图片进行变换处理。例如，如果你的app需要显示一张灰度图，但只能获取到一个原始全色彩的版本，你可以使用一个变换去将图片从有明艳色彩的版本转换成惨淡的黑白版
-推荐一个库Glide变换https://github.com/wasabeef/glide-transformations里面有很实现的效果
-
-引入
-
-1234//glide 变换    comp">
+<meta name="twitter:title" content="Android中帧动画">
+<meta name="twitter:description" content="Android中帧动画Android中的逐帧动画，逐帧动画是一种常见的动画形式（Frame By Frame），其原理是在“连续的关键帧”中分解动画动作，也就是在时间轴的每帧上逐帧绘制不同的内容，使其连续播放而成动画。 因为逐帧动画的帧序列内容不一样，不但给制作增加了负担而且最终输出的文件量也很大，但它的优势也很明显：逐帧动画具有非常大的灵活性，几乎可以表现任何想表现的内容，而它类似与电影的播放模">
 
     
     <link rel="alternative" href="/atom.xml" title="刘楠的博客" type="application/atom+xml">
@@ -98,14 +83,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2016/10/19/Glide入门教程十一变换/" title="Glide入门教程十一变换" itemprop="url">Glide入门教程十一变换</a>
+      <a href="/2016/11/11/Android中帧动画/" title="Android中帧动画" itemprop="url">Android中帧动画</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="Liu Nan" target="_blank" itemprop="author">Liu Nan</a>
 		
   <p class="article-time">
-    <time datetime="2016-10-19T06:09:18.000Z" itemprop="datePublished"> 发表于 2016-10-19</time>
+    <time datetime="2016-11-11T02:02:53.000Z" itemprop="datePublished"> 发表于 2016-11-11</time>
     
   </p>
 </header>
@@ -114,22 +99,32 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Glide入门教程十一变换"><span class="toc-number">1.</span> <span class="toc-text">Glide入门教程十一变换</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Android中帧动画"><span class="toc-number">1.</span> <span class="toc-text">Android中帧动画</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Android中的逐帧动画"><span class="toc-number">1.1.</span> <span class="toc-text">Android中的逐帧动画</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#在代码中设置帧动画"><span class="toc-number">1.2.</span> <span class="toc-text">在代码中设置帧动画</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#在XML中设置帧动画"><span class="toc-number">1.3.</span> <span class="toc-text">在XML中设置帧动画</span></a></li></ol></li></ol>
 		
 		</div>
 		
-		<h2 id="Glide入门教程十一变换"><a href="#Glide入门教程十一变换" class="headerlink" title="Glide入门教程十一变换"></a>Glide入门教程十一变换</h2><p>在图片显示出之前可以对图片进行变换处理。例如，如果你的app需要显示一张灰度图，但只能获取到一个原始全色彩的版本，你可以使用一个变换去将图片从有明艳色彩的版本转换成惨淡的黑白版</p>
-<p>推荐一个库Glide变换<br><a href="https://github.com/wasabeef/glide-transformations" target="_blank" rel="external">https://github.com/wasabeef/glide-transformations</a><br>里面有很实现的效果</p>
+		<h3 id="Android中帧动画"><a href="#Android中帧动画" class="headerlink" title="Android中帧动画"></a>Android中帧动画</h3><h4 id="Android中的逐帧动画"><a href="#Android中的逐帧动画" class="headerlink" title="Android中的逐帧动画"></a>Android中的逐帧动画</h4><p>，逐帧动画是一种常见的动画形式（Frame By Frame），其原理是在“连续的关键帧”中分解动画动作，也就是在时间轴的每帧上逐帧绘制不同的内容，使其连续播放而成动画。 因为逐帧动画的帧序列内容不一样，不但给制作增加了负担而且最终输出的文件量也很大，但它的优势也很明显：逐帧动画具有非常大的灵活性，几乎可以表现任何想表现的内容，而它类似与电影的播放模式，很适合于表演细腻的动画。</p>
+<p>在Android中逐帧动画需要得到AnimationDrawable类的支持，它位于”android.graphics.drawable.AnimationDrawable”包下，是Drawable的间接子类。它主要用来创建一个逐帧动画，并且可以对帧进行拉伸，把它设置为View的背景即可使用AnimationDrawable.start()方法播放。既然逐帧动画是需要播放一帧一帧的图像，所以需要为其添加帧。在Android中提供了两种方式为AnimationDrawable添加帧：XML定义的资源文件和Java代码创建，后面再详细讲讲这两种添加帧的方式。</p>
+<p>光为AnimationDrawable设置帧还不能完成播放动画的功能，还需要AnimationDrawable定义好的其他的一些方法来操作逐帧动画，下面简单介绍一下AnimationDrawable的常用方法：</p>
 <ul>
-<li>引入</li>
+<li>void start()：开始播放逐帧动画。</li>
+<li>void stop()：停止播放逐帧动画。</li>
+<li>void addFrame(Drawable frame,int duration)：为AnimationDrawable添加一帧，并设置持续时间。</li>
+<li>int getDuration(int i)：得到指定index的帧的持续时间。</li>
+<li>Drawable getFrame(int index)：得到指定index的帧Drawable。</li>
+<li>int getNumberOfFrames()：得到当前AnimationDrawable的所有帧数量。</li>
+<li>boolean isOneShot()：当前AnimationDrawable是否执行一次，返回true执行一次，false循环播放。</li>
+<li>boolean isRunning()：当前AnimationDrawable是否正在播放。</li>
+<li>void setOneShot(boolean oneShot)：设置AnimationDrawable是否执行一次，true执行一次，false循环播放</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//glide 变换</div><div class="line">    compile &apos;jp.wasabeef:glide-transformations:2.0.1&apos;</div><div class="line">    // If you want to use the GPU Filters   -glide 变换使用GPU</div><div class="line">    compile &apos;jp.co.cyberagent.android.gpuimage:gpuimage-library:1.3.0&apos;</div></pre></td></tr></table></figure>
-<ul>
-<li>使用</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">String trUrl = &quot;http://pic.58pic.com/58pic/16/83/91/40558PICYDj_1024.jpg&quot;;</div><div class="line"></div><div class="line"></div><div class="line">      Glide.with(this)</div><div class="line">              .load(trUrl)</div><div class="line">              .bitmapTransform(new CropCircleTransformation(this))</div><div class="line">              .into(mIvEc2);</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">      Glide.with(this)</div><div class="line">              .load(trUrl)</div><div class="line">              .bitmapTransform(new BlurTransformation(this))</div><div class="line">              .into(mIvEc3);</div></pre></td></tr></table></figure>
-<p>提示：当你使用变换的时候，你不能使用.centerCrop()或者.fitCenter()</p>
-<p>源码<br><a href="https://github.com/ln0491/GlideDemo" target="_blank" rel="external">https://github.com/ln0491/GlideDemo</a></p>
+<h4 id="在代码中设置帧动画"><a href="#在代码中设置帧动画" class="headerlink" title="在代码中设置帧动画"></a>在代码中设置帧动画</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">// 为AnimationDrawable添加动画帧</div><div class="line">       mCodeAd.addFrame(getResources().getDrawable(R.drawable.loading_img_01),100);</div><div class="line">       mCodeAd.addFrame(getResources().getDrawable(R.drawable.loading_img_02),100);</div><div class="line">       mCodeAd.addFrame(getResources().getDrawable(R.drawable.loading_img_03),100);</div><div class="line">       mCodeAd.addFrame(getResources().getDrawable(R.drawable.loading_img_04),100);</div><div class="line">       mCodeAd.addFrame(getResources().getDrawable(R.drawable.loading_img_05),100);</div><div class="line">       mCodeAd.addFrame(getResources().getDrawable(R.drawable.loading_img_06),100);</div><div class="line">       mCodeAd.addFrame(getResources().getDrawable(R.drawable.loading_img_07),100);</div><div class="line">       mCodeAd.addFrame(getResources().getDrawable(R.drawable.loading_img_08),100);</div><div class="line">       mCodeAd.addFrame(getResources().getDrawable(R.drawable.loading_img_09),100);</div><div class="line">       mCodeAd.addFrame(getResources().getDrawable(R.drawable.loading_img_10),100);</div><div class="line">       mCodeAd.addFrame(getResources().getDrawable(R.drawable.loading_img_11),100);</div><div class="line">       mCodeAd.addFrame(getResources().getDrawable(R.drawable.loading_img_12),100);</div><div class="line">       //循环播放</div><div class="line">       mCodeAd.setOneShot(false);</div><div class="line">       //设置背景</div><div class="line">       mIvCode.setBackgroundDrawable(mCodeAd);</div></pre></td></tr></table></figure>
+<p>播放<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">private void startCode() &#123;</div><div class="line"></div><div class="line">       if(mCodeAd!=null &amp;&amp; !mCodeAd.isRunning())&#123;</div><div class="line">           mCodeAd.start();</div><div class="line">       &#125;else if(mCodeAd!=null &amp;&amp; mCodeAd.isRunning()) &#123;</div><div class="line">           mCodeAd.stop();</div><div class="line">       &#125;</div><div class="line"></div><div class="line"></div><div class="line">   &#125;</div></pre></td></tr></table></figure></p>
+<h4 id="在XML中设置帧动画"><a href="#在XML中设置帧动画" class="headerlink" title="在XML中设置帧动画"></a>在XML中设置帧动画</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</div><div class="line">&lt;animation-list xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</div><div class="line">    android:oneshot=&quot;false&quot;&gt;</div><div class="line">&lt;!--定义一个帧动画播放时间为100ms--&gt;</div><div class="line">    &lt;item android:drawable=&quot;@drawable/loading_img_01&quot; android:duration=&quot;100&quot;/&gt;</div><div class="line">    &lt;item android:drawable=&quot;@drawable/loading_img_02&quot; android:duration=&quot;100&quot;/&gt;</div><div class="line">    &lt;item android:drawable=&quot;@drawable/loading_img_03&quot; android:duration=&quot;100&quot;/&gt;</div><div class="line">    &lt;item android:drawable=&quot;@drawable/loading_img_04&quot; android:duration=&quot;100&quot;/&gt;</div><div class="line">    &lt;item android:drawable=&quot;@drawable/loading_img_05&quot; android:duration=&quot;100&quot;/&gt;</div><div class="line">    &lt;item android:drawable=&quot;@drawable/loading_img_06&quot; android:duration=&quot;100&quot;/&gt;</div><div class="line">    &lt;item android:drawable=&quot;@drawable/loading_img_07&quot; android:duration=&quot;100&quot;/&gt;</div><div class="line">    &lt;item android:drawable=&quot;@drawable/loading_img_08&quot; android:duration=&quot;100&quot;/&gt;</div><div class="line">    &lt;item android:drawable=&quot;@drawable/loading_img_09&quot; android:duration=&quot;100&quot;/&gt;</div><div class="line">    &lt;item android:drawable=&quot;@drawable/loading_img_10&quot; android:duration=&quot;100&quot;/&gt;</div><div class="line">    &lt;item android:drawable=&quot;@drawable/loading_img_11&quot; android:duration=&quot;100&quot;/&gt;</div><div class="line">    &lt;item android:drawable=&quot;@drawable/loading_img_12&quot; android:duration=&quot;100&quot;/&gt;</div><div class="line"></div><div class="line">&lt;/animation-list&gt;</div></pre></td></tr></table></figure>
+<p>代码中使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">private void initXMLFram() &#123;</div><div class="line"></div><div class="line">       mXmlAD = (AnimationDrawable) getResources().getDrawable(R.drawable.loading);</div><div class="line">       //为Image设置背景</div><div class="line">       mIvXML.setBackgroundDrawable(mXmlAD);</div><div class="line"></div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<p>播放</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">private void startXML() &#123;</div><div class="line">        if(mXmlAD!=null &amp;&amp; !mXmlAD.isRunning())&#123;</div><div class="line">            mXmlAD.start();</div><div class="line">        &#125;else if(mXmlAD!=null &amp;&amp; mXmlAD.isRunning()) &#123;</div><div class="line">            mXmlAD.stop();</div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p>源码<br><a href="https://github.com/ln0491/DrawableAnimation" target="_blank" rel="external">https://github.com/ln0491/DrawableAnimation</a></p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -143,7 +138,7 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/图片加载/">图片加载</a>
+  <span></span> <a href="/tags/动画/">动画</a>
   </div>
 
 </div>
@@ -152,7 +147,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="https://ln0491.github.io/2016/10/19/Glide入门教程十一变换/" data-title="Glide入门教程十一变换 | 刘楠的博客" data-tsina="null" class="share clearfix">
+	  <div data-url="https://ln0491.github.io/2016/11/11/Android中帧动画/" data-title="Android中帧动画 | 刘楠的博客" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -165,19 +160,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2016/10/19/Glide-—-用Modules定制Glide/" title="Glide — 用Modules定制Glide">
-  <strong>上一篇：</strong><br/>
-  <span>
-  Glide — 用Modules定制Glide</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2016/10/19/Glide入门教程十-异常-调试和报错处理/"  title="Glide入门教程十-异常: 调试和报错处理">
+<a href="/2016/11/10/初识View/"  title="初识View">
  <strong>下一篇：</strong><br/> 
- <span>Glide入门教程十-异常: 调试和报错处理
+ <span>初识View
 </span>
 </a>
 </div>
@@ -186,7 +173,7 @@
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2016/10/19/Glide入门教程十一变换/" data-title="Glide入门教程十一变换" data-url="https://ln0491.github.io/2016/10/19/Glide入门教程十一变换/"></div>
+	<div class="ds-thread" data-thread-key="2016/11/11/Android中帧动画/" data-title="Android中帧动画" data-url="https://ln0491.github.io/2016/11/11/Android中帧动画/"></div>
 </section>
 
 
@@ -196,7 +183,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Glide入门教程十一变换"><span class="toc-number">1.</span> <span class="toc-text">Glide入门教程十一变换</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Android中帧动画"><span class="toc-number">1.</span> <span class="toc-text">Android中帧动画</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Android中的逐帧动画"><span class="toc-number">1.1.</span> <span class="toc-text">Android中的逐帧动画</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#在代码中设置帧动画"><span class="toc-number">1.2.</span> <span class="toc-text">在代码中设置帧动画</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#在XML中设置帧动画"><span class="toc-number">1.3.</span> <span class="toc-text">在XML中设置帧动画</span></a></li></ol></li></ol>
  
   </div>
 

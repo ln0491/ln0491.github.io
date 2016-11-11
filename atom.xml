@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ln0491.github.io/"/>
-  <updated>2016-11-07T09:45:26.704Z</updated>
+  <updated>2016-11-11T02:15:03.735Z</updated>
   <id>https://ln0491.github.io/</id>
   
   <author>
@@ -14,6 +14,133 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Android中帧动画</title>
+    <link href="https://ln0491.github.io/2016/11/11/Android%E4%B8%AD%E5%B8%A7%E5%8A%A8%E7%94%BB/"/>
+    <id>https://ln0491.github.io/2016/11/11/Android中帧动画/</id>
+    <published>2016-11-11T02:02:53.000Z</published>
+    <updated>2016-11-11T02:15:03.735Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="Android中帧动画"><a href="#Android中帧动画" class="headerlink" title="Android中帧动画"></a>Android中帧动画</h3><h4 id="Android中的逐帧动画"><a href="#Android中的逐帧动画" class="headerlink" title="Android中的逐帧动画"></a>Android中的逐帧动画</h4><p>，逐帧动画是一种常见的动画形式（Frame By Frame），其原理是在“连续的关键帧”中分解动画动作，也就是在时间轴的每帧上逐帧绘制不同的内容，使其连续播放而成动画。 因为逐帧动画的帧序列内容不一样，不但给制作增加了负担而且最终输出的文件量也很大，但它的优势也很明显：逐帧动画具有非常大的灵活性，几乎可以表现任何想表现的内容，而它类似与电影的播放模式，很适合于表演细腻的动画。</p>
+<p>在Android中逐帧动画需要得到AnimationDrawable类的支持，它位于”android.graphics.drawable.AnimationDrawable”包下，是Drawable的间接子类。它主要用来创建一个逐帧动画，并且可以对帧进行拉伸，把它设置为View的背景即可使用AnimationDrawable.start()方法播放。既然逐帧动画是需要播放一帧一帧的图像，所以需要为其添加帧。在Android中提供了两种方式为AnimationDrawable添加帧：XML定义的资源文件和Java代码创建，后面再详细讲讲这两种添加帧的方式。</p>
+<p>光为AnimationDrawable设置帧还不能完成播放动画的功能，还需要AnimationDrawable定义好的其他的一些方法来操作逐帧动画，下面简单介绍一下AnimationDrawable的常用方法：</p>
+<ul>
+<li>void start()：开始播放逐帧动画。</li>
+<li>void stop()：停止播放逐帧动画。</li>
+<li>void addFrame(Drawable frame,int duration)：为AnimationDrawable添加一帧，并设置持续时间。</li>
+<li>int getDuration(int i)：得到指定index的帧的持续时间。</li>
+<li>Drawable getFrame(int index)：得到指定index的帧Drawable。</li>
+<li>int getNumberOfFrames()：得到当前AnimationDrawable的所有帧数量。</li>
+<li>boolean isOneShot()：当前AnimationDrawable是否执行一次，返回true执行一次，false循环播放。</li>
+<li>boolean isRunning()：当前AnimationDrawable是否正在播放。</li>
+<li>void setOneShot(boolean oneShot)：设置AnimationDrawable是否执行一次，true执行一次，false循环播放</li>
+</ul>
+<h4 id="在代码中设置帧动画"><a href="#在代码中设置帧动画" class="headerlink" title="在代码中设置帧动画"></a>在代码中设置帧动画</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">// 为AnimationDrawable添加动画帧</div><div class="line">       mCodeAd.addFrame(getResources().getDrawable(R.drawable.loading_img_01),100);</div><div class="line">       mCodeAd.addFrame(getResources().getDrawable(R.drawable.loading_img_02),100);</div><div class="line">       mCodeAd.addFrame(getResources().getDrawable(R.drawable.loading_img_03),100);</div><div class="line">       mCodeAd.addFrame(getResources().getDrawable(R.drawable.loading_img_04),100);</div><div class="line">       mCodeAd.addFrame(getResources().getDrawable(R.drawable.loading_img_05),100);</div><div class="line">       mCodeAd.addFrame(getResources().getDrawable(R.drawable.loading_img_06),100);</div><div class="line">       mCodeAd.addFrame(getResources().getDrawable(R.drawable.loading_img_07),100);</div><div class="line">       mCodeAd.addFrame(getResources().getDrawable(R.drawable.loading_img_08),100);</div><div class="line">       mCodeAd.addFrame(getResources().getDrawable(R.drawable.loading_img_09),100);</div><div class="line">       mCodeAd.addFrame(getResources().getDrawable(R.drawable.loading_img_10),100);</div><div class="line">       mCodeAd.addFrame(getResources().getDrawable(R.drawable.loading_img_11),100);</div><div class="line">       mCodeAd.addFrame(getResources().getDrawable(R.drawable.loading_img_12),100);</div><div class="line">       //循环播放</div><div class="line">       mCodeAd.setOneShot(false);</div><div class="line">       //设置背景</div><div class="line">       mIvCode.setBackgroundDrawable(mCodeAd);</div></pre></td></tr></table></figure>
+<p>播放<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">private void startCode() &#123;</div><div class="line"></div><div class="line">       if(mCodeAd!=null &amp;&amp; !mCodeAd.isRunning())&#123;</div><div class="line">           mCodeAd.start();</div><div class="line">       &#125;else if(mCodeAd!=null &amp;&amp; mCodeAd.isRunning()) &#123;</div><div class="line">           mCodeAd.stop();</div><div class="line">       &#125;</div><div class="line"></div><div class="line"></div><div class="line">   &#125;</div></pre></td></tr></table></figure></p>
+<h4 id="在XML中设置帧动画"><a href="#在XML中设置帧动画" class="headerlink" title="在XML中设置帧动画"></a>在XML中设置帧动画</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</div><div class="line">&lt;animation-list xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</div><div class="line">    android:oneshot=&quot;false&quot;&gt;</div><div class="line">&lt;!--定义一个帧动画播放时间为100ms--&gt;</div><div class="line">    &lt;item android:drawable=&quot;@drawable/loading_img_01&quot; android:duration=&quot;100&quot;/&gt;</div><div class="line">    &lt;item android:drawable=&quot;@drawable/loading_img_02&quot; android:duration=&quot;100&quot;/&gt;</div><div class="line">    &lt;item android:drawable=&quot;@drawable/loading_img_03&quot; android:duration=&quot;100&quot;/&gt;</div><div class="line">    &lt;item android:drawable=&quot;@drawable/loading_img_04&quot; android:duration=&quot;100&quot;/&gt;</div><div class="line">    &lt;item android:drawable=&quot;@drawable/loading_img_05&quot; android:duration=&quot;100&quot;/&gt;</div><div class="line">    &lt;item android:drawable=&quot;@drawable/loading_img_06&quot; android:duration=&quot;100&quot;/&gt;</div><div class="line">    &lt;item android:drawable=&quot;@drawable/loading_img_07&quot; android:duration=&quot;100&quot;/&gt;</div><div class="line">    &lt;item android:drawable=&quot;@drawable/loading_img_08&quot; android:duration=&quot;100&quot;/&gt;</div><div class="line">    &lt;item android:drawable=&quot;@drawable/loading_img_09&quot; android:duration=&quot;100&quot;/&gt;</div><div class="line">    &lt;item android:drawable=&quot;@drawable/loading_img_10&quot; android:duration=&quot;100&quot;/&gt;</div><div class="line">    &lt;item android:drawable=&quot;@drawable/loading_img_11&quot; android:duration=&quot;100&quot;/&gt;</div><div class="line">    &lt;item android:drawable=&quot;@drawable/loading_img_12&quot; android:duration=&quot;100&quot;/&gt;</div><div class="line"></div><div class="line">&lt;/animation-list&gt;</div></pre></td></tr></table></figure>
+<p>代码中使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">private void initXMLFram() &#123;</div><div class="line"></div><div class="line">       mXmlAD = (AnimationDrawable) getResources().getDrawable(R.drawable.loading);</div><div class="line">       //为Image设置背景</div><div class="line">       mIvXML.setBackgroundDrawable(mXmlAD);</div><div class="line"></div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<p>播放</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">private void startXML() &#123;</div><div class="line">        if(mXmlAD!=null &amp;&amp; !mXmlAD.isRunning())&#123;</div><div class="line">            mXmlAD.start();</div><div class="line">        &#125;else if(mXmlAD!=null &amp;&amp; mXmlAD.isRunning()) &#123;</div><div class="line">            mXmlAD.stop();</div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p>源码<br><a href="https://github.com/ln0491/DrawableAnimation" target="_blank" rel="external">https://github.com/ln0491/DrawableAnimation</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;Android中帧动画&quot;&gt;&lt;a href=&quot;#Android中帧动画&quot; class=&quot;headerlink&quot; title=&quot;Android中帧动画&quot;&gt;&lt;/a&gt;Android中帧动画&lt;/h3&gt;&lt;h4 id=&quot;Android中的逐帧动画&quot;&gt;&lt;a href=&quot;#Andr
+    
+    </summary>
+    
+      <category term="android" scheme="https://ln0491.github.io/categories/android/"/>
+    
+    
+      <category term="动画" scheme="https://ln0491.github.io/tags/%E5%8A%A8%E7%94%BB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>初识View</title>
+    <link href="https://ln0491.github.io/2016/11/10/%E5%88%9D%E8%AF%86View/"/>
+    <id>https://ln0491.github.io/2016/11/10/初识View/</id>
+    <published>2016-11-10T05:39:05.000Z</published>
+    <updated>2016-11-10T07:52:49.105Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="初识View及一些工具类"><a href="#初识View及一些工具类" class="headerlink" title="初识View及一些工具类"></a>初识View及一些工具类</h3><h4 id="什么是View"><a href="#什么是View" class="headerlink" title="什么是View?"></a>什么是View?</h4><p>View是Android中所有控件的基类，如Button，TextView 或者Relativelayout，ListView的共同的基类也就是父类<br>除了View还是ViewGroup，ViewGroup也继承了View。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public abstract class ViewGroup extends View</div></pre></td></tr></table></figure></p>
+<p>View可以是一个单独的控件，也可能是一个控件组包含多个子View</p>
+<h4 id="View的参数坐标"><a href="#View的参数坐标" class="headerlink" title="View的参数坐标"></a>View的参数坐标</h4><p>View的位置主要是由View的4个坐标来顶点来决定的</p>
+<ul>
+<li>letf:     左上角x轴坐标</li>
+<li>top:        左上角y轴坐标</li>
+<li>right:    右下角x轴坐标</li>
+<li>bottom:    右下角y轴坐标</li>
+</ul>
+<p><img src="https://ln0491.github.io/img/view坐标.png" alt="view坐标.png"></p>
+<p>宽度: width=right-left<br>高度：height=bottom-top</p>
+<h4 id="获取参数坐标"><a href="#获取参数坐标" class="headerlink" title="获取参数坐标"></a>获取参数坐标</h4><ul>
+<li>left = getLeft()</li>
+<li>top = getTop()</li>
+<li>right = getRight()</li>
+<li>bottom = getBottom()</li>
+</ul>
+<p>设置也量样有setXxxx方法</p>
+<h4 id="新的参数"><a href="#新的参数" class="headerlink" title="新的参数"></a>新的参数</h4><p>3.0后<br>x,y,translationX,translationY</p>
+<ul>
+<li>x,y是View左上角的坐标</li>
+<li>translationX,translationY 是View左上角相对于父容器的偏移量，默认为0</li>
+</ul>
+<p>一样有set/get方法</p>
+<p>换算关系</p>
+<p>x = left +translationX<br>y= top+translationY</p>
+<p>View在平移过程中,top与left 表示的是原始左上角的位置信息，不会发生改变<br>此时发生改变的是x,y,translationX,translationY这4个参数</p>
+<h4 id="MotionEvent和TouchSlop"><a href="#MotionEvent和TouchSlop" class="headerlink" title="MotionEvent和TouchSlop"></a>MotionEvent和TouchSlop</h4><h5 id="MotionEvent"><a href="#MotionEvent" class="headerlink" title="MotionEvent"></a>MotionEvent</h5><p>在手指接触屏幕后的一系列事件如：</p>
+<p>ACTION_DOWN:手指刚接触屏幕 按下</p>
+<p>ACTION_MOVE:手指在屏幕上移动</p>
+<p>ACTION_UP:手机离开屏幕的一瞬间</p>
+<blockquote>
+<p>得到点击事件的x,y</p>
+</blockquote>
+<ul>
+<li>getX/getY</li>
+</ul>
+<p>返回相对于当前View左上角的X和Y</p>
+<ul>
+<li>getRawX/getRawY</li>
+</ul>
+<p>返回相对于手机屏幕左上角的X，y</p>
+<h5 id="TouchSlop"><a href="#TouchSlop" class="headerlink" title="TouchSlop"></a>TouchSlop</h5><p>是系统所能识别出的被认为是滑动的最小距离，当手指在屏幕上滑动时，如果2次滑动之间的距离小于这个常量，系统就不认为是滑动操作</p>
+<p>获取方式 ViewConfiguration-工具类<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">int scaledTouchSlop = ViewConfiguration.get(getContext()).getScaledTouchSlop();</div></pre></td></tr></table></figure></p>
+<p>系统给的默认值为8dp<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line">    * Distance a touch can wander before we think the user is scrolling in dips.</div><div class="line">    * Note that this value defined here is only used as a fallback by legacy/misbehaving</div><div class="line">    * applications that do not provide a Context for determining density/configuration-dependent</div><div class="line">    * values.</div><div class="line">    *</div><div class="line">    * To alter this value, see the configuration resource config_viewConfigurationTouchSlop</div><div class="line">    * in frameworks/base/core/res/res/values/config.xml or the appropriate device resource overlay.</div><div class="line">    * It may be appropriate to tweak this on a device-specific basis in an overlay based on</div><div class="line">    * the characteristics of the touch panel and firmware.</div><div class="line">    */</div><div class="line">   private static final int TOUCH_SLOP = 8;</div></pre></td></tr></table></figure></p>
+<p>config.xml<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">&lt;dimen name=&quot;config_viewConfigurationTouchSlop&quot;&gt;8dp&lt;/dimen&gt;</div></pre></td></tr></table></figure></p>
+<h4 id="VelocityTracker-GestureDetector-和scroller"><a href="#VelocityTracker-GestureDetector-和scroller" class="headerlink" title="VelocityTracker GestureDetector 和scroller"></a>VelocityTracker GestureDetector 和scroller</h4><h5 id="VelocityTracker"><a href="#VelocityTracker" class="headerlink" title="VelocityTracker"></a>VelocityTracker</h5><p>速度追踪：包括水平和竖直方法的速度<br>在onTouchEvent中添加<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">   public boolean onTouchEvent(MotionEvent event) &#123;</div><div class="line">       VelocityTracker velocityTracker = VelocityTracker.obtain();</div><div class="line">       velocityTracker.addMovement(event);</div><div class="line">       return super.onTouchEvent(event);</div><div class="line">   &#125;</div></pre></td></tr></table></figure></p>
+<p>在其它需要的地方<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">velocityTracker.computeCurrentVelocity(1000);</div><div class="line">     float xVelocity = velocityTracker.getXVelocity();</div><div class="line">     float yVelocity = velocityTracker.getYVelocity();</div></pre></td></tr></table></figure></p>
+<p>需要注意的地方要先计算，才能获取到<br>不需要时</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">velocityTracker.clear();</div><div class="line">     velocityTracker.recycle();</div></pre></td></tr></table></figure>
+<h5 id="GestureDetector"><a href="#GestureDetector" class="headerlink" title="GestureDetector"></a>GestureDetector</h5><p>手势检测，用于辅助检测用户的单击，滑动，长按，双击等行力要使用GestureDetector<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">   GestureDetector mGestureDetector = new GestureDetector(this);</div><div class="line">//长按不能拖动现象</div><div class="line">        mGestureDetector.setIsLongpressEnabled(false);</div></pre></td></tr></table></figure></p>
+<ul>
+<li>onDown 1个ACTION_DONW</li>
+<li>onShowPress 由一个ACTON_DOWN触发，按下没有松开</li>
+<li>onSingleTapUP:一1上ACTION_DOWN和一个ACTION_UP</li>
+<li>onScroll :一个ACTION_DWON多个ACTION_MOVE组成</li>
+<li>onLongPress：用户长按不放开</li>
+<li>onFling: 快速滑动</li>
+<li></li>
+</ul>
+<h5 id="scroller"><a href="#scroller" class="headerlink" title="scroller"></a>scroller</h5><p>弹性滑动，View的scrollTo与scrollBy方法来滑动，没有过渡效果，使用Scroller来实现有过渡现象的滑动<br>Scroll要与View的computeScroll结合来完成</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">   public void computeScroll() &#123;</div><div class="line">       super.computeScroll();</div><div class="line">       if(mScroller.computeScrollOffset())&#123;</div><div class="line">           scrollTo(mScroller.getCurrX(),mScroller.getCurrY());</div><div class="line">           postInvalidate();</div><div class="line"></div><div class="line">       &#125;</div><div class="line">   &#125;</div><div class="line"></div><div class="line">   private void smoothScrollTo(int destX,int destY)&#123;</div><div class="line">       int scrollX = destX;</div><div class="line">       int delta = destX-scrollX;</div><div class="line">       mScroller.startScroll(scrollX,0,delta,0,1000);</div><div class="line">   &#125;</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;初识View及一些工具类&quot;&gt;&lt;a href=&quot;#初识View及一些工具类&quot; class=&quot;headerlink&quot; title=&quot;初识View及一些工具类&quot;&gt;&lt;/a&gt;初识View及一些工具类&lt;/h3&gt;&lt;h4 id=&quot;什么是View&quot;&gt;&lt;a href=&quot;#什么是Vie
+    
+    </summary>
+    
+      <category term="android" scheme="https://ln0491.github.io/categories/android/"/>
+    
+    
+      <category term="View" scheme="https://ln0491.github.io/tags/View/"/>
+    
+  </entry>
   
   <entry>
     <title>Android 欢迎页快速启动</title>
@@ -1149,71 +1276,6 @@ public DrawableTypeRequest&lt;URL&gt; fromUrl() {
     <summary type="html">
     
       &lt;h2 id=&quot;Glide入门教程六-缓存基础&quot;&gt;&lt;a href=&quot;#Glide入门教程六-缓存基础&quot; class=&quot;headerlink&quot; title=&quot;Glide入门教程六-缓存基础&quot;&gt;&lt;/a&gt;Glide入门教程六-缓存基础&lt;/h2&gt;&lt;p&gt;Glide默认使用内存和磁盘缓存来避
-    
-    </summary>
-    
-      <category term="android" scheme="https://ln0491.github.io/categories/android/"/>
-    
-    
-      <category term="图片加载" scheme="https://ln0491.github.io/tags/%E5%9B%BE%E7%89%87%E5%8A%A0%E8%BD%BD/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Glide入门教程五-加载gif-视频快照-缩略图</title>
-    <link href="https://ln0491.github.io/2016/10/14/Glide%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B%E4%BA%94-%E5%8A%A0%E8%BD%BDgif-%E8%A7%86%E9%A2%91%E5%BF%AB%E7%85%A7-%E7%BC%A9%E7%95%A5%E5%9B%BE/"/>
-    <id>https://ln0491.github.io/2016/10/14/Glide入门教程五-加载gif-视频快照-缩略图/</id>
-    <published>2016-10-14T09:11:40.000Z</published>
-    <updated>2016-10-18T11:39:06.999Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="Glide入门教程五-加载gif-视频快照-缩略图"><a href="#Glide入门教程五-加载gif-视频快照-缩略图" class="headerlink" title="Glide入门教程五-加载gif-视频快照-缩略图"></a>Glide入门教程五-加载gif-视频快照-缩略图</h2><h3 id="播放-网络Gif动画"><a href="#播放-网络Gif动画" class="headerlink" title="播放 网络Gif动画"></a>播放 网络Gif动画</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">//加载网络gif</div><div class="line">       String gifUrl = &quot;http://b.hiphotos.baidu.com/zhidao/pic/item/faedab64034f78f066abccc57b310a55b3191c67.jpg&quot;;</div><div class="line">       Glide.with(this).load(gifUrl).placeholder(R.mipmap.pictures_no).into(mIv4);</div></pre></td></tr></table></figure>
-<h3 id="本地资源gif"><a href="#本地资源gif" class="headerlink" title="本地资源gif"></a>本地资源gif</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">//加载资源gif</div><div class="line">       Glide.with(this).load(R.mipmap.loading).asGif().placeholder(R.mipmap.pictures_no).into(mIv5);</div></pre></td></tr></table></figure>
-<h3 id="加载本地gif文件"><a href="#加载本地gif文件" class="headerlink" title="加载本地gif文件"></a>加载本地gif文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">//加载本地gif文件</div><div class="line">String gifPath = Environment.getExternalStorageDirectory().getAbsolutePath()+&quot;/Movies/test.gif&quot;;</div><div class="line">//test.gif  animate.gif Starry_Night.mp4 test.mp4</div><div class="line"></div><div class="line">File gifFile = new File(gifPath);</div><div class="line"></div><div class="line">Glide.with(this).load(gifFile).placeholder(R.mipmap.ic_launcher).into(mIv6);</div></pre></td></tr></table></figure>
-<h3 id="加载本地视频快照"><a href="#加载本地视频快照" class="headerlink" title="加载本地视频快照"></a>加载本地视频快照</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">//加载本地小视频 快照，只是快照 并不能播放</div><div class="line">       String videoPath =Environment.getExternalStorageDirectory().getAbsolutePath()+&quot;/Movies/test.mp4&quot;;;</div><div class="line"></div><div class="line">       File videoFile = new File(videoPath);</div><div class="line"></div><div class="line">       Glide.with(this).load(Uri.fromFile(videoFile)).placeholder(R.mipmap.ic_launcher).into(mIv7);</div></pre></td></tr></table></figure>
-<h3 id="加载缩略图一"><a href="#加载缩略图一" class="headerlink" title="加载缩略图一"></a>加载缩略图一</h3><p>如果你传递一个0.1f作为参数，Glide会加载原始图片大小的10%的图片。如果原始图片有1000x1000像素，缩略图的分辨率为100x100像素</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">String urlPath=&quot;/storage/emulated/0/MagazineUnlock/magazine-unlock-03-2.3.311-bigpicture_03_20.jpg&quot;;</div><div class="line">        //第一种 设置缩略图比例</div><div class="line">        Glide.with(this).load(new File(urlPath)).thumbnail(0.1f).centerCrop().placeholder(R.mipmap.pictures_no).into(mIv8);</div></pre></td></tr></table></figure>
-<h3 id="加载缩略图二-高级缩略图请求：原图与缩略图完全不同"><a href="#加载缩略图二-高级缩略图请求：原图与缩略图完全不同" class="headerlink" title="加载缩略图二 高级缩略图请求：原图与缩略图完全不同"></a>加载缩略图二 高级缩略图请求：原图与缩略图完全不同</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//先建立一个缩略图对象 先加载缩略图，再加载原图</div><div class="line">       DrawableRequestBuilder thumbnailRequest=  Glide.with(this).load(&quot;http://img1.imgtn.bdimg.com/it/u=2615772929,948758168&amp;fm=21&amp;gp=0.jpg&quot;);</div><div class="line"></div><div class="line">       Glide.with(this).load(Uri.fromFile(videoFile)).thumbnail(thumbnailRequest).centerCrop().placeholder(R.mipmap.pictures_no).into(mIv9);</div></pre></td></tr></table></figure>
-<p>源码<br><a href="https://github.com/ln0491/GlideDemo" target="_blank" rel="external">https://github.com/ln0491/GlideDemo</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;Glide入门教程五-加载gif-视频快照-缩略图&quot;&gt;&lt;a href=&quot;#Glide入门教程五-加载gif-视频快照-缩略图&quot; class=&quot;headerlink&quot; title=&quot;Glide入门教程五-加载gif-视频快照-缩略图&quot;&gt;&lt;/a&gt;Glide入门教程五-
-    
-    </summary>
-    
-      <category term="android" scheme="https://ln0491.github.io/categories/android/"/>
-    
-    
-      <category term="图片加载" scheme="https://ln0491.github.io/tags/%E5%9B%BE%E7%89%87%E5%8A%A0%E8%BD%BD/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Glide入门教程四-调整图片大小</title>
-    <link href="https://ln0491.github.io/2016/10/14/Glide%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B%E5%9B%9B-%E8%B0%83%E6%95%B4%E5%9B%BE%E7%89%87%E5%A4%A7%E5%B0%8F/"/>
-    <id>https://ln0491.github.io/2016/10/14/Glide入门教程四-调整图片大小/</id>
-    <published>2016-10-14T06:26:07.000Z</published>
-    <updated>2016-10-14T06:41:54.598Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="Glide入门教程四-调整图片大小"><a href="#Glide入门教程四-调整图片大小" class="headerlink" title="Glide入门教程四-调整图片大小"></a>Glide入门教程四-调整图片大小</h2><h3 id="调整图片大小-override"><a href="#调整图片大小-override" class="headerlink" title="调整图片大小 override()"></a>调整图片大小 override()</h3><p>Picasso也有同样的能力,resize(x, y)但需要调用fit()方法</p>
-<p>用Glide时，如果图片不需要自动适配ImageView，调用override(horizontalSize, verticalSize)，它会在将图片显示在ImageView之前调整图片的大小。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">int width = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 200, mContext.getResources().getDisplayMetrics());</div><div class="line">     int height   = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 200f, mContext.getResources().getDisplayMetrics());</div><div class="line">     Glide.with(mContext) //上下文</div><div class="line">             .load(url) //图片地址</div><div class="line">             .placeholder(R.mipmap.pictures_no) //占位图</div><div class="line">             .error(R.mipmap.ic_launcher)  //出错的占位图</div><div class="line">             .override(width,height) //图片显示的分辨率 ，像素值 可以转化为DP再设置</div><div class="line">             .animate(R.anim.my_alpha)</div><div class="line"></div><div class="line">              .into(holder.mIv); //显示在哪个控件中</div></pre></td></tr></table></figure>
-<h3 id="缩放图片-centerCrop"><a href="#缩放图片-centerCrop" class="headerlink" title="缩放图片-centerCrop"></a>缩放图片-centerCrop</h3><p>Glide提供了变换去处理图片显示，通过设置centerCrop 和 fitCenter，可以得到两个不同的效果。</p>
-<p>CenterCrop()会缩放图片让图片充满整个ImageView的边框，然后裁掉超出的部分。ImageVIew会被完全填充满，但是图片可能不能完全显示出。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">String url = mDatas[position];</div><div class="line"></div><div class="line"></div><div class="line">      int width = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 200, mContext.getResources().getDisplayMetrics());</div><div class="line">      int height   = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 200f, mContext.getResources().getDisplayMetrics());</div><div class="line">      Glide.with(mContext) //上下文</div><div class="line">              .load(url) //图片地址</div><div class="line">              .placeholder(R.mipmap.pictures_no) //占位图</div><div class="line">              .error(R.mipmap.ic_launcher)  //出错的占位图</div><div class="line">              .override(width,height) //图片显示的分辨率 ，像素值 可以转化为DP再设置</div><div class="line">              .animate(R.anim.my_alpha)</div><div class="line">              .centerCrop()</div><div class="line">               .into(holder.mIv); //显示在哪个控件中</div></pre></td></tr></table></figure></p>
-<p><img src="https://ln0491.github.io/img/animate.gif" alt="animate.gif"></p>
-<h3 id="缩放图片-fitCenter"><a href="#缩放图片-fitCenter" class="headerlink" title="缩放图片-fitCenter"></a>缩放图片-fitCenter</h3><p>为ImageView加个背景色<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">ImageView</span></span></div><div class="line">    <span class="attr">android:background</span>=<span class="string">"#ff0000"</span></div><div class="line">           <span class="attr">android:layout_margin</span>=<span class="string">"2dp"</span></div><div class="line">           <span class="attr">android:id</span>=<span class="string">"@+id/iv"</span></div><div class="line">           <span class="attr">android:layout_width</span>=<span class="string">"200dp"</span></div><div class="line">           <span class="attr">android:layout_height</span>=<span class="string">"200dp"</span>/&gt;</div></pre></td></tr></table></figure></p>
-<p>fitCenter()会缩放图片让两边都相等或小于ImageView的所需求的边框。图片会被完整显示，可能不能完全填充整个ImageView。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">Glide.with(mContext) //上下文</div><div class="line">                .load(url) //图片地址</div><div class="line">                .placeholder(R.mipmap.pictures_no) //占位图</div><div class="line">                .error(R.mipmap.ic_launcher)  //出错的占位图</div><div class="line">                .override(width,height) //图片显示的分辨率 ，像素值 可以转化为DP再设置</div><div class="line">                .animate(R.anim.my_alpha)</div><div class="line">                .centerCrop()</div><div class="line">                .fitCenter()</div><div class="line">                 .into(holder.mIv); //显示在哪个控件中</div></pre></td></tr></table></figure>
-<p><img src="https://ln0491.github.io/img/fitcenter.gif" alt="fitcenter.gif"></p>
-<p><img src="https://ln0491.github.io/img/fitcenter1.png" alt="fitcenter1.png"></p>
-<p>centerCrop-fitCenter会相互覆盖，后面调用的后覆盖前面调用的效果</p>
-<p>源码<br><a href="https://github.com/ln0491/GlideDemo" target="_blank" rel="external">https://github.com/ln0491/GlideDemo</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;Glide入门教程四-调整图片大小&quot;&gt;&lt;a href=&quot;#Glide入门教程四-调整图片大小&quot; class=&quot;headerlink&quot; title=&quot;Glide入门教程四-调整图片大小&quot;&gt;&lt;/a&gt;Glide入门教程四-调整图片大小&lt;/h2&gt;&lt;h3 id=&quot;调整图片大
     
     </summary>
     
