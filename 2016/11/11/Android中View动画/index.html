@@ -1,0 +1,624 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Android中View动画 | 刘楠的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Liu Nan">
+    
+
+    
+    <meta name="description" content="Android中View动画XML结构12345678910111213141516171819202122232425262728&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;utf-8&amp;quot;?&amp;gt;  &amp;lt;set xmlns:android=&amp;quot;http://schemas.android.com/apk/res/andro">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android中View动画">
+<meta property="og:url" content="https://ln0491.github.io/2016/11/11/Android中View动画/index.html">
+<meta property="og:site_name" content="刘楠的博客">
+<meta property="og:description" content="Android中View动画XML结构12345678910111213141516171819202122232425262728&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;utf-8&amp;quot;?&amp;gt;  &amp;lt;set xmlns:android=&amp;quot;http://schemas.android.com/apk/res/andro">
+<meta property="og:updated_time" content="2016-11-11T09:02:15.221Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android中View动画">
+<meta name="twitter:description" content="Android中View动画XML结构12345678910111213141516171819202122232425262728&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;utf-8&amp;quot;?&amp;gt;  &amp;lt;set xmlns:android=&amp;quot;http://schemas.android.com/apk/res/andro">
+
+    
+    <link rel="alternative" href="/atom.xml" title="刘楠的博客" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="刘楠的博客" title="刘楠的博客"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="刘楠的博客">刘楠的博客</a></h1>
+				<h2 class="blog-motto">热爱生活</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">首页</a></li>
+					
+						<li><a href="/archives">归档</a></li>
+					
+						<li><a href="/tags">标签</a></li>
+					
+						<li><a href="/categories">分类</a></li>
+					
+						<li><a href="/about">关于</a></li>
+					
+					<li>
+ 					
+						<form class="search" action="http://zhannei.baidu.com/cse/search" target="_blank">
+							<label>Search</label>
+						<input name="s" type="hidden" value= 9779949399098768934 ><input type="text" name="q" size="30" placeholder="搜索"><br>
+						</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/11/11/Android中View动画/" title="Android中View动画" itemprop="url">Android中View动画</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Liu Nan" target="_blank" itemprop="author">Liu Nan</a>
+		
+  <p class="article-time">
+    <time datetime="2016-11-11T06:28:51.000Z" itemprop="datePublished"> 发表于 2016-11-11</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Android中View动画"><span class="toc-number">1.</span> <span class="toc-text">Android中View动画</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#XML结构"><span class="toc-number">1.1.</span> <span class="toc-text">XML结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#translate"><span class="toc-number">1.2.</span> <span class="toc-text">translate</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#rotate"><span class="toc-number">1.3.</span> <span class="toc-text">rotate</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#scale"><span class="toc-number">1.4.</span> <span class="toc-text">scale</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#alpha"><span class="toc-number">1.5.</span> <span class="toc-text">alpha</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#集合动画"><span class="toc-number">1.6.</span> <span class="toc-text">集合动画</span></a></li></ol></li></ol>
+		
+		</div>
+		
+		<h3 id="Android中View动画"><a href="#Android中View动画" class="headerlink" title="Android中View动画"></a>Android中View动画</h3><h4 id="XML结构"><a href="#XML结构" class="headerlink" title="XML结构"></a>XML结构</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;  </div><div class="line">&lt;set xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;  </div><div class="line">    android:interpolator=&quot;@[package:]anim/interpolator_resource&quot;  </div><div class="line">    android:shareInterpolator=[&quot;true&quot; | &quot;false&quot;] &gt;  </div><div class="line">    &lt;alpha  </div><div class="line">        android:fromAlpha=&quot;float&quot;  </div><div class="line">        android:toAlpha=&quot;float&quot; /&gt;  </div><div class="line">    &lt;scale  </div><div class="line">        android:fromXScale=&quot;float&quot;  </div><div class="line">        android:toXScale=&quot;float&quot;  </div><div class="line">        android:fromYScale=&quot;float&quot;  </div><div class="line">        android:toYScale=&quot;float&quot;  </div><div class="line">        android:pivotX=&quot;float&quot;  </div><div class="line">        android:pivotY=&quot;float&quot; /&gt;  </div><div class="line">    &lt;translate  </div><div class="line">        android:fromX=&quot;float&quot;  </div><div class="line">        android:toX=&quot;float&quot;  </div><div class="line">        android:fromY=&quot;float&quot;  </div><div class="line">        android:toY=&quot;float&quot; /&gt;  </div><div class="line">    &lt;rotate  </div><div class="line">        android:fromDegrees=&quot;float&quot;  </div><div class="line">        android:toDegrees=&quot;float&quot;  </div><div class="line">        android:pivotX=&quot;float&quot;  </div><div class="line">        android:pivotY=&quot;float&quot; /&gt;  </div><div class="line">    &lt;set&gt;  </div><div class="line">        ...  </div><div class="line">    &lt;/set&gt;  </div><div class="line">&lt;/set&gt;</div></pre></td></tr></table></figure>
+<p>XML文件中必须有一个根元素，可以是<alpha>、<scale>、<translate>、<rotate>中的任意一个，也可以是<set>来管理一个由前面几个元素组成的动画集合。</set></rotate></translate></scale></alpha></p>
+<p><set>是一个动画容器，管理多个动画的群组，与之相对应的Java对象是AnimationSet</set></p>
+<ul>
+<li>fillBefore fillAfter</li>
+</ul>
+<p>fillBefore是指动画结束时画面停留在此动画的第一帧;<br>fillAfter是指动画结束是画面停留在此动画的最后一帧。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">/*****动画结束时，停留在最后一帧*********</div><div class="line">setFillAfter(true);</div><div class="line">setFillBefore(false);  </div><div class="line">/*****动画结束时，停留在第一帧*********</div><div class="line">setFillAfter(false);</div><div class="line">setFillBefore(true);</div></pre></td></tr></table></figure></p>
+<p>XML设置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">xml设置如下：</div><div class="line">/******动画结束时，停留在最后一帧**********</div><div class="line">&lt;set Android:fillAfter=&quot;true&quot; android:fillBefore=&quot;false&quot;&gt;</div><div class="line"></div><div class="line"></div><div class="line">/******动画结束时，停留在第一帧**********</div><div class="line">&lt;set android:fillAfter=&quot;false&quot; android:fillBefore=&quot;true&quot;&gt;</div></pre></td></tr></table></figure>
+<p>用这两个属性前要先 把 设 android:fillEnabled=”true” 这样才有效果<br>PS：xml设置在子标签里面设置是无效的，注意是set标签</p>
+<ul>
+<li>shareInterpolator<br>android:shareInterpolator代表<set>里面的多个动画是否要共享插值器，默认值为true，即共享插值器，如果设置为false，那么<set>的插值器就不再起作用，我们要在每个动画中加入插值器。</set></set></li>
+</ul>
+<ul>
+<li>interpolator<br>Android:interpolator代表一个插值器资源，可以引用系统自带插值器资源，也可以用自定义插值器资源，默认值是匀速插值器<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">AccelerateDecelerateInterpolator	@android:anim/accelerate_decelerate_interpolator	先加速再减速</div><div class="line">AccelerateInterpolator				@android:anim/accelerate_interpolator				加速</div><div class="line">AnticipateInterpolator				@android:anim/anticipate_interpolator				先回退一小步然后加速前进</div><div class="line">AnticipateOvershootInterpolator		@android:anim/anticipate_overshoot_interpolator		在上一个基础上超出终点一小步再回到终点</div><div class="line">BounceInterpolator					@android:anim/bounce_interpolator					最后阶段弹球效果</div><div class="line">CycleInterpolator					@android:anim/cycle_interpolator					周期运动</div><div class="line">DecelerateInterpolator				@android:anim/decelerate_interpolator				减速</div><div class="line">LinearInterpolator					@android:anim/linear_interpolator					匀速</div><div class="line">OvershootInterpolator				@android:anim/overshoot_interpolator				快速到达终点并超出一小步最后回到终点</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="translate"><a href="#translate" class="headerlink" title="translate"></a>translate</h4><ul>
+<li><translate>是位移动画，代表一个水平、垂直的位移。</translate></li>
+<li>与之对应的Java对象是TranslateAnimation。</li>
+<li>android:fromXDelta属性代表起始X方向的位置，</li>
+<li>android:toXDelta代表结尾X方向上的位置，</li>
+<li>android:fromYScale属性代表起始Y方向上的位置，</li>
+<li>android:toYDelta属性代表结尾Y方向上的位置</li>
+<li>以上四个属性都支持三种表示方式：浮点数、num%、num%p；</li>
+<li>如果以浮点数字表示，代表相对自身原始位置的像素值；</li>
+<li>如果以num%表示，代表相对于自己的百分比</li>
+<li>比如toXDelta定义为100%就表示在X方向上移动自己的1倍距离；如果以num%p表示，代表相对于父类组件的百分比。</li>
+</ul>
+<p>XML</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</div><div class="line">&lt;set xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</div><div class="line">    android:fillEnabled=&quot;true&quot;</div><div class="line">   android:shareInterpolator=&quot;true&quot;</div><div class="line">    android:fillBefore=&quot;true&quot;</div><div class="line">    android:fillAfter=&quot;false&quot;</div><div class="line">   android:interpolator=&quot;@android:anim/bounce_interpolator&quot;&gt;</div><div class="line"></div><div class="line"></div><div class="line">   &lt;translate android:fromXDelta=&quot;-20%&quot;</div><div class="line">              android:fromYDelta=&quot;-30%&quot;</div><div class="line">              android:toXDelta=&quot;80%p&quot;</div><div class="line">              android:toYDelta=&quot;80%&quot;</div><div class="line">              android:duration=&quot;2000&quot;</div><div class="line"></div><div class="line">              android:repeatMode=&quot;restart&quot;/&gt;</div><div class="line"></div><div class="line">   &lt;!--</div><div class="line">   fromXDelta 从哪里开始x轴</div><div class="line">   fromYDelta 从哪里开始y轴</div><div class="line">   repeatCount=&quot;infinite&quot; 播放次数 infinite 无限</div><div class="line">   repeatMode   reverse    播放模式  reverse 反方向进行，播放完了就，从播放完的地方倒着回到开始地址, restart 每次都从开始的地方开始播放</div><div class="line">   --&gt;</div><div class="line"></div><div class="line">&lt;/set&gt;</div></pre></td></tr></table></figure>
+<p>java</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">private void toTranstion() &#123;</div><div class="line">      </div><div class="line">      /**</div><div class="line">       * 加载XML</div><div class="line">       */</div><div class="line">      Animation animation = AnimationUtils.loadAnimation(this,R.anim.translate);</div><div class="line"></div><div class="line">      //开始播放</div><div class="line">      mBtnTr.startAnimation(animation);</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+<p>代码动画</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Animation animation =new TranslateAnimation(0,100,0,0);</div><div class="line">       animation.setDuration(3000);</div><div class="line">       animation.setRepeatMode(Animation.REVERSE);</div><div class="line">       animation.setRepeatCount(Animation.INFINITE);</div><div class="line">	mBtnTr.startAnimation(animation);</div></pre></td></tr></table></figure>
+<h4 id="rotate"><a href="#rotate" class="headerlink" title="rotate"></a>rotate</h4><p><rotate>是旋转动画，与之对应的Java对象是RotateAnimation。<br>android:fromDegrees属性代表起始角度，浮点值，单位：度；<br>android:toDegrees属性代表结尾角度，浮点值，单位：度；<br>android:pivotX属性代表旋转中心的X坐标值，<br>android:pivotY属性代表旋转中心的Y坐标值，<br>这两个属性也有三种表示方式，数字方式代表相对于自身左边缘的像素值，num%方式代表相对于自身左边缘或顶边缘的百分比，num%p方式代表相对于父容器的左边缘或顶边缘的百分比。</rotate></p>
+<p> 例子<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</div><div class="line">&lt;set xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</div><div class="line">    android:shareInterpolator=&quot;true&quot;</div><div class="line">    android:fillAfter=&quot;true&quot;</div><div class="line">     android:fillBefore=&quot;false&quot;</div><div class="line">    android:interpolator=&quot;@android:anim/anticipate_interpolator&quot;&gt;</div><div class="line"></div><div class="line">    &lt;rotate android:fromDegrees=&quot;0&quot;</div><div class="line">            android:repeatMode=&quot;reverse&quot;</div><div class="line">            android:repeatCount=&quot;2&quot;    </div><div class="line">            android:pivotX=&quot;50%&quot;</div><div class="line">            android:pivotY=&quot;50%&quot;</div><div class="line">            android:duration=&quot;2000&quot;</div><div class="line">            android:toDegrees=&quot;-360&quot;/&gt;</div><div class="line">&lt;/set&gt;</div></pre></td></tr></table></figure></p>
+<p>java<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Animation animation = AnimationUtils.loadAnimation(this,R.anim.rotate);</div><div class="line">      mBtnRot.startAnimation(animation);</div></pre></td></tr></table></figure></p>
+<p>代码实现动画<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Animation roateAnimation = new RotateAnimation(0,360,Animation.RELATIVE_TO_SELF,0.5f,Animation.RELATIVE_TO_SELF,0.5f);</div><div class="line">        roateAnimation.setDuration(5000);</div><div class="line">        mBtnRot.startAnimation(roateAnimation);</div></pre></td></tr></table></figure></p>
+<h4 id="scale"><a href="#scale" class="headerlink" title="scale"></a>scale</h4><p><scale>是缩放动画，可以实现动态调控件尺寸的效果，与之对应的Java对象是ScaleAnimation。<br>android:fromXScale属性代表起始的X方向上相对自身的缩放比例，浮点值，比如1.0代表自身无变化，0.5代表起始时缩小一倍，2.0代表放大一倍；<br>android:toXScale属性代表结尾的X方向上相对自身的缩放比例，浮点值；<br>android:fromYScale属性代表起始的Y方向上相对自身的缩放比例，浮点值；<br>android:toYScale属性代表结尾的Y方向上相对自身的缩放比例，浮点值；<br>android:pivotX属性代表缩放的中轴点X坐标，浮点值，<br>android:pivotY属性代表缩放的中轴点Y坐标，浮点值，对于这两个属性，如果我们想表示中轴点为图像的中心，我们可以把两个属性值定义成0.5或者50%。</scale></p>
+<p>例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</div><div class="line">&lt;set xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</div><div class="line">   android:shareInterpolator=&quot;true&quot;</div><div class="line">    android:interpolator=&quot;@android:anim/accelerate_interpolator&quot;&gt;</div><div class="line"></div><div class="line">    &lt;scale android:fromXScale=&quot;0&quot;</div><div class="line">           android:fromYScale=&quot;-1.0&quot;</div><div class="line">           android:pivotX=&quot;50%&quot;</div><div class="line">           android:pivotY=&quot;50%&quot;</div><div class="line">           android:duration=&quot;2000&quot;</div><div class="line">           android:repeatCount=&quot;2&quot;</div><div class="line">           android:repeatMode=&quot;reverse&quot;</div><div class="line">           android:toXScale=&quot;2.0&quot;</div><div class="line">           android:toYScale=&quot;3.0&quot;/&gt;</div><div class="line">&lt;/set&gt;</div></pre></td></tr></table></figure>
+<p>JAVA</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Animation scalAnimation = AnimationUtils.loadAnimation(this,R.anim.scale);</div><div class="line">       mBtnScal.startAnimation(scalAnimation);</div></pre></td></tr></table></figure>
+<p>代码动画<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Animation scalAnimation = new RotateAnimation(0,1,Animation.RELATIVE_TO_SELF,0.5f,Animation.RELATIVE_TO_SELF,0.5f);</div><div class="line">       scalAnimation.setDuration(3000);</div><div class="line">       scalAnimation.setFillEnabled(true);</div><div class="line">       scalAnimation.setFillAfter(true);</div><div class="line">       scalAnimation.setFillBefore(false);</div><div class="line">       scalAnimation.setRepeatCount(2);</div><div class="line">       mBtnScal.startAnimation(scalAnimation);</div></pre></td></tr></table></figure></p>
+<h4 id="alpha"><a href="#alpha" class="headerlink" title="alpha"></a>alpha</h4><p><alpha>是渐变动画，可以实现fadeIn和fadeOut的效果，与之对应的Java对象是AlphaAnimation。<br>android:fromAlpha属性代表起始alpha值，浮点值，范围在0.0和1.0之间，分别代表透明和完全不透明，<br>android:toAlpha属性代表结尾alpha值，浮点值，范围也在0.0和1.0之间。</alpha></p>
+<p>例子<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</div><div class="line">&lt;set xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</div><div class="line">     android:shareInterpolator=&quot;true&quot;</div><div class="line">     android:interpolator=&quot;@android:anim/accelerate_interpolator&quot;</div><div class="line">    &gt;</div><div class="line"></div><div class="line"></div><div class="line">    &lt;alpha android:fromAlpha=&quot;0&quot;</div><div class="line">           android:toAlpha=&quot;1&quot;</div><div class="line">           android:repeatCount=&quot;infinite&quot;</div><div class="line">           android:repeatMode=&quot;reverse&quot;</div><div class="line">           android:duration=&quot;3000&quot;/&gt;</div><div class="line"></div><div class="line">&lt;/set&gt;</div></pre></td></tr></table></figure></p>
+<p>java</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Animation alphaAnimation = AnimationUtils.loadAnimation(this,R.anim.alpha);</div><div class="line">      mBtnAl.startAnimation(alphaAnimation);</div></pre></td></tr></table></figure>
+<p>代码实现<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Animation animation = new AlphaAnimation(0,1);</div><div class="line">       animation.setDuration(3000);</div><div class="line">       animation.setInterpolator(new AccelerateInterpolator());</div><div class="line"></div><div class="line">       mBtnAl.startAnimation(animation);</div></pre></td></tr></table></figure></p>
+<h4 id="集合动画"><a href="#集合动画" class="headerlink" title="集合动画"></a>集合动画</h4><p>set 对应AnimationSet</p>
+<p>XML实现<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</div><div class="line">&lt;set xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</div><div class="line">    android:shareInterpolator=&quot;true&quot;</div><div class="line">    android:duration=&quot;2000&quot;</div><div class="line">     android:repeatMode=&quot;reverse&quot;</div><div class="line">     android:repeatCount=&quot;infinite&quot;</div><div class="line">     android:interpolator=&quot;@android:anim/bounce_interpolator&quot;</div><div class="line">    android:startOffset=&quot;100&quot;&gt;</div><div class="line"></div><div class="line">    &lt;alpha android:fromAlpha=&quot;0&quot;</div><div class="line">           android:toAlpha=&quot;1&quot;/&gt;</div><div class="line">    &lt;rotate android:fromDegrees=&quot;0&quot;</div><div class="line">            android:pivotX=&quot;20%&quot;</div><div class="line">            android:pivotY=&quot;50%&quot;</div><div class="line">            android:toDegrees=&quot;260&quot;</div><div class="line">            /&gt;</div><div class="line"></div><div class="line"></div><div class="line">    &lt;scale android:pivotY=&quot;50%&quot;</div><div class="line">           android:pivotX=&quot;50%&quot;</div><div class="line">           android:fromXScale=&quot;0&quot;</div><div class="line">           android:fromYScale=&quot;0&quot;</div><div class="line">           android:toXScale=&quot;2.0&quot;</div><div class="line">           android:toYScale=&quot;3.0&quot;</div><div class="line">           /&gt;</div><div class="line"></div><div class="line">    &lt;translate android:fromXDelta=&quot;0&quot;</div><div class="line">               android:fromYDelta=&quot;0&quot;</div><div class="line">               android:toXDelta=&quot;80%p&quot;</div><div class="line">               android:toYDelta=&quot;60%&quot;/&gt;</div><div class="line"></div><div class="line">&lt;/set&gt;</div></pre></td></tr></table></figure></p>
+<p>java<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">Animation animation =AnimationUtils.loadAnimation(this,R.anim.animset);</div><div class="line"></div><div class="line">mBtnSet.startAnimation(animation);</div></pre></td></tr></table></figure></p>
+<p>代码实现</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">AnimationSet set = new AnimationSet(true);</div><div class="line">     set.setDuration(3000);</div><div class="line"></div><div class="line">     Animation translateAnimation = new TranslateAnimation(Animation.RELATIVE_TO_SELF,0,Animation.RELATIVE_TO_SELF,2.0f,Animation.RELATIVE_TO_SELF,0f,Animation.RELATIVE_TO_SELF,-2.0f);</div><div class="line"></div><div class="line">     Animation roateAnimation = new RotateAnimation(0,360,Animation.RELATIVE_TO_SELF,0.5f,Animation.RELATIVE_TO_SELF,0.5f);</div><div class="line"></div><div class="line">    Animation scaleAnimation = new ScaleAnimation(0,1f,0,2.0f,Animation.RELATIVE_TO_SELF,0.5f,Animation.RELATIVE_TO_SELF,0.5f);</div><div class="line"></div><div class="line">     Animation alphaAnimation = new AlphaAnimation(0,1);</div><div class="line"></div><div class="line"></div><div class="line">     set.addAnimation(translateAnimation);</div><div class="line">   set.addAnimation(roateAnimation);</div><div class="line">     set.addAnimation(scaleAnimation);</div><div class="line">     set.addAnimation(alphaAnimation);</div><div class="line"></div><div class="line">     set.setInterpolator(new BounceInterpolator());</div><div class="line">     mBtnSet.startAnimation(set);</div></pre></td></tr></table></figure>
+<p>AnimationSet 我们最常用的是调用其 addAnimation 将一个个不一样的动画组织到一起来，然后调用view 的 startAnimation 方法触发这些动画执行。功能较弱不能做到把集合中的动画按一定顺序进行组织然后在执行的定制。<br>Animation 是针对视图外观的动画实现，动画被应用时外观改变但视图的触发点不会发生变化，还是在原来定义的位置。<br>源码<br><a href="https://github.com/ln0491/ViewAnimation" target="_blank" rel="external">https://github.com/ln0491/ViewAnimation</a></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/android/">android</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/View动画/">View动画</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="https://ln0491.github.io/2016/11/11/Android中View动画/" data-title="Android中View动画 | 刘楠的博客" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2016/11/11/Android中帧动画/"  title="Android中帧动画">
+ <strong>下一篇：</strong><br/> 
+ <span>Android中帧动画
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="2016/11/11/Android中View动画/" data-title="Android中View动画" data-url="https://ln0491.github.io/2016/11/11/Android中View动画/"></div>
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Android中View动画"><span class="toc-number">1.</span> <span class="toc-text">Android中View动画</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#XML结构"><span class="toc-number">1.1.</span> <span class="toc-text">XML结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#translate"><span class="toc-number">1.2.</span> <span class="toc-text">translate</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#rotate"><span class="toc-number">1.3.</span> <span class="toc-text">rotate</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#scale"><span class="toc-number">1.4.</span> <span class="toc-text">scale</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#alpha"><span class="toc-number">1.5.</span> <span class="toc-text">alpha</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#集合动画"><span class="toc-number">1.6.</span> <span class="toc-text">集合动画</span></a></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/android/" title="android">android<sup>41</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/java/" title="java">java<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/test/" title="test">test<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/图片加载/" title="图片加载">图片加载<sup>12</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/android/" title="android">android<sup>6</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Retrofit/" title="Retrofit">Retrofit<sup>6</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/viewpager/" title="viewpager">viewpager<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/volley/" title="volley">volley<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/自定义View/" title="自定义View">自定义View<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/test/" title="test">test<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/View动画/" title="View动画">View动画<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/动画/" title="动画">动画<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/源码/" title="源码">源码<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/PorterDuffXfermode/" title="PorterDuffXfermode">PorterDuffXfermode<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/工具类/" title="工具类">工具类<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/工具/" title="工具">工具<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/View/" title="View">View<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/maven/" title="maven">maven<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  
+  <div class="tagcloudlist">
+    <p class="asidetitle">标签云</p>
+    <div class="tagcloudlist clearfix">
+       <a href="/tags/PorterDuffXfermode/" style="font-size: 10px;">PorterDuffXfermode</a> <a href="/tags/Retrofit/" style="font-size: 18px;">Retrofit</a> <a href="/tags/View/" style="font-size: 10px;">View</a> <a href="/tags/View动画/" style="font-size: 10px;">View动画</a> <a href="/tags/android/" style="font-size: 18px;">android</a> <a href="/tags/maven/" style="font-size: 10px;">maven</a> <a href="/tags/test/" style="font-size: 12px;">test</a> <a href="/tags/viewpager/" style="font-size: 16px;">viewpager</a> <a href="/tags/volley/" style="font-size: 14px;">volley</a> <a href="/tags/动画/" style="font-size: 10px;">动画</a> <a href="/tags/图片加载/" style="font-size: 20px;">图片加载</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/工具类/" style="font-size: 10px;">工具类</a> <a href="/tags/源码/" style="font-size: 10px;">源码</a> <a href="/tags/自定义View/" style="font-size: 12px;">自定义View</a>
+    </div>
+  </div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://www.cnblogs.com/" target="_blank" title="博客园">博客园</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.csdn.net/" target="_blank" title="CSDN">CSDN</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.cnblogs.com/liunanjava/" target="_blank" title="森林森">森林森</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.jianshu.com/" target="_blank" title="简书">简书</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> 爱生活爱编码. <br/>
+			This is my blog,Try to do better.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/ln0491" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<a href="mailto:153011784@qq.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+		
+		<a href="/about" target="_blank" title="Liu Nan">Liu Nan</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+	$('#toc.toc-aside').css('display', 'block').addClass('fadeIn'); //这个是我新加的，修改点
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+        getSize();
+        if (myWidth >= 1024) {
+          c.click();
+        }
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"ln0491"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?f9d3aff238126ad201a9a789a888d75a";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1260477305'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1260477305%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
