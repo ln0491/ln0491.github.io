@@ -1,0 +1,598 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Android中帧动画 | 刘楠的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Liu Nan">
+    
+
+    
+    <meta name="description" content="Android中帧动画Android中的逐帧动画，逐帧动画是一种常见的动画形式（Frame By Frame），其原理是在“连续的关键帧”中分解动画动作，也就是在时间轴的每帧上逐帧绘制不同的内容，使其连续播放而成动画。 因为逐帧动画的帧序列内容不一样，不但给制作增加了负担而且最终输出的文件量也很大，但它的优势也很明显：逐帧动画具有非常大的灵活性，几乎可以表现任何想表现的内容，而它类似与电影的播放模">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android中帧动画">
+<meta property="og:url" content="https://ln0491.github.io/2016/11/11/Android中帧动画/index.html">
+<meta property="og:site_name" content="刘楠的博客">
+<meta property="og:description" content="Android中帧动画Android中的逐帧动画，逐帧动画是一种常见的动画形式（Frame By Frame），其原理是在“连续的关键帧”中分解动画动作，也就是在时间轴的每帧上逐帧绘制不同的内容，使其连续播放而成动画。 因为逐帧动画的帧序列内容不一样，不但给制作增加了负担而且最终输出的文件量也很大，但它的优势也很明显：逐帧动画具有非常大的灵活性，几乎可以表现任何想表现的内容，而它类似与电影的播放模">
+<meta property="og:updated_time" content="2016-11-11T02:15:03.735Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android中帧动画">
+<meta name="twitter:description" content="Android中帧动画Android中的逐帧动画，逐帧动画是一种常见的动画形式（Frame By Frame），其原理是在“连续的关键帧”中分解动画动作，也就是在时间轴的每帧上逐帧绘制不同的内容，使其连续播放而成动画。 因为逐帧动画的帧序列内容不一样，不但给制作增加了负担而且最终输出的文件量也很大，但它的优势也很明显：逐帧动画具有非常大的灵活性，几乎可以表现任何想表现的内容，而它类似与电影的播放模">
+
+    
+    <link rel="alternative" href="/atom.xml" title="刘楠的博客" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="刘楠的博客" title="刘楠的博客"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="刘楠的博客">刘楠的博客</a></h1>
+				<h2 class="blog-motto">热爱生活</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">首页</a></li>
+					
+						<li><a href="/archives">归档</a></li>
+					
+						<li><a href="/tags">标签</a></li>
+					
+						<li><a href="/categories">分类</a></li>
+					
+						<li><a href="/about">关于</a></li>
+					
+					<li>
+ 					
+						<form class="search" action="http://zhannei.baidu.com/cse/search" target="_blank">
+							<label>Search</label>
+						<input name="s" type="hidden" value= 9779949399098768934 ><input type="text" name="q" size="30" placeholder="搜索"><br>
+						</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/11/11/Android中帧动画/" title="Android中帧动画" itemprop="url">Android中帧动画</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Liu Nan" target="_blank" itemprop="author">Liu Nan</a>
+		
+  <p class="article-time">
+    <time datetime="2016-11-11T02:02:53.000Z" itemprop="datePublished"> 发表于 2016-11-11</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Android中帧动画"><span class="toc-number">1.</span> <span class="toc-text">Android中帧动画</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Android中的逐帧动画"><span class="toc-number">1.1.</span> <span class="toc-text">Android中的逐帧动画</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#在代码中设置帧动画"><span class="toc-number">1.2.</span> <span class="toc-text">在代码中设置帧动画</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#在XML中设置帧动画"><span class="toc-number">1.3.</span> <span class="toc-text">在XML中设置帧动画</span></a></li></ol></li></ol>
+		
+		</div>
+		
+		<h3 id="Android中帧动画"><a href="#Android中帧动画" class="headerlink" title="Android中帧动画"></a>Android中帧动画</h3><h4 id="Android中的逐帧动画"><a href="#Android中的逐帧动画" class="headerlink" title="Android中的逐帧动画"></a>Android中的逐帧动画</h4><p>，逐帧动画是一种常见的动画形式（Frame By Frame），其原理是在“连续的关键帧”中分解动画动作，也就是在时间轴的每帧上逐帧绘制不同的内容，使其连续播放而成动画。 因为逐帧动画的帧序列内容不一样，不但给制作增加了负担而且最终输出的文件量也很大，但它的优势也很明显：逐帧动画具有非常大的灵活性，几乎可以表现任何想表现的内容，而它类似与电影的播放模式，很适合于表演细腻的动画。</p>
+<p>在Android中逐帧动画需要得到AnimationDrawable类的支持，它位于”android.graphics.drawable.AnimationDrawable”包下，是Drawable的间接子类。它主要用来创建一个逐帧动画，并且可以对帧进行拉伸，把它设置为View的背景即可使用AnimationDrawable.start()方法播放。既然逐帧动画是需要播放一帧一帧的图像，所以需要为其添加帧。在Android中提供了两种方式为AnimationDrawable添加帧：XML定义的资源文件和Java代码创建，后面再详细讲讲这两种添加帧的方式。</p>
+<p>光为AnimationDrawable设置帧还不能完成播放动画的功能，还需要AnimationDrawable定义好的其他的一些方法来操作逐帧动画，下面简单介绍一下AnimationDrawable的常用方法：</p>
+<ul>
+<li>void start()：开始播放逐帧动画。</li>
+<li>void stop()：停止播放逐帧动画。</li>
+<li>void addFrame(Drawable frame,int duration)：为AnimationDrawable添加一帧，并设置持续时间。</li>
+<li>int getDuration(int i)：得到指定index的帧的持续时间。</li>
+<li>Drawable getFrame(int index)：得到指定index的帧Drawable。</li>
+<li>int getNumberOfFrames()：得到当前AnimationDrawable的所有帧数量。</li>
+<li>boolean isOneShot()：当前AnimationDrawable是否执行一次，返回true执行一次，false循环播放。</li>
+<li>boolean isRunning()：当前AnimationDrawable是否正在播放。</li>
+<li>void setOneShot(boolean oneShot)：设置AnimationDrawable是否执行一次，true执行一次，false循环播放</li>
+</ul>
+<h4 id="在代码中设置帧动画"><a href="#在代码中设置帧动画" class="headerlink" title="在代码中设置帧动画"></a>在代码中设置帧动画</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">// 为AnimationDrawable添加动画帧</div><div class="line">       mCodeAd.addFrame(getResources().getDrawable(R.drawable.loading_img_01),100);</div><div class="line">       mCodeAd.addFrame(getResources().getDrawable(R.drawable.loading_img_02),100);</div><div class="line">       mCodeAd.addFrame(getResources().getDrawable(R.drawable.loading_img_03),100);</div><div class="line">       mCodeAd.addFrame(getResources().getDrawable(R.drawable.loading_img_04),100);</div><div class="line">       mCodeAd.addFrame(getResources().getDrawable(R.drawable.loading_img_05),100);</div><div class="line">       mCodeAd.addFrame(getResources().getDrawable(R.drawable.loading_img_06),100);</div><div class="line">       mCodeAd.addFrame(getResources().getDrawable(R.drawable.loading_img_07),100);</div><div class="line">       mCodeAd.addFrame(getResources().getDrawable(R.drawable.loading_img_08),100);</div><div class="line">       mCodeAd.addFrame(getResources().getDrawable(R.drawable.loading_img_09),100);</div><div class="line">       mCodeAd.addFrame(getResources().getDrawable(R.drawable.loading_img_10),100);</div><div class="line">       mCodeAd.addFrame(getResources().getDrawable(R.drawable.loading_img_11),100);</div><div class="line">       mCodeAd.addFrame(getResources().getDrawable(R.drawable.loading_img_12),100);</div><div class="line">       //循环播放</div><div class="line">       mCodeAd.setOneShot(false);</div><div class="line">       //设置背景</div><div class="line">       mIvCode.setBackgroundDrawable(mCodeAd);</div></pre></td></tr></table></figure>
+<p>播放<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">private void startCode() &#123;</div><div class="line"></div><div class="line">       if(mCodeAd!=null &amp;&amp; !mCodeAd.isRunning())&#123;</div><div class="line">           mCodeAd.start();</div><div class="line">       &#125;else if(mCodeAd!=null &amp;&amp; mCodeAd.isRunning()) &#123;</div><div class="line">           mCodeAd.stop();</div><div class="line">       &#125;</div><div class="line"></div><div class="line"></div><div class="line">   &#125;</div></pre></td></tr></table></figure></p>
+<h4 id="在XML中设置帧动画"><a href="#在XML中设置帧动画" class="headerlink" title="在XML中设置帧动画"></a>在XML中设置帧动画</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</div><div class="line">&lt;animation-list xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</div><div class="line">    android:oneshot=&quot;false&quot;&gt;</div><div class="line">&lt;!--定义一个帧动画播放时间为100ms--&gt;</div><div class="line">    &lt;item android:drawable=&quot;@drawable/loading_img_01&quot; android:duration=&quot;100&quot;/&gt;</div><div class="line">    &lt;item android:drawable=&quot;@drawable/loading_img_02&quot; android:duration=&quot;100&quot;/&gt;</div><div class="line">    &lt;item android:drawable=&quot;@drawable/loading_img_03&quot; android:duration=&quot;100&quot;/&gt;</div><div class="line">    &lt;item android:drawable=&quot;@drawable/loading_img_04&quot; android:duration=&quot;100&quot;/&gt;</div><div class="line">    &lt;item android:drawable=&quot;@drawable/loading_img_05&quot; android:duration=&quot;100&quot;/&gt;</div><div class="line">    &lt;item android:drawable=&quot;@drawable/loading_img_06&quot; android:duration=&quot;100&quot;/&gt;</div><div class="line">    &lt;item android:drawable=&quot;@drawable/loading_img_07&quot; android:duration=&quot;100&quot;/&gt;</div><div class="line">    &lt;item android:drawable=&quot;@drawable/loading_img_08&quot; android:duration=&quot;100&quot;/&gt;</div><div class="line">    &lt;item android:drawable=&quot;@drawable/loading_img_09&quot; android:duration=&quot;100&quot;/&gt;</div><div class="line">    &lt;item android:drawable=&quot;@drawable/loading_img_10&quot; android:duration=&quot;100&quot;/&gt;</div><div class="line">    &lt;item android:drawable=&quot;@drawable/loading_img_11&quot; android:duration=&quot;100&quot;/&gt;</div><div class="line">    &lt;item android:drawable=&quot;@drawable/loading_img_12&quot; android:duration=&quot;100&quot;/&gt;</div><div class="line"></div><div class="line">&lt;/animation-list&gt;</div></pre></td></tr></table></figure>
+<p>代码中使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">private void initXMLFram() &#123;</div><div class="line"></div><div class="line">       mXmlAD = (AnimationDrawable) getResources().getDrawable(R.drawable.loading);</div><div class="line">       //为Image设置背景</div><div class="line">       mIvXML.setBackgroundDrawable(mXmlAD);</div><div class="line"></div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<p>播放</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">private void startXML() &#123;</div><div class="line">        if(mXmlAD!=null &amp;&amp; !mXmlAD.isRunning())&#123;</div><div class="line">            mXmlAD.start();</div><div class="line">        &#125;else if(mXmlAD!=null &amp;&amp; mXmlAD.isRunning()) &#123;</div><div class="line">            mXmlAD.stop();</div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p>源码<br><a href="https://github.com/ln0491/DrawableAnimation" target="_blank" rel="external">https://github.com/ln0491/DrawableAnimation</a></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/android/">android</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/动画/">动画</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="https://ln0491.github.io/2016/11/11/Android中帧动画/" data-title="Android中帧动画 | 刘楠的博客" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2016/11/11/Android中View动画/" title="Android中View动画">
+  <strong>上一篇：</strong><br/>
+  <span>
+  Android中View动画</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2016/11/10/初识View/"  title="初识View">
+ <strong>下一篇：</strong><br/> 
+ <span>初识View
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="2016/11/11/Android中帧动画/" data-title="Android中帧动画" data-url="https://ln0491.github.io/2016/11/11/Android中帧动画/"></div>
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Android中帧动画"><span class="toc-number">1.</span> <span class="toc-text">Android中帧动画</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Android中的逐帧动画"><span class="toc-number">1.1.</span> <span class="toc-text">Android中的逐帧动画</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#在代码中设置帧动画"><span class="toc-number">1.2.</span> <span class="toc-text">在代码中设置帧动画</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#在XML中设置帧动画"><span class="toc-number">1.3.</span> <span class="toc-text">在XML中设置帧动画</span></a></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/android/" title="android">android<sup>41</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/java/" title="java">java<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/test/" title="test">test<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/图片加载/" title="图片加载">图片加载<sup>12</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/android/" title="android">android<sup>6</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Retrofit/" title="Retrofit">Retrofit<sup>6</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/viewpager/" title="viewpager">viewpager<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/volley/" title="volley">volley<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/自定义View/" title="自定义View">自定义View<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/test/" title="test">test<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/View动画/" title="View动画">View动画<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/动画/" title="动画">动画<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/源码/" title="源码">源码<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/PorterDuffXfermode/" title="PorterDuffXfermode">PorterDuffXfermode<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/工具类/" title="工具类">工具类<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/工具/" title="工具">工具<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/View/" title="View">View<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/maven/" title="maven">maven<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  
+  <div class="tagcloudlist">
+    <p class="asidetitle">标签云</p>
+    <div class="tagcloudlist clearfix">
+       <a href="/tags/PorterDuffXfermode/" style="font-size: 10px;">PorterDuffXfermode</a> <a href="/tags/Retrofit/" style="font-size: 18px;">Retrofit</a> <a href="/tags/View/" style="font-size: 10px;">View</a> <a href="/tags/View动画/" style="font-size: 10px;">View动画</a> <a href="/tags/android/" style="font-size: 18px;">android</a> <a href="/tags/maven/" style="font-size: 10px;">maven</a> <a href="/tags/test/" style="font-size: 12px;">test</a> <a href="/tags/viewpager/" style="font-size: 16px;">viewpager</a> <a href="/tags/volley/" style="font-size: 14px;">volley</a> <a href="/tags/动画/" style="font-size: 10px;">动画</a> <a href="/tags/图片加载/" style="font-size: 20px;">图片加载</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/工具类/" style="font-size: 10px;">工具类</a> <a href="/tags/源码/" style="font-size: 10px;">源码</a> <a href="/tags/自定义View/" style="font-size: 12px;">自定义View</a>
+    </div>
+  </div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://www.cnblogs.com/" target="_blank" title="博客园">博客园</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.csdn.net/" target="_blank" title="CSDN">CSDN</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.cnblogs.com/liunanjava/" target="_blank" title="森林森">森林森</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.jianshu.com/" target="_blank" title="简书">简书</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> 爱生活爱编码. <br/>
+			This is my blog,Try to do better.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/ln0491" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<a href="mailto:153011784@qq.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+		
+		<a href="/about" target="_blank" title="Liu Nan">Liu Nan</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+	$('#toc.toc-aside').css('display', 'block').addClass('fadeIn'); //这个是我新加的，修改点
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+        getSize();
+        if (myWidth >= 1024) {
+          c.click();
+        }
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"ln0491"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?f9d3aff238126ad201a9a789a888d75a";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1260477305'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1260477305%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
