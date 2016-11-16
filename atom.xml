@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ln0491.github.io/"/>
-  <updated>2016-11-11T09:02:15.221Z</updated>
+  <updated>2016-11-16T07:42:01.190Z</updated>
   <id>https://ln0491.github.io/</id>
   
   <author>
@@ -14,6 +14,90 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>android 常用混淆</title>
+    <link href="https://ln0491.github.io/2016/11/16/android-%E5%B8%B8%E7%94%A8%E6%B7%B7%E6%B7%86/"/>
+    <id>https://ln0491.github.io/2016/11/16/android-常用混淆/</id>
+    <published>2016-11-16T07:40:01.000Z</published>
+    <updated>2016-11-16T07:42:01.190Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="通常不需混淆的Android类"><a href="#通常不需混淆的Android类" class="headerlink" title="通常不需混淆的Android类"></a>通常不需混淆的Android类</h1><pre><code>-keep public class * extends android.app.Fragment
+-keep public class * extends android.app.Activity
+-keep public class * extends android.app.Application
+-keep public class * extends android.app.Service
+-keep public class * extends android.content.BroadcastReceiver
+-keep public class * extends android.preference.Preference
+-keep public class * extends android.content.ContentProvider
+-keep public class * extends android.support.v4.**
+-keep public class * extends android.support.annotation.**
+-keep public class * extends android.support.v7.**
+</code></pre><h1 id="butterknife"><a href="#butterknife" class="headerlink" title="butterknife"></a>butterknife</h1><pre><code>-keep class butterknife.** { *; }
+-dontwarn butterknife.internal.**
+-keep class **$$ViewBinder { *; }
+-keepclasseswithmembernames class * {
+    @butterknife.* &lt;fields&gt;;
+}
+-keepclasseswithmembernames class * {
+    @butterknife.* &lt;methods&gt;;
+}
+</code></pre><h1 id="RxJava-RxAndroid"><a href="#RxJava-RxAndroid" class="headerlink" title="RxJava RxAndroid"></a>RxJava RxAndroid</h1><pre><code>-dontwarn sun.misc.**
+-keepclassmembers class rx.internal.util.unsafe.*ArrayQueue*Field* {
+   long producerIndex;
+   long consumerIndex;
+}
+-keepclassmembers class rx.internal.util.unsafe.BaseLinkedQueueProducerNodeRef {
+    rx.internal.util.atomic.LinkedQueueNode producerNode;
+}
+-keepclassmembers class rx.internal.util.unsafe.BaseLinkedQueueConsumerNodeRef {
+    rx.internal.util.atomic.LinkedQueueNode consumerNode;
+}
+</code></pre><h1 id="retrofit2"><a href="#retrofit2" class="headerlink" title="retrofit2"></a>retrofit2</h1><pre><code>-dontwarn retrofit2.**
+-keep class retrofit2.** { *; }
+-keepattributes Signature
+-keepattributes Exceptions
+</code></pre><h1 id="okhttp"><a href="#okhttp" class="headerlink" title="okhttp"></a>okhttp</h1><pre><code>-dontwarn com.squareup.okhttp3.**
+-keep class com.squareup.okhttp3.** { *;}
+-dontwarn okio.**
+</code></pre><h1 id="日志"><a href="#日志" class="headerlink" title="日志"></a>日志</h1><pre><code>-dontwarn okhttp3.logging.**
+</code></pre><h1 id="glide"><a href="#glide" class="headerlink" title="glide"></a>glide</h1><pre><code>-keep public class * implements com.bumptech.glide.module.GlideModule
+-keep public enum com.bumptech.glide.load.resource.bitmap.ImageHeaderParser$** {
+  **[] $VALUES;
+  public *;
+}
+</code></pre><h1 id="eventbus"><a href="#eventbus" class="headerlink" title="eventbus"></a>eventbus</h1><pre><code>-keepattributes *Annotation*
+-keepclassmembers class ** {
+    @org.greenrobot.eventbus.Subscribe &lt;methods&gt;;
+}
+-keep enum org.greenrobot.eventbus.ThreadMode { *; }
+</code></pre><h1 id="友盟统计"><a href="#友盟统计" class="headerlink" title="友盟统计"></a>友盟统计</h1><pre><code>-keepclassmembers class * {
+  public &lt;init&gt; (org.json.JSONObject);
+}
+-keep public class [您的应用包名].R$*{
+  public static final int *;
+}
+-keepclassmembers enum * {
+  public static **[] values(); public static ** valueOf(java.lang.String);
+}
+</code></pre><h1 id="Gson"><a href="#Gson" class="headerlink" title="Gson"></a>Gson</h1><pre><code>-keepattributes Signature-keepattributes *Annotation*
+-keep class sun.misc.Unsafe { *; }
+-keep class com.google.gson.stream.** { *; }
+# Application classes that will be serialized/deserialized over Gson 下面替换成自己的实体类
+-keep class com.example.bean.** { *; }
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;通常不需混淆的Android类&quot;&gt;&lt;a href=&quot;#通常不需混淆的Android类&quot; class=&quot;headerlink&quot; title=&quot;通常不需混淆的Android类&quot;&gt;&lt;/a&gt;通常不需混淆的Android类&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;-keep publ
+    
+    </summary>
+    
+      <category term="android" scheme="https://ln0491.github.io/categories/android/"/>
+    
+    
+      <category term="android" scheme="https://ln0491.github.io/tags/android/"/>
+    
+  </entry>
   
   <entry>
     <title>Android中View动画</title>
@@ -1280,35 +1364,6 @@ public DrawableTypeRequest&lt;URL&gt; fromUrl() {
     <summary type="html">
     
       &lt;h2 id=&quot;Glide入门教程八-回调：定制view中使用SimpleTarget和ViewTarget&quot;&gt;&lt;a href=&quot;#Glide入门教程八-回调：定制view中使用SimpleTarget和ViewTarget&quot; class=&quot;headerlink&quot; title=&quot;
-    
-    </summary>
-    
-      <category term="android" scheme="https://ln0491.github.io/categories/android/"/>
-    
-    
-      <category term="图片加载" scheme="https://ln0491.github.io/tags/%E5%9B%BE%E7%89%87%E5%8A%A0%E8%BD%BD/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Glide入门教程七-图片请求优先级</title>
-    <link href="https://ln0491.github.io/2016/10/17/Glide%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B%E4%B8%83-%E5%9B%BE%E7%89%87%E8%AF%B7%E6%B1%82%E4%BC%98%E5%85%88%E7%BA%A7/"/>
-    <id>https://ln0491.github.io/2016/10/17/Glide入门教程七-图片请求优先级/</id>
-    <published>2016-10-17T08:16:33.000Z</published>
-    <updated>2016-10-18T11:39:16.313Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="Glide入门教程七-图片请求优先级"><a href="#Glide入门教程七-图片请求优先级" class="headerlink" title="Glide入门教程七-图片请求优先级"></a>Glide入门教程七-图片请求优先级</h2><p>.priority()方法参数的Priority的枚举变量<br>一共有四个不同的枚举变量。下面以递增方式列出：</p>
-<pre><code>* Priority.LOW
-* Priority.NORMAL
-* Priority.HIGH
-* Priority.IMMEDIATE
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Glide.with(this)</div><div class="line">               .load(url10)</div><div class="line">               .placeholder(R.mipmap.pictures_no)</div><div class="line">               .override(300,300)</div><div class="line">               .skipMemoryCache(true)   //跳过内存缓存，不在内存中保存图片</div><div class="line">               .diskCacheStrategy(DiskCacheStrategy.ALL)</div><div class="line">               .priority(Priority.HIGH)   //添加高优先级</div><div class="line">               .into(mIv10);</div></pre></td></tr></table></figure>
-<p>源码<br><a href="https://github.com/ln0491/GlideDemo" target="_blank" rel="external">https://github.com/ln0491/GlideDemo</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;Glide入门教程七-图片请求优先级&quot;&gt;&lt;a href=&quot;#Glide入门教程七-图片请求优先级&quot; class=&quot;headerlink&quot; title=&quot;Glide入门教程七-图片请求优先级&quot;&gt;&lt;/a&gt;Glide入门教程七-图片请求优先级&lt;/h2&gt;&lt;p&gt;.prior
     
     </summary>
     
