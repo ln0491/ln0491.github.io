@@ -4,29 +4,38 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>Android 欢迎页快速启动 | 刘楠的博客</title>
+    <title>javaBase64使用 | 刘楠的博客</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Liu Nan">
     
 
     
-    <meta name="description" content="Android 欢迎页快速启动默认情况下，Android App在点击App logo到App完全启动这之间会有一段时间空白期。那么如何做到在用户点击logo图标之后立即打开App的界面而不是一段白屏或黑屏呢？
-设置xml在drawable下建立welcome.xml
-123456789101112&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&amp;gt;&amp;lt;la">
+    <meta name="description" content="测试public static void main(String[] args) {
+
+    String str = &amp;quot;Hello, world!&amp;quot;;
+    System.out.println(&amp;quot;未加密前：&amp;quot; + str + &amp;quot;  长度:&amp;quot; + str.length());
+
+    String encoderString =">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Android 欢迎页快速启动">
-<meta property="og:url" content="https://ln0491.github.io/2016/11/07/Android-欢迎页快速启动/index.html">
+<meta property="og:title" content="javaBase64使用">
+<meta property="og:url" content="https://ln0491.github.io/2016/11/17/javaBase64使用/index.html">
 <meta property="og:site_name" content="刘楠的博客">
-<meta property="og:description" content="Android 欢迎页快速启动默认情况下，Android App在点击App logo到App完全启动这之间会有一段时间空白期。那么如何做到在用户点击logo图标之后立即打开App的界面而不是一段白屏或黑屏呢？
-设置xml在drawable下建立welcome.xml
-123456789101112&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&amp;gt;&amp;lt;la">
-<meta property="og:updated_time" content="2016-11-07T09:45:26.704Z">
+<meta property="og:description" content="测试public static void main(String[] args) {
+
+    String str = &amp;quot;Hello, world!&amp;quot;;
+    System.out.println(&amp;quot;未加密前：&amp;quot; + str + &amp;quot;  长度:&amp;quot; + str.length());
+
+    String encoderString =">
+<meta property="og:updated_time" content="2016-11-17T03:10:29.377Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Android 欢迎页快速启动">
-<meta name="twitter:description" content="Android 欢迎页快速启动默认情况下，Android App在点击App logo到App完全启动这之间会有一段时间空白期。那么如何做到在用户点击logo图标之后立即打开App的界面而不是一段白屏或黑屏呢？
-设置xml在drawable下建立welcome.xml
-123456789101112&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&amp;gt;&amp;lt;la">
+<meta name="twitter:title" content="javaBase64使用">
+<meta name="twitter:description" content="测试public static void main(String[] args) {
+
+    String str = &amp;quot;Hello, world!&amp;quot;;
+    System.out.println(&amp;quot;未加密前：&amp;quot; + str + &amp;quot;  长度:&amp;quot; + str.length());
+
+    String encoderString =">
 
     
     <link rel="alternative" href="/atom.xml" title="刘楠的博客" type="application/atom+xml">
@@ -89,14 +98,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2016/11/07/Android-欢迎页快速启动/" title="Android 欢迎页快速启动" itemprop="url">Android 欢迎页快速启动</a>
+      <a href="/2016/11/17/javaBase64使用/" title="javaBase64使用" itemprop="url">javaBase64使用</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="Liu Nan" target="_blank" itemprop="author">Liu Nan</a>
 		
   <p class="article-time">
-    <time datetime="2016-11-07T09:38:21.000Z" itemprop="datePublished"> 发表于 2016-11-07</time>
+    <time datetime="2016-11-17T03:06:11.000Z" itemprop="datePublished"> 发表于 2016-11-17</time>
     
   </p>
 </header>
@@ -105,31 +114,171 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Android-欢迎页快速启动"><span class="toc-number">1.</span> <span class="toc-text">Android 欢迎页快速启动</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#设置xml"><span class="toc-number">1.1.</span> <span class="toc-text">设置xml</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#设置style"><span class="toc-number">1.2.</span> <span class="toc-text">设置style</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#清单文件中配置style"><span class="toc-number">1.3.</span> <span class="toc-text">清单文件中配置style</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Activity中不需要设置setContentView"><span class="toc-number">1.4.</span> <span class="toc-text">Activity中不需要设置setContentView()</span></a></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#测试"><span class="toc-number">1.</span> <span class="toc-text">测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用Base64加密字符串"><span class="toc-number">2.</span> <span class="toc-text">使用Base64加密字符串</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用Base64解码"><span class="toc-number">3.</span> <span class="toc-text">使用Base64解码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#将一个图片文件转化为Bases64字符串"><span class="toc-number">4.</span> <span class="toc-text">将一个图片文件转化为Bases64字符串</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#将base64字符串转化文件"><span class="toc-number">5.</span> <span class="toc-text">将base64字符串转化文件</span></a></li></ol>
 		
 		</div>
 		
-		<h3 id="Android-欢迎页快速启动"><a href="#Android-欢迎页快速启动" class="headerlink" title="Android 欢迎页快速启动"></a>Android 欢迎页快速启动</h3><p>默认情况下，Android App在点击App logo到App完全启动这之间会有一段时间空白期。那么如何做到在用户点击logo图标之后立即打开App的界面而不是一段白屏或黑屏呢？</p>
-<h4 id="设置xml"><a href="#设置xml" class="headerlink" title="设置xml"></a>设置xml</h4><p>在drawable下建立welcome.xml</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">layer-list</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span>&gt;</span></div><div class="line">    <span class="comment">&lt;!--背景色--&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">item</span>  <span class="attr">android:drawable</span>=<span class="string">"@color/white"</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">item</span>&gt;</span></div><div class="line">        <span class="comment">&lt;!--图片--&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">bitmap</span></span></div><div class="line">            <span class="attr">android:gravity</span>=<span class="string">"center"</span></div><div class="line">            <span class="attr">android:src</span>=<span class="string">"@mipmap/welcome_page"</span>/&gt;</div><div class="line">    <span class="tag">&lt;/<span class="name">item</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">layer-list</span>&gt;</span></div></pre></td></tr></table></figure>
-<h4 id="设置style"><a href="#设置style" class="headerlink" title="设置style"></a>设置style</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- Base application theme. --&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">style</span> <span class="attr">name</span>=<span class="string">"AppTheme"</span> <span class="attr">parent</span>=<span class="string">"Theme.AppCompat.Light.DarkActionBar"</span>&gt;</span><span class="xml"></span></div><div class="line">        <span class="comment">&lt;!-- Customize your theme here. --&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">style</span> <span class="attr">name</span>=<span class="string">"WelcomeThem"</span> <span class="attr">parent</span>=<span class="string">"AppTheme"</span>&gt;</span><span class="xml"></span></div><div class="line">        <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:windowBackground"</span>&gt;</span>@drawable/welcome<span class="tag">&lt;/<span class="name">item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">style</span>&gt;</span></div></pre></td></tr></table></figure>
-<h4 id="清单文件中配置style"><a href="#清单文件中配置style" class="headerlink" title="清单文件中配置style"></a>清单文件中配置style</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- 欢迎页 --&gt;</span></div><div class="line"></div><div class="line">       <span class="tag">&lt;<span class="name">activity</span></span></div><div class="line">           <span class="attr">android:name</span>=<span class="string">".ui.WelcomeActivity"</span></div><div class="line">           <span class="attr">android:windowSoftInputMode</span>=<span class="string">"adjustNothing"</span> <span class="attr">android:theme</span>=<span class="string">"@style/WelcomeThem"</span>&gt;</div><div class="line">           <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></div><div class="line">               <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.intent.action.MAIN"</span>/&gt;</span></div><div class="line"></div><div class="line">               <span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">"android.intent.category.LAUNCHER"</span>/&gt;</span></div><div class="line">           <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></div><div class="line">       <span class="tag">&lt;/<span class="name">activity</span>&gt;</span></div></pre></td></tr></table></figure>
-<h4 id="Activity中不需要设置setContentView"><a href="#Activity中不需要设置setContentView" class="headerlink" title="Activity中不需要设置setContentView()"></a>Activity中不需要设置setContentView()</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WelcomeActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">        Intent intent = <span class="keyword">new</span> Intent(<span class="keyword">this</span>, MainActivity.class);</div><div class="line">        startActivity(intent);</div><div class="line">        finish();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>不需要为你的SplashActivity设置一个视图，这个视图来自于主题，在主题中为你的SplashActivity设置UI就足够了。</p>
-  
+		<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><pre><code>public static void main(String[] args) {
+
+    String str = &quot;Hello, world!&quot;;
+    System.out.println(&quot;未加密前：&quot; + str + &quot;  长度:&quot; + str.length());
+
+    String encoderString = toBase64Encode(str);
+    System.out.println(&quot;加密: &quot; + encoderString + &quot;  长度:&quot; + encoderString.length());
+
+    String decoderString = toDecodeFromeBase64(encoderString);
+    System.out.println(&quot;解密： &quot; + decoderString + &quot;  长度:&quot; + decoderString.length());
+
+    String path = &quot;D:/tmp/ba.png&quot;;
+
+    String imgString = fileToBase64String(path);
+    System.out.println(&quot;图片转base64 : &quot; + imgString);
+
+    boolean flag = base64StringToFile(imgString);
+    System.out.println(&quot;flag = &quot; + flag);
+}
+</code></pre><h2 id="使用Base64加密字符串"><a href="#使用Base64加密字符串" class="headerlink" title="使用Base64加密字符串"></a>使用Base64加密字符串</h2><pre><code>/**
+ * 使用Base64加密字符串
+* @Title: toBase64Encode
+* @Description: TODO(这里用一句话描述这个方法的作用)
+* @param @param str
+* @param @return    设定文件
+* @return String    返回类型
+* @throws
+ */
+public static String toBase64Encode(String str) {
+    String result = null;
+
+    try {
+        result = new BASE64Encoder().encode(str.getBytes(&quot;utf8&quot;));
+    } catch (UnsupportedEncodingException e) {
+        e.printStackTrace();
+
+    }
+
+    return result;
+}
+</code></pre><h2 id="使用Base64解码"><a href="#使用Base64解码" class="headerlink" title="使用Base64解码"></a>使用Base64解码</h2><pre><code>/**
+ * 使用Base64解码
+* @Title: toDecodeFromeBase64
+* @Description: TODO(这里用一句话描述这个方法的作用)
+* @param @param str
+* @param @return    设定文件
+* @return String    返回类型
+* @throws
+ */
+public static String toDecodeFromeBase64(String str) {
+    String result = null;
+    byte[] decodeBuffer;
+
+    try {
+        BASE64Decoder decoder = new BASE64Decoder();
+        decodeBuffer = decoder.decodeBuffer(str);
+
+        result = new String(decodeBuffer, &quot;utf8&quot;);
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+
+    return result;
+}
+</code></pre><h2 id="将一个图片文件转化为Bases64字符串"><a href="#将一个图片文件转化为Bases64字符串" class="headerlink" title="将一个图片文件转化为Bases64字符串"></a>将一个图片文件转化为Bases64字符串</h2><pre><code>/**
+ * 根据路径是加密一个图片
+* @Title: fileToBase64String
+* @Description: TODO(这里用一句话描述这个方法的作用)
+* @param @param path
+* @param @return    设定文件
+* @return String    返回类型
+* @throws
+ */
+public static String fileToBase64String(String path) {
+    String result = null;
+
+    InputStream in = null;
+    byte[] data;
+    try {
+        in = new FileInputStream(path);
+        // 声明字符数组长度为流的长度
+        data = new byte[in.available()];
+
+        // 读取文件到流中
+        in.read(data);
+        // 转化为字符串
+        BASE64Encoder encoder = new BASE64Encoder();
+        // 加密
+        result = encoder.encode(data);
+
+    } catch (FileNotFoundException e) {
+        e.printStackTrace();
+    } catch (IOException e) {
+        e.printStackTrace();
+    } finally {
+        IOUtils.close(in);
+    }
+
+    return result;
+}
+</code></pre><h2 id="将base64字符串转化文件"><a href="#将base64字符串转化文件" class="headerlink" title="将base64字符串转化文件"></a>将base64字符串转化文件</h2><pre><code>/**
+ * 将base64字符串转化文件
+* @Title: base64StringToFile
+* @Description: TODO(这里用一句话描述这个方法的作用)
+* @param @param base64String
+* @param @return    设定文件
+* @return boolean    返回类型
+* @throws
+ */
+public static boolean base64StringToFile(String base64String) {
+
+    boolean flag = false;
+
+    if (base64String == null) {
+        return flag;
+
+    }
+    BASE64Decoder decoder = new BASE64Decoder();
+    OutputStream out = null;
+    // Base64解码
+    try {
+        // 读取字符数据中
+        byte[] data = decoder.decodeBuffer(base64String);
+        // 调整数据
+        for (int i = 0; i &lt; data.length; ++i) {
+            if (data[i] &lt; 0) {// 调整异常数据
+                data[i] += 256;
+            }
+        }
+
+        // 生成jpeg图片
+        String imgFilePath = &quot;d:/tmp/test22.png&quot;;// 新生成的图片
+        out = new FileOutputStream(imgFilePath);
+        out.write(data);
+        out.flush();
+
+        flag = true;
+
+    } catch (IOException e) {
+        e.printStackTrace();
+        flag = false;
+    } finally {
+        IOUtils.close(out);
+    }
+
+    return flag;
+}
+</code></pre>  
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/android/">android</a>
+  <a class="article-category-link" href="/categories/java/">java</a>
 </div>
 
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/android/">android</a>
+  <span></span> <a href="/tags/base64/">base64</a>
   </div>
 
 </div>
@@ -138,7 +287,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="https://ln0491.github.io/2016/11/07/Android-欢迎页快速启动/" data-title="Android 欢迎页快速启动 | 刘楠的博客" data-tsina="null" class="share clearfix">
+	  <div data-url="https://ln0491.github.io/2016/11/17/javaBase64使用/" data-title="javaBase64使用 | 刘楠的博客" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -151,19 +300,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2016/11/10/初识View/" title="初识View">
-  <strong>上一篇：</strong><br/>
-  <span>
-  初识View</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2016/10/31/Retrofit源码浅析/"  title="Retrofit源码浅析">
+<a href="/2016/11/16/android-常用混淆/"  title="android 常用混淆">
  <strong>下一篇：</strong><br/> 
- <span>Retrofit源码浅析
+ <span>android 常用混淆
 </span>
 </a>
 </div>
@@ -172,7 +313,7 @@
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2016/11/07/Android-欢迎页快速启动/" data-title="Android 欢迎页快速启动" data-url="https://ln0491.github.io/2016/11/07/Android-欢迎页快速启动/"></div>
+	<div class="ds-thread" data-thread-key="2016/11/17/javaBase64使用/" data-title="javaBase64使用" data-url="https://ln0491.github.io/2016/11/17/javaBase64使用/"></div>
 </section>
 
 
@@ -182,7 +323,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Android-欢迎页快速启动"><span class="toc-number">1.</span> <span class="toc-text">Android 欢迎页快速启动</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#设置xml"><span class="toc-number">1.1.</span> <span class="toc-text">设置xml</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#设置style"><span class="toc-number">1.2.</span> <span class="toc-text">设置style</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#清单文件中配置style"><span class="toc-number">1.3.</span> <span class="toc-text">清单文件中配置style</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Activity中不需要设置setContentView"><span class="toc-number">1.4.</span> <span class="toc-text">Activity中不需要设置setContentView()</span></a></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#测试"><span class="toc-number">1.</span> <span class="toc-text">测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用Base64加密字符串"><span class="toc-number">2.</span> <span class="toc-text">使用Base64加密字符串</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用Base64解码"><span class="toc-number">3.</span> <span class="toc-text">使用Base64解码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#将一个图片文件转化为Bases64字符串"><span class="toc-number">4.</span> <span class="toc-text">将一个图片文件转化为Bases64字符串</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#将base64字符串转化文件"><span class="toc-number">5.</span> <span class="toc-text">将base64字符串转化文件</span></a></li></ol>
  
   </div>
 
