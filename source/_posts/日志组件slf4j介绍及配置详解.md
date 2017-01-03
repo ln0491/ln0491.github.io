@@ -140,11 +140,11 @@ og4j.appender.appenderName.layout.ConversionPattern格式化日志信息，Log4J
 因为日志级别分别有error,warn,info,debug,fatal5种，有些是5个字母的，有些是4个字母的，
 如果直接
 写%p就会对不齐，
-![p.png](https://github.com/ln0491/ln0491.github.io/blob/master/p.png)
+![p.png](https://ln0491.github.io/img/p.png)
 %-5p的意思是日志级别输出左对齐，右边以空格填充，
-![5_p.png](https://github.com/ln0491/ln0491.github.io/blob/master/5_p.png)
+![5_p.png](https://ln0491.github.io/img/5_p.png)
 %5p的意思是日志级别输出右对齐，左边以空格填充，
-![5p.png](https://github.com/ln0491/ln0491.github.io/blob/master/5p.png)
+![5p.png](https://ln0491.github.io/img/5p.png)
 
 ## 控件台配置
 ```
