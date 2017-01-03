@@ -18,9 +18,9 @@
 <meta property="og:site_name" content="刘楠的博客">
 <meta property="og:description" content="maven依赖12345678910&amp;lt;dependency&amp;gt;			&amp;lt;groupId&amp;gt;org.slf4j&amp;lt;/groupId&amp;gt;			&amp;lt;artifactId&amp;gt;slf4j-api&amp;lt;/artifactId&amp;gt;			&amp;lt;version&amp;gt;1.7.21&amp;lt;/version&amp;gt;		&amp;lt;/dependency&amp;gt;		&amp;lt;depen">
 <meta property="og:image" content="https://ln0491.github.io/img/p.png">
-<meta property="og:image" content="https://ln0491.github.io/img/-5p.png">
+<meta property="og:image" content="https://ln0491.github.io/img/5_p.png">
 <meta property="og:image" content="https://ln0491.github.io/img/5p.png">
-<meta property="og:updated_time" content="2017-01-03T07:27:48.485Z">
+<meta property="og:updated_time" content="2017-01-03T07:44:32.107Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="日志组件slf4j介绍及配置详解">
 <meta name="twitter:description" content="maven依赖12345678910&amp;lt;dependency&amp;gt;			&amp;lt;groupId&amp;gt;org.slf4j&amp;lt;/groupId&amp;gt;			&amp;lt;artifactId&amp;gt;slf4j-api&amp;lt;/artifactId&amp;gt;			&amp;lt;version&amp;gt;1.7.21&amp;lt;/version&amp;gt;		&amp;lt;/dependency&amp;gt;		&amp;lt;depen">
@@ -167,7 +167,7 @@
 <li>%m: 输出代码中指定的消息,产生的日志具体信息 </li>
 <li>%n: 输出一个回车换行符，Windows平台为”\r\n”，Unix平台为”\n”输出日志信息换行</li>
 </ul>
-<p>因为日志级别分别有error,warn,info,debug,fatal5种，有些是5个字母的，有些是4个字母的，<br>如果直接<br>写%p就会对不齐，<br><img src="https://ln0491.github.io/img/p.png" alt="p.png"><br>%-5p的意思是日志级别输出左对齐，右边以空格填充，<br><img src="https://ln0491.github.io/img/-5p.png" alt="p.png"><br>%5p的意思是日志级别输出右对齐，左边以空格填充，<br><img src="https://ln0491.github.io/img/5p.png" alt="p.png"></p>
+<p>因为日志级别分别有error,warn,info,debug,fatal5种，有些是5个字母的，有些是4个字母的，<br>如果直接<br>写%p就会对不齐，<br><img src="https://ln0491.github.io/img/p.png" alt="p.png"><br>%-5p的意思是日志级别输出左对齐，右边以空格填充，<br><img src="https://ln0491.github.io/img/5_p.png" alt="5_p.png"><br>%5p的意思是日志级别输出右对齐，左边以空格填充，<br><img src="https://ln0491.github.io/img/5p.png" alt="5p.png"></p>
 <h2 id="控件台配置"><a href="#控件台配置" class="headerlink" title="控件台配置"></a>控件台配置</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">#定义输出级别和输出平台,控件台输出</div><div class="line">log4j.rootLogger=debug, stdout</div><div class="line">#设定stdout输出平台 org.apache.log4j.ConsoleAppender（控制台）</div><div class="line">log4j.appender.stdout=org.apache.log4j.ConsoleAppender</div><div class="line">#指定输出的最低级别</div><div class="line">log4j.appender.stdout.Threshold=debug</div><div class="line"># 指定默认值是true,意谓着所有的消息都会被立即输出。 fasle 不输出</div><div class="line">log4j.appender.stdout.ImmediateFlush=true</div><div class="line">#默认情况下是System.out,指定输出控制台-err为红色的提示</div><div class="line">log4j.appender.stdout.Target=system.err</div><div class="line">#org.apache.log4j.PatternLayout（可以灵活地指定布局模式）</div><div class="line">log4j.appender.stdout.layout=org.apache.log4j.PatternLayout</div><div class="line">#指定输入的格式对输出的内容进行格式化</div><div class="line">#%p  输出日志信息优先级，即DEBUG，INFO，WARN，ERROR，FATAL</div><div class="line">#%d 输出日志时间点的日期或时间，</div><div class="line">#%l 输出日志事件的发生位置，相当于%C.%M(%F:%L)的组合,包括类目名、发生的线程，以及在代码中的行数</div><div class="line">#%m 输出代码中指定的消息,产生的日志具体信息 </div><div class="line">#%n 输出一个回车换行符，Windows平台为”\r\n”，Unix平台为”\n”输出日志信息换行</div><div class="line">log4j.appender.stdout.layout.ConversionPattern=[%-5p][%d&#123;yyyy-MM-dd HH:mm:ss&#125;][%l]%m%n</div></pre></td></tr></table></figure>
 <h2 id="一份完整"><a href="#一份完整" class="headerlink" title="一份完整"></a>一份完整</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div></pre></td><td class="code"><pre><div class="line">#定义输出级别和输出平台,控件台输出 appender(目的地)可以有多个</div><div class="line">log4j.rootLogger=debug, stdout,FILE,errorLog</div><div class="line">#设定stdout输出平台 org.apache.log4j.ConsoleAppender（控制台）</div><div class="line">log4j.appender.stdout=org.apache.log4j.ConsoleAppender</div><div class="line">#指定输出的最低级别</div><div class="line">log4j.appender.stdout.Threshold=debug</div><div class="line"># 指定默认值是true,意谓着所有的消息都会被立即输出。 fasle 不输出</div><div class="line">log4j.appender.stdout.ImmediateFlush=true</div><div class="line">#默认情况下是System.out,指定输出控制台-err为红色的提示</div><div class="line">log4j.appender.stdout.Target=system.err</div><div class="line">#org.apache.log4j.PatternLayout（可以灵活地指定布局模式）</div><div class="line">log4j.appender.stdout.layout=org.apache.log4j.PatternLayout</div><div class="line">#指定输入的格式对输出的内容进行格式化</div><div class="line">#%p  输出日志信息优先级，即DEBUG，INFO，WARN，ERROR，FATAL</div><div class="line">#%d 输出日志时间点的日期或时间，</div><div class="line">#%l 输出日志事件的发生位置，相当于%C.%M(%F:%L)的组合,包括类目名、发生的线程，以及在代码中的行数</div><div class="line">#%m 输出代码中指定的消息,产生的日志具体信息 </div><div class="line">#%n 输出一个回车换行符，Windows平台为”\r\n”，Unix平台为”\n”输出日志信息换行</div><div class="line">log4j.appender.stdout.layout.ConversionPattern=[%-5p][%d&#123;yyyy-MM-dd HH:mm:ss&#125;][%l]%m%n</div><div class="line"></div><div class="line">##配置输出到文件-每天一个文件</div><div class="line"></div><div class="line">log4j.appender.FILE=org.apache.log4j.DailyRollingFileAppender</div><div class="line"></div><div class="line">#指定输出的最低级别</div><div class="line">log4j.appender.FILE.Threshold=debug</div><div class="line"># 指定默认值是true,意谓着所有的消息都会被立即输出。 fasle 不输出</div><div class="line">log4j.appender.FILE.ImmediateFlush=true</div><div class="line">#默认情况下是System.out,指定输出控制台-err为红色的提示</div><div class="line">log4j.appender.FILE.File= logs/logs.log</div><div class="line">#org.apache.log4j.PatternLayout（可以灵活地指定布局模式）</div><div class="line">log4j.appender.FILE.layout=org.apache.log4j.PatternLayout</div><div class="line">#指定输入的格式对输出的内容进行格式化</div><div class="line">#%p  输出日志信息优先级，即DEBUG，INFO，WARN，ERROR，FATAL</div><div class="line">#%d 输出日志时间点的日期或时间，</div><div class="line">#%l 输出日志事件的发生位置，相当于%C.%M(%F:%L)的组合,包括类目名、发生的线程，以及在代码中的行数</div><div class="line">#%m 输出代码中指定的消息,产生的日志具体信息 </div><div class="line">#%n 输出一个回车换行符，Windows平台为”\r\n”，Unix平台为”\n”输出日志信息换行</div><div class="line">log4j.appender.FILE.layout.ConversionPattern=[%-5p][%d&#123;yyyy-MM-dd HH:mm:ss&#125;][%l]%m%n</div><div class="line"></div><div class="line"></div><div class="line">## 输入文件指定大小与上面每天一个文件2选一errorLog/FILE</div><div class="line">log4j.appender.errorLog=org.apache.log4j.RollingFileAppender</div><div class="line"></div><div class="line">#指定输出的最低级别-保存日志取tomcat下logs目录</div><div class="line">log4j.appender.errorLog.Threshold=debug</div><div class="line"># 指定默认值是true,意谓着所有的消息都会被立即输出。 fasle 不输出</div><div class="line">log4j.appender.errorLog.ImmediateFlush=true</div><div class="line">#默认情况下是System.out,指定输出控制台-err为红色的提示</div><div class="line">log4j.appender.errorLog.File= $&#123;catalina.base&#125;/logs.log</div><div class="line">#指定文件的大小</div><div class="line">log4j.appender.errorLog.MaxFileSize= 20480KB</div><div class="line"># 指定最大文件个数</div><div class="line">log4j.appender.errorLog.MaxBackupIndex= 10</div><div class="line">#org.apache.log4j.PatternLayout（可以灵活地指定布局模式）</div><div class="line">log4j.appender.errorLog.layout=org.apache.log4j.PatternLayout  </div><div class="line">#指定输入的格式对输出的内容进行格式化</div><div class="line">#%p  输出日志信息优先级，即DEBUG，INFO，WARN，ERROR，FATAL</div><div class="line">#%d 输出日志时间点的日期或时间，</div><div class="line">#%l 输出日志事件的发生位置，相当于%C.%M(%F:%L)的组合,包括类目名、发生的线程，以及在代码中的行数</div><div class="line">#%m 输出代码中指定的消息,产生的日志具体信息 </div><div class="line">#%n 输出一个回车换行符，Windows平台为”\r\n”，Unix平台为”\n”输出日志信息换行</div><div class="line">log4j.appender.errorLog.layout.ConversionPattern=[%-5p][%d&#123;yyyy-MM-dd HH:mm:ss&#125;][%l]%m%n</div></pre></td></tr></table></figure>  
 	</div>
@@ -302,11 +302,15 @@
 			
 		
 			
+				<li><a href="/tags/工具/" title="工具">工具<sup>1</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/PorterDuffXfermode/" title="PorterDuffXfermode">PorterDuffXfermode<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/工具/" title="工具">工具<sup>1</sup></a></li>
+				<li><a href="/tags/工具类/" title="工具类">工具类<sup>1</sup></a></li>
 			
 		
 			
@@ -318,15 +322,11 @@
 			
 		
 			
-				<li><a href="/tags/工具类/" title="工具类">工具类<sup>1</sup></a></li>
+				<li><a href="/tags/log/" title="log">log<sup>1</sup></a></li>
 			
 		
 			
 				<li><a href="/tags/View/" title="View">View<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/log/" title="log">log<sup>1</sup></a></li>
 			
 		
 			
