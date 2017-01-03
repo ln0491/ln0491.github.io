@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ln0491.github.io/"/>
-  <updated>2016-11-17T03:10:29.377Z</updated>
+  <updated>2017-01-03T07:27:48.485Z</updated>
   <id>https://ln0491.github.io/</id>
   
   <author>
@@ -14,6 +14,90 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>日志组件slf4j介绍及配置详解</title>
+    <link href="https://ln0491.github.io/2017/01/03/%E6%97%A5%E5%BF%97%E7%BB%84%E4%BB%B6slf4j%E4%BB%8B%E7%BB%8D%E5%8F%8A%E9%85%8D%E7%BD%AE%E8%AF%A6%E8%A7%A3/"/>
+    <id>https://ln0491.github.io/2017/01/03/日志组件slf4j介绍及配置详解/</id>
+    <published>2017-01-03T05:31:19.000Z</published>
+    <updated>2017-01-03T07:27:48.485Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="maven依赖"><a href="#maven依赖" class="headerlink" title="maven依赖"></a>maven依赖</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;dependency&gt;</div><div class="line">			&lt;groupId&gt;org.slf4j&lt;/groupId&gt;</div><div class="line">			&lt;artifactId&gt;slf4j-api&lt;/artifactId&gt;</div><div class="line">			&lt;version&gt;1.7.21&lt;/version&gt;</div><div class="line">		&lt;/dependency&gt;</div><div class="line">		&lt;dependency&gt;</div><div class="line">			&lt;groupId&gt;org.slf4j&lt;/groupId&gt;</div><div class="line">			&lt;artifactId&gt;slf4j-log4j12&lt;/artifactId&gt;</div><div class="line">			&lt;version&gt;1.7.21&lt;/version&gt;</div><div class="line">		&lt;/dependency&gt;</div></pre></td></tr></table></figure>
+<h2 id="最基本的配置"><a href="#最基本的配置" class="headerlink" title="最基本的配置"></a>最基本的配置</h2><p>log4j.properties</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">#定义输出级别和输出平台,控件台输出</div><div class="line">log4j.rootLogger=debug, stdout</div><div class="line">#设定stdout输出平台 org.apache.log4j.ConsoleAppender（控制台）</div><div class="line">log4j.appender.stdout=org.apache.log4j.ConsoleAppender</div><div class="line">#org.apache.log4j.PatternLayout（可以灵活地指定布局模式）</div><div class="line">log4j.appender.stdout.layout=org.apache.log4j.PatternLayout</div></pre></td></tr></table></figure>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">import java.util.Date;</div><div class="line"></div><div class="line">import org.slf4j.Logger;</div><div class="line">import org.slf4j.LoggerFactory;</div><div class="line"></div><div class="line">public class Test1 &#123;</div><div class="line">	</div><div class="line">	protected static Logger logger = LoggerFactory.getLogger(Test1.class);</div><div class="line"></div><div class="line">	public static void main(String[] args) &#123;</div><div class="line"></div><div class="line">		logger.debug(&quot;这是个测试时间&#123;&#125;&quot;+new Date());</div><div class="line">		</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>结果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">这是个测试时间&#123;&#125;Tue Jan 03 13:50:39 CST 2017</div></pre></td></tr></table></figure></p>
+<h2 id="输出级别的种类"><a href="#输出级别的种类" class="headerlink" title="输出级别的种类"></a>输出级别的种类</h2><ul>
+<li>ERROR 为严重错误 主要是程序的错误</li>
+<li>WARN 为一般警告，比如session丢失</li>
+<li>INFO 为一般要显示的信息，比如登录登出</li>
+<li>DEBUG 为程序的调试信息</li>
+</ul>
+<h2 id="配置日志信息输出目的地-log4j-appender-appenderName"><a href="#配置日志信息输出目的地-log4j-appender-appenderName" class="headerlink" title="配置日志信息输出目的地 log4j.appender.appenderName=??"></a>配置日志信息输出目的地 log4j.appender.appenderName=??</h2><ul>
+<li>org.apache.log4j.ConsoleAppender（控制台）</li>
+<li>org.apache.log4j.FileAppender（文件）</li>
+<li>org.apache.log4j.DailyRollingFileAppender（每天产生一个日志文件）</li>
+<li>org.apache.log4j.RollingFileAppender（文件大小到达指定尺寸的时候产生一个新的文件）</li>
+<li>org.apache.log4j.WriterAppender（将日志信息以流格式发送到任意指定的地方）</li>
+</ul>
+<h2 id="配置日志信息的格式-log4j-appender-appenderName-layout"><a href="#配置日志信息的格式-log4j-appender-appenderName-layout" class="headerlink" title="配置日志信息的格式 log4j.appender.appenderName.layout = ??"></a>配置日志信息的格式 log4j.appender.appenderName.layout = ??</h2><ul>
+<li>org.apache.log4j.HTMLLayout（以HTML表格形式布局）</li>
+<li>org.apache.log4j.PatternLayout（可以灵活地指定布局模式）</li>
+<li>org.apache.log4j.SimpleLayout（包含日志信息的级别和信息字符串）</li>
+<li>org.apache.log4j.TTCCLayout（包含日志产生的时间、线程、类别等等信息）</li>
+</ul>
+<h2 id="ConsoleAppender选项"><a href="#ConsoleAppender选项" class="headerlink" title="ConsoleAppender选项"></a>ConsoleAppender选项</h2><ul>
+<li>Threshold=DEBUG:指定日志消息的输出最低层次。 </li>
+<li>ImmediateFlush=true:默认值是true,意谓着所有的消息都会被立即输出。 </li>
+<li>Target=System.err:默认情况下是System.out,指定输出控制台</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">#定义输出级别和输出平台,控件台输出</div><div class="line">log4j.rootLogger=debug, stdout</div><div class="line">#设定stdout输出平台 org.apache.log4j.ConsoleAppender（控制台）</div><div class="line">log4j.appender.stdout=org.apache.log4j.ConsoleAppender</div><div class="line">#指定输出的最低级别</div><div class="line">log4j.appender.stdout.Threshold=debug</div><div class="line"># 指定默认值是true,意谓着所有的消息都会被立即输出。 fasle 不输出</div><div class="line">log4j.appender.stdout.ImmediateFlush=true</div><div class="line">#默认情况下是System.out,指定输出控制台-err为红色的提示</div><div class="line">log4j.appender.stdout.Target=system.err</div><div class="line">#org.apache.log4j.PatternLayout（可以灵活地指定布局模式）</div><div class="line">log4j.appender.stdout.layout=org.apache.log4j.PatternLayout</div></pre></td></tr></table></figure>
+<h2 id="FileAppender-选项"><a href="#FileAppender-选项" class="headerlink" title="FileAppender 选项"></a>FileAppender 选项</h2><ul>
+<li>Threshold=DEBUG:指定日志消息的输出最低层次。 </li>
+<li>ImmediateFlush=true:默认值是true,意谓着所有的消息都会被立即输出。 </li>
+<li>File=mylog.txt:指定消息输出到mylog.txt文件。 </li>
+<li>Append=false:默认值是true,即将消息增加到指定文件中，false指将消息覆盖指定的文件内容。</li>
+</ul>
+<h2 id="RollingFileAppender-选项"><a href="#RollingFileAppender-选项" class="headerlink" title="RollingFileAppender 选项"></a>RollingFileAppender 选项</h2><ul>
+<li>Threshold=DEBUG:指定日志消息的输出最低层次。 </li>
+<li>ImmediateFlush=true:默认值是true,意谓着所有的消息都会被立即输出。 </li>
+<li>File=mylog.txt:指定消息输出到mylog.txt文件。 </li>
+<li>Append=false:默认值是true,即将消息增加到指定文件中，false指将消息覆盖指定的文件内容。 </li>
+<li>MaxFileSize=100KB: 后缀可以是KB, MB 或者是 GB. 在日志文件到达该大小时，将会自动滚动，即将原来的内容移到mylog.log.1文件。 </li>
+<li>MaxBackupIndex=2:指定可以产生的滚动文件的最大数。</li>
+</ul>
+<h2 id="日志信息格式中几个符号所代表的含义-ConversionPattern"><a href="#日志信息格式中几个符号所代表的含义-ConversionPattern" class="headerlink" title="日志信息格式中几个符号所代表的含义 ConversionPattern"></a>日志信息格式中几个符号所代表的含义 ConversionPattern</h2><p>og4j.appender.appenderName.layout.ConversionPattern格式化日志信息，Log4J采用类似C语言中的printf函数的打印格式格式化日志信息，打印参数如下：</p>
+<ul>
+<li>-X号: X信息输出时左对齐； </li>
+<li>%p: 输出日志信息优先级，即DEBUG，INFO，WARN，ERROR，FATAL, </li>
+<li>%d: 输出日志时间点的日期或时间，默认格式为ISO8601，也可以在其后指定格式，比如：%d{yyy MMM dd HH:mm:ss,SSS}，输出类似：2002年10月18日 22：10：28，921 </li>
+<li>%r: 输出自应用启动到输出该log信息耗费的毫秒数 </li>
+<li>%c: 输出日志信息所属的类目，通常就是所在类的全名 </li>
+<li>%t: 输出产生该日志事件的线程名 </li>
+<li>%l: 输出日志事件的发生位置，相当于%C.%M(%F:%L)的组合,包括类目名、发生的线程，以及在代码中的行数。举例：Testlog4.main (TestLog4.java:10) </li>
+<li>%x: 输出和当前线程相关联的NDC(嵌套诊断环境),尤其用到像Java servlets这样的多客户多线程的应用中。 </li>
+<li>%%: 输出一个”%”字符 </li>
+<li>%F: 输出日志消息产生时所在的文件名称 </li>
+<li>%L: 输出代码中的行号 </li>
+<li>%m: 输出代码中指定的消息,产生的日志具体信息 </li>
+<li>%n: 输出一个回车换行符，Windows平台为”\r\n”，Unix平台为”\n”输出日志信息换行</li>
+</ul>
+<p>因为日志级别分别有error,warn,info,debug,fatal5种，有些是5个字母的，有些是4个字母的，<br>如果直接<br>写%p就会对不齐，<br><img src="https://ln0491.github.io/img/p.png" alt="p.png"><br>%-5p的意思是日志级别输出左对齐，右边以空格填充，<br><img src="https://ln0491.github.io/img/-5p.png" alt="p.png"><br>%5p的意思是日志级别输出右对齐，左边以空格填充，<br><img src="https://ln0491.github.io/img/5p.png" alt="p.png"></p>
+<h2 id="控件台配置"><a href="#控件台配置" class="headerlink" title="控件台配置"></a>控件台配置</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">#定义输出级别和输出平台,控件台输出</div><div class="line">log4j.rootLogger=debug, stdout</div><div class="line">#设定stdout输出平台 org.apache.log4j.ConsoleAppender（控制台）</div><div class="line">log4j.appender.stdout=org.apache.log4j.ConsoleAppender</div><div class="line">#指定输出的最低级别</div><div class="line">log4j.appender.stdout.Threshold=debug</div><div class="line"># 指定默认值是true,意谓着所有的消息都会被立即输出。 fasle 不输出</div><div class="line">log4j.appender.stdout.ImmediateFlush=true</div><div class="line">#默认情况下是System.out,指定输出控制台-err为红色的提示</div><div class="line">log4j.appender.stdout.Target=system.err</div><div class="line">#org.apache.log4j.PatternLayout（可以灵活地指定布局模式）</div><div class="line">log4j.appender.stdout.layout=org.apache.log4j.PatternLayout</div><div class="line">#指定输入的格式对输出的内容进行格式化</div><div class="line">#%p  输出日志信息优先级，即DEBUG，INFO，WARN，ERROR，FATAL</div><div class="line">#%d 输出日志时间点的日期或时间，</div><div class="line">#%l 输出日志事件的发生位置，相当于%C.%M(%F:%L)的组合,包括类目名、发生的线程，以及在代码中的行数</div><div class="line">#%m 输出代码中指定的消息,产生的日志具体信息 </div><div class="line">#%n 输出一个回车换行符，Windows平台为”\r\n”，Unix平台为”\n”输出日志信息换行</div><div class="line">log4j.appender.stdout.layout.ConversionPattern=[%-5p][%d&#123;yyyy-MM-dd HH:mm:ss&#125;][%l]%m%n</div></pre></td></tr></table></figure>
+<h2 id="一份完整"><a href="#一份完整" class="headerlink" title="一份完整"></a>一份完整</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div></pre></td><td class="code"><pre><div class="line">#定义输出级别和输出平台,控件台输出 appender(目的地)可以有多个</div><div class="line">log4j.rootLogger=debug, stdout,FILE,errorLog</div><div class="line">#设定stdout输出平台 org.apache.log4j.ConsoleAppender（控制台）</div><div class="line">log4j.appender.stdout=org.apache.log4j.ConsoleAppender</div><div class="line">#指定输出的最低级别</div><div class="line">log4j.appender.stdout.Threshold=debug</div><div class="line"># 指定默认值是true,意谓着所有的消息都会被立即输出。 fasle 不输出</div><div class="line">log4j.appender.stdout.ImmediateFlush=true</div><div class="line">#默认情况下是System.out,指定输出控制台-err为红色的提示</div><div class="line">log4j.appender.stdout.Target=system.err</div><div class="line">#org.apache.log4j.PatternLayout（可以灵活地指定布局模式）</div><div class="line">log4j.appender.stdout.layout=org.apache.log4j.PatternLayout</div><div class="line">#指定输入的格式对输出的内容进行格式化</div><div class="line">#%p  输出日志信息优先级，即DEBUG，INFO，WARN，ERROR，FATAL</div><div class="line">#%d 输出日志时间点的日期或时间，</div><div class="line">#%l 输出日志事件的发生位置，相当于%C.%M(%F:%L)的组合,包括类目名、发生的线程，以及在代码中的行数</div><div class="line">#%m 输出代码中指定的消息,产生的日志具体信息 </div><div class="line">#%n 输出一个回车换行符，Windows平台为”\r\n”，Unix平台为”\n”输出日志信息换行</div><div class="line">log4j.appender.stdout.layout.ConversionPattern=[%-5p][%d&#123;yyyy-MM-dd HH:mm:ss&#125;][%l]%m%n</div><div class="line"></div><div class="line">##配置输出到文件-每天一个文件</div><div class="line"></div><div class="line">log4j.appender.FILE=org.apache.log4j.DailyRollingFileAppender</div><div class="line"></div><div class="line">#指定输出的最低级别</div><div class="line">log4j.appender.FILE.Threshold=debug</div><div class="line"># 指定默认值是true,意谓着所有的消息都会被立即输出。 fasle 不输出</div><div class="line">log4j.appender.FILE.ImmediateFlush=true</div><div class="line">#默认情况下是System.out,指定输出控制台-err为红色的提示</div><div class="line">log4j.appender.FILE.File= logs/logs.log</div><div class="line">#org.apache.log4j.PatternLayout（可以灵活地指定布局模式）</div><div class="line">log4j.appender.FILE.layout=org.apache.log4j.PatternLayout</div><div class="line">#指定输入的格式对输出的内容进行格式化</div><div class="line">#%p  输出日志信息优先级，即DEBUG，INFO，WARN，ERROR，FATAL</div><div class="line">#%d 输出日志时间点的日期或时间，</div><div class="line">#%l 输出日志事件的发生位置，相当于%C.%M(%F:%L)的组合,包括类目名、发生的线程，以及在代码中的行数</div><div class="line">#%m 输出代码中指定的消息,产生的日志具体信息 </div><div class="line">#%n 输出一个回车换行符，Windows平台为”\r\n”，Unix平台为”\n”输出日志信息换行</div><div class="line">log4j.appender.FILE.layout.ConversionPattern=[%-5p][%d&#123;yyyy-MM-dd HH:mm:ss&#125;][%l]%m%n</div><div class="line"></div><div class="line"></div><div class="line">## 输入文件指定大小与上面每天一个文件2选一errorLog/FILE</div><div class="line">log4j.appender.errorLog=org.apache.log4j.RollingFileAppender</div><div class="line"></div><div class="line">#指定输出的最低级别-保存日志取tomcat下logs目录</div><div class="line">log4j.appender.errorLog.Threshold=debug</div><div class="line"># 指定默认值是true,意谓着所有的消息都会被立即输出。 fasle 不输出</div><div class="line">log4j.appender.errorLog.ImmediateFlush=true</div><div class="line">#默认情况下是System.out,指定输出控制台-err为红色的提示</div><div class="line">log4j.appender.errorLog.File= $&#123;catalina.base&#125;/logs.log</div><div class="line">#指定文件的大小</div><div class="line">log4j.appender.errorLog.MaxFileSize= 20480KB</div><div class="line"># 指定最大文件个数</div><div class="line">log4j.appender.errorLog.MaxBackupIndex= 10</div><div class="line">#org.apache.log4j.PatternLayout（可以灵活地指定布局模式）</div><div class="line">log4j.appender.errorLog.layout=org.apache.log4j.PatternLayout  </div><div class="line">#指定输入的格式对输出的内容进行格式化</div><div class="line">#%p  输出日志信息优先级，即DEBUG，INFO，WARN，ERROR，FATAL</div><div class="line">#%d 输出日志时间点的日期或时间，</div><div class="line">#%l 输出日志事件的发生位置，相当于%C.%M(%F:%L)的组合,包括类目名、发生的线程，以及在代码中的行数</div><div class="line">#%m 输出代码中指定的消息,产生的日志具体信息 </div><div class="line">#%n 输出一个回车换行符，Windows平台为”\r\n”，Unix平台为”\n”输出日志信息换行</div><div class="line">log4j.appender.errorLog.layout.ConversionPattern=[%-5p][%d&#123;yyyy-MM-dd HH:mm:ss&#125;][%l]%m%n</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;maven依赖&quot;&gt;&lt;a href=&quot;#maven依赖&quot; class=&quot;headerlink&quot; title=&quot;maven依赖&quot;&gt;&lt;/a&gt;maven依赖&lt;/h2&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=
+    
+    </summary>
+    
+      <category term="log" scheme="https://ln0491.github.io/categories/log/"/>
+    
+    
+      <category term="log" scheme="https://ln0491.github.io/tags/log/"/>
+    
+  </entry>
   
   <entry>
     <title>javaBase64使用</title>
@@ -1462,38 +1546,6 @@ public DrawableTypeRequest&lt;URL&gt; fromUrl() {
     <summary type="html">
     
       &lt;h2 id=&quot;Glide入门教程十-异常-调试和报错处理&quot;&gt;&lt;a href=&quot;#Glide入门教程十-异常-调试和报错处理&quot; class=&quot;headerlink&quot; title=&quot;Glide入门教程十-异常: 调试和报错处理&quot;&gt;&lt;/a&gt;Glide入门教程十-异常: 调试和报错处理
-    
-    </summary>
-    
-      <category term="android" scheme="https://ln0491.github.io/categories/android/"/>
-    
-    
-      <category term="图片加载" scheme="https://ln0491.github.io/tags/%E5%9B%BE%E7%89%87%E5%8A%A0%E8%BD%BD/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Glide入门教程九-通知栏图片加载</title>
-    <link href="https://ln0491.github.io/2016/10/19/Glide%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B%E4%B9%9D-%E9%80%9A%E7%9F%A5%E6%A0%8F%E5%9B%BE%E7%89%87%E5%8A%A0%E8%BD%BD/"/>
-    <id>https://ln0491.github.io/2016/10/19/Glide入门教程九-通知栏图片加载/</id>
-    <published>2016-10-19T03:25:31.000Z</published>
-    <updated>2016-10-19T06:08:36.483Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="Glide入门教程九-通知栏图片加载"><a href="#Glide入门教程九-通知栏图片加载" class="headerlink" title="Glide入门教程九-通知栏图片加载"></a>Glide入门教程九-通知栏图片加载</h2><p>系统通知的图标为用户传递了重要的内容。用NotificationCompat.Builder为通知图片传递一个图片是最直接方式，但是这个图片必须是<b>Bitmap</b>格式的。如果这个图片已经在手机上，那没问题。但，如果这个图片还不在手机上，需要从网络下载，想要用这个标准的工具是不现实的。</p>
-<ul>
-<li>自定义的通知布局</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</div><div class="line">&lt;LinearLayout</div><div class="line">    xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</div><div class="line">    android:layout_width=&quot;match_parent&quot;</div><div class="line">    android:layout_height=&quot;wrap_content&quot;</div><div class="line">    android:background=&quot;@android:color/white&quot;</div><div class="line">    android:orientation=&quot;vertical&quot;&gt;</div><div class="line"></div><div class="line">    &lt;LinearLayout</div><div class="line">        android:layout_width=&quot;match_parent&quot;</div><div class="line">        android:layout_height=&quot;wrap_content&quot;</div><div class="line">        android:orientation=&quot;horizontal&quot;</div><div class="line">        android:padding=&quot;2dp&quot;&gt;</div><div class="line"></div><div class="line">        &lt;ImageView</div><div class="line">            android:id=&quot;@+id/remoteview_notification_icon&quot;</div><div class="line">            android:layout_width=&quot;50dp&quot;</div><div class="line">            android:layout_height=&quot;50dp&quot;</div><div class="line">            android:layout_marginRight=&quot;2dp&quot;</div><div class="line">            android:layout_weight=&quot;0&quot;</div><div class="line">            android:scaleType=&quot;centerCrop&quot;/&gt;</div><div class="line"></div><div class="line">        &lt;LinearLayout</div><div class="line">            android:layout_width=&quot;0dp&quot;</div><div class="line">            android:layout_height=&quot;wrap_content&quot;</div><div class="line">            android:layout_weight=&quot;1&quot;</div><div class="line">            android:orientation=&quot;vertical&quot;&gt;</div><div class="line"></div><div class="line">            &lt;TextView</div><div class="line">                android:id=&quot;@+id/remoteview_notification_headline&quot;</div><div class="line">                android:layout_width=&quot;match_parent&quot;</div><div class="line">                android:layout_height=&quot;wrap_content&quot;</div><div class="line">                android:ellipsize=&quot;end&quot;</div><div class="line">                android:singleLine=&quot;true&quot;</div><div class="line">                android:textSize=&quot;12sp&quot;/&gt;</div><div class="line"></div><div class="line">            &lt;TextView</div><div class="line">                android:id=&quot;@+id/remoteview_notification_short_message&quot;</div><div class="line">                android:layout_width=&quot;match_parent&quot;</div><div class="line">                android:layout_height=&quot;wrap_content&quot;</div><div class="line">                android:ellipsize=&quot;end&quot;</div><div class="line">                android:paddingBottom=&quot;2dp&quot;</div><div class="line">                android:singleLine=&quot;true&quot;</div><div class="line">                android:textSize=&quot;14sp&quot;</div><div class="line">                android:textStyle=&quot;bold&quot;/&gt;</div><div class="line"></div><div class="line">        &lt;/LinearLayout&gt;</div><div class="line">    &lt;/LinearLayout&gt;</div><div class="line"></div><div class="line">&lt;/LinearLayout&gt;</div></pre></td></tr></table></figure>
-<ul>
-<li>初始化</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line">//创建通知布局</div><div class="line">       RemoteViews remoteViews = new RemoteViews(getPackageName(),R.layout.remoteview_notification);</div><div class="line"></div><div class="line"></div><div class="line">       remoteViews.setImageViewResource(R.id.remoteview_notification_icon,R.mipmap.ic_launcher);</div><div class="line"></div><div class="line">       remoteViews.setTextViewText(R.id.remoteview_notification_headline,&quot;头部分标题&quot;);</div><div class="line">       remoteViews.setTextViewText(R.id.remoteview_notification_short_message,&quot;二级标题内容&quot;);</div><div class="line"></div><div class="line"></div><div class="line">       NotificationCompat.Builder builder =</div><div class="line">               new NotificationCompat.Builder(getApplicationContext())</div><div class="line">                                  .setSmallIcon(R.mipmap.ic_launcher)</div><div class="line">                                   .setTicker(&quot;ticker&quot;)</div><div class="line">                                   .setContentText(&quot;contenttext&quot;)</div><div class="line">                                   .setContentTitle(&quot;contenttitle&quot;)</div><div class="line">                                   .setContent(remoteViews)</div><div class="line">                                   .setPriority(NotificationCompat.PRIORITY_HIGH);</div><div class="line"></div><div class="line">       Notification notification = builder.build();</div><div class="line"></div><div class="line">       if(Build.VERSION.SDK_INT&gt;16)&#123;</div><div class="line">           notification.bigContentView = remoteViews;</div><div class="line">       &#125;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">       NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);</div><div class="line"></div><div class="line">       notificationManager.notify(NOTIFICATION_ID,notification);</div><div class="line">       //这个类是Glide自带的</div><div class="line">       NotificationTarget notificationTarget =</div><div class="line">               new NotificationTarget(getApplicationContext(),remoteViews,R.id.remoteview_notification_icon,notification,NOTIFICATION_ID);</div><div class="line"></div><div class="line"></div><div class="line">       String notUrl = &quot;http://photo.enterdesk.com/2009-4-21/200901241609531378.png&quot;;</div><div class="line">       Glide.with(getApplicationContext())</div><div class="line">               .load(notUrl)</div><div class="line">               .asBitmap()</div><div class="line">               .into(notificationTarget);</div></pre></td></tr></table></figure>
-<p>只要图片被加载了，我们定制的通知栏就会显示</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;Glide入门教程九-通知栏图片加载&quot;&gt;&lt;a href=&quot;#Glide入门教程九-通知栏图片加载&quot; class=&quot;headerlink&quot; title=&quot;Glide入门教程九-通知栏图片加载&quot;&gt;&lt;/a&gt;Glide入门教程九-通知栏图片加载&lt;/h2&gt;&lt;p&gt;系统通知的图
     
     </summary>
     

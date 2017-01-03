@@ -1,0 +1,646 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>日志组件slf4j介绍及配置详解 | 刘楠的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Liu Nan">
+    
+
+    
+    <meta name="description" content="maven依赖12345678910&amp;lt;dependency&amp;gt;			&amp;lt;groupId&amp;gt;org.slf4j&amp;lt;/groupId&amp;gt;			&amp;lt;artifactId&amp;gt;slf4j-api&amp;lt;/artifactId&amp;gt;			&amp;lt;version&amp;gt;1.7.21&amp;lt;/version&amp;gt;		&amp;lt;/dependency&amp;gt;		&amp;lt;depen">
+<meta property="og:type" content="article">
+<meta property="og:title" content="日志组件slf4j介绍及配置详解">
+<meta property="og:url" content="https://ln0491.github.io/2017/01/03/日志组件slf4j介绍及配置详解/index.html">
+<meta property="og:site_name" content="刘楠的博客">
+<meta property="og:description" content="maven依赖12345678910&amp;lt;dependency&amp;gt;			&amp;lt;groupId&amp;gt;org.slf4j&amp;lt;/groupId&amp;gt;			&amp;lt;artifactId&amp;gt;slf4j-api&amp;lt;/artifactId&amp;gt;			&amp;lt;version&amp;gt;1.7.21&amp;lt;/version&amp;gt;		&amp;lt;/dependency&amp;gt;		&amp;lt;depen">
+<meta property="og:image" content="https://ln0491.github.io/img/p.png">
+<meta property="og:image" content="https://ln0491.github.io/img/-5p.png">
+<meta property="og:image" content="https://ln0491.github.io/img/5p.png">
+<meta property="og:updated_time" content="2017-01-03T07:27:48.485Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="日志组件slf4j介绍及配置详解">
+<meta name="twitter:description" content="maven依赖12345678910&amp;lt;dependency&amp;gt;			&amp;lt;groupId&amp;gt;org.slf4j&amp;lt;/groupId&amp;gt;			&amp;lt;artifactId&amp;gt;slf4j-api&amp;lt;/artifactId&amp;gt;			&amp;lt;version&amp;gt;1.7.21&amp;lt;/version&amp;gt;		&amp;lt;/dependency&amp;gt;		&amp;lt;depen">
+<meta name="twitter:image" content="https://ln0491.github.io/img/p.png">
+
+    
+    <link rel="alternative" href="/atom.xml" title="刘楠的博客" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="刘楠的博客" title="刘楠的博客"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="刘楠的博客">刘楠的博客</a></h1>
+				<h2 class="blog-motto">热爱生活</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">首页</a></li>
+					
+						<li><a href="/archives">归档</a></li>
+					
+						<li><a href="/tags">标签</a></li>
+					
+						<li><a href="/categories">分类</a></li>
+					
+						<li><a href="/about">关于</a></li>
+					
+					<li>
+ 					
+						<form class="search" action="http://zhannei.baidu.com/cse/search" target="_blank">
+							<label>Search</label>
+						<input name="s" type="hidden" value= 9779949399098768934 ><input type="text" name="q" size="30" placeholder="搜索"><br>
+						</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2017/01/03/日志组件slf4j介绍及配置详解/" title="日志组件slf4j介绍及配置详解" itemprop="url">日志组件slf4j介绍及配置详解</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Liu Nan" target="_blank" itemprop="author">Liu Nan</a>
+		
+  <p class="article-time">
+    <time datetime="2017-01-03T05:31:19.000Z" itemprop="datePublished"> 发表于 2017-01-03</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#maven依赖"><span class="toc-number">1.</span> <span class="toc-text">maven依赖</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#最基本的配置"><span class="toc-number">2.</span> <span class="toc-text">最基本的配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#示例"><span class="toc-number">3.</span> <span class="toc-text">示例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#输出级别的种类"><span class="toc-number">4.</span> <span class="toc-text">输出级别的种类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置日志信息输出目的地-log4j-appender-appenderName"><span class="toc-number">5.</span> <span class="toc-text">配置日志信息输出目的地 log4j.appender.appenderName=??</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置日志信息的格式-log4j-appender-appenderName-layout"><span class="toc-number">6.</span> <span class="toc-text">配置日志信息的格式 log4j.appender.appenderName.layout = ??</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ConsoleAppender选项"><span class="toc-number">7.</span> <span class="toc-text">ConsoleAppender选项</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#FileAppender-选项"><span class="toc-number">8.</span> <span class="toc-text">FileAppender 选项</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RollingFileAppender-选项"><span class="toc-number">9.</span> <span class="toc-text">RollingFileAppender 选项</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#日志信息格式中几个符号所代表的含义-ConversionPattern"><span class="toc-number">10.</span> <span class="toc-text">日志信息格式中几个符号所代表的含义 ConversionPattern</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#控件台配置"><span class="toc-number">11.</span> <span class="toc-text">控件台配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一份完整"><span class="toc-number">12.</span> <span class="toc-text">一份完整</span></a></li></ol>
+		
+		</div>
+		
+		<h2 id="maven依赖"><a href="#maven依赖" class="headerlink" title="maven依赖"></a>maven依赖</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;dependency&gt;</div><div class="line">			&lt;groupId&gt;org.slf4j&lt;/groupId&gt;</div><div class="line">			&lt;artifactId&gt;slf4j-api&lt;/artifactId&gt;</div><div class="line">			&lt;version&gt;1.7.21&lt;/version&gt;</div><div class="line">		&lt;/dependency&gt;</div><div class="line">		&lt;dependency&gt;</div><div class="line">			&lt;groupId&gt;org.slf4j&lt;/groupId&gt;</div><div class="line">			&lt;artifactId&gt;slf4j-log4j12&lt;/artifactId&gt;</div><div class="line">			&lt;version&gt;1.7.21&lt;/version&gt;</div><div class="line">		&lt;/dependency&gt;</div></pre></td></tr></table></figure>
+<h2 id="最基本的配置"><a href="#最基本的配置" class="headerlink" title="最基本的配置"></a>最基本的配置</h2><p>log4j.properties</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">#定义输出级别和输出平台,控件台输出</div><div class="line">log4j.rootLogger=debug, stdout</div><div class="line">#设定stdout输出平台 org.apache.log4j.ConsoleAppender（控制台）</div><div class="line">log4j.appender.stdout=org.apache.log4j.ConsoleAppender</div><div class="line">#org.apache.log4j.PatternLayout（可以灵活地指定布局模式）</div><div class="line">log4j.appender.stdout.layout=org.apache.log4j.PatternLayout</div></pre></td></tr></table></figure>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">import java.util.Date;</div><div class="line"></div><div class="line">import org.slf4j.Logger;</div><div class="line">import org.slf4j.LoggerFactory;</div><div class="line"></div><div class="line">public class Test1 &#123;</div><div class="line">	</div><div class="line">	protected static Logger logger = LoggerFactory.getLogger(Test1.class);</div><div class="line"></div><div class="line">	public static void main(String[] args) &#123;</div><div class="line"></div><div class="line">		logger.debug(&quot;这是个测试时间&#123;&#125;&quot;+new Date());</div><div class="line">		</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>结果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">这是个测试时间&#123;&#125;Tue Jan 03 13:50:39 CST 2017</div></pre></td></tr></table></figure></p>
+<h2 id="输出级别的种类"><a href="#输出级别的种类" class="headerlink" title="输出级别的种类"></a>输出级别的种类</h2><ul>
+<li>ERROR 为严重错误 主要是程序的错误</li>
+<li>WARN 为一般警告，比如session丢失</li>
+<li>INFO 为一般要显示的信息，比如登录登出</li>
+<li>DEBUG 为程序的调试信息</li>
+</ul>
+<h2 id="配置日志信息输出目的地-log4j-appender-appenderName"><a href="#配置日志信息输出目的地-log4j-appender-appenderName" class="headerlink" title="配置日志信息输出目的地 log4j.appender.appenderName=??"></a>配置日志信息输出目的地 log4j.appender.appenderName=??</h2><ul>
+<li>org.apache.log4j.ConsoleAppender（控制台）</li>
+<li>org.apache.log4j.FileAppender（文件）</li>
+<li>org.apache.log4j.DailyRollingFileAppender（每天产生一个日志文件）</li>
+<li>org.apache.log4j.RollingFileAppender（文件大小到达指定尺寸的时候产生一个新的文件）</li>
+<li>org.apache.log4j.WriterAppender（将日志信息以流格式发送到任意指定的地方）</li>
+</ul>
+<h2 id="配置日志信息的格式-log4j-appender-appenderName-layout"><a href="#配置日志信息的格式-log4j-appender-appenderName-layout" class="headerlink" title="配置日志信息的格式 log4j.appender.appenderName.layout = ??"></a>配置日志信息的格式 log4j.appender.appenderName.layout = ??</h2><ul>
+<li>org.apache.log4j.HTMLLayout（以HTML表格形式布局）</li>
+<li>org.apache.log4j.PatternLayout（可以灵活地指定布局模式）</li>
+<li>org.apache.log4j.SimpleLayout（包含日志信息的级别和信息字符串）</li>
+<li>org.apache.log4j.TTCCLayout（包含日志产生的时间、线程、类别等等信息）</li>
+</ul>
+<h2 id="ConsoleAppender选项"><a href="#ConsoleAppender选项" class="headerlink" title="ConsoleAppender选项"></a>ConsoleAppender选项</h2><ul>
+<li>Threshold=DEBUG:指定日志消息的输出最低层次。 </li>
+<li>ImmediateFlush=true:默认值是true,意谓着所有的消息都会被立即输出。 </li>
+<li>Target=System.err:默认情况下是System.out,指定输出控制台</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">#定义输出级别和输出平台,控件台输出</div><div class="line">log4j.rootLogger=debug, stdout</div><div class="line">#设定stdout输出平台 org.apache.log4j.ConsoleAppender（控制台）</div><div class="line">log4j.appender.stdout=org.apache.log4j.ConsoleAppender</div><div class="line">#指定输出的最低级别</div><div class="line">log4j.appender.stdout.Threshold=debug</div><div class="line"># 指定默认值是true,意谓着所有的消息都会被立即输出。 fasle 不输出</div><div class="line">log4j.appender.stdout.ImmediateFlush=true</div><div class="line">#默认情况下是System.out,指定输出控制台-err为红色的提示</div><div class="line">log4j.appender.stdout.Target=system.err</div><div class="line">#org.apache.log4j.PatternLayout（可以灵活地指定布局模式）</div><div class="line">log4j.appender.stdout.layout=org.apache.log4j.PatternLayout</div></pre></td></tr></table></figure>
+<h2 id="FileAppender-选项"><a href="#FileAppender-选项" class="headerlink" title="FileAppender 选项"></a>FileAppender 选项</h2><ul>
+<li>Threshold=DEBUG:指定日志消息的输出最低层次。 </li>
+<li>ImmediateFlush=true:默认值是true,意谓着所有的消息都会被立即输出。 </li>
+<li>File=mylog.txt:指定消息输出到mylog.txt文件。 </li>
+<li>Append=false:默认值是true,即将消息增加到指定文件中，false指将消息覆盖指定的文件内容。</li>
+</ul>
+<h2 id="RollingFileAppender-选项"><a href="#RollingFileAppender-选项" class="headerlink" title="RollingFileAppender 选项"></a>RollingFileAppender 选项</h2><ul>
+<li>Threshold=DEBUG:指定日志消息的输出最低层次。 </li>
+<li>ImmediateFlush=true:默认值是true,意谓着所有的消息都会被立即输出。 </li>
+<li>File=mylog.txt:指定消息输出到mylog.txt文件。 </li>
+<li>Append=false:默认值是true,即将消息增加到指定文件中，false指将消息覆盖指定的文件内容。 </li>
+<li>MaxFileSize=100KB: 后缀可以是KB, MB 或者是 GB. 在日志文件到达该大小时，将会自动滚动，即将原来的内容移到mylog.log.1文件。 </li>
+<li>MaxBackupIndex=2:指定可以产生的滚动文件的最大数。</li>
+</ul>
+<h2 id="日志信息格式中几个符号所代表的含义-ConversionPattern"><a href="#日志信息格式中几个符号所代表的含义-ConversionPattern" class="headerlink" title="日志信息格式中几个符号所代表的含义 ConversionPattern"></a>日志信息格式中几个符号所代表的含义 ConversionPattern</h2><p>og4j.appender.appenderName.layout.ConversionPattern格式化日志信息，Log4J采用类似C语言中的printf函数的打印格式格式化日志信息，打印参数如下：</p>
+<ul>
+<li>-X号: X信息输出时左对齐； </li>
+<li>%p: 输出日志信息优先级，即DEBUG，INFO，WARN，ERROR，FATAL, </li>
+<li>%d: 输出日志时间点的日期或时间，默认格式为ISO8601，也可以在其后指定格式，比如：%d{yyy MMM dd HH:mm:ss,SSS}，输出类似：2002年10月18日 22：10：28，921 </li>
+<li>%r: 输出自应用启动到输出该log信息耗费的毫秒数 </li>
+<li>%c: 输出日志信息所属的类目，通常就是所在类的全名 </li>
+<li>%t: 输出产生该日志事件的线程名 </li>
+<li>%l: 输出日志事件的发生位置，相当于%C.%M(%F:%L)的组合,包括类目名、发生的线程，以及在代码中的行数。举例：Testlog4.main (TestLog4.java:10) </li>
+<li>%x: 输出和当前线程相关联的NDC(嵌套诊断环境),尤其用到像Java servlets这样的多客户多线程的应用中。 </li>
+<li>%%: 输出一个”%”字符 </li>
+<li>%F: 输出日志消息产生时所在的文件名称 </li>
+<li>%L: 输出代码中的行号 </li>
+<li>%m: 输出代码中指定的消息,产生的日志具体信息 </li>
+<li>%n: 输出一个回车换行符，Windows平台为”\r\n”，Unix平台为”\n”输出日志信息换行</li>
+</ul>
+<p>因为日志级别分别有error,warn,info,debug,fatal5种，有些是5个字母的，有些是4个字母的，<br>如果直接<br>写%p就会对不齐，<br><img src="https://ln0491.github.io/img/p.png" alt="p.png"><br>%-5p的意思是日志级别输出左对齐，右边以空格填充，<br><img src="https://ln0491.github.io/img/-5p.png" alt="p.png"><br>%5p的意思是日志级别输出右对齐，左边以空格填充，<br><img src="https://ln0491.github.io/img/5p.png" alt="p.png"></p>
+<h2 id="控件台配置"><a href="#控件台配置" class="headerlink" title="控件台配置"></a>控件台配置</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">#定义输出级别和输出平台,控件台输出</div><div class="line">log4j.rootLogger=debug, stdout</div><div class="line">#设定stdout输出平台 org.apache.log4j.ConsoleAppender（控制台）</div><div class="line">log4j.appender.stdout=org.apache.log4j.ConsoleAppender</div><div class="line">#指定输出的最低级别</div><div class="line">log4j.appender.stdout.Threshold=debug</div><div class="line"># 指定默认值是true,意谓着所有的消息都会被立即输出。 fasle 不输出</div><div class="line">log4j.appender.stdout.ImmediateFlush=true</div><div class="line">#默认情况下是System.out,指定输出控制台-err为红色的提示</div><div class="line">log4j.appender.stdout.Target=system.err</div><div class="line">#org.apache.log4j.PatternLayout（可以灵活地指定布局模式）</div><div class="line">log4j.appender.stdout.layout=org.apache.log4j.PatternLayout</div><div class="line">#指定输入的格式对输出的内容进行格式化</div><div class="line">#%p  输出日志信息优先级，即DEBUG，INFO，WARN，ERROR，FATAL</div><div class="line">#%d 输出日志时间点的日期或时间，</div><div class="line">#%l 输出日志事件的发生位置，相当于%C.%M(%F:%L)的组合,包括类目名、发生的线程，以及在代码中的行数</div><div class="line">#%m 输出代码中指定的消息,产生的日志具体信息 </div><div class="line">#%n 输出一个回车换行符，Windows平台为”\r\n”，Unix平台为”\n”输出日志信息换行</div><div class="line">log4j.appender.stdout.layout.ConversionPattern=[%-5p][%d&#123;yyyy-MM-dd HH:mm:ss&#125;][%l]%m%n</div></pre></td></tr></table></figure>
+<h2 id="一份完整"><a href="#一份完整" class="headerlink" title="一份完整"></a>一份完整</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div></pre></td><td class="code"><pre><div class="line">#定义输出级别和输出平台,控件台输出 appender(目的地)可以有多个</div><div class="line">log4j.rootLogger=debug, stdout,FILE,errorLog</div><div class="line">#设定stdout输出平台 org.apache.log4j.ConsoleAppender（控制台）</div><div class="line">log4j.appender.stdout=org.apache.log4j.ConsoleAppender</div><div class="line">#指定输出的最低级别</div><div class="line">log4j.appender.stdout.Threshold=debug</div><div class="line"># 指定默认值是true,意谓着所有的消息都会被立即输出。 fasle 不输出</div><div class="line">log4j.appender.stdout.ImmediateFlush=true</div><div class="line">#默认情况下是System.out,指定输出控制台-err为红色的提示</div><div class="line">log4j.appender.stdout.Target=system.err</div><div class="line">#org.apache.log4j.PatternLayout（可以灵活地指定布局模式）</div><div class="line">log4j.appender.stdout.layout=org.apache.log4j.PatternLayout</div><div class="line">#指定输入的格式对输出的内容进行格式化</div><div class="line">#%p  输出日志信息优先级，即DEBUG，INFO，WARN，ERROR，FATAL</div><div class="line">#%d 输出日志时间点的日期或时间，</div><div class="line">#%l 输出日志事件的发生位置，相当于%C.%M(%F:%L)的组合,包括类目名、发生的线程，以及在代码中的行数</div><div class="line">#%m 输出代码中指定的消息,产生的日志具体信息 </div><div class="line">#%n 输出一个回车换行符，Windows平台为”\r\n”，Unix平台为”\n”输出日志信息换行</div><div class="line">log4j.appender.stdout.layout.ConversionPattern=[%-5p][%d&#123;yyyy-MM-dd HH:mm:ss&#125;][%l]%m%n</div><div class="line"></div><div class="line">##配置输出到文件-每天一个文件</div><div class="line"></div><div class="line">log4j.appender.FILE=org.apache.log4j.DailyRollingFileAppender</div><div class="line"></div><div class="line">#指定输出的最低级别</div><div class="line">log4j.appender.FILE.Threshold=debug</div><div class="line"># 指定默认值是true,意谓着所有的消息都会被立即输出。 fasle 不输出</div><div class="line">log4j.appender.FILE.ImmediateFlush=true</div><div class="line">#默认情况下是System.out,指定输出控制台-err为红色的提示</div><div class="line">log4j.appender.FILE.File= logs/logs.log</div><div class="line">#org.apache.log4j.PatternLayout（可以灵活地指定布局模式）</div><div class="line">log4j.appender.FILE.layout=org.apache.log4j.PatternLayout</div><div class="line">#指定输入的格式对输出的内容进行格式化</div><div class="line">#%p  输出日志信息优先级，即DEBUG，INFO，WARN，ERROR，FATAL</div><div class="line">#%d 输出日志时间点的日期或时间，</div><div class="line">#%l 输出日志事件的发生位置，相当于%C.%M(%F:%L)的组合,包括类目名、发生的线程，以及在代码中的行数</div><div class="line">#%m 输出代码中指定的消息,产生的日志具体信息 </div><div class="line">#%n 输出一个回车换行符，Windows平台为”\r\n”，Unix平台为”\n”输出日志信息换行</div><div class="line">log4j.appender.FILE.layout.ConversionPattern=[%-5p][%d&#123;yyyy-MM-dd HH:mm:ss&#125;][%l]%m%n</div><div class="line"></div><div class="line"></div><div class="line">## 输入文件指定大小与上面每天一个文件2选一errorLog/FILE</div><div class="line">log4j.appender.errorLog=org.apache.log4j.RollingFileAppender</div><div class="line"></div><div class="line">#指定输出的最低级别-保存日志取tomcat下logs目录</div><div class="line">log4j.appender.errorLog.Threshold=debug</div><div class="line"># 指定默认值是true,意谓着所有的消息都会被立即输出。 fasle 不输出</div><div class="line">log4j.appender.errorLog.ImmediateFlush=true</div><div class="line">#默认情况下是System.out,指定输出控制台-err为红色的提示</div><div class="line">log4j.appender.errorLog.File= $&#123;catalina.base&#125;/logs.log</div><div class="line">#指定文件的大小</div><div class="line">log4j.appender.errorLog.MaxFileSize= 20480KB</div><div class="line"># 指定最大文件个数</div><div class="line">log4j.appender.errorLog.MaxBackupIndex= 10</div><div class="line">#org.apache.log4j.PatternLayout（可以灵活地指定布局模式）</div><div class="line">log4j.appender.errorLog.layout=org.apache.log4j.PatternLayout  </div><div class="line">#指定输入的格式对输出的内容进行格式化</div><div class="line">#%p  输出日志信息优先级，即DEBUG，INFO，WARN，ERROR，FATAL</div><div class="line">#%d 输出日志时间点的日期或时间，</div><div class="line">#%l 输出日志事件的发生位置，相当于%C.%M(%F:%L)的组合,包括类目名、发生的线程，以及在代码中的行数</div><div class="line">#%m 输出代码中指定的消息,产生的日志具体信息 </div><div class="line">#%n 输出一个回车换行符，Windows平台为”\r\n”，Unix平台为”\n”输出日志信息换行</div><div class="line">log4j.appender.errorLog.layout.ConversionPattern=[%-5p][%d&#123;yyyy-MM-dd HH:mm:ss&#125;][%l]%m%n</div></pre></td></tr></table></figure>  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/log/">log</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/log/">log</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="https://ln0491.github.io/2017/01/03/日志组件slf4j介绍及配置详解/" data-title="日志组件slf4j介绍及配置详解 | 刘楠的博客" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2016/11/17/javaBase64使用/"  title="javaBase64使用">
+ <strong>下一篇：</strong><br/> 
+ <span>javaBase64使用
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="2017/01/03/日志组件slf4j介绍及配置详解/" data-title="日志组件slf4j介绍及配置详解" data-url="https://ln0491.github.io/2017/01/03/日志组件slf4j介绍及配置详解/"></div>
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#maven依赖"><span class="toc-number">1.</span> <span class="toc-text">maven依赖</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#最基本的配置"><span class="toc-number">2.</span> <span class="toc-text">最基本的配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#示例"><span class="toc-number">3.</span> <span class="toc-text">示例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#输出级别的种类"><span class="toc-number">4.</span> <span class="toc-text">输出级别的种类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置日志信息输出目的地-log4j-appender-appenderName"><span class="toc-number">5.</span> <span class="toc-text">配置日志信息输出目的地 log4j.appender.appenderName=??</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置日志信息的格式-log4j-appender-appenderName-layout"><span class="toc-number">6.</span> <span class="toc-text">配置日志信息的格式 log4j.appender.appenderName.layout = ??</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ConsoleAppender选项"><span class="toc-number">7.</span> <span class="toc-text">ConsoleAppender选项</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#FileAppender-选项"><span class="toc-number">8.</span> <span class="toc-text">FileAppender 选项</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RollingFileAppender-选项"><span class="toc-number">9.</span> <span class="toc-text">RollingFileAppender 选项</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#日志信息格式中几个符号所代表的含义-ConversionPattern"><span class="toc-number">10.</span> <span class="toc-text">日志信息格式中几个符号所代表的含义 ConversionPattern</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#控件台配置"><span class="toc-number">11.</span> <span class="toc-text">控件台配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一份完整"><span class="toc-number">12.</span> <span class="toc-text">一份完整</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/android/" title="android">android<sup>42</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/java/" title="java">java<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/log/" title="log">log<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/test/" title="test">test<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/图片加载/" title="图片加载">图片加载<sup>12</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/android/" title="android">android<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Retrofit/" title="Retrofit">Retrofit<sup>6</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/viewpager/" title="viewpager">viewpager<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/volley/" title="volley">volley<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/自定义View/" title="自定义View">自定义View<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/test/" title="test">test<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/maven/" title="maven">maven<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/View动画/" title="View动画">View动画<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/PorterDuffXfermode/" title="PorterDuffXfermode">PorterDuffXfermode<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/工具/" title="工具">工具<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/动画/" title="动画">动画<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/base64/" title="base64">base64<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/工具类/" title="工具类">工具类<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/View/" title="View">View<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/log/" title="log">log<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/源码/" title="源码">源码<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  
+  <div class="tagcloudlist">
+    <p class="asidetitle">标签云</p>
+    <div class="tagcloudlist clearfix">
+       <a href="/tags/PorterDuffXfermode/" style="font-size: 10px;">PorterDuffXfermode</a> <a href="/tags/Retrofit/" style="font-size: 16.67px;">Retrofit</a> <a href="/tags/View/" style="font-size: 10px;">View</a> <a href="/tags/View动画/" style="font-size: 10px;">View动画</a> <a href="/tags/android/" style="font-size: 18.33px;">android</a> <a href="/tags/base64/" style="font-size: 10px;">base64</a> <a href="/tags/log/" style="font-size: 10px;">log</a> <a href="/tags/maven/" style="font-size: 10px;">maven</a> <a href="/tags/test/" style="font-size: 11.67px;">test</a> <a href="/tags/viewpager/" style="font-size: 15px;">viewpager</a> <a href="/tags/volley/" style="font-size: 13.33px;">volley</a> <a href="/tags/动画/" style="font-size: 10px;">动画</a> <a href="/tags/图片加载/" style="font-size: 20px;">图片加载</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/工具类/" style="font-size: 10px;">工具类</a> <a href="/tags/源码/" style="font-size: 10px;">源码</a> <a href="/tags/自定义View/" style="font-size: 11.67px;">自定义View</a>
+    </div>
+  </div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://www.cnblogs.com/" target="_blank" title="博客园">博客园</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.csdn.net/" target="_blank" title="CSDN">CSDN</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.cnblogs.com/liunanjava/" target="_blank" title="森林森">森林森</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.jianshu.com/" target="_blank" title="简书">简书</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> 爱生活爱编码. <br/>
+			This is my blog,Try to do better.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/ln0491" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<a href="mailto:153011784@qq.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2017 
+		
+		<a href="/about" target="_blank" title="Liu Nan">Liu Nan</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+	$('#toc.toc-aside').css('display', 'block').addClass('fadeIn'); //这个是我新加的，修改点
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+        getSize();
+        if (myWidth >= 1024) {
+          c.click();
+        }
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"ln0491"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?f9d3aff238126ad201a9a789a888d75a";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1260477305'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1260477305%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
