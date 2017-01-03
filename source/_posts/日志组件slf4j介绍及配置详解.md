@@ -142,7 +142,7 @@ og4j.appender.appenderName.layout.ConversionPattern格式化日志信息，Log4J
 写%p就会对不齐，
 ![p.png](https://ln0491.github.io/img/p.png)
 %-5p的意思是日志级别输出左对齐，右边以空格填充，
-![-5p.png](https://ln0491.github.io/img/-5p.png)
+![5_p.png](https://ln0491.github.io/img/5_p.png)
 %5p的意思是日志级别输出右对齐，左边以空格填充，
 ![5p.png](https://ln0491.github.io/img/5p.png)
 
