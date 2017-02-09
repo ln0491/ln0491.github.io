@@ -1,0 +1,608 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>mysql学习二数据引擎 | 刘楠的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Liu Nan">
+    
+
+    
+    <meta name="description" content="mysql学习二数据引擎查看当前数据库支持的引擎12345678910111213141516show engines+--------------------+---------+----------------------------------------------------------------+--------------+------+------------+| Engine">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mysql学习二数据引擎">
+<meta property="og:url" content="https://ln0491.github.io/2017/02/09/mysql学习二数据引擎/index.html">
+<meta property="og:site_name" content="刘楠的博客">
+<meta property="og:description" content="mysql学习二数据引擎查看当前数据库支持的引擎12345678910111213141516show engines+--------------------+---------+----------------------------------------------------------------+--------------+------+------------+| Engine">
+<meta property="og:updated_time" content="2017-02-09T06:11:16.701Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="mysql学习二数据引擎">
+<meta name="twitter:description" content="mysql学习二数据引擎查看当前数据库支持的引擎12345678910111213141516show engines+--------------------+---------+----------------------------------------------------------------+--------------+------+------------+| Engine">
+
+    
+    <link rel="alternative" href="/atom.xml" title="刘楠的博客" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="刘楠的博客" title="刘楠的博客"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="刘楠的博客">刘楠的博客</a></h1>
+				<h2 class="blog-motto">热爱生活</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">首页</a></li>
+					
+						<li><a href="/archives">归档</a></li>
+					
+						<li><a href="/tags">标签</a></li>
+					
+						<li><a href="/categories">分类</a></li>
+					
+						<li><a href="/about">关于</a></li>
+					
+					<li>
+ 					
+						<form class="search" action="http://zhannei.baidu.com/cse/search" target="_blank">
+							<label>Search</label>
+						<input name="s" type="hidden" value= 9779949399098768934 ><input type="text" name="q" size="30" placeholder="搜索"><br>
+						</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2017/02/09/mysql学习二数据引擎/" title="mysql学习二数据引擎" itemprop="url">mysql学习二数据引擎</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Liu Nan" target="_blank" itemprop="author">Liu Nan</a>
+		
+  <p class="article-time">
+    <time datetime="2017-02-09T05:54:50.000Z" itemprop="datePublished"> 发表于 2017-02-09</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#mysql学习二数据引擎"><span class="toc-number">1.</span> <span class="toc-text">mysql学习二数据引擎</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#查看当前数据库支持的引擎"><span class="toc-number">1.1.</span> <span class="toc-text">查看当前数据库支持的引擎</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看默认引擎"><span class="toc-number">1.2.</span> <span class="toc-text">查看默认引擎</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改默认引擎"><span class="toc-number">1.3.</span> <span class="toc-text">修改默认引擎</span></a></li></ol></li></ol>
+		
+		</div>
+		
+		<h2 id="mysql学习二数据引擎"><a href="#mysql学习二数据引擎" class="headerlink" title="mysql学习二数据引擎"></a>mysql学习二数据引擎</h2><h3 id="查看当前数据库支持的引擎"><a href="#查看当前数据库支持的引擎" class="headerlink" title="查看当前数据库支持的引擎"></a>查看当前数据库支持的引擎</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">show engines</div><div class="line"></div><div class="line">+--------------------+---------+----------------------------------------------------------------+--------------+------+------------+</div><div class="line">| Engine             | Support | Comment                                                        | Transactions | XA   | Savepoints |</div><div class="line">+--------------------+---------+----------------------------------------------------------------+--------------+------+------------+</div><div class="line">| InnoDB             | DEFAULT | Supports transactions, row-level locking, and foreign keys     | YES          | YES  | YES        |</div><div class="line">| MRG_MYISAM         | YES     | Collection of identical MyISAM tables                          | NO           | NO   | NO         |</div><div class="line">| MEMORY             | YES     | Hash based, stored in memory, useful for temporary tables      | NO           | NO   | NO         |</div><div class="line">| BLACKHOLE          | YES     | /dev/null storage engine (anything you write to it disappears) | NO           | NO   | NO         |</div><div class="line">| MyISAM             | YES     | MyISAM storage engine                                          | NO           | NO   | NO         |</div><div class="line">| CSV                | YES     | CSV storage engine                                             | NO           | NO   | NO         |</div><div class="line">| ARCHIVE            | YES     | Archive storage engine                                         | NO           | NO   | NO         |</div><div class="line">| PERFORMANCE_SCHEMA | YES     | Performance Schema                                             | NO           | NO   | NO         |</div><div class="line">| FEDERATED          | NO      | Federated MySQL storage engine                                 | NULL         | NULL | NULL       |</div><div class="line">+--------------------+---------+----------------------------------------------------------------+--------------+------+------------+</div><div class="line">9 rows in set (0.00 sec)</div></pre></td></tr></table></figure>
+<p>或者<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div></pre></td><td class="code"><pre><div class="line">show engines \G</div><div class="line"></div><div class="line">mysql&gt; show engines \G</div><div class="line">*************************** 1. row ***************************</div><div class="line">      Engine: InnoDB</div><div class="line">     Support: DEFAULT</div><div class="line">     Comment: Supports transactions, row-level locking, and foreign keys</div><div class="line">Transactions: YES</div><div class="line">          XA: YES</div><div class="line">  Savepoints: YES</div><div class="line">*************************** 2. row ***************************</div><div class="line">      Engine: MRG_MYISAM</div><div class="line">     Support: YES</div><div class="line">     Comment: Collection of identical MyISAM tables</div><div class="line">Transactions: NO</div><div class="line">          XA: NO</div><div class="line">  Savepoints: NO</div><div class="line">*************************** 3. row ***************************</div><div class="line">      Engine: MEMORY</div><div class="line">     Support: YES</div><div class="line">     Comment: Hash based, stored in memory, useful for temporary tables</div><div class="line">Transactions: NO</div><div class="line">          XA: NO</div><div class="line">  Savepoints: NO</div><div class="line">*************************** 4. row ***************************</div><div class="line">      Engine: BLACKHOLE</div><div class="line">     Support: YES</div><div class="line">     Comment: /dev/null storage engine (anything you write to it disappears)</div><div class="line">Transactions: NO</div><div class="line">          XA: NO</div><div class="line">  Savepoints: NO</div><div class="line">*************************** 5. row ***************************</div><div class="line">      Engine: MyISAM</div><div class="line">     Support: YES</div><div class="line">     Comment: MyISAM storage engine</div><div class="line">Transactions: NO</div><div class="line">          XA: NO</div><div class="line">  Savepoints: NO</div><div class="line">*************************** 6. row ***************************</div><div class="line">      Engine: CSV</div><div class="line">     Support: YES</div><div class="line">     Comment: CSV storage engine</div><div class="line">Transactions: NO</div><div class="line">          XA: NO</div><div class="line">  Savepoints: NO</div><div class="line">*************************** 7. row ***************************</div><div class="line">      Engine: ARCHIVE</div><div class="line">     Support: YES</div><div class="line">     Comment: Archive storage engine</div><div class="line">Transactions: NO</div><div class="line">          XA: NO</div><div class="line">  Savepoints: NO</div><div class="line">*************************** 8. row ***************************</div><div class="line">      Engine: PERFORMANCE_SCHEMA</div><div class="line">     Support: YES</div><div class="line">     Comment: Performance Schema</div><div class="line">Transactions: NO</div><div class="line">          XA: NO</div><div class="line">  Savepoints: NO</div><div class="line">*************************** 9. row ***************************</div><div class="line">      Engine: FEDERATED</div><div class="line">     Support: NO</div><div class="line">     Comment: Federated MySQL storage engine</div><div class="line">Transactions: NULL</div><div class="line">          XA: NULL</div><div class="line">  Savepoints: NULL</div><div class="line">9 rows in set (0.00 sec)</div></pre></td></tr></table></figure></p>
+<ul>
+<li>Engine   引擎的名称</li>
+<li>Support   是否支付YES表示支持，NO表示不支持</li>
+<li>Comment  评价或者备注 Defalut表示，默认支持的引擎</li>
+<li>Transactions  是否支持事务，YES表示支持，NO表示不支持</li>
+<li>XA          所有支持的分布式是否符合XA规范，YES表示支持，NO表示不支持</li>
+<li>Savepoints  是否支持事务处理中的保存点，YES表示支持，NO表示不支持</li>
+</ul>
+<p>或者<br>show variables like ‘have%’<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">mysql&gt; show variables like &apos;have%&apos;;</div><div class="line">+------------------------+----------+</div><div class="line">| Variable_name          | Value    |</div><div class="line">+------------------------+----------+</div><div class="line">| have_compress          | YES      |</div><div class="line">| have_crypt             | NO       |</div><div class="line">| have_dynamic_loading   | YES      |</div><div class="line">| have_geometry          | YES      |</div><div class="line">| have_openssl           | DISABLED |</div><div class="line">| have_profiling         | YES      |</div><div class="line">| have_query_cache       | YES      |</div><div class="line">| have_rtree_keys        | YES      |</div><div class="line">| have_ssl               | DISABLED |</div><div class="line">| have_statement_timeout | YES      |</div><div class="line">| have_symlink           | YES      |</div><div class="line">+------------------------+----------+</div><div class="line">11 rows in set, 1 warning (0.00 sec)</div></pre></td></tr></table></figure></p>
+<ul>
+<li>Variable_name  引擎名称</li>
+<li>value 是否支持YES支持，NO不支持,DISABLED表示支持但未启用</li>
+</ul>
+<h3 id="查看默认引擎"><a href="#查看默认引擎" class="headerlink" title="查看默认引擎"></a>查看默认引擎</h3><p>show variables like ‘%storage_engine%’<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">mysql&gt; show variables like &apos;%storage_engine%&apos;;</div><div class="line">+----------------------------------+--------+</div><div class="line">| Variable_name                    | Value  |</div><div class="line">+----------------------------------+--------+</div><div class="line">| default_storage_engine           | InnoDB |</div><div class="line">| default_tmp_storage_engine       | InnoDB |</div><div class="line">| disabled_storage_engines         |        |</div><div class="line">| internal_tmp_disk_storage_engine | InnoDB |</div><div class="line">+----------------------------------+--------+</div><div class="line">4 rows in set, 1 warning (0.00 sec)</div></pre></td></tr></table></figure></p>
+<p>InnoDB 为默认引擎</p>
+<h3 id="修改默认引擎"><a href="#修改默认引擎" class="headerlink" title="修改默认引擎"></a>修改默认引擎</h3><p>my.ini文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">[mysqld]</div><div class="line"></div><div class="line"># The next three options are mutually exclusive to SERVER_PORT below.</div><div class="line"># skip-networking</div><div class="line"></div><div class="line"># enable-named-pipe</div><div class="line"></div><div class="line"># shared-memory</div><div class="line"></div><div class="line"># shared-memory-base-name=MYSQL</div><div class="line"></div><div class="line"># The Pipe the MySQL Server will use</div><div class="line"># socket=MYSQL</div><div class="line"></div><div class="line"># The TCP/IP Port the MySQL Server will listen on 默认端口号</div><div class="line">port=3306</div><div class="line"></div><div class="line"># Path to installation directory. All paths are usually resolved relative to this.  服务器的默认安装目录</div><div class="line"># basedir=&quot;C:/Program Files/MySQL/MySQL Server 5.7/&quot;</div><div class="line"></div><div class="line"># Path to the database root   数据库数据文件的目录</div><div class="line">datadir=C:/ProgramData/MySQL/MySQL Server 5.7\Data</div><div class="line"></div><div class="line"># The default character set that will be used when a new schema or table is</div><div class="line"># created and no character set is defined  修改服务器默认字符</div><div class="line">character-set-server=utf8</div><div class="line"></div><div class="line"># The default storage engine that will be used when create new tables when</div><div class="line"># 这里修改默认引擎</div><div class="line">default-storage-engine=INNODB</div></pre></td></tr></table></figure>
+<p>修改后重启Mysql服务</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/mysql/">mysql</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/mysql/">mysql</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="https://ln0491.github.io/2017/02/09/mysql学习二数据引擎/" data-title="mysql学习二数据引擎 | 刘楠的博客" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2017/02/09/mysql学习一/"  title="mysql学习一">
+ <strong>下一篇：</strong><br/> 
+ <span>mysql学习一
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="2017/02/09/mysql学习二数据引擎/" data-title="mysql学习二数据引擎" data-url="https://ln0491.github.io/2017/02/09/mysql学习二数据引擎/"></div>
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#mysql学习二数据引擎"><span class="toc-number">1.</span> <span class="toc-text">mysql学习二数据引擎</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#查看当前数据库支持的引擎"><span class="toc-number">1.1.</span> <span class="toc-text">查看当前数据库支持的引擎</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看默认引擎"><span class="toc-number">1.2.</span> <span class="toc-text">查看默认引擎</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改默认引擎"><span class="toc-number">1.3.</span> <span class="toc-text">修改默认引擎</span></a></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/android/" title="android">android<sup>42</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/java/" title="java">java<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/log/" title="log">log<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/mysql/" title="mysql">mysql<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/test/" title="test">test<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/图片加载/" title="图片加载">图片加载<sup>12</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/android/" title="android">android<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Retrofit/" title="Retrofit">Retrofit<sup>6</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/viewpager/" title="viewpager">viewpager<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/volley/" title="volley">volley<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/自定义View/" title="自定义View">自定义View<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/test/" title="test">test<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/mysql/" title="mysql">mysql<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/工具类/" title="工具类">工具类<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/动画/" title="动画">动画<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/源码/" title="源码">源码<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/工具/" title="工具">工具<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/View动画/" title="View动画">View动画<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/base64/" title="base64">base64<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/maven/" title="maven">maven<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/View/" title="View">View<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/log/" title="log">log<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/PorterDuffXfermode/" title="PorterDuffXfermode">PorterDuffXfermode<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  
+  <div class="tagcloudlist">
+    <p class="asidetitle">标签云</p>
+    <div class="tagcloudlist clearfix">
+       <a href="/tags/PorterDuffXfermode/" style="font-size: 10px;">PorterDuffXfermode</a> <a href="/tags/Retrofit/" style="font-size: 16.67px;">Retrofit</a> <a href="/tags/View/" style="font-size: 10px;">View</a> <a href="/tags/View动画/" style="font-size: 10px;">View动画</a> <a href="/tags/android/" style="font-size: 18.33px;">android</a> <a href="/tags/base64/" style="font-size: 10px;">base64</a> <a href="/tags/log/" style="font-size: 10px;">log</a> <a href="/tags/maven/" style="font-size: 10px;">maven</a> <a href="/tags/mysql/" style="font-size: 11.67px;">mysql</a> <a href="/tags/test/" style="font-size: 11.67px;">test</a> <a href="/tags/viewpager/" style="font-size: 15px;">viewpager</a> <a href="/tags/volley/" style="font-size: 13.33px;">volley</a> <a href="/tags/动画/" style="font-size: 10px;">动画</a> <a href="/tags/图片加载/" style="font-size: 20px;">图片加载</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/工具类/" style="font-size: 10px;">工具类</a> <a href="/tags/源码/" style="font-size: 10px;">源码</a> <a href="/tags/自定义View/" style="font-size: 11.67px;">自定义View</a>
+    </div>
+  </div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://www.cnblogs.com/" target="_blank" title="博客园">博客园</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.csdn.net/" target="_blank" title="CSDN">CSDN</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.cnblogs.com/liunanjava/" target="_blank" title="森林森">森林森</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.jianshu.com/" target="_blank" title="简书">简书</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> 爱生活爱编码. <br/>
+			This is my blog,Try to do better.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/ln0491" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<a href="mailto:153011784@qq.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2017 
+		
+		<a href="/about" target="_blank" title="Liu Nan">Liu Nan</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+	$('#toc.toc-aside').css('display', 'block').addClass('fadeIn'); //这个是我新加的，修改点
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+        getSize();
+        if (myWidth >= 1024) {
+          c.click();
+        }
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"ln0491"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?f9d3aff238126ad201a9a789a888d75a";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1260477305'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1260477305%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
