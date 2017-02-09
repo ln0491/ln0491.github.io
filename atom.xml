@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ln0491.github.io/"/>
-  <updated>2017-02-09T06:11:16.701Z</updated>
+  <updated>2017-02-09T06:27:43.977Z</updated>
   <id>https://ln0491.github.io/</id>
   
   <author>
@@ -14,6 +14,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>mysql学习三帮忙文档</title>
+    <link href="https://ln0491.github.io/2017/02/09/mysql%E5%AD%A6%E4%B9%A0%E4%B8%89%E5%B8%AE%E5%BF%99%E6%96%87%E6%A1%A3/"/>
+    <id>https://ln0491.github.io/2017/02/09/mysql学习三帮忙文档/</id>
+    <published>2017-02-09T06:24:45.000Z</published>
+    <updated>2017-02-09T06:27:43.977Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="mysql学习三帮忙文档"><a href="#mysql学习三帮忙文档" class="headerlink" title="mysql学习三帮忙文档"></a>mysql学习三帮忙文档</h2><h3 id="查看系统帮助"><a href="#查看系统帮助" class="headerlink" title="查看系统帮助"></a>查看系统帮助</h3><p>help contents<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">mysql&gt; help contents;</div><div class="line">You asked for help about help category: &quot;Contents&quot;</div><div class="line">For more information, type &apos;help &lt;item&gt;&apos;, where &lt;item&gt; is one of the following</div><div class="line">categories:</div><div class="line">   Account Management</div><div class="line">   Administration</div><div class="line">   Compound Statements</div><div class="line">   Data Definition</div><div class="line">   Data Manipulation</div><div class="line">   Data Types</div><div class="line">   Functions</div><div class="line">   Functions and Modifiers for Use with GROUP BY</div><div class="line">   Geographic Features</div><div class="line">   Help Metadata</div><div class="line">   Language Structure</div><div class="line">   Plugins</div><div class="line">   Procedures</div><div class="line">   Storage Engines</div><div class="line">   Table Maintenance</div><div class="line">   Transactions</div><div class="line">   User-Defined Functions</div><div class="line">   Utility</div></pre></td></tr></table></figure></p>
+<p>帮助文档的目录列表</p>
+<h3 id="查看数据类型"><a href="#查看数据类型" class="headerlink" title="查看数据类型"></a>查看数据类型</h3><p>help data types<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">mysql&gt; help data types;</div><div class="line">You asked for help about help category: &quot;Data Types&quot;</div><div class="line">For more information, type &apos;help &lt;item&gt;&apos;, where &lt;item&gt; is one of the following</div><div class="line">topics:</div><div class="line">   AUTO_INCREMENT</div><div class="line">   BIGINT</div><div class="line">   BINARY</div><div class="line">   BIT</div><div class="line">   BLOB</div><div class="line">   BLOB DATA TYPE</div><div class="line">   BOOLEAN</div><div class="line">   CHAR</div><div class="line">   CHAR BYTE</div><div class="line">   DATE</div><div class="line">   DATETIME</div><div class="line">   DEC</div><div class="line">   DECIMAL</div><div class="line">   DOUBLE</div><div class="line">   DOUBLE PRECISION</div><div class="line">   ENUM</div><div class="line">   FLOAT</div><div class="line">   INT</div><div class="line">   INTEGER</div><div class="line">   LONGBLOB</div><div class="line">   LONGTEXT</div><div class="line">   MEDIUMBLOB</div><div class="line">   MEDIUMINT</div><div class="line">   MEDIUMTEXT</div><div class="line">   SET DATA TYPE</div><div class="line">   SMALLINT</div><div class="line">   TEXT</div><div class="line">   TIME</div><div class="line">   TIMESTAMP</div><div class="line">   TINYBLOB</div><div class="line">   TINYINT</div><div class="line">   TINYTEXT</div><div class="line">   VARBINARY</div><div class="line">   VARCHAR</div><div class="line">   YEAR DATA TYPE</div></pre></td></tr></table></figure></p>
+<h3 id="查看整数"><a href="#查看整数" class="headerlink" title="查看整数"></a>查看整数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">mysql&gt; help int;</div><div class="line">Name: &apos;INT&apos;</div><div class="line">Description:</div><div class="line">INT[(M)] [UNSIGNED] [ZEROFILL]</div><div class="line"></div><div class="line">A normal-size integer. The signed range is -2147483648 to 2147483647.</div><div class="line">The unsigned range is 0 to 4294967295.</div><div class="line"></div><div class="line">URL: http://dev.mysql.com/doc/refman/5.7/en/numeric-type-overview.html</div><div class="line"></div><div class="line"></div><div class="line">mysql&gt; help tinyint;</div><div class="line">Name: &apos;TINYINT&apos;</div><div class="line">Description:</div><div class="line">TINYINT[(M)] [UNSIGNED] [ZEROFILL]</div><div class="line"></div><div class="line">A very small integer. The signed range is -128 to 127. The unsigned</div><div class="line">range is 0 to 255.</div><div class="line"></div><div class="line">URL: http://dev.mysql.com/doc/refman/5.7/en/numeric-type-overview.html</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;mysql学习三帮忙文档&quot;&gt;&lt;a href=&quot;#mysql学习三帮忙文档&quot; class=&quot;headerlink&quot; title=&quot;mysql学习三帮忙文档&quot;&gt;&lt;/a&gt;mysql学习三帮忙文档&lt;/h2&gt;&lt;h3 id=&quot;查看系统帮助&quot;&gt;&lt;a href=&quot;#查看系统帮助&quot;
+    
+    </summary>
+    
+      <category term="mysql" scheme="https://ln0491.github.io/categories/mysql/"/>
+    
+    
+      <category term="mysql" scheme="https://ln0491.github.io/tags/mysql/"/>
+    
+  </entry>
   
   <entry>
     <title>mysql学习二数据引擎</title>
@@ -1502,45 +1527,6 @@ public DrawableTypeRequest&lt;URL&gt; fromUrl() {
     
     
       <category term="源码" scheme="https://ln0491.github.io/tags/%E6%BA%90%E7%A0%81/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Glide — 用Modules定制Glide</title>
-    <link href="https://ln0491.github.io/2016/10/19/Glide-%E2%80%94-%E7%94%A8Modules%E5%AE%9A%E5%88%B6Glide/"/>
-    <id>https://ln0491.github.io/2016/10/19/Glide-—-用Modules定制Glide/</id>
-    <published>2016-10-19T06:19:56.000Z</published>
-    <updated>2016-10-19T06:20:24.752Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="Glide-—-用Modules定制Glide"><a href="#Glide-—-用Modules定制Glide" class="headerlink" title="Glide — 用Modules定制Glide"></a>Glide — 用Modules定制Glide</h2><h3 id="Glide-Modules"><a href="#Glide-Modules" class="headerlink" title="Glide Modules"></a>Glide Modules</h3><p>Glide modules是一个全局改变Glide行为的抽象的方式。你需要创建Glide的实例，来访问GlideBuilder。可以通过创建一个公共的类，实现GlideModule的接口来定制Glide<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">public class SimpleGlideModule implements GlideModule &#123;</div><div class="line">    @Override public void applyOptions(Context context, GlideBuilder builder) &#123;</div><div class="line">        // todo</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override public void registerComponents(Context context, Glide glide) &#123;</div><div class="line">        // todo</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>接口提供了两个方法去调节Glide的不同部分，大部分内容只研究第一个方法：applyOptions(Context context, GlideBuilder builder)</p>
-<p>需要创建一个额外的类去自定义Glide。下一步是要在全局中声明这个类，这样Glide知道它应该加载并使用它。Glide会扫描AndroidManifest.xml的Glide modules的meta定义。这样，你必须在AndroidManifest.xml里的<application>标签下声明刚创建的Glide module。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&lt;manifest</div><div class="line"></div><div class="line">    ...</div><div class="line"></div><div class="line">    &lt;application&gt;</div><div class="line"></div><div class="line">        &lt;meta-data</div><div class="line">            android:name=&quot;io.futurestud.tutorials.glide.glidemodule.SimpleGlideModule&quot;</div><div class="line">            android:value=&quot;GlideModule&quot; /&gt;</div><div class="line"></div><div class="line">        ...</div><div class="line"></div><div class="line">    &lt;/application&gt;</div><div class="line">&lt;/manifest&gt;</div></pre></td></tr></table></figure></application></p>
-<p>确保你设置android:name为你自己的包名+类名，这样才能正确引用。你不需要添加其他的代码到其中。如果你想要禁止Glide Module，只要从AndroidManifest.xml里移除它。Java类里的代码可以留着供以后使用。当在AndroidManifest.xml里没有引用的时候，它永远不会被加载。</p>
-<p>Glide推荐实现自定义module的方式有一个好处：你可以一次同时声明多个Glide Module。Glide会（没有特殊的顺序）都遍历所有声明的module。由于你当前未定义顺序，确保你的定制不会造成冲突！</p>
-<h3 id="GlideBuilder"><a href="#GlideBuilder" class="headerlink" title="GlideBuilder"></a>GlideBuilder</h3><p>接口的第一个方法：applyOptions(Context context, GlideBuilder builder)。这个方法将GlideBuilder的对象当作参数，并且是void返回类型，所以你在这个方法里能调用GlideBuilder可以用的方法。</p>
-<ul>
-<li>.setMemoryCache(MemoryCache memoryCache)</li>
-<li>.setBitmapPool(BitmapPool bitmapPool)</li>
-<li>.setDiskCache(DiskCache.Factory diskCacheFactory)</li>
-<li>.setDiskCacheService(ExecutorService service)</li>
-<li>.setResizeService(ExecutorService service)</li>
-<li>.setDecodeFormat(DecodeFormat decodeFormat)</li>
-</ul>
-<p>Android里有两个方法去解析图片：ARGB8888和RGB565。第一个为每个像素采用4 byte表示，后面一个则用2 byte表示。ARG8888有更高的图片质量，并且能够存储一个alpha通道。当Picasso使用ARGB888时，Glide默认使用低质量的RGB565。Glide用户的好消息：你可以通过使用Glide module方法改变解析格式。</p>
-<p>你只要简单地实现一个GlideModule，像之前提到的一样，然后调用builder.setDecodeFormat(DecodeFormat.PREFER_ARGB_8888)，并传入正确的枚举型参数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">public class SimpleGlideModule implements GlideModule &#123;</div><div class="line">    @Override public void applyOptions(Context context, GlideBuilder builder) &#123;</div><div class="line">        builder.setDecodeFormat(DecodeFormat.PREFER_ARGB_8888);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override public void registerComponents(Context context, Glide glide) &#123;</div><div class="line">        // nothing to do here</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;Glide-—-用Modules定制Glide&quot;&gt;&lt;a href=&quot;#Glide-—-用Modules定制Glide&quot; class=&quot;headerlink&quot; title=&quot;Glide — 用Modules定制Glide&quot;&gt;&lt;/a&gt;Glide — 用Modules定
-    
-    </summary>
-    
-      <category term="android" scheme="https://ln0491.github.io/categories/android/"/>
-    
-    
-      <category term="图片加载" scheme="https://ln0491.github.io/tags/%E5%9B%BE%E7%89%87%E5%8A%A0%E8%BD%BD/"/>
     
   </entry>
   
