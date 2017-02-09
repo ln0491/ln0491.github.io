@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ln0491.github.io/"/>
-  <updated>2017-02-09T05:38:22.626Z</updated>
+  <updated>2017-02-09T06:11:16.701Z</updated>
   <id>https://ln0491.github.io/</id>
   
   <author>
@@ -14,6 +14,48 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>mysql学习二数据引擎</title>
+    <link href="https://ln0491.github.io/2017/02/09/mysql%E5%AD%A6%E4%B9%A0%E4%BA%8C%E6%95%B0%E6%8D%AE%E5%BC%95%E6%93%8E/"/>
+    <id>https://ln0491.github.io/2017/02/09/mysql学习二数据引擎/</id>
+    <published>2017-02-09T05:54:50.000Z</published>
+    <updated>2017-02-09T06:11:16.701Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="mysql学习二数据引擎"><a href="#mysql学习二数据引擎" class="headerlink" title="mysql学习二数据引擎"></a>mysql学习二数据引擎</h2><h3 id="查看当前数据库支持的引擎"><a href="#查看当前数据库支持的引擎" class="headerlink" title="查看当前数据库支持的引擎"></a>查看当前数据库支持的引擎</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">show engines</div><div class="line"></div><div class="line">+--------------------+---------+----------------------------------------------------------------+--------------+------+------------+</div><div class="line">| Engine             | Support | Comment                                                        | Transactions | XA   | Savepoints |</div><div class="line">+--------------------+---------+----------------------------------------------------------------+--------------+------+------------+</div><div class="line">| InnoDB             | DEFAULT | Supports transactions, row-level locking, and foreign keys     | YES          | YES  | YES        |</div><div class="line">| MRG_MYISAM         | YES     | Collection of identical MyISAM tables                          | NO           | NO   | NO         |</div><div class="line">| MEMORY             | YES     | Hash based, stored in memory, useful for temporary tables      | NO           | NO   | NO         |</div><div class="line">| BLACKHOLE          | YES     | /dev/null storage engine (anything you write to it disappears) | NO           | NO   | NO         |</div><div class="line">| MyISAM             | YES     | MyISAM storage engine                                          | NO           | NO   | NO         |</div><div class="line">| CSV                | YES     | CSV storage engine                                             | NO           | NO   | NO         |</div><div class="line">| ARCHIVE            | YES     | Archive storage engine                                         | NO           | NO   | NO         |</div><div class="line">| PERFORMANCE_SCHEMA | YES     | Performance Schema                                             | NO           | NO   | NO         |</div><div class="line">| FEDERATED          | NO      | Federated MySQL storage engine                                 | NULL         | NULL | NULL       |</div><div class="line">+--------------------+---------+----------------------------------------------------------------+--------------+------+------------+</div><div class="line">9 rows in set (0.00 sec)</div></pre></td></tr></table></figure>
+<p>或者<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div></pre></td><td class="code"><pre><div class="line">show engines \G</div><div class="line"></div><div class="line">mysql&gt; show engines \G</div><div class="line">*************************** 1. row ***************************</div><div class="line">      Engine: InnoDB</div><div class="line">     Support: DEFAULT</div><div class="line">     Comment: Supports transactions, row-level locking, and foreign keys</div><div class="line">Transactions: YES</div><div class="line">          XA: YES</div><div class="line">  Savepoints: YES</div><div class="line">*************************** 2. row ***************************</div><div class="line">      Engine: MRG_MYISAM</div><div class="line">     Support: YES</div><div class="line">     Comment: Collection of identical MyISAM tables</div><div class="line">Transactions: NO</div><div class="line">          XA: NO</div><div class="line">  Savepoints: NO</div><div class="line">*************************** 3. row ***************************</div><div class="line">      Engine: MEMORY</div><div class="line">     Support: YES</div><div class="line">     Comment: Hash based, stored in memory, useful for temporary tables</div><div class="line">Transactions: NO</div><div class="line">          XA: NO</div><div class="line">  Savepoints: NO</div><div class="line">*************************** 4. row ***************************</div><div class="line">      Engine: BLACKHOLE</div><div class="line">     Support: YES</div><div class="line">     Comment: /dev/null storage engine (anything you write to it disappears)</div><div class="line">Transactions: NO</div><div class="line">          XA: NO</div><div class="line">  Savepoints: NO</div><div class="line">*************************** 5. row ***************************</div><div class="line">      Engine: MyISAM</div><div class="line">     Support: YES</div><div class="line">     Comment: MyISAM storage engine</div><div class="line">Transactions: NO</div><div class="line">          XA: NO</div><div class="line">  Savepoints: NO</div><div class="line">*************************** 6. row ***************************</div><div class="line">      Engine: CSV</div><div class="line">     Support: YES</div><div class="line">     Comment: CSV storage engine</div><div class="line">Transactions: NO</div><div class="line">          XA: NO</div><div class="line">  Savepoints: NO</div><div class="line">*************************** 7. row ***************************</div><div class="line">      Engine: ARCHIVE</div><div class="line">     Support: YES</div><div class="line">     Comment: Archive storage engine</div><div class="line">Transactions: NO</div><div class="line">          XA: NO</div><div class="line">  Savepoints: NO</div><div class="line">*************************** 8. row ***************************</div><div class="line">      Engine: PERFORMANCE_SCHEMA</div><div class="line">     Support: YES</div><div class="line">     Comment: Performance Schema</div><div class="line">Transactions: NO</div><div class="line">          XA: NO</div><div class="line">  Savepoints: NO</div><div class="line">*************************** 9. row ***************************</div><div class="line">      Engine: FEDERATED</div><div class="line">     Support: NO</div><div class="line">     Comment: Federated MySQL storage engine</div><div class="line">Transactions: NULL</div><div class="line">          XA: NULL</div><div class="line">  Savepoints: NULL</div><div class="line">9 rows in set (0.00 sec)</div></pre></td></tr></table></figure></p>
+<ul>
+<li>Engine   引擎的名称</li>
+<li>Support   是否支付YES表示支持，NO表示不支持</li>
+<li>Comment  评价或者备注 Defalut表示，默认支持的引擎</li>
+<li>Transactions  是否支持事务，YES表示支持，NO表示不支持</li>
+<li>XA          所有支持的分布式是否符合XA规范，YES表示支持，NO表示不支持</li>
+<li>Savepoints  是否支持事务处理中的保存点，YES表示支持，NO表示不支持</li>
+</ul>
+<p>或者<br>show variables like ‘have%’<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">mysql&gt; show variables like &apos;have%&apos;;</div><div class="line">+------------------------+----------+</div><div class="line">| Variable_name          | Value    |</div><div class="line">+------------------------+----------+</div><div class="line">| have_compress          | YES      |</div><div class="line">| have_crypt             | NO       |</div><div class="line">| have_dynamic_loading   | YES      |</div><div class="line">| have_geometry          | YES      |</div><div class="line">| have_openssl           | DISABLED |</div><div class="line">| have_profiling         | YES      |</div><div class="line">| have_query_cache       | YES      |</div><div class="line">| have_rtree_keys        | YES      |</div><div class="line">| have_ssl               | DISABLED |</div><div class="line">| have_statement_timeout | YES      |</div><div class="line">| have_symlink           | YES      |</div><div class="line">+------------------------+----------+</div><div class="line">11 rows in set, 1 warning (0.00 sec)</div></pre></td></tr></table></figure></p>
+<ul>
+<li>Variable_name  引擎名称</li>
+<li>value 是否支持YES支持，NO不支持,DISABLED表示支持但未启用</li>
+</ul>
+<h3 id="查看默认引擎"><a href="#查看默认引擎" class="headerlink" title="查看默认引擎"></a>查看默认引擎</h3><p>show variables like ‘%storage_engine%’<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">mysql&gt; show variables like &apos;%storage_engine%&apos;;</div><div class="line">+----------------------------------+--------+</div><div class="line">| Variable_name                    | Value  |</div><div class="line">+----------------------------------+--------+</div><div class="line">| default_storage_engine           | InnoDB |</div><div class="line">| default_tmp_storage_engine       | InnoDB |</div><div class="line">| disabled_storage_engines         |        |</div><div class="line">| internal_tmp_disk_storage_engine | InnoDB |</div><div class="line">+----------------------------------+--------+</div><div class="line">4 rows in set, 1 warning (0.00 sec)</div></pre></td></tr></table></figure></p>
+<p>InnoDB 为默认引擎</p>
+<h3 id="修改默认引擎"><a href="#修改默认引擎" class="headerlink" title="修改默认引擎"></a>修改默认引擎</h3><p>my.ini文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">[mysqld]</div><div class="line"></div><div class="line"># The next three options are mutually exclusive to SERVER_PORT below.</div><div class="line"># skip-networking</div><div class="line"></div><div class="line"># enable-named-pipe</div><div class="line"></div><div class="line"># shared-memory</div><div class="line"></div><div class="line"># shared-memory-base-name=MYSQL</div><div class="line"></div><div class="line"># The Pipe the MySQL Server will use</div><div class="line"># socket=MYSQL</div><div class="line"></div><div class="line"># The TCP/IP Port the MySQL Server will listen on 默认端口号</div><div class="line">port=3306</div><div class="line"></div><div class="line"># Path to installation directory. All paths are usually resolved relative to this.  服务器的默认安装目录</div><div class="line"># basedir=&quot;C:/Program Files/MySQL/MySQL Server 5.7/&quot;</div><div class="line"></div><div class="line"># Path to the database root   数据库数据文件的目录</div><div class="line">datadir=C:/ProgramData/MySQL/MySQL Server 5.7\Data</div><div class="line"></div><div class="line"># The default character set that will be used when a new schema or table is</div><div class="line"># created and no character set is defined  修改服务器默认字符</div><div class="line">character-set-server=utf8</div><div class="line"></div><div class="line"># The default storage engine that will be used when create new tables when</div><div class="line"># 这里修改默认引擎</div><div class="line">default-storage-engine=INNODB</div></pre></td></tr></table></figure>
+<p>修改后重启Mysql服务</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;mysql学习二数据引擎&quot;&gt;&lt;a href=&quot;#mysql学习二数据引擎&quot; class=&quot;headerlink&quot; title=&quot;mysql学习二数据引擎&quot;&gt;&lt;/a&gt;mysql学习二数据引擎&lt;/h2&gt;&lt;h3 id=&quot;查看当前数据库支持的引擎&quot;&gt;&lt;a href=&quot;#查
+    
+    </summary>
+    
+      <category term="mysql" scheme="https://ln0491.github.io/categories/mysql/"/>
+    
+    
+      <category term="mysql" scheme="https://ln0491.github.io/tags/mysql/"/>
+    
+  </entry>
   
   <entry>
     <title>mysql学习一</title>
@@ -1492,40 +1534,6 @@ public DrawableTypeRequest&lt;URL&gt; fromUrl() {
     <summary type="html">
     
       &lt;h2 id=&quot;Glide-—-用Modules定制Glide&quot;&gt;&lt;a href=&quot;#Glide-—-用Modules定制Glide&quot; class=&quot;headerlink&quot; title=&quot;Glide — 用Modules定制Glide&quot;&gt;&lt;/a&gt;Glide — 用Modules定
-    
-    </summary>
-    
-      <category term="android" scheme="https://ln0491.github.io/categories/android/"/>
-    
-    
-      <category term="图片加载" scheme="https://ln0491.github.io/tags/%E5%9B%BE%E7%89%87%E5%8A%A0%E8%BD%BD/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Glide入门教程十一变换</title>
-    <link href="https://ln0491.github.io/2016/10/19/Glide%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B%E5%8D%81%E4%B8%80%E5%8F%98%E6%8D%A2/"/>
-    <id>https://ln0491.github.io/2016/10/19/Glide入门教程十一变换/</id>
-    <published>2016-10-19T06:09:18.000Z</published>
-    <updated>2016-10-19T06:09:51.627Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="Glide入门教程十一变换"><a href="#Glide入门教程十一变换" class="headerlink" title="Glide入门教程十一变换"></a>Glide入门教程十一变换</h2><p>在图片显示出之前可以对图片进行变换处理。例如，如果你的app需要显示一张灰度图，但只能获取到一个原始全色彩的版本，你可以使用一个变换去将图片从有明艳色彩的版本转换成惨淡的黑白版</p>
-<p>推荐一个库Glide变换<br><a href="https://github.com/wasabeef/glide-transformations" target="_blank" rel="external">https://github.com/wasabeef/glide-transformations</a><br>里面有很实现的效果</p>
-<ul>
-<li>引入</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//glide 变换</div><div class="line">    compile &apos;jp.wasabeef:glide-transformations:2.0.1&apos;</div><div class="line">    // If you want to use the GPU Filters   -glide 变换使用GPU</div><div class="line">    compile &apos;jp.co.cyberagent.android.gpuimage:gpuimage-library:1.3.0&apos;</div></pre></td></tr></table></figure>
-<ul>
-<li>使用</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">String trUrl = &quot;http://pic.58pic.com/58pic/16/83/91/40558PICYDj_1024.jpg&quot;;</div><div class="line"></div><div class="line"></div><div class="line">      Glide.with(this)</div><div class="line">              .load(trUrl)</div><div class="line">              .bitmapTransform(new CropCircleTransformation(this))</div><div class="line">              .into(mIvEc2);</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">      Glide.with(this)</div><div class="line">              .load(trUrl)</div><div class="line">              .bitmapTransform(new BlurTransformation(this))</div><div class="line">              .into(mIvEc3);</div></pre></td></tr></table></figure>
-<p>提示：当你使用变换的时候，你不能使用.centerCrop()或者.fitCenter()</p>
-<p>源码<br><a href="https://github.com/ln0491/GlideDemo" target="_blank" rel="external">https://github.com/ln0491/GlideDemo</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;Glide入门教程十一变换&quot;&gt;&lt;a href=&quot;#Glide入门教程十一变换&quot; class=&quot;headerlink&quot; title=&quot;Glide入门教程十一变换&quot;&gt;&lt;/a&gt;Glide入门教程十一变换&lt;/h2&gt;&lt;p&gt;在图片显示出之前可以对图片进行变换处理。例如，如果你
     
     </summary>
     
