@@ -4,38 +4,35 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>javaBase64使用 | 刘楠的博客</title>
+    <title>mysql学习一 | 刘楠的博客</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Liu Nan">
     
 
     
-    <meta name="description" content="测试public static void main(String[] args) {
-
-    String str = &amp;quot;Hello, world!&amp;quot;;
-    System.out.println(&amp;quot;未加密前：&amp;quot; + str + &amp;quot;  长度:&amp;quot; + str.length());
-
-    String encoderString =">
+    <meta name="description" content="mysql学习一查看数据库1show databases;
+创建数据库create DATABASE  数据库名称1create DATABASE databasetest;
+选择数据库use  数据库名称123use databasetest;------------Database changed;切换成功
+查看当前数据库名称1SELECT DATABASE();
+删除数据库drop DATA">
 <meta property="og:type" content="article">
-<meta property="og:title" content="javaBase64使用">
-<meta property="og:url" content="https://ln0491.github.io/2016/11/17/javaBase64使用/index.html">
+<meta property="og:title" content="mysql学习一">
+<meta property="og:url" content="https://ln0491.github.io/2017/02/09/mysql学习一/index.html">
 <meta property="og:site_name" content="刘楠的博客">
-<meta property="og:description" content="测试public static void main(String[] args) {
-
-    String str = &amp;quot;Hello, world!&amp;quot;;
-    System.out.println(&amp;quot;未加密前：&amp;quot; + str + &amp;quot;  长度:&amp;quot; + str.length());
-
-    String encoderString =">
-<meta property="og:updated_time" content="2016-11-17T03:10:29.377Z">
+<meta property="og:description" content="mysql学习一查看数据库1show databases;
+创建数据库create DATABASE  数据库名称1create DATABASE databasetest;
+选择数据库use  数据库名称123use databasetest;------------Database changed;切换成功
+查看当前数据库名称1SELECT DATABASE();
+删除数据库drop DATA">
+<meta property="og:updated_time" content="2017-02-09T05:38:22.626Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="javaBase64使用">
-<meta name="twitter:description" content="测试public static void main(String[] args) {
-
-    String str = &amp;quot;Hello, world!&amp;quot;;
-    System.out.println(&amp;quot;未加密前：&amp;quot; + str + &amp;quot;  长度:&amp;quot; + str.length());
-
-    String encoderString =">
+<meta name="twitter:title" content="mysql学习一">
+<meta name="twitter:description" content="mysql学习一查看数据库1show databases;
+创建数据库create DATABASE  数据库名称1create DATABASE databasetest;
+选择数据库use  数据库名称123use databasetest;------------Database changed;切换成功
+查看当前数据库名称1SELECT DATABASE();
+删除数据库drop DATA">
 
     
     <link rel="alternative" href="/atom.xml" title="刘楠的博客" type="application/atom+xml">
@@ -98,14 +95,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2016/11/17/javaBase64使用/" title="javaBase64使用" itemprop="url">javaBase64使用</a>
+      <a href="/2017/02/09/mysql学习一/" title="mysql学习一" itemprop="url">mysql学习一</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="Liu Nan" target="_blank" itemprop="author">Liu Nan</a>
 		
   <p class="article-time">
-    <time datetime="2016-11-17T03:06:11.000Z" itemprop="datePublished"> 发表于 2016-11-17</time>
+    <time datetime="2017-02-09T03:31:01.000Z" itemprop="datePublished"> 发表于 2017-02-09</time>
     
   </p>
 </header>
@@ -114,171 +111,30 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#测试"><span class="toc-number">1.</span> <span class="toc-text">测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用Base64加密字符串"><span class="toc-number">2.</span> <span class="toc-text">使用Base64加密字符串</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用Base64解码"><span class="toc-number">3.</span> <span class="toc-text">使用Base64解码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#将一个图片文件转化为Bases64字符串"><span class="toc-number">4.</span> <span class="toc-text">将一个图片文件转化为Bases64字符串</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#将base64字符串转化文件"><span class="toc-number">5.</span> <span class="toc-text">将base64字符串转化文件</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#mysql学习一"><span class="toc-number">1.</span> <span class="toc-text">mysql学习一</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#查看数据库"><span class="toc-number">1.1.</span> <span class="toc-text">查看数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建数据库"><span class="toc-number">1.2.</span> <span class="toc-text">创建数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#选择数据库"><span class="toc-number">1.3.</span> <span class="toc-text">选择数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看当前数据库名称"><span class="toc-number">1.4.</span> <span class="toc-text">查看当前数据库名称</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除数据库"><span class="toc-number">1.5.</span> <span class="toc-text">删除数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据库状态"><span class="toc-number">1.6.</span> <span class="toc-text">数据库状态</span></a></li></ol></li></ol>
 		
 		</div>
 		
-		<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><pre><code>public static void main(String[] args) {
-
-    String str = &quot;Hello, world!&quot;;
-    System.out.println(&quot;未加密前：&quot; + str + &quot;  长度:&quot; + str.length());
-
-    String encoderString = toBase64Encode(str);
-    System.out.println(&quot;加密: &quot; + encoderString + &quot;  长度:&quot; + encoderString.length());
-
-    String decoderString = toDecodeFromeBase64(encoderString);
-    System.out.println(&quot;解密： &quot; + decoderString + &quot;  长度:&quot; + decoderString.length());
-
-    String path = &quot;D:/tmp/ba.png&quot;;
-
-    String imgString = fileToBase64String(path);
-    System.out.println(&quot;图片转base64 : &quot; + imgString);
-
-    boolean flag = base64StringToFile(imgString);
-    System.out.println(&quot;flag = &quot; + flag);
-}
-</code></pre><h2 id="使用Base64加密字符串"><a href="#使用Base64加密字符串" class="headerlink" title="使用Base64加密字符串"></a>使用Base64加密字符串</h2><pre><code>/**
- * 使用Base64加密字符串
-* @Title: toBase64Encode
-* @Description: TODO(这里用一句话描述这个方法的作用)
-* @param @param str
-* @param @return    设定文件
-* @return String    返回类型
-* @throws
- */
-public static String toBase64Encode(String str) {
-    String result = null;
-
-    try {
-        result = new BASE64Encoder().encode(str.getBytes(&quot;utf8&quot;));
-    } catch (UnsupportedEncodingException e) {
-        e.printStackTrace();
-
-    }
-
-    return result;
-}
-</code></pre><h2 id="使用Base64解码"><a href="#使用Base64解码" class="headerlink" title="使用Base64解码"></a>使用Base64解码</h2><pre><code>/**
- * 使用Base64解码
-* @Title: toDecodeFromeBase64
-* @Description: TODO(这里用一句话描述这个方法的作用)
-* @param @param str
-* @param @return    设定文件
-* @return String    返回类型
-* @throws
- */
-public static String toDecodeFromeBase64(String str) {
-    String result = null;
-    byte[] decodeBuffer;
-
-    try {
-        BASE64Decoder decoder = new BASE64Decoder();
-        decodeBuffer = decoder.decodeBuffer(str);
-
-        result = new String(decodeBuffer, &quot;utf8&quot;);
-    } catch (IOException e) {
-        e.printStackTrace();
-    }
-
-    return result;
-}
-</code></pre><h2 id="将一个图片文件转化为Bases64字符串"><a href="#将一个图片文件转化为Bases64字符串" class="headerlink" title="将一个图片文件转化为Bases64字符串"></a>将一个图片文件转化为Bases64字符串</h2><pre><code>/**
- * 根据路径是加密一个图片
-* @Title: fileToBase64String
-* @Description: TODO(这里用一句话描述这个方法的作用)
-* @param @param path
-* @param @return    设定文件
-* @return String    返回类型
-* @throws
- */
-public static String fileToBase64String(String path) {
-    String result = null;
-
-    InputStream in = null;
-    byte[] data;
-    try {
-        in = new FileInputStream(path);
-        // 声明字符数组长度为流的长度
-        data = new byte[in.available()];
-
-        // 读取文件到流中
-        in.read(data);
-        // 转化为字符串
-        BASE64Encoder encoder = new BASE64Encoder();
-        // 加密
-        result = encoder.encode(data);
-
-    } catch (FileNotFoundException e) {
-        e.printStackTrace();
-    } catch (IOException e) {
-        e.printStackTrace();
-    } finally {
-        IOUtils.close(in);
-    }
-
-    return result;
-}
-</code></pre><h2 id="将base64字符串转化文件"><a href="#将base64字符串转化文件" class="headerlink" title="将base64字符串转化文件"></a>将base64字符串转化文件</h2><pre><code>/**
- * 将base64字符串转化文件
-* @Title: base64StringToFile
-* @Description: TODO(这里用一句话描述这个方法的作用)
-* @param @param base64String
-* @param @return    设定文件
-* @return boolean    返回类型
-* @throws
- */
-public static boolean base64StringToFile(String base64String) {
-
-    boolean flag = false;
-
-    if (base64String == null) {
-        return flag;
-
-    }
-    BASE64Decoder decoder = new BASE64Decoder();
-    OutputStream out = null;
-    // Base64解码
-    try {
-        // 读取字符数据中
-        byte[] data = decoder.decodeBuffer(base64String);
-        // 调整数据
-        for (int i = 0; i &lt; data.length; ++i) {
-            if (data[i] &lt; 0) {// 调整异常数据
-                data[i] += 256;
-            }
-        }
-
-        // 生成jpeg图片
-        String imgFilePath = &quot;d:/tmp/test22.png&quot;;// 新生成的图片
-        out = new FileOutputStream(imgFilePath);
-        out.write(data);
-        out.flush();
-
-        flag = true;
-
-    } catch (IOException e) {
-        e.printStackTrace();
-        flag = false;
-    } finally {
-        IOUtils.close(out);
-    }
-
-    return flag;
-}
-</code></pre>  
+		<h2 id="mysql学习一"><a href="#mysql学习一" class="headerlink" title="mysql学习一"></a>mysql学习一</h2><h3 id="查看数据库"><a href="#查看数据库" class="headerlink" title="查看数据库"></a>查看数据库</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">show databases;</div></pre></td></tr></table></figure>
+<h3 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h3><p>create DATABASE  数据库名称<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">create DATABASE databasetest;</div></pre></td></tr></table></figure></p>
+<h3 id="选择数据库"><a href="#选择数据库" class="headerlink" title="选择数据库"></a>选择数据库</h3><p>use  数据库名称<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">use databasetest;</div><div class="line">------------</div><div class="line">Database changed;切换成功</div></pre></td></tr></table></figure></p>
+<h3 id="查看当前数据库名称"><a href="#查看当前数据库名称" class="headerlink" title="查看当前数据库名称"></a>查看当前数据库名称</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SELECT DATABASE();</div></pre></td></tr></table></figure>
+<h3 id="删除数据库"><a href="#删除数据库" class="headerlink" title="删除数据库"></a>删除数据库</h3><p>drop DATABASE  数据库名称<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">drop DATABASE databasetest;</div></pre></td></tr></table></figure></p>
+<h3 id="数据库状态"><a href="#数据库状态" class="headerlink" title="数据库状态"></a>数据库状态</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">status;</div><div class="line"></div><div class="line">--------------</div><div class="line">mysql  Ver 14.14 Distrib 5.7.17, for Win64 (x86_64)</div><div class="line"></div><div class="line">Connection id:          5</div><div class="line">Current database:</div><div class="line">Current user:           root@localhost</div><div class="line">SSL:                    Not in use</div><div class="line">Using delimiter:        ;</div><div class="line">Server version:         5.7.17-log MySQL Community Server (GPL)</div><div class="line">Protocol version:       10</div><div class="line">Connection:             127.0.0.1 via TCP/IP</div><div class="line">Server characterset:    utf8</div><div class="line">Db     characterset:    utf8</div><div class="line">Client characterset:    gbk</div><div class="line">Conn.  characterset:    gbk</div><div class="line">TCP port:               3306</div><div class="line">Uptime:                 2 hours 25 min 34 sec</div><div class="line"></div><div class="line">Threads: 2  Questions: 57  Slow queries: 0  Opens: 114  Flush tables: 1  Open tables: 107  Queries per second avg: 0.006</div><div class="line">--------------</div></pre></td></tr></table></figure>
+  
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/java/">java</a>
+  <a class="article-category-link" href="/categories/mysql/">mysql</a>
 </div>
 
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/base64/">base64</a>
+  <span></span> <a href="/tags/mysql/">mysql</a>
   </div>
 
 </div>
@@ -287,7 +143,7 @@ public static boolean base64StringToFile(String base64String) {
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="https://ln0491.github.io/2016/11/17/javaBase64使用/" data-title="javaBase64使用 | 刘楠的博客" data-tsina="null" class="share clearfix">
+	  <div data-url="https://ln0491.github.io/2017/02/09/mysql学习一/" data-title="mysql学习一 | 刘楠的博客" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -300,19 +156,11 @@ public static boolean base64StringToFile(String base64String) {
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2017/01/03/日志组件slf4j介绍及配置详解/" title="日志组件slf4j介绍及配置详解">
-  <strong>上一篇：</strong><br/>
-  <span>
-  日志组件slf4j介绍及配置详解</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2016/11/16/android-常用混淆/"  title="android 常用混淆">
+<a href="/2017/01/03/日志组件slf4j介绍及配置详解/"  title="日志组件slf4j介绍及配置详解">
  <strong>下一篇：</strong><br/> 
- <span>android 常用混淆
+ <span>日志组件slf4j介绍及配置详解
 </span>
 </a>
 </div>
@@ -321,7 +169,7 @@ public static boolean base64StringToFile(String base64String) {
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2016/11/17/javaBase64使用/" data-title="javaBase64使用" data-url="https://ln0491.github.io/2016/11/17/javaBase64使用/"></div>
+	<div class="ds-thread" data-thread-key="2017/02/09/mysql学习一/" data-title="mysql学习一" data-url="https://ln0491.github.io/2017/02/09/mysql学习一/"></div>
 </section>
 
 
@@ -331,7 +179,7 @@ public static boolean base64StringToFile(String base64String) {
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#测试"><span class="toc-number">1.</span> <span class="toc-text">测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用Base64加密字符串"><span class="toc-number">2.</span> <span class="toc-text">使用Base64加密字符串</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用Base64解码"><span class="toc-number">3.</span> <span class="toc-text">使用Base64解码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#将一个图片文件转化为Bases64字符串"><span class="toc-number">4.</span> <span class="toc-text">将一个图片文件转化为Bases64字符串</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#将base64字符串转化文件"><span class="toc-number">5.</span> <span class="toc-text">将base64字符串转化文件</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#mysql学习一"><span class="toc-number">1.</span> <span class="toc-text">mysql学习一</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#查看数据库"><span class="toc-number">1.1.</span> <span class="toc-text">查看数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建数据库"><span class="toc-number">1.2.</span> <span class="toc-text">创建数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#选择数据库"><span class="toc-number">1.3.</span> <span class="toc-text">选择数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看当前数据库名称"><span class="toc-number">1.4.</span> <span class="toc-text">查看当前数据库名称</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除数据库"><span class="toc-number">1.5.</span> <span class="toc-text">删除数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据库状态"><span class="toc-number">1.6.</span> <span class="toc-text">数据库状态</span></a></li></ol></li></ol>
  
   </div>
 
