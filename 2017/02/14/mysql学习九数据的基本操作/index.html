@@ -31,7 +31,7 @@ U–UPDATE 更新
 D–DELETE 删除
 
 插入完整数据记录123456INSERT INTO table_name(field1,field2,field3,……fieldn)    VALUES(value11,value21,value31……valuen1),">
-<meta property="og:updated_time" content="2017-02-14T02:40:43.308Z">
+<meta property="og:updated_time" content="2017-02-14T02:45:14.037Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mysql学习九数据的基本操作">
 <meta name="twitter:description" content="mysql学习九数据的基本操作实际上就是对表的数据进行操作CRUD
@@ -150,7 +150,9 @@ D–DELETE 删除
 <h4 id="清空表"><a href="#清空表" class="headerlink" title="清空表"></a>清空表</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">truncate  表名</div></pre></td></tr></table></figure>
 <p>数据表<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">mysql&gt; CREATE TABLE t_dept (</div><div class="line">    -&gt;   deptno INT(11)  PRIMARY KEY AUTO_INCREMENT,</div><div class="line">    -&gt;   dname VARCHAR(20) ,</div><div class="line">    -&gt;   loc VARCHAR(40)</div><div class="line">    -&gt; );</div><div class="line">Query OK, 0 rows affected (0.19 sec)</div><div class="line"></div><div class="line">mysql&gt; desc t_dept;</div><div class="line">+--------+-------------+------+-----+---------+----------------+</div><div class="line">| Field  | Type        | Null | Key | Default | Extra          |</div><div class="line">+--------+-------------+------+-----+---------+----------------+</div><div class="line">| deptno | int(11)     | NO   | PRI | NULL    | auto_increment |</div><div class="line">| dname  | varchar(20) | YES  |     | NULL    |                |</div><div class="line">| loc    | varchar(40) | YES  |     | NULL    |                |</div><div class="line">+--------+-------------+------+-----+---------+----------------+</div><div class="line">3 rows in set (0.00 sec)</div><div class="line"></div><div class="line">mysql&gt; INSERT INTO t_dept VALUES(&apos;sz&apos;,&apos;szn&apos;),(&apos;test&apos;,&apos;sh&apos;),(&apos;销售&apos;,&apos;北京&apos;),(&apos;人事&apos;,&apos;重庆&apos;);</div><div class="line">ERROR 1136 (21S01): Column count doesn&apos;t match value count at row 1</div><div class="line">mysql&gt; INSERT INTO t_dept (dname,loc) VALUES(&apos;sz&apos;,&apos;szn&apos;),(&apos;test&apos;,&apos;sh&apos;),(&apos;销售&apos;,&apos;北京&apos;),(&apos;人事&apos;,&apos;重庆&apos;);</div><div class="line">Query OK, 4 rows affected (0.05 sec)</div><div class="line">Records: 4  Duplicates: 0  Warnings: 0</div><div class="line"></div><div class="line">mysql&gt; select * from t_dept;</div><div class="line">+--------+--------+--------+</div><div class="line">| deptno | dname  | loc    |</div><div class="line">+--------+--------+--------+</div><div class="line">|      1 | sz     | szn    |</div><div class="line">|      2 | test   | sh     |</div><div class="line">|      3 | 销售   | 北京   |</div><div class="line">|      4 | 人事   | 重庆   |</div><div class="line">+--------+--------+--------+</div><div class="line">4 rows in set (0.00 sec)</div></pre></td></tr></table></figure></p>
 <p>清空<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">mysql&gt; TRUNCATE t_dept;</div><div class="line">Query OK, 0 rows affected (0.22 sec)</div><div class="line"></div><div class="line">mysql&gt; select * from t_dept;</div><div class="line">Empty set (0.00 sec)</div><div class="line"></div><div class="line">mysql&gt; INSERT INTO t_dept (dname,loc) VALUES(&apos;sz&apos;,&apos;szn&apos;),(&apos;test&apos;,&apos;sh&apos;),(&apos;销售&apos;,&apos;北京&apos;),(&apos;人事&apos;,&apos;重庆&apos;);</div><div class="line">Query OK, 4 rows affected (0.05 sec)</div><div class="line">Records: 4  Duplicates: 0  Warnings: 0</div><div class="line"></div><div class="line">mysql&gt; select * from t_dept;</div><div class="line">+--------+--------+--------+</div><div class="line">| deptno | dname  | loc    |</div><div class="line">+--------+--------+--------+</div><div class="line">|      1 | sz     | szn    |</div><div class="line">|      2 | test   | sh     |</div><div class="line">|      3 | 销售   | 北京   |</div><div class="line">|      4 | 人事   | 重庆   |</div><div class="line">+--------+--------+--------+</div><div class="line">4 rows in set (0.00 sec)</div></pre></td></tr></table></figure></p>
-<p>TRUNCATE 会把表中的数据和主键同时都复位DELETE 不会</p>
+<p>TRUNCATE 会把表中的数据和主键同时都复位DELETE 不会<br>但是使用delete清空表中的记录，内容的ID仍然从删除点的ID继续建立，而不是从1开始，而truncate相当于保留了表的结构而重新建立了一张同样的新表。</p>
+<p>效率上truncate比delete快，但truncate删除后不记录mysql日志，不可以恢复数据。</p>
+<p>delete的效果有点像将mysql表中所有记录一条一条删除到删完。</p>
 <h4 id="查询记录语法"><a href="#查询记录语法" class="headerlink" title="查询记录语法"></a>查询记录语法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">SELECT</div><div class="line">    [ALL | DISTINCT | DISTINCTROW ]</div><div class="line">      [HIGH_PRIORITY]</div><div class="line">      [STRAIGHT_JOIN]</div><div class="line">      [SQL_SMALL_RESULT] [SQL_BIG_RESULT] [SQL_BUFFER_RESULT]</div><div class="line">      [SQL_CACHE | SQL_NO_CACHE] [SQL_CALC_FOUND_ROWS]</div><div class="line">    select_expr, ...</div><div class="line">    [FROM table_references</div><div class="line">    [WHERE where_condition]</div><div class="line">    [GROUP BY &#123;col_name | expr | position&#125;</div><div class="line">      [ASC | DESC], ... [WITH ROLLUP]]</div><div class="line">    [HAVING where_condition]</div><div class="line">    [ORDER BY &#123;col_name | expr | position&#125;</div><div class="line">      [ASC | DESC], ...]</div><div class="line">    [LIMIT &#123;[offset,] row_count | row_count OFFSET offset&#125;]</div><div class="line">    [PROCEDURE procedure_name(argument_list)]</div><div class="line">    [INTO OUTFILE &apos;file_name&apos; export_options</div><div class="line">      | INTO DUMPFILE &apos;file_name&apos;]</div><div class="line">    [FOR UPDATE | LOCK IN SHARE MODE]]</div></pre></td></tr></table></figure>
   
 	</div>
@@ -285,11 +287,11 @@ D–DELETE 删除
 			
 		
 			
-				<li><a href="/tags/test/" title="test">test<sup>2</sup></a></li>
+				<li><a href="/tags/自定义View/" title="自定义View">自定义View<sup>2</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/自定义View/" title="自定义View">自定义View<sup>2</sup></a></li>
+				<li><a href="/tags/test/" title="test">test<sup>2</sup></a></li>
 			
 		
 			
@@ -297,7 +299,7 @@ D–DELETE 删除
 			
 		
 			
-				<li><a href="/tags/工具类/" title="工具类">工具类<sup>1</sup></a></li>
+				<li><a href="/tags/View动画/" title="View动画">View动画<sup>1</sup></a></li>
 			
 		
 			
@@ -305,7 +307,7 @@ D–DELETE 删除
 			
 		
 			
-				<li><a href="/tags/动画/" title="动画">动画<sup>1</sup></a></li>
+				<li><a href="/tags/工具类/" title="工具类">工具类<sup>1</sup></a></li>
 			
 		
 			
@@ -313,11 +315,11 @@ D–DELETE 删除
 			
 		
 			
-				<li><a href="/tags/View动画/" title="View动画">View动画<sup>1</sup></a></li>
+				<li><a href="/tags/base64/" title="base64">base64<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/base64/" title="base64">base64<sup>1</sup></a></li>
+				<li><a href="/tags/动画/" title="动画">动画<sup>1</sup></a></li>
 			
 		
 			
@@ -325,11 +327,11 @@ D–DELETE 删除
 			
 		
 			
-				<li><a href="/tags/源码/" title="源码">源码<sup>1</sup></a></li>
+				<li><a href="/tags/View/" title="View">View<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/View/" title="View">View<sup>1</sup></a></li>
+				<li><a href="/tags/源码/" title="源码">源码<sup>1</sup></a></li>
 			
 		
 		</ul>
