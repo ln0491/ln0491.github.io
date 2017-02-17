@@ -1,0 +1,649 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>mysql学习十六常用字符函数 | 刘楠的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Liu Nan">
+    
+
+    
+    <meta name="description" content="mysql学习十六常用字符函数全并字符串函数 CONCAT()和CONCAT_WS()1CONCAT(S1,S2,S3...SN)
+将传入的函数连接起来返回所合并字符串数据，如果其中一个为NULL，则返加值为NULL1234567mysql&amp;gt; select concat(&amp;apos;M&amp;apos;,&amp;apos;y&amp;apos;,&amp;apos;S&amp;apos;,&amp;apos;q&amp;apos;,&amp;apos">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mysql学习十六常用字符函数">
+<meta property="og:url" content="https://ln0491.github.io/2017/02/17/mysql学习十六常用字符函数/index.html">
+<meta property="og:site_name" content="刘楠的博客">
+<meta property="og:description" content="mysql学习十六常用字符函数全并字符串函数 CONCAT()和CONCAT_WS()1CONCAT(S1,S2,S3...SN)
+将传入的函数连接起来返回所合并字符串数据，如果其中一个为NULL，则返加值为NULL1234567mysql&amp;gt; select concat(&amp;apos;M&amp;apos;,&amp;apos;y&amp;apos;,&amp;apos;S&amp;apos;,&amp;apos;q&amp;apos;,&amp;apos">
+<meta property="og:updated_time" content="2017-02-17T07:03:17.572Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="mysql学习十六常用字符函数">
+<meta name="twitter:description" content="mysql学习十六常用字符函数全并字符串函数 CONCAT()和CONCAT_WS()1CONCAT(S1,S2,S3...SN)
+将传入的函数连接起来返回所合并字符串数据，如果其中一个为NULL，则返加值为NULL1234567mysql&amp;gt; select concat(&amp;apos;M&amp;apos;,&amp;apos;y&amp;apos;,&amp;apos;S&amp;apos;,&amp;apos;q&amp;apos;,&amp;apos">
+
+    
+    <link rel="alternative" href="/atom.xml" title="刘楠的博客" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="刘楠的博客" title="刘楠的博客"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="刘楠的博客">刘楠的博客</a></h1>
+				<h2 class="blog-motto">热爱生活</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">首页</a></li>
+					
+						<li><a href="/archives">归档</a></li>
+					
+						<li><a href="/tags">标签</a></li>
+					
+						<li><a href="/categories">分类</a></li>
+					
+						<li><a href="/about">关于</a></li>
+					
+					<li>
+ 					
+						<form class="search" action="http://zhannei.baidu.com/cse/search" target="_blank">
+							<label>Search</label>
+						<input name="s" type="hidden" value= 9779949399098768934 ><input type="text" name="q" size="30" placeholder="搜索"><br>
+						</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2017/02/17/mysql学习十六常用字符函数/" title="mysql学习十六常用字符函数" itemprop="url">mysql学习十六常用字符函数</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Liu Nan" target="_blank" itemprop="author">Liu Nan</a>
+		
+  <p class="article-time">
+    <time datetime="2017-02-17T05:23:10.000Z" itemprop="datePublished"> 发表于 2017-02-17</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#mysql学习十六常用字符函数"><span class="toc-number">1.</span> <span class="toc-text">mysql学习十六常用字符函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#全并字符串函数-CONCAT-和CONCAT-WS"><span class="toc-number">1.1.</span> <span class="toc-text">全并字符串函数 CONCAT()和CONCAT_WS()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#全并字符串函数CONCAT-WS"><span class="toc-number">1.2.</span> <span class="toc-text">全并字符串函数CONCAT_WS()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#比较字符大小函数STRCMP"><span class="toc-number">1.3.</span> <span class="toc-text">比较字符大小函数STRCMP()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#获取字符串长度函数LENGTH"><span class="toc-number">1.4.</span> <span class="toc-text">获取字符串长度函数LENGTH()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#获取字符串长度函数CHAR-LENGTH"><span class="toc-number">1.5.</span> <span class="toc-text">获取字符串长度函数CHAR_LENGTH()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#字母大小写转换函数UPPPER-和函数LOWER"><span class="toc-number">1.6.</span> <span class="toc-text">字母大小写转换函数UPPPER()和函数LOWER()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#返加字符串位置的FIND-IN-SET"><span class="toc-number">1.7.</span> <span class="toc-text">返加字符串位置的FIND_IN_SET()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#返回指定字符串的位置FIELD"><span class="toc-number">1.8.</span> <span class="toc-text">返回指定字符串的位置FIELD()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#返回子字符串相匹配的开始位置"><span class="toc-number">1.9.</span> <span class="toc-text">返回子字符串相匹配的开始位置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#返回指定位置的字符串ELT"><span class="toc-number">1.10.</span> <span class="toc-text">返回指定位置的字符串ELT()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#选择字符串的MAKE-SET（）"><span class="toc-number">1.11.</span> <span class="toc-text">选择字符串的MAKE_SET（）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#从现有字符串中截取子字符串LEFT-和RIGHT"><span class="toc-number">1.12.</span> <span class="toc-text">从现有字符串中截取子字符串LEFT()和RIGHT</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#截取指定位置和长度子字符串SUBSTRING和MID"><span class="toc-number">1.13.</span> <span class="toc-text">截取指定位置和长度子字符串SUBSTRING和MID()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#去队字符串的首空格LTRIM"><span class="toc-number">1.14.</span> <span class="toc-text">去队字符串的首空格LTRIM()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#去队字符串的尾空格RTRIM"><span class="toc-number">1.15.</span> <span class="toc-text">去队字符串的尾空格RTRIM()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#去队字符串的首尾空格TRIM"><span class="toc-number">1.16.</span> <span class="toc-text">去队字符串的首尾空格TRIM()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#替换字符串insert"><span class="toc-number">1.17.</span> <span class="toc-text">替换字符串insert</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#替换字符串REPLACE"><span class="toc-number">1.18.</span> <span class="toc-text">替换字符串REPLACE</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#字符串反转-Reverse-str-字符串反转"><span class="toc-number">1.19.</span> <span class="toc-text">字符串反转 Reverse(str)字符串反转..</span></a></li></ol></li></ol>
+		
+		</div>
+		
+		<h3 id="mysql学习十六常用字符函数"><a href="#mysql学习十六常用字符函数" class="headerlink" title="mysql学习十六常用字符函数"></a>mysql学习十六常用字符函数</h3><h4 id="全并字符串函数-CONCAT-和CONCAT-WS"><a href="#全并字符串函数-CONCAT-和CONCAT-WS" class="headerlink" title="全并字符串函数 CONCAT()和CONCAT_WS()"></a>全并字符串函数 CONCAT()和CONCAT_WS()</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">CONCAT(S1,S2,S3...SN)</div></pre></td></tr></table></figure>
+<p>将传入的函数连接起来返回所合并字符串数据，如果其中一个为NULL，则返加值为NULL<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mysql&gt; select concat(&apos;M&apos;,&apos;y&apos;,&apos;S&apos;,&apos;q&apos;,&apos;l&apos;);</div><div class="line">+-----------------------------+</div><div class="line">| concat(&apos;M&apos;,&apos;y&apos;,&apos;S&apos;,&apos;q&apos;,&apos;l&apos;) |</div><div class="line">+-----------------------------+</div><div class="line">| MySql                       |</div><div class="line">+-----------------------------+</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure></p>
+<p>有NULL<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mysql&gt; select concat(&apos;M&apos;,&apos;y&apos;,&apos;S&apos;,&apos;q&apos;,&apos;l&apos;,null);</div><div class="line">+----------------------------------+</div><div class="line">| concat(&apos;M&apos;,&apos;y&apos;,&apos;S&apos;,&apos;q&apos;,&apos;l&apos;,null) |</div><div class="line">+----------------------------------+</div><div class="line">| NULL                             |</div><div class="line">+----------------------------------+</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure></p>
+<p>实现当前时间CURDATE和数值合并<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mysql&gt; select concat(curdate(),13.27);</div><div class="line">+-------------------------+</div><div class="line">| concat(curdate(),13.27) |</div><div class="line">+-------------------------+</div><div class="line">| 2017-02-1713.27         |</div><div class="line">+-------------------------+</div><div class="line">1 row in set (0.03 sec)</div></pre></td></tr></table></figure></p>
+<h4 id="全并字符串函数CONCAT-WS"><a href="#全并字符串函数CONCAT-WS" class="headerlink" title="全并字符串函数CONCAT_WS()"></a>全并字符串函数CONCAT_WS()</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">CONCAT_WS(S1,S2,S3...SN)</div></pre></td></tr></table></figure>
+<p>与CONCAT相比多了一个SEP分割符参数，即不仅将传的其他参数连接起来，而且还会通过分割符将各个字符串侵害开，分隔答可以是一个字符串，也可以是其他参数。<br>如果分隔符为NULL，则返回结果为NULL，函数会忽略任何分隔符参数后的NULL。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mysql&gt;  SELECT CONCAT_WS(&apos;-&apos;,&apos;0755&apos;,&apos;518000&apos;);</div><div class="line">+--------------------------------+</div><div class="line">| CONCAT_WS(&apos;-&apos;,&apos;0755&apos;,&apos;518000&apos;) |</div><div class="line">+--------------------------------+</div><div class="line">| 0755-518000                    |</div><div class="line">+--------------------------------+</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure>
+<p>NULL<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mysql&gt;  SELECT CONCAT_WS(null,&apos;0755&apos;,&apos;518000&apos;);</div><div class="line">+---------------------------------+</div><div class="line">| CONCAT_WS(null,&apos;0755&apos;,&apos;518000&apos;) |</div><div class="line">+---------------------------------+</div><div class="line">| NULL                            |</div><div class="line">+---------------------------------+</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure></p>
+<p>当侵害符后，参数存在NULL时<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">mysql&gt;  SELECT CONCAT_WS(&apos;-&apos;,&apos;0755&apos;,null,&apos;518000&apos;);</div><div class="line">+-------------------------------------+</div><div class="line">| CONCAT_WS(&apos;-&apos;,&apos;0755&apos;,null,&apos;518000&apos;) |</div><div class="line">+-------------------------------------+</div><div class="line">| 0755-518000                         |</div><div class="line">+-------------------------------------+</div><div class="line">1 row in set (0.00 sec)</div><div class="line"></div><div class="line">mysql&gt;  SELECT CONCAT_WS(&apos;-&apos;,null,&apos;0755&apos;,&apos;518000&apos;);</div><div class="line">+-------------------------------------+</div><div class="line">| CONCAT_WS(&apos;-&apos;,null,&apos;0755&apos;,&apos;518000&apos;) |</div><div class="line">+-------------------------------------+</div><div class="line">| 0755-518000                         |</div><div class="line">+-------------------------------------+</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure></p>
+<h4 id="比较字符大小函数STRCMP"><a href="#比较字符大小函数STRCMP" class="headerlink" title="比较字符大小函数STRCMP()"></a>比较字符大小函数STRCMP()</h4><p>STRCMP(S1,S2)<br>比较字符串1，与字符串2，如果参数1大于参数2，返回1，<br>如果参数1小参数2，返回-1<br>如果相等则返回0</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SELECT STRCMP(&apos;ABC&apos;,&apos;abc&apos;),</div><div class="line">    -&gt; STRCMP(&apos;abc&apos;,&apos;abd&apos;),</div><div class="line">    -&gt; STRCMP(&apos;abc&apos;,&apos;abb&apos;);</div><div class="line">+---------------------+---------------------+---------------------+</div><div class="line">| STRCMP(&apos;ABC&apos;,&apos;abc&apos;) | STRCMP(&apos;abc&apos;,&apos;abd&apos;) | STRCMP(&apos;abc&apos;,&apos;abb&apos;) |</div><div class="line">+---------------------+---------------------+---------------------+</div><div class="line">|                   0 |                  -1 |                   1 |</div><div class="line">+---------------------+---------------------+---------------------+</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure>
+<h4 id="获取字符串长度函数LENGTH"><a href="#获取字符串长度函数LENGTH" class="headerlink" title="获取字符串长度函数LENGTH()"></a>获取字符串长度函数LENGTH()</h4><p>LENGTH(STR)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SELECT &apos;Mysql&apos; 英文字符,</div><div class="line">    -&gt; LENGTH(&apos;Mysql&apos;) 长度,</div><div class="line">    -&gt; &apos;常用数&apos; 中文字符,</div><div class="line">    -&gt; LENGTH(&apos;常用数&apos;) 长度;</div><div class="line">+--------------+--------+--------------+--------+</div><div class="line">| 英文字符     | 长度   | 中文字符     | 长度   |</div><div class="line">+--------------+--------+--------------+--------+</div><div class="line">| Mysql        |      5 | 常用数       |      9 |</div><div class="line">+--------------+--------+--------------+--------+</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure></p>
+<p>中文字符一个占3位</p>
+<h4 id="获取字符串长度函数CHAR-LENGTH"><a href="#获取字符串长度函数CHAR-LENGTH" class="headerlink" title="获取字符串长度函数CHAR_LENGTH()"></a>获取字符串长度函数CHAR_LENGTH()</h4><p>CHAR_LENGTH(str)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SELECT &apos;Mysql&apos; 英文字符,</div><div class="line">    -&gt; CHAR_LENGTH(&apos;Mysql&apos;) 长度,</div><div class="line">    -&gt; &apos;常用数&apos; 中文字符,</div><div class="line">    -&gt; CHAR_LENGTH(&apos;常用数&apos;) 长度;</div><div class="line">+--------------+--------+--------------+--------+</div><div class="line">| 英文字符     | 长度   | 中文字符     | 长度   |</div><div class="line">+--------------+--------+--------------+--------+</div><div class="line">| Mysql        |      5 | 常用数       |      3 |</div><div class="line">+--------------+--------+--------------+--------+</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure></p>
+<p>中文还是占一个字符</p>
+<h4 id="字母大小写转换函数UPPPER-和函数LOWER"><a href="#字母大小写转换函数UPPPER-和函数LOWER" class="headerlink" title="字母大小写转换函数UPPPER()和函数LOWER()"></a>字母大小写转换函数UPPPER()和函数LOWER()</h4><p>UPPER(STR)将字符所有字符转换为大写<br>ucase(str)将字符所有字符转换为大写<br>LOWER(STR)将字符所有字符转换为小写<br>LCASE(STR)将字符所有字符转换为小写</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mysql&gt; select &apos;mysql&apos; 字符串,upper(&apos;mysql&apos;) 转换后,ucase(&apos;mysql&apos;) 转换后,lower(&apos;MYsQL&apos;) 转换后, lcase(&apos;MYSQL&apos;) 转换后;</div><div class="line">+-----------+-----------+-----------+-----------+-----------+</div><div class="line">| 字符串    | 转换后    | 转换后    | 转换后    | 转换后    |</div><div class="line">+-----------+-----------+-----------+-----------+-----------+</div><div class="line">| mysql     | MYSQL     | MYSQL     | mysql     | mysql     |</div><div class="line">+-----------+-----------+-----------+-----------+-----------+</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure>
+<h4 id="返加字符串位置的FIND-IN-SET"><a href="#返加字符串位置的FIND-IN-SET" class="headerlink" title="返加字符串位置的FIND_IN_SET()"></a>返加字符串位置的FIND_IN_SET()</h4><p>FIND_IN_SET(s1,,s2)<br>会返回在字符串s2中与s1相匹配的字符口中的益，参数S2字符串中将包含若干个用逗号隔开的字符串</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SELECT FIND_IN_SET(&apos;MySQL&apos;,&apos;oracle,sql,server,MySql&apos;);</div><div class="line">+------------------------------------------------+</div><div class="line">| FIND_IN_SET(&apos;MySQL&apos;,&apos;oracle,sql,server,MySql&apos;) |</div><div class="line">+------------------------------------------------+</div><div class="line">|                                              4 |</div><div class="line">+------------------------------------------------+</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure>
+<h4 id="返回指定字符串的位置FIELD"><a href="#返回指定字符串的位置FIELD" class="headerlink" title="返回指定字符串的位置FIELD()"></a>返回指定字符串的位置FIELD()</h4><p>FIELD(str,s1,,s2,…)返回第一个与字符串str，匹配的字符串的位置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SELECT FIELD(&apos;MySQL&apos;,&apos;oracle&apos;,&apos;MySql&apos;,&apos;sql&apos;,&apos;server&apos;);</div><div class="line">+------------------------------------------------+</div><div class="line">| FIELD(&apos;MySQL&apos;,&apos;oracle&apos;,&apos;MySql&apos;,&apos;sql&apos;,&apos;server&apos;) |</div><div class="line">+------------------------------------------------+</div><div class="line">|                                              2 |</div><div class="line">+------------------------------------------------+</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure></p>
+<h4 id="返回子字符串相匹配的开始位置"><a href="#返回子字符串相匹配的开始位置" class="headerlink" title="返回子字符串相匹配的开始位置"></a>返回子字符串相匹配的开始位置</h4><p>LOCATE(str1,str)<br>返回参数str中字符串str1的开始位置</p>
+<p>POSITION(str1 in str)<br>instr(str,str1)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SELECT LOCATE(&apos;sql&apos;,&apos;mysql&apos;),</div><div class="line">    -&gt;        POSITION(&apos;sql&apos; IN &apos;MySQL&apos;),</div><div class="line">    -&gt;        INSTR(&apos;MySql&apos;,&apos;my&apos;);</div><div class="line">+-----------------------+----------------------------+---------------------+</div><div class="line">| LOCATE(&apos;sql&apos;,&apos;mysql&apos;) | POSITION(&apos;sql&apos; IN &apos;MySQL&apos;) | INSTR(&apos;MySql&apos;,&apos;my&apos;) |</div><div class="line">+-----------------------+----------------------------+---------------------+</div><div class="line">|                     3 |                          3 |                   1 |</div><div class="line">+-----------------------+----------------------------+---------------------+</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure>
+<h4 id="返回指定位置的字符串ELT"><a href="#返回指定位置的字符串ELT" class="headerlink" title="返回指定位置的字符串ELT()"></a>返回指定位置的字符串ELT()</h4><p>ELT(N，s1,s2,s3…);</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SELECT ELT(3,&apos;MySQL&apos;,&apos;oracle&apos;,&apos;MySql&apos;,&apos;sql&apos;,&apos;server&apos;);</div><div class="line">+------------------------------------------------+</div><div class="line">| ELT(3,&apos;MySQL&apos;,&apos;oracle&apos;,&apos;MySql&apos;,&apos;sql&apos;,&apos;server&apos;) |</div><div class="line">+------------------------------------------------+</div><div class="line">| MySql                                          |</div><div class="line">+------------------------------------------------+</div><div class="line">1 row in set (0.00 sec)</div><div class="line"></div><div class="line">mysql&gt; SELECT ELT(0,&apos;MySQL&apos;,&apos;oracle&apos;,&apos;MySql&apos;,&apos;sql&apos;,&apos;server&apos;);</div><div class="line">+------------------------------------------------+</div><div class="line">| ELT(0,&apos;MySQL&apos;,&apos;oracle&apos;,&apos;MySql&apos;,&apos;sql&apos;,&apos;server&apos;) |</div><div class="line">+------------------------------------------------+</div><div class="line">| NULL                                           |</div><div class="line">+------------------------------------------------+</div><div class="line">1 row in set (0.00 sec)</div><div class="line"></div><div class="line">mysql&gt; SELECT ELT(-1,&apos;MySQL&apos;,&apos;oracle&apos;,&apos;MySql&apos;,&apos;sql&apos;,&apos;server&apos;);</div><div class="line">+-------------------------------------------------+</div><div class="line">| ELT(-1,&apos;MySQL&apos;,&apos;oracle&apos;,&apos;MySql&apos;,&apos;sql&apos;,&apos;server&apos;) |</div><div class="line">+-------------------------------------------------+</div><div class="line">| NULL                                            |</div><div class="line">+-------------------------------------------------+</div><div class="line">1 row in set (0.01 sec)</div><div class="line"></div><div class="line">mysql&gt; SELECT ELT(8,&apos;MySQL&apos;,&apos;oracle&apos;,&apos;MySql&apos;,&apos;sql&apos;,&apos;server&apos;);</div><div class="line">+------------------------------------------------+</div><div class="line">| ELT(8,&apos;MySQL&apos;,&apos;oracle&apos;,&apos;MySql&apos;,&apos;sql&apos;,&apos;server&apos;) |</div><div class="line">+------------------------------------------------+</div><div class="line">| NULL                                           |</div><div class="line">+------------------------------------------------+</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure>
+<h4 id="选择字符串的MAKE-SET（）"><a href="#选择字符串的MAKE-SET（）" class="headerlink" title="选择字符串的MAKE_SET（）"></a>选择字符串的MAKE_SET（）</h4><p>MAKE_SET（num,s1,s2,s3,…）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">SELECT BIN(5) 二进制数,MAKE_SET(5,&apos;MySQL&apos;,&apos;Oracle&apos;,&apos;SQL Server&apos;,&apos;PostgreSQL&apos;) 选取后的字符串;</div><div class="line">+--------------+-----------------------+</div><div class="line">| 二进制数     | 选取后的字符串        |</div><div class="line">+--------------+-----------------------+</div><div class="line">| 101          | MySQL,SQL Server      |</div><div class="line">+--------------+-----------------------+</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure>
+<p>由于5的二进制为101,所以选择MySQL,SQL Server ，第一个和第三个<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mysql&gt; select BIN(7) 二进制数,MAKE_SET(7,&apos;MySQL&apos;,&apos;Oracle&apos;,&apos;SQL Server&apos;,&apos;PostgreSQL&apos;) 选取后的字符串;</div><div class="line">+--------------+-------------------------+</div><div class="line">| 二进制数     | 选取后的字符串          |</div><div class="line">+--------------+-------------------------+</div><div class="line">| 111          | MySQL,Oracle,SQL Server |</div><div class="line">+--------------+-------------------------+</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure></p>
+<p>7为111,选择为前3个</p>
+<h4 id="从现有字符串中截取子字符串LEFT-和RIGHT"><a href="#从现有字符串中截取子字符串LEFT-和RIGHT" class="headerlink" title="从现有字符串中截取子字符串LEFT()和RIGHT"></a>从现有字符串中截取子字符串LEFT()和RIGHT</h4><p> LEFT(str,num) RIGHT(str,num)<br>从左边或右边截取子字符串<br>返回字符串str中包含前NUM个字符，从左或者从右边数的字符串<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SELECT &apos;MySQL&apos; 字符串,LEFT(&apos;MySQL&apos;,2) 前2个字符串 ,RIGHT(&apos;MySQL&apos;,3) 后3个字符串;</div><div class="line">+-----------+------------------+------------------+</div><div class="line">| 字符串    | 前2个字符串      | 后3个字符串      |</div><div class="line">+-----------+------------------+------------------+</div><div class="line">| MySQL     | My               | SQL              |</div><div class="line">+-----------+------------------+------------------+</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure></p>
+<h4 id="截取指定位置和长度子字符串SUBSTRING和MID"><a href="#截取指定位置和长度子字符串SUBSTRING和MID" class="headerlink" title="截取指定位置和长度子字符串SUBSTRING和MID()"></a>截取指定位置和长度子字符串SUBSTRING和MID()</h4><p>SUBSTRING(str,num,len)<br>返回字符串str第num个位置开始长度为len的子字符串<br>MID(str,num,len)<br>返回字符串str第num个位置开始长度为len的子字符串</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SELECT &apos;oraclemysql&apos; 字符串,SUBSTR(&apos;oraclemysql&apos;,1,5),SUBSTR(&apos;oraclemysql&apos;,7),SUBSTRING(&apos;oraclemysql&apos;,7,5),SUBSTRING(&apos;oraclemysql&apos;,7),MID(&apos;oraclemysql&apos;,7,5),MID(&apos;oraclemysql&apos;,7);</div><div class="line">+-------------+---------------------------+-------------------------+------------------------------+----------------------------+------------------------+----------------------+</div><div class="line">| 字符串      | SUBSTR(&apos;oraclemysql&apos;,1,5) | SUBSTR(&apos;oraclemysql&apos;,7) | SUBSTRING(&apos;oraclemysql&apos;,7,5) | SUBSTRING(&apos;oraclemysql&apos;,7) | MID(&apos;oraclemysql&apos;,7,5) | MID(&apos;oraclemysql&apos;,7) |</div><div class="line">+-------------+---------------------------+-------------------------+------------------------------+----------------------------+------------------------+----------------------+</div><div class="line">| oraclemysql | oracl                     | mysql                   | mysql                        | mysql                      | mysql                  | mysql                |</div><div class="line">+-------------+---------------------------+-------------------------+------------------------------+----------------------------+------------------------+----------------------+</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure>
+<h4 id="去队字符串的首空格LTRIM"><a href="#去队字符串的首空格LTRIM" class="headerlink" title="去队字符串的首空格LTRIM()"></a>去队字符串的首空格LTRIM()</h4><p>LTRIM(STR)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SELECT  CONCAT(&apos;-&apos;,&apos; MySQL &apos;,&apos;-&apos;) 原来字符串,</div><div class="line">    -&gt; CHAR_LENGTH(CONCAT(&apos;-&apos;,&apos; MySQL &apos;,&apos;-&apos;))  原来字符串长度,</div><div class="line">    -&gt; CONCAT(&apos;-&apos;,LTRIM(&apos; MySQL &apos;),&apos;-&apos;) 处理后字符串,</div><div class="line">    -&gt; CHAR_LENGTH(CONCAT(&apos;-&apos;,LTRIM(&apos; MySQL &apos;),&apos;-&apos;))  处理后字符串长度;</div><div class="line">+-----------------+-----------------------+--------------------+--------------------------+</div><div class="line">| 原来字符串      | 原来字符串长度        | 处理后字符串       | 处理后字符串长度         |</div><div class="line">+-----------------+-----------------------+--------------------+--------------------------+</div><div class="line">| - MySQL -       |                     9 | -MySQL -           |                        8 |</div><div class="line">+-----------------+-----------------------+--------------------+--------------------------+</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure></p>
+<h4 id="去队字符串的尾空格RTRIM"><a href="#去队字符串的尾空格RTRIM" class="headerlink" title="去队字符串的尾空格RTRIM()"></a>去队字符串的尾空格RTRIM()</h4><p>RTRIM(STR)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SELECT  CONCAT(&apos;-&apos;,&apos; MySQL &apos;,&apos;-&apos;) 原来字符串,</div><div class="line">    -&gt; CHAR_LENGTH(CONCAT(&apos;-&apos;,&apos; MySQL &apos;,&apos;-&apos;))  原来字符串长度,</div><div class="line">    -&gt; CONCAT(&apos;-&apos;,RTRIM(&apos; MySQL &apos;),&apos;-&apos;) 处理后字符串,</div><div class="line">    -&gt; CHAR_LENGTH(CONCAT(&apos;-&apos;,RTRIM(&apos; MySQL &apos;),&apos;-&apos;))  处理后字符串长度;</div><div class="line">+-----------------+-----------------------+--------------------+--------------------------+</div><div class="line">| 原来字符串      | 原来字符串长度        | 处理后字符串       | 处理后字符串长度         |</div><div class="line">+-----------------+-----------------------+--------------------+--------------------------+</div><div class="line">| - MySQL -       |                     9 | - MySQL-           |                        8 |</div><div class="line">+-----------------+-----------------------+--------------------+--------------------------+</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure></p>
+<h4 id="去队字符串的首尾空格TRIM"><a href="#去队字符串的首尾空格TRIM" class="headerlink" title="去队字符串的首尾空格TRIM()"></a>去队字符串的首尾空格TRIM()</h4><p>TRIM(STR)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SELECT  CONCAT(&apos;-&apos;,&apos; MySQL &apos;,&apos;-&apos;) 原来字符串,</div><div class="line">    -&gt; CHAR_LENGTH(CONCAT(&apos;-&apos;,&apos; MySQL &apos;,&apos;-&apos;))  原来字符串长度,</div><div class="line">    -&gt; CONCAT(&apos;-&apos;,TRIM(&apos; MySQL &apos;),&apos;-&apos;) 处理后字符串,</div><div class="line">    -&gt; CHAR_LENGTH(CONCAT(&apos;-&apos;,TRIM(&apos; MySQL &apos;),&apos;-&apos;))  处理后字符串长度;</div><div class="line">+-----------------+-----------------------+--------------------+--------------------------+</div><div class="line">| 原来字符串      | 原来字符串长度        | 处理后字符串       | 处理后字符串长度         |</div><div class="line">+-----------------+-----------------------+--------------------+--------------------------+</div><div class="line">| - MySQL -       |                     9 | -MySQL-            |                        7 |</div><div class="line">+-----------------+-----------------------+--------------------+--------------------------+</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure></p>
+<h4 id="替换字符串insert"><a href="#替换字符串insert" class="headerlink" title="替换字符串insert"></a>替换字符串insert</h4><p>INSERT(str,pos,len,newstr)<br>将字符串str中pos位置开始长度为len的字符串使用newstr来替换</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SELECT &apos;这是MySQL数据库管理系统&apos; 原字符串,</div><div class="line">    -&gt; INSERT(&apos;这是MySQL数据库管理系统&apos;,3,5,&apos;Oracle&apos;) 替换后字符串;</div><div class="line">+----------------------------------+-----------------------------------+</div><div class="line">| 原字符串                         | 替换后字符串                      |</div><div class="line">+----------------------------------+-----------------------------------+</div><div class="line">| 这是MySQL数据库管理系统          | 这是Oracle数据库管理系统          |</div><div class="line">+----------------------------------+-----------------------------------+</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure>
+<p>当长度大于原来的字符串<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SELECT &apos;这是MySQL数据库管理系统&apos; 原字符串,</div><div class="line">    -&gt; CHAR_LENGTH(&apos;这是MySQL数据库管理系统&apos;) 字符串长度,</div><div class="line">    -&gt; INSERT(&apos;这是MySQL数据库管理系统&apos;,20,5,&apos;Oracle&apos;) 替换后字符串;</div><div class="line">+----------------------------------+-----------------+----------------------------------+</div><div class="line">| 原字符串                         | 字符串长度      | 替换后字符串                     |</div><div class="line">+----------------------------------+-----------------+----------------------------------+</div><div class="line">| 这是MySQL数据库管理系统          |              14 | 这是MySQL数据库管理系统          |</div><div class="line">+----------------------------------+-----------------+----------------------------------+</div><div class="line">1 row in set (0.00 sec)</div><div class="line"></div><div class="line">mysql&gt; SELECT &apos;这是MySQL数据库管理系统&apos; 原字符串,</div><div class="line">    -&gt; CHAR_LENGTH(&apos;这是MySQL数据库管理系统&apos;) 字符串长度,</div><div class="line">    -&gt; INSERT(&apos;这是MySQL数据库管理系统&apos;,13,5,&apos;Oracle&apos;) 替换后字符串;</div><div class="line">+----------------------------------+-----------------+----------------------------------+</div><div class="line">| 原字符串                         | 字符串长度      | 替换后字符串                     |</div><div class="line">+----------------------------------+-----------------+----------------------------------+</div><div class="line">| 这是MySQL数据库管理系统          |              14 | 这是MySQL数据库管理Oracle        |</div><div class="line">+----------------------------------+-----------------+----------------------------------+</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure></p>
+<p>当所有替换的长度大于原来字符串中所剩下的长度<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SELECT &apos;这是MySQL数据库管理系统&apos; 原字符串,</div><div class="line">    -&gt; CHAR_LENGTH(&apos;这是MySQL数据库管理系统&apos;) 字符串长度,</div><div class="line">    -&gt; INSERT(&apos;这是MySQL数据库管理系统&apos;,6,20,&apos;Oracle&apos;) 替换后字符串;</div><div class="line">+----------------------------------+-----------------+--------------------+</div><div class="line">| 原字符串                         | 字符串长度      | 替换后字符串       |</div><div class="line">+----------------------------------+-----------------+--------------------+</div><div class="line">| 这是MySQL数据库管理系统          |              14 | 这是MySOracle      |</div><div class="line">+----------------------------------+-----------------+--------------------+</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure></p>
+<h4 id="替换字符串REPLACE"><a href="#替换字符串REPLACE" class="headerlink" title="替换字符串REPLACE"></a>替换字符串REPLACE</h4><p>replcae(str,substr,newstr)<br>将字符串str中的子字符串substr用字符串newstr替换<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SELECT &apos;这是MySQL数据库管理系统&apos; 原字符串,</div><div class="line">    -&gt; REPLACE(&apos;这是MySQL数据库管理系统&apos;,&apos;mysql&apos;,&apos;Oracle&apos;) 替换后字符串,</div><div class="line">    -&gt; REPLACE(&apos;这是MySQL数据库管理系统&apos;,&apos;MySQL&apos;,&apos;Oracle&apos;) 替换后字符串;</div><div class="line">+----------------------------------+----------------------------------+-----------------------------------+</div><div class="line">| 原字符串                         | 替换后字符串                     | 替换后字符串                      |</div><div class="line">+----------------------------------+----------------------------------+-----------------------------------+</div><div class="line">| 这是MySQL数据库管理系统          | 这是MySQL数据库管理系统          | 这是Oracle数据库管理系统          |</div><div class="line">+----------------------------------+----------------------------------+-----------------------------------+</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure></p>
+<p>大小写必须一样才会替换，不然不会替换</p>
+<h4 id="字符串反转-Reverse-str-字符串反转"><a href="#字符串反转-Reverse-str-字符串反转" class="headerlink" title="字符串反转 Reverse(str)字符串反转.."></a>字符串反转 Reverse(str)字符串反转..</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mysql&gt; select reverse(&apos;abc&apos;);</div><div class="line">+----------------+</div><div class="line">| reverse(&apos;abc&apos;) |</div><div class="line">+----------------+</div><div class="line">| cba            |</div><div class="line">+----------------+</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/mysql/">mysql</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/mysql/">mysql</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="https://ln0491.github.io/2017/02/17/mysql学习十六常用字符函数/" data-title="mysql学习十六常用字符函数 | 刘楠的博客" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2017/02/17/mysql学习十七数值函数/" title="mysql学习十七数值函数">
+  <strong>上一篇：</strong><br/>
+  <span>
+  mysql学习十七数值函数</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2017/02/16/mysql学习十五子查询四-在select子句中使用子查询/"  title="mysql学习十五子查询四(在select子句中使用子查询)">
+ <strong>下一篇：</strong><br/> 
+ <span>mysql学习十五子查询四(在select子句中使用子查询)
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="2017/02/17/mysql学习十六常用字符函数/" data-title="mysql学习十六常用字符函数" data-url="https://ln0491.github.io/2017/02/17/mysql学习十六常用字符函数/"></div>
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#mysql学习十六常用字符函数"><span class="toc-number">1.</span> <span class="toc-text">mysql学习十六常用字符函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#全并字符串函数-CONCAT-和CONCAT-WS"><span class="toc-number">1.1.</span> <span class="toc-text">全并字符串函数 CONCAT()和CONCAT_WS()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#全并字符串函数CONCAT-WS"><span class="toc-number">1.2.</span> <span class="toc-text">全并字符串函数CONCAT_WS()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#比较字符大小函数STRCMP"><span class="toc-number">1.3.</span> <span class="toc-text">比较字符大小函数STRCMP()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#获取字符串长度函数LENGTH"><span class="toc-number">1.4.</span> <span class="toc-text">获取字符串长度函数LENGTH()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#获取字符串长度函数CHAR-LENGTH"><span class="toc-number">1.5.</span> <span class="toc-text">获取字符串长度函数CHAR_LENGTH()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#字母大小写转换函数UPPPER-和函数LOWER"><span class="toc-number">1.6.</span> <span class="toc-text">字母大小写转换函数UPPPER()和函数LOWER()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#返加字符串位置的FIND-IN-SET"><span class="toc-number">1.7.</span> <span class="toc-text">返加字符串位置的FIND_IN_SET()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#返回指定字符串的位置FIELD"><span class="toc-number">1.8.</span> <span class="toc-text">返回指定字符串的位置FIELD()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#返回子字符串相匹配的开始位置"><span class="toc-number">1.9.</span> <span class="toc-text">返回子字符串相匹配的开始位置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#返回指定位置的字符串ELT"><span class="toc-number">1.10.</span> <span class="toc-text">返回指定位置的字符串ELT()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#选择字符串的MAKE-SET（）"><span class="toc-number">1.11.</span> <span class="toc-text">选择字符串的MAKE_SET（）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#从现有字符串中截取子字符串LEFT-和RIGHT"><span class="toc-number">1.12.</span> <span class="toc-text">从现有字符串中截取子字符串LEFT()和RIGHT</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#截取指定位置和长度子字符串SUBSTRING和MID"><span class="toc-number">1.13.</span> <span class="toc-text">截取指定位置和长度子字符串SUBSTRING和MID()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#去队字符串的首空格LTRIM"><span class="toc-number">1.14.</span> <span class="toc-text">去队字符串的首空格LTRIM()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#去队字符串的尾空格RTRIM"><span class="toc-number">1.15.</span> <span class="toc-text">去队字符串的尾空格RTRIM()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#去队字符串的首尾空格TRIM"><span class="toc-number">1.16.</span> <span class="toc-text">去队字符串的首尾空格TRIM()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#替换字符串insert"><span class="toc-number">1.17.</span> <span class="toc-text">替换字符串insert</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#替换字符串REPLACE"><span class="toc-number">1.18.</span> <span class="toc-text">替换字符串REPLACE</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#字符串反转-Reverse-str-字符串反转"><span class="toc-number">1.19.</span> <span class="toc-text">字符串反转 Reverse(str)字符串反转..</span></a></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/android/" title="android">android<sup>42</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/java/" title="java">java<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/log/" title="log">log<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/mysql/" title="mysql">mysql<sup>18</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/mysql学习十七数值函数/" title="mysql学习十七数值函数">mysql学习十七数值函数<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/test/" title="test">test<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/mysql/" title="mysql">mysql<sup>18</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/图片加载/" title="图片加载">图片加载<sup>12</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/android/" title="android">android<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Retrofit/" title="Retrofit">Retrofit<sup>6</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/viewpager/" title="viewpager">viewpager<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/volley/" title="volley">volley<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/test/" title="test">test<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/自定义View/" title="自定义View">自定义View<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/PorterDuffXfermode/" title="PorterDuffXfermode">PorterDuffXfermode<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/View动画/" title="View动画">View动画<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/maven/" title="maven">maven<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/动画/" title="动画">动画<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/工具类/" title="工具类">工具类<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/base64/" title="base64">base64<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/工具/" title="工具">工具<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/mysql学习十七数值函数/" title="mysql学习十七数值函数">mysql学习十七数值函数<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/log/" title="log">log<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/View/" title="View">View<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/源码/" title="源码">源码<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  
+  <div class="tagcloudlist">
+    <p class="asidetitle">标签云</p>
+    <div class="tagcloudlist clearfix">
+       <a href="/tags/PorterDuffXfermode/" style="font-size: 10px;">PorterDuffXfermode</a> <a href="/tags/Retrofit/" style="font-size: 15.71px;">Retrofit</a> <a href="/tags/View/" style="font-size: 10px;">View</a> <a href="/tags/View动画/" style="font-size: 10px;">View动画</a> <a href="/tags/android/" style="font-size: 17.14px;">android</a> <a href="/tags/base64/" style="font-size: 10px;">base64</a> <a href="/tags/log/" style="font-size: 10px;">log</a> <a href="/tags/maven/" style="font-size: 10px;">maven</a> <a href="/tags/mysql/" style="font-size: 20px;">mysql</a> <a href="/tags/mysql学习十七数值函数/" style="font-size: 10px;">mysql学习十七数值函数</a> <a href="/tags/test/" style="font-size: 11.43px;">test</a> <a href="/tags/viewpager/" style="font-size: 14.29px;">viewpager</a> <a href="/tags/volley/" style="font-size: 12.86px;">volley</a> <a href="/tags/动画/" style="font-size: 10px;">动画</a> <a href="/tags/图片加载/" style="font-size: 18.57px;">图片加载</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/工具类/" style="font-size: 10px;">工具类</a> <a href="/tags/源码/" style="font-size: 10px;">源码</a> <a href="/tags/自定义View/" style="font-size: 11.43px;">自定义View</a>
+    </div>
+  </div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://www.cnblogs.com/" target="_blank" title="博客园">博客园</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.csdn.net/" target="_blank" title="CSDN">CSDN</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.cnblogs.com/liunanjava/" target="_blank" title="森林森">森林森</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.jianshu.com/" target="_blank" title="简书">简书</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> 爱生活爱编码. <br/>
+			This is my blog,Try to do better.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/ln0491" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<a href="mailto:153011784@qq.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2017 
+		
+		<a href="/about" target="_blank" title="Liu Nan">Liu Nan</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+	$('#toc.toc-aside').css('display', 'block').addClass('fadeIn'); //这个是我新加的，修改点
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+        getSize();
+        if (myWidth >= 1024) {
+          c.click();
+        }
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"ln0491"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?f9d3aff238126ad201a9a789a888d75a";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1260477305'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1260477305%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
