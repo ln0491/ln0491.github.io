@@ -1,0 +1,638 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>mysql学习十九系统信息函数 | 刘楠的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Liu Nan">
+    
+
+    
+    <meta name="description" content="mysql学习十九系统信息函数
+version() 返回数据库版本号
+DATABASE() 返回当前数据库名
+USER() 返回当前用户
+LAST_INSERT_ID() 返回最近生成的AUTO_INCREMENT值
+
+1234567mysql&amp;gt; select version(),database(),user();+------------+------------+-----------">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mysql学习十九系统信息函数">
+<meta property="og:url" content="https://ln0491.github.io/2017/02/17/mysql学习十九系统信息函数/index.html">
+<meta property="og:site_name" content="刘楠的博客">
+<meta property="og:description" content="mysql学习十九系统信息函数
+version() 返回数据库版本号
+DATABASE() 返回当前数据库名
+USER() 返回当前用户
+LAST_INSERT_ID() 返回最近生成的AUTO_INCREMENT值
+
+1234567mysql&amp;gt; select version(),database(),user();+------------+------------+-----------">
+<meta property="og:updated_time" content="2017-02-17T07:04:29.268Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="mysql学习十九系统信息函数">
+<meta name="twitter:description" content="mysql学习十九系统信息函数
+version() 返回数据库版本号
+DATABASE() 返回当前数据库名
+USER() 返回当前用户
+LAST_INSERT_ID() 返回最近生成的AUTO_INCREMENT值
+
+1234567mysql&amp;gt; select version(),database(),user();+------------+------------+-----------">
+
+    
+    <link rel="alternative" href="/atom.xml" title="刘楠的博客" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="刘楠的博客" title="刘楠的博客"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="刘楠的博客">刘楠的博客</a></h1>
+				<h2 class="blog-motto">热爱生活</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">首页</a></li>
+					
+						<li><a href="/archives">归档</a></li>
+					
+						<li><a href="/tags">标签</a></li>
+					
+						<li><a href="/categories">分类</a></li>
+					
+						<li><a href="/about">关于</a></li>
+					
+					<li>
+ 					
+						<form class="search" action="http://zhannei.baidu.com/cse/search" target="_blank">
+							<label>Search</label>
+						<input name="s" type="hidden" value= 9779949399098768934 ><input type="text" name="q" size="30" placeholder="搜索"><br>
+						</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2017/02/17/mysql学习十九系统信息函数/" title="mysql学习十九系统信息函数" itemprop="url">mysql学习十九系统信息函数</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Liu Nan" target="_blank" itemprop="author">Liu Nan</a>
+		
+  <p class="article-time">
+    <time datetime="2017-02-17T05:23:58.000Z" itemprop="datePublished"> 发表于 2017-02-17</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#mysql学习十九系统信息函数"><span class="toc-number">1.</span> <span class="toc-text">mysql学习十九系统信息函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#获取AUTO-INCREMENT约束的最后ID值"><span class="toc-number">1.1.</span> <span class="toc-text">获取AUTO_INCREMENT约束的最后ID值</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#其它的函数"><span class="toc-number">1.2.</span> <span class="toc-text">其它的函数</span></a></li></ol></li></ol>
+		
+		</div>
+		
+		<h3 id="mysql学习十九系统信息函数"><a href="#mysql学习十九系统信息函数" class="headerlink" title="mysql学习十九系统信息函数"></a>mysql学习十九系统信息函数</h3><ul>
+<li>version() 返回数据库版本号</li>
+<li>DATABASE() 返回当前数据库名</li>
+<li>USER() 返回当前用户</li>
+<li>LAST_INSERT_ID() 返回最近生成的AUTO_INCREMENT值</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mysql&gt; select version(),database(),user();</div><div class="line">+------------+------------+----------------+</div><div class="line">| version()  | database() | user()         |</div><div class="line">+------------+------------+----------------+</div><div class="line">| 5.7.17-log | company    | root@localhost |</div><div class="line">+------------+------------+----------------+</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure>
+<h4 id="获取AUTO-INCREMENT约束的最后ID值"><a href="#获取AUTO-INCREMENT约束的最后ID值" class="headerlink" title="获取AUTO_INCREMENT约束的最后ID值"></a>获取AUTO_INCREMENT约束的最后ID值</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">CREATE TABLE IF NOT EXISTS t_autoincrement(</div><div class="line">id INT(11) PRIMARY KEY AUTO_INCREMENT </div><div class="line">);</div><div class="line"></div><div class="line">INSERT INTO t_autoincrement VALUES(NULL);</div><div class="line">INSERT INTO t_autoincrement VALUES(NULL);</div><div class="line">INSERT INTO t_autoincrement VALUES(NULL);</div><div class="line">INSERT INTO t_autoincrement VALUES(NULL);</div><div class="line">INSERT INTO t_autoincrement VALUES(NULL);</div><div class="line">INSERT INTO t_autoincrement VALUES(NULL);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">SELECT LAST_INSERT_ID();</div><div class="line">mysql&gt; select last_insert_id();</div><div class="line">+------------------+</div><div class="line">| last_insert_id() |</div><div class="line">+------------------+</div><div class="line">|               6 |</div><div class="line">+------------------+</div><div class="line">1 row in set (0.00 sec)\</div></pre></td></tr></table></figure>
+<h4 id="其它的函数"><a href="#其它的函数" class="headerlink" title="其它的函数"></a>其它的函数</h4><ul>
+<li>IF(value,t f) 如果value是真，返回t，否则返回f</li>
+<li>IFNULL(value1,value2) 如果value1不为空返回value1，否则返回value2</li>
+<li>CASE WHEN [value1] THEN[result1]…ELSE[default] END 如果value1是真，返回result1，否则返回default</li>
+<li>CASE [expr]WHEN[value1] THEN[result1]…ELSE[default] END 如果expr等于value1，返回result1，否则返回default</li>
+<li>PASSWORD(str)  实现对字符串str进行加密</li>
+<li>FORMAT(x,n) 实现将数字x进行格式化，保留n位小数</li>
+<li>INET_ATON(ip) 实现将IP地址转换成数字</li>
+<li>INET_NTOA(x) 实现将数字转换成IP</li>
+<li>GET_LOCT(name,time) 创建一个持续时间为time的名为name的锁</li>
+<li>RELEASE_LOCT(name) 为名为name的锁进行解锁</li>
+<li>BENCHMARK(count,expr) 实现将表达式重复执行count次</li>
+<li>CONVERT(s USING cs) 实现将字符串s的字符集变成cs</li>
+<li>CONV(N,from_base,to_base)函数</li>
+</ul>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/mysql/">mysql</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/mysql/">mysql</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="https://ln0491.github.io/2017/02/17/mysql学习十九系统信息函数/" data-title="mysql学习十九系统信息函数 | 刘楠的博客" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2017/02/17/mysql学习十八日期函数/"  title="mysql学习十八日期函数">
+ <strong>下一篇：</strong><br/> 
+ <span>mysql学习十八日期函数
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="2017/02/17/mysql学习十九系统信息函数/" data-title="mysql学习十九系统信息函数" data-url="https://ln0491.github.io/2017/02/17/mysql学习十九系统信息函数/"></div>
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#mysql学习十九系统信息函数"><span class="toc-number">1.</span> <span class="toc-text">mysql学习十九系统信息函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#获取AUTO-INCREMENT约束的最后ID值"><span class="toc-number">1.1.</span> <span class="toc-text">获取AUTO_INCREMENT约束的最后ID值</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#其它的函数"><span class="toc-number">1.2.</span> <span class="toc-text">其它的函数</span></a></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/android/" title="android">android<sup>42</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/java/" title="java">java<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/log/" title="log">log<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/mysql/" title="mysql">mysql<sup>18</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/mysql学习十七数值函数/" title="mysql学习十七数值函数">mysql学习十七数值函数<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/test/" title="test">test<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/mysql/" title="mysql">mysql<sup>18</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/图片加载/" title="图片加载">图片加载<sup>12</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/android/" title="android">android<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Retrofit/" title="Retrofit">Retrofit<sup>6</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/viewpager/" title="viewpager">viewpager<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/volley/" title="volley">volley<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/test/" title="test">test<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/自定义View/" title="自定义View">自定义View<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/PorterDuffXfermode/" title="PorterDuffXfermode">PorterDuffXfermode<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/View动画/" title="View动画">View动画<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/maven/" title="maven">maven<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/动画/" title="动画">动画<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/工具类/" title="工具类">工具类<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/base64/" title="base64">base64<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/工具/" title="工具">工具<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/mysql学习十七数值函数/" title="mysql学习十七数值函数">mysql学习十七数值函数<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/log/" title="log">log<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/View/" title="View">View<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/源码/" title="源码">源码<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  
+  <div class="tagcloudlist">
+    <p class="asidetitle">标签云</p>
+    <div class="tagcloudlist clearfix">
+       <a href="/tags/PorterDuffXfermode/" style="font-size: 10px;">PorterDuffXfermode</a> <a href="/tags/Retrofit/" style="font-size: 15.71px;">Retrofit</a> <a href="/tags/View/" style="font-size: 10px;">View</a> <a href="/tags/View动画/" style="font-size: 10px;">View动画</a> <a href="/tags/android/" style="font-size: 17.14px;">android</a> <a href="/tags/base64/" style="font-size: 10px;">base64</a> <a href="/tags/log/" style="font-size: 10px;">log</a> <a href="/tags/maven/" style="font-size: 10px;">maven</a> <a href="/tags/mysql/" style="font-size: 20px;">mysql</a> <a href="/tags/mysql学习十七数值函数/" style="font-size: 10px;">mysql学习十七数值函数</a> <a href="/tags/test/" style="font-size: 11.43px;">test</a> <a href="/tags/viewpager/" style="font-size: 14.29px;">viewpager</a> <a href="/tags/volley/" style="font-size: 12.86px;">volley</a> <a href="/tags/动画/" style="font-size: 10px;">动画</a> <a href="/tags/图片加载/" style="font-size: 18.57px;">图片加载</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/工具类/" style="font-size: 10px;">工具类</a> <a href="/tags/源码/" style="font-size: 10px;">源码</a> <a href="/tags/自定义View/" style="font-size: 11.43px;">自定义View</a>
+    </div>
+  </div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://www.cnblogs.com/" target="_blank" title="博客园">博客园</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.csdn.net/" target="_blank" title="CSDN">CSDN</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.cnblogs.com/liunanjava/" target="_blank" title="森林森">森林森</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.jianshu.com/" target="_blank" title="简书">简书</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> 爱生活爱编码. <br/>
+			This is my blog,Try to do better.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/ln0491" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<a href="mailto:153011784@qq.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2017 
+		
+		<a href="/about" target="_blank" title="Liu Nan">Liu Nan</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+	$('#toc.toc-aside').css('display', 'block').addClass('fadeIn'); //这个是我新加的，修改点
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+        getSize();
+        if (myWidth >= 1024) {
+          c.click();
+        }
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"ln0491"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?f9d3aff238126ad201a9a789a888d75a";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1260477305'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1260477305%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

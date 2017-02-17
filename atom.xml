@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ln0491.github.io/"/>
-  <updated>2017-02-16T06:44:00.624Z</updated>
+  <updated>2017-02-17T07:04:29.268Z</updated>
   <id>https://ln0491.github.io/</id>
   
   <author>
@@ -14,6 +14,259 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>mysql学习十九系统信息函数</title>
+    <link href="https://ln0491.github.io/2017/02/17/mysql%E5%AD%A6%E4%B9%A0%E5%8D%81%E4%B9%9D%E7%B3%BB%E7%BB%9F%E4%BF%A1%E6%81%AF%E5%87%BD%E6%95%B0/"/>
+    <id>https://ln0491.github.io/2017/02/17/mysql学习十九系统信息函数/</id>
+    <published>2017-02-17T05:23:58.000Z</published>
+    <updated>2017-02-17T07:04:29.268Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="mysql学习十九系统信息函数"><a href="#mysql学习十九系统信息函数" class="headerlink" title="mysql学习十九系统信息函数"></a>mysql学习十九系统信息函数</h3><ul>
+<li>version() 返回数据库版本号</li>
+<li>DATABASE() 返回当前数据库名</li>
+<li>USER() 返回当前用户</li>
+<li>LAST_INSERT_ID() 返回最近生成的AUTO_INCREMENT值</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mysql&gt; select version(),database(),user();</div><div class="line">+------------+------------+----------------+</div><div class="line">| version()  | database() | user()         |</div><div class="line">+------------+------------+----------------+</div><div class="line">| 5.7.17-log | company    | root@localhost |</div><div class="line">+------------+------------+----------------+</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure>
+<h4 id="获取AUTO-INCREMENT约束的最后ID值"><a href="#获取AUTO-INCREMENT约束的最后ID值" class="headerlink" title="获取AUTO_INCREMENT约束的最后ID值"></a>获取AUTO_INCREMENT约束的最后ID值</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">CREATE TABLE IF NOT EXISTS t_autoincrement(</div><div class="line">id INT(11) PRIMARY KEY AUTO_INCREMENT </div><div class="line">);</div><div class="line"></div><div class="line">INSERT INTO t_autoincrement VALUES(NULL);</div><div class="line">INSERT INTO t_autoincrement VALUES(NULL);</div><div class="line">INSERT INTO t_autoincrement VALUES(NULL);</div><div class="line">INSERT INTO t_autoincrement VALUES(NULL);</div><div class="line">INSERT INTO t_autoincrement VALUES(NULL);</div><div class="line">INSERT INTO t_autoincrement VALUES(NULL);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">SELECT LAST_INSERT_ID();</div><div class="line">mysql&gt; select last_insert_id();</div><div class="line">+------------------+</div><div class="line">| last_insert_id() |</div><div class="line">+------------------+</div><div class="line">|               6 |</div><div class="line">+------------------+</div><div class="line">1 row in set (0.00 sec)\</div></pre></td></tr></table></figure>
+<h4 id="其它的函数"><a href="#其它的函数" class="headerlink" title="其它的函数"></a>其它的函数</h4><ul>
+<li>IF(value,t f) 如果value是真，返回t，否则返回f</li>
+<li>IFNULL(value1,value2) 如果value1不为空返回value1，否则返回value2</li>
+<li>CASE WHEN [value1] THEN[result1]…ELSE[default] END 如果value1是真，返回result1，否则返回default</li>
+<li>CASE [expr]WHEN[value1] THEN[result1]…ELSE[default] END 如果expr等于value1，返回result1，否则返回default</li>
+<li>PASSWORD(str)  实现对字符串str进行加密</li>
+<li>FORMAT(x,n) 实现将数字x进行格式化，保留n位小数</li>
+<li>INET_ATON(ip) 实现将IP地址转换成数字</li>
+<li>INET_NTOA(x) 实现将数字转换成IP</li>
+<li>GET_LOCT(name,time) 创建一个持续时间为time的名为name的锁</li>
+<li>RELEASE_LOCT(name) 为名为name的锁进行解锁</li>
+<li>BENCHMARK(count,expr) 实现将表达式重复执行count次</li>
+<li>CONVERT(s USING cs) 实现将字符串s的字符集变成cs</li>
+<li>CONV(N,from_base,to_base)函数</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;mysql学习十九系统信息函数&quot;&gt;&lt;a href=&quot;#mysql学习十九系统信息函数&quot; class=&quot;headerlink&quot; title=&quot;mysql学习十九系统信息函数&quot;&gt;&lt;/a&gt;mysql学习十九系统信息函数&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;version() 返回
+    
+    </summary>
+    
+      <category term="mysql" scheme="https://ln0491.github.io/categories/mysql/"/>
+    
+    
+      <category term="mysql" scheme="https://ln0491.github.io/tags/mysql/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>mysql学习十八日期函数</title>
+    <link href="https://ln0491.github.io/2017/02/17/mysql%E5%AD%A6%E4%B9%A0%E5%8D%81%E5%85%AB%E6%97%A5%E6%9C%9F%E5%87%BD%E6%95%B0/"/>
+    <id>https://ln0491.github.io/2017/02/17/mysql学习十八日期函数/</id>
+    <published>2017-02-17T05:23:48.000Z</published>
+    <updated>2017-02-17T08:37:02.171Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="mysql学习十八日期函数"><a href="#mysql学习十八日期函数" class="headerlink" title="mysql学习十八日期函数"></a>mysql学习十八日期函数</h3><ul>
+<li>CURDATE() 获取当前日期</li>
+<li>CURTIME() 获取当前时间</li>
+<li>NOW() 获取前的日期和时间</li>
+<li>UNIX_TIMESTAMP(DATE) 获取日期DATE的UNIX时间戳</li>
+<li>FROM_UNIXTIME()获取UNIX时间戳的日期值</li>
+<li>WEEK（date） 返日期DATE为一年中的第几周</li>
+<li>YEAR(DATE)返回日期DATE的年份</li>
+<li>HOUR(TIME) 返回时间 为TIME的小时值</li>
+<li>MINUTE(TIME)返回时间为TIME的分钟值</li>
+<li>MONTHNAME(DATE)返回时间TIME的月份值</li>
+</ul>
+<h4 id="获取当前的时间和时间"><a href="#获取当前的时间和时间" class="headerlink" title="获取当前的时间和时间"></a>获取当前的时间和时间</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SELECT NOW() now方式,CURRENT_TIMESTAMP() timestamp方式,LOCALTIME() localtime方式,SYSDATE() sysdate方式;</div><div class="line">+---------------------+---------------------+---------------------+---------------------+</div><div class="line">| now方式             | timestamp方式       | localtime方式       | sysdate方式         |</div><div class="line">+---------------------+---------------------+---------------------+---------------------+</div><div class="line">| 2017-02-17 15:11:36 | 2017-02-17 15:11:36 | 2017-02-17 15:11:36 | 2017-02-17 15:11:36 |</div><div class="line">+---------------------+---------------------+---------------------+---------------------+</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure>
+<p>可以获取当前时间，同一种格式显示日期和时间</p>
+<h4 id="获取当前日期"><a href="#获取当前日期" class="headerlink" title="获取当前日期"></a>获取当前日期</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mysql&gt; select curdate() curdate方式,current_date() current_date方式;</div><div class="line">+---------------+--------------------+</div><div class="line">| curdate方式   | current_date方式   |</div><div class="line">+---------------+--------------------+</div><div class="line">| 2017-02-17    | 2017-02-17         |</div><div class="line">+---------------+--------------------+</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure>
+<h4 id="获取当前时间"><a href="#获取当前时间" class="headerlink" title="获取当前时间"></a>获取当前时间</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mysql&gt; select curtime() curtime方式,current_time current_time方式;</div><div class="line">+---------------+--------------------+</div><div class="line">| curtime方式   | current_time方式   |</div><div class="line">+---------------+--------------------+</div><div class="line">| 15:14:48      | 15:14:48           |</div><div class="line">+---------------+--------------------+</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure>
+<h4 id="通过UNIX方式显示日期和时间"><a href="#通过UNIX方式显示日期和时间" class="headerlink" title="通过UNIX方式显示日期和时间"></a>通过UNIX方式显示日期和时间</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SELECT NOW() 当前时间,UNIX_TIMESTAMP(NOW()) unix方式,FROM_UNIXTIME(UNIX_TIMESTAMP(NOW())) 普通方式;</div><div class="line">+---------------------+------------+---------------------+</div><div class="line">| 当前时间            | unix方式   | 普通方式            |</div><div class="line">+---------------------+------------+---------------------+</div><div class="line">| 2017-02-17 15:17:53 | 1487315873 | 2017-02-17 15:17:53 |</div><div class="line">+---------------------+------------+---------------------+</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure>
+<p>UNIX_TIMESTAMP(),UNIX_TIMESTAMP(NOW())<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SELECT NOW(),UNIX_TIMESTAMP(),UNIX_TIMESTAMP(NOW());</div><div class="line">+---------------------+------------------+-----------------------+</div><div class="line">| NOW()               | UNIX_TIMESTAMP() | UNIX_TIMESTAMP(NOW()) |</div><div class="line">+---------------------+------------------+-----------------------+</div><div class="line">| 2017-02-17 15:19:17 |       1487315957 |            1487315957 |</div><div class="line">+---------------------+------------------+-----------------------+</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure></p>
+<p>UNIX_TIMESTAMP(),UNIX_TIMESTAMP(NOW())返回相同的时间戳</p>
+<h4 id="通过UTC的方式显示日期和时间"><a href="#通过UTC的方式显示日期和时间" class="headerlink" title="通过UTC的方式显示日期和时间"></a>通过UTC的方式显示日期和时间</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SELECT NOW(),UTC_DATE(),UTC_TIME();</div><div class="line">+---------------------+------------+------------+</div><div class="line">| NOW()               | UTC_DATE() | UTC_TIME() |</div><div class="line">+---------------------+------------+------------+</div><div class="line">| 2017-02-17 15:20:42 | 2017-02-17 | 07:20:42   |</div><div class="line">+---------------------+------------+------------+</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure>
+<h4 id="获取日期和时间各部分的值"><a href="#获取日期和时间各部分的值" class="headerlink" title="获取日期和时间各部分的值"></a>获取日期和时间各部分的值</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SELECT NOW() 当前时间,YEAR(NOW()) 年,MONTH(NOW()) 月,DAY(NOW())日,QUARTER(NOW()) 季度,WEEK(NOW()) 星期,DAYOFMONTH(NOW())月中天,HOUR(NOW())时,MINUTE(NOW())分,SECOND(NOW())秒;</div><div class="line">+---------------------+------+------+------+--------+--------+-----------+------+------+------+</div><div class="line">| 当前时间            | 年   | 月   | 日   | 季度   | 星期   | 月中天    | 时   | 分   | 秒   |</div><div class="line">+---------------------+------+------+------+--------+--------+-----------+------+------+------+</div><div class="line">| 2017-02-17 15:24:32 | 2017 |    2 |   17 |      1 |      7 |        17 |   15 |   24 |   32 |</div><div class="line">+---------------------+------+------+------+--------+--------+-----------+------+------+------+</div></pre></td></tr></table></figure>
+<h4 id="月的函数"><a href="#月的函数" class="headerlink" title="月的函数"></a>月的函数</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mysql&gt; select now(), month(now()),monthname(now());</div><div class="line">+---------------------+--------------+------------------+</div><div class="line">| now()               | month(now()) | monthname(now()) |</div><div class="line">+---------------------+--------------+------------------+</div><div class="line">| 2017-02-17 15:26:04 |            2 | February         |</div><div class="line">+---------------------+--------------+------------------+</div><div class="line">1 row in set (0.01 sec)</div></pre></td></tr></table></figure>
+<h4 id="星期"><a href="#星期" class="headerlink" title="星期"></a>星期</h4><ul>
+<li>WEEK()和WEEKOFYEAR（）返回日期和时间中星期都是当前年的第几个星期1-53</li>
+<li>DAYNAME()返回日期和时间中星期的英文名</li>
+<li>DAYOFWEEK()返回星期几1-7</li>
+<li>WEEKDAY()返回星期几0-6</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SELECT NOW()当前时间,WEEK(NOW()),WEEKOFYEAR(NOW()),DAYNAME(NOW()),DAYOFWEEK(NOW()),WEEKDAY(NOW());</div><div class="line">+---------------------+-------------+-------------------+----------------+------------------+----------------+</div><div class="line">| 当前时间            | WEEK(NOW()) | WEEKOFYEAR(NOW()) | DAYNAME(NOW()) | DAYOFWEEK(NOW()) | WEEKDAY(NOW()) |</div><div class="line">+---------------------+-------------+-------------------+----------------+------------------+----------------+</div><div class="line">| 2017-02-17 15:31:06 |           7 |                 7 | Friday         |                6 |              4 |</div><div class="line">+---------------------+-------------+-------------------+----------------+------------------+----------------+</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure>
+<h4 id="天"><a href="#天" class="headerlink" title="天"></a>天</h4><ul>
+<li>DAYOFMONTH()日期属于当前月的第几天</li>
+<li>DAY()日期属于当前月的第几天</li>
+<li>DAYOFYEAR（）  本年的第几天</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SELECT NOW()当前时间,DAY(NOW()),DAYOFMONTH(NOW()),DAYOFYEAR(NOW());</div><div class="line">+---------------------+------------+-------------------+------------------+</div><div class="line">| 当前时间            | DAY(NOW()) | DAYOFMONTH(NOW()) | DAYOFYEAR(NOW()) |</div><div class="line">+---------------------+------------+-------------------+------------------+</div><div class="line">| 2017-02-17 15:32:56 |         17 |                17 |               48 |</div><div class="line">+---------------------+------------+-------------------+------------------+</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure>
+<h4 id="获取指定EXTRACT-函数"><a href="#获取指定EXTRACT-函数" class="headerlink" title="获取指定EXTRACT()函数"></a>获取指定EXTRACT()函数</h4><p>统一获取日期和时间的各部分值</p>
+<p>extract(type from date);<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SELECT NOW()当前时间,EXTRACT(YEAR FROM NOW()) 年,EXTRACT(MONTH FROM NOW())月,EXTRACT(DAY FROM NOW()) 日,EXTRACT(QUARTER FROM NOW())季,EXTRACT(WEEK FROM NOW())星期,EXTRACT(HOUR FROM NOW())时,EXTRACT(MINUTE FROM NOW())分,EXTRACT(SECOND FROM NOW());</div><div class="line">+---------------------+------+------+------+------+--------+------+------+----------------------------+</div><div class="line">| 当前时间            | 年   | 月   | 日   | 季   | 星期   | 时   | 分   | EXTRACT(SECOND FROM NOW()) |</div><div class="line">+---------------------+------+------+------+------+--------+------+------+----------------------------+</div><div class="line">| 2017-02-17 15:40:12 | 2017 |    2 |   17 |    1 |      7 |   15 |   40 |                         12 |</div><div class="line">+---------------------+------+------+------+------+--------+------+------+----------------------------+</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure></p>
+<h4 id="TO-DAYS-DATE-与FROM-DAYS-NUMBER"><a href="#TO-DAYS-DATE-与FROM-DAYS-NUMBER" class="headerlink" title="TO_DAYS(DATE)与FROM_DAYS(NUMBER)"></a>TO_DAYS(DATE)与FROM_DAYS(NUMBER)</h4><ul>
+<li>TO_DAYS(DATE) 计算日期参数与默认日期0000年1月1日）之间的天数</li>
+<li>FROM_DAYS(NUMBER) 计算从默认昌和时间0000年1月1日）开始经历NUMBER天数后的日期和时间</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SELECT NOW() ,TO_DAYS(NOW()),FROM_DAYS(TO_DAYS(NOW()));</div><div class="line">+---------------------+----------------+---------------------------+</div><div class="line">| NOW()               | TO_DAYS(NOW()) | FROM_DAYS(TO_DAYS(NOW())) |</div><div class="line">+---------------------+----------------+---------------------------+</div><div class="line">| 2017-02-17 16:06:39 |         736742 | 2017-02-17                |</div><div class="line">+---------------------+----------------+---------------------------+</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure>
+<h4 id="DATEDIFF-date1-date2"><a href="#DATEDIFF-date1-date2" class="headerlink" title="DATEDIFF(date1,date2)"></a>DATEDIFF(date1,date2)</h4><p>返回date1与date2之间的天数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SELECT NOW(),DATEDIFF(NOW(),&apos;2015-02-24&apos;);</div><div class="line">+---------------------+------------------------------+</div><div class="line">| NOW()               | DATEDIFF(NOW(),&apos;2015-02-24&apos;) |</div><div class="line">+---------------------+------------------------------+</div><div class="line">| 2017-02-17 16:07:57 |                          724 |</div><div class="line">+---------------------+------------------------------+</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure>
+<h4 id="指定日期和时间操作"><a href="#指定日期和时间操作" class="headerlink" title="指定日期和时间操作"></a>指定日期和时间操作</h4><ul>
+<li>ADDDATE(DATE,N),计算日期加上N天后的日期</li>
+<li>SUBDATE(DATE,N),计算日期减去N天后的日期</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SELECT NOW(),ADDDATE(CURDATE(),5),SUBDATE(CURDATE(),5);</div><div class="line">+---------------------+----------------------+----------------------+</div><div class="line">| NOW()               | ADDDATE(CURDATE(),5) | SUBDATE(CURDATE(),5) |</div><div class="line">+---------------------+----------------------+----------------------+</div><div class="line">| 2017-02-17 16:15:35 | 2017-02-22           | 2017-02-12           |</div><div class="line">+---------------------+----------------------+----------------------+</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure>
+<ul>
+<li>ADDDATE(DATE,interval expr type),计算日期加上N天后的日期</li>
+<li><p>SUBDATE(DATE,interval expr type),计算日期减去N天后的日期</p>
+<h4 id="TYPE类型"><a href="#TYPE类型" class="headerlink" title="TYPE类型"></a>TYPE类型</h4></li>
+<li><p>YEAR 年 YY</p>
+</li>
+<li>MONTH 月 MM</li>
+<li>DAY 日 DD</li>
+<li>HOUR 时 hh</li>
+<li>MINUTE 分钟 mm</li>
+<li>SECOND 秒 ss</li>
+<li>YEAR_MONTH 年和月 YY与MM之间用任意符号隔开</li>
+<li>DAY_HOUR 日和小时 DD和hh之间用任意符号隔开</li>
+<li>DAY_MINUTE 日和分钟 DD和mm之间用任意符号隔开</li>
+<li>DAY_SECOND 日和秒 DD和ss之间用任意符号隔开</li>
+<li>HOUR_MINUTE 小时和分钟  hh和mm之间用任意符号隔开</li>
+<li>HOUR_SECOND 小时和秒 hh和ss之间用任意符号隔开</li>
+<li>MINUTE_SECOND  分钟和秒 mm和ss之间用任意符号隔开</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">mysql&gt; select adddate(curdate(),interval &apos;1,2&apos; year_month),subdate(curdate(),interval 1 year);</div><div class="line">+----------------------------------------------+------------------------------------+</div><div class="line">| adddate(curdate(),interval &apos;1,2&apos; year_month) | subdate(curdate(),interval 1 year) |</div><div class="line">+----------------------------------------------+------------------------------------+</div><div class="line">| 2018-04-17                                   | 2016-02-17                         |</div><div class="line">+----------------------------------------------+------------------------------------+</div><div class="line">1 row in set (0.00 sec)</div><div class="line">mysql&gt; select adddate(curdate(),interval &apos;1,2&apos; year_month),subdate(curdate(),interval -1 year);</div><div class="line">+----------------------------------------------+-------------------------------------+</div><div class="line">| adddate(curdate(),interval &apos;1,2&apos; year_month) | subdate(curdate(),interval -1 year) |</div><div class="line">+----------------------------------------------+-------------------------------------+</div><div class="line">| 2018-04-17                                   | 2018-02-17                          |</div><div class="line">+----------------------------------------------+-------------------------------------+</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure>
+<h4 id="ADDTIME-TIME-N-SUBTIME-TIME-N"><a href="#ADDTIME-TIME-N-SUBTIME-TIME-N" class="headerlink" title="ADDTIME(TIME,N),SUBTIME(TIME,N)"></a>ADDTIME(TIME,N),SUBTIME(TIME,N)</h4><p>时间加上N秒，或者时间减去N秒后的时间<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SELECT CURTIME(),ADDTIME(CURTIME(),5),SUBTIME(CURTIME(),5);</div><div class="line">+-----------+----------------------+----------------------+</div><div class="line">| CURTIME() | ADDTIME(CURTIME(),5) | SUBTIME(CURTIME(),5) |</div><div class="line">+-----------+----------------------+----------------------+</div><div class="line">| 16:27:29  | 16:27:34             | 16:27:24             |</div><div class="line">+-----------+----------------------+----------------------+</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;mysql学习十八日期函数&quot;&gt;&lt;a href=&quot;#mysql学习十八日期函数&quot; class=&quot;headerlink&quot; title=&quot;mysql学习十八日期函数&quot;&gt;&lt;/a&gt;mysql学习十八日期函数&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;CURDATE() 获取当前日期&lt;/li
+    
+    </summary>
+    
+      <category term="mysql" scheme="https://ln0491.github.io/categories/mysql/"/>
+    
+    
+      <category term="mysql" scheme="https://ln0491.github.io/tags/mysql/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>mysql学习十七数值函数</title>
+    <link href="https://ln0491.github.io/2017/02/17/mysql%E5%AD%A6%E4%B9%A0%E5%8D%81%E4%B8%83%E6%95%B0%E5%80%BC%E5%87%BD%E6%95%B0/"/>
+    <id>https://ln0491.github.io/2017/02/17/mysql学习十七数值函数/</id>
+    <published>2017-02-17T05:23:39.000Z</published>
+    <updated>2017-02-17T07:04:55.988Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="mysql学习十七数值函数"><a href="#mysql学习十七数值函数" class="headerlink" title="mysql学习十七数值函数"></a>mysql学习十七数值函数</h3><ul>
+<li>ABS(X) 返回数据X的绝对值</li>
+<li>CEIL(X) 返回大于X的最大整数值</li>
+<li>FLOOR(X) 返回小于X的最大整数</li>
+<li>MODE(X,Y) 返回X模Y的值</li>
+<li>RAND(） 返回0-1之间的随机数</li>
+<li>ROUND(X,Y) 返回数值X的四舍5入后有Y位小数的数值</li>
+<li>TRUNCATE(X,Y)，返回X断为Y位小数的数值</li>
+</ul>
+<h4 id="获取随机数RAND"><a href="#获取随机数RAND" class="headerlink" title="获取随机数RAND()"></a>获取随机数RAND()</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SELECT RAND(),RAND(),RAND(3),RAND(3);</div><div class="line">+---------------------+---------------------+--------------------+--------------------+</div><div class="line">| RAND()              | RAND()              | RAND(3)            | RAND(3)            |</div><div class="line">+---------------------+---------------------+--------------------+--------------------+</div><div class="line">| 0.14539613215755312 | 0.17698627540561024 | 0.9057697559760601 | 0.9057697559760601 |</div><div class="line">+---------------------+---------------------+--------------------+--------------------+</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure>
+<p>每次运行RAND（）函数返回的都不一样，如果要获取相同的随机数，使用带有相同参数的RNAD()来实现</p>
+<h4 id="获取整数"><a href="#获取整数" class="headerlink" title="获取整数"></a>获取整数</h4><ul>
+<li>CEIL(X) 返回大于X的最大整数值</li>
+<li>FLOOR(X) 返回小于X的最大整数<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SELECT CEIL(3.5),CEIL(-3.5),FLOOR(3.5),FLOOR(-3.5);</div><div class="line">+-----------+------------+------------+-------------+</div><div class="line">| CEIL(3.5) | CEIL(-3.5) | FLOOR(3.5) | FLOOR(-3.5) |</div><div class="line">+-----------+------------+------------+-------------+</div><div class="line">|         4 |         -3 |          3 |          -4 |</div><div class="line">+-----------+------------+------------+-------------+</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="截取数值函数"><a href="#截取数值函数" class="headerlink" title="截取数值函数"></a>截取数值函数</h4><ul>
+<li>TRUNCATE(X,Y)，返回X断为Y位小数的数值</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SELECT TRUNCATE(903.53564,2),TRUNCATE(903.53567,-1);</div><div class="line">+-----------------------+------------------------+</div><div class="line">| TRUNCATE(903.53564,2) | TRUNCATE(903.53567,-1) |</div><div class="line">+-----------------------+------------------------+</div><div class="line">|                903.53 |                    900 |</div><div class="line">+-----------------------+------------------------+</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure>
+<h4 id="四舍五入函数"><a href="#四舍五入函数" class="headerlink" title="四舍五入函数"></a>四舍五入函数</h4><ul>
+<li>ROUND(X,Y) 返回数值X的四舍5入后有Y位小数的数值</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SELECT ROUND(903.53564),ROUND(903.53564,2),ROUND(-903.53564),ROUND(903.53564,-1);</div><div class="line">+------------------+--------------------+-------------------+---------------------+</div><div class="line">| ROUND(903.53564) | ROUND(903.53564,2) | ROUND(-903.53564) | ROUND(903.53564,-1) |</div><div class="line">+------------------+--------------------+-------------------+---------------------+</div><div class="line">|              904 |             903.54 |              -904 |                 900 |</div><div class="line">+------------------+--------------------+-------------------+---------------------+</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure>
+<h4 id="BIN（N）-OCT（N），HEX（N-or-S）函数-其实就是进制转换"><a href="#BIN（N）-OCT（N），HEX（N-or-S）函数-其实就是进制转换" class="headerlink" title="BIN（N）,OCT（N），HEX（N_or_S）函数..其实就是进制转换"></a>BIN（N）,OCT（N），HEX（N_or_S）函数..其实就是进制转换</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SELECT BIN(12);</div><div class="line">        -&gt; &apos;1100&apos;</div><div class="line">mysql&gt; SELECT OCT(12);</div><div class="line">        -&gt; &apos;14&apos;</div><div class="line">mysql&gt; SELECT HEX(255);</div><div class="line">        -&gt; &apos;FF&apos;</div><div class="line">mysql&gt; SELECT HEX(&quot;abc&quot;);</div><div class="line">        -&gt; 616263</div></pre></td></tr></table></figure>
+<h4 id="CONV-N-from-base-to-base-函数"><a href="#CONV-N-from-base-to-base-函数" class="headerlink" title="CONV(N,from_base,to_base)函数"></a>CONV(N,from_base,to_base)函数</h4><p>将一个数字N，从from_base转换为to_base，返回值为字符串..</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">mysql&gt; SELECT CONV(&quot;a&quot;,16,2);</div><div class="line">        -&gt; &apos;1010&apos;</div><div class="line">mysql&gt; SELECT CONV(&quot;6E&quot;,18,8);</div><div class="line">        -&gt; &apos;172&apos;</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;mysql学习十七数值函数&quot;&gt;&lt;a href=&quot;#mysql学习十七数值函数&quot; class=&quot;headerlink&quot; title=&quot;mysql学习十七数值函数&quot;&gt;&lt;/a&gt;mysql学习十七数值函数&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;ABS(X) 返回数据X的绝对值&lt;/li
+    
+    </summary>
+    
+      <category term="mysql学习十七数值函数" scheme="https://ln0491.github.io/categories/mysql%E5%AD%A6%E4%B9%A0%E5%8D%81%E4%B8%83%E6%95%B0%E5%80%BC%E5%87%BD%E6%95%B0/"/>
+    
+    
+      <category term="mysql学习十七数值函数" scheme="https://ln0491.github.io/tags/mysql%E5%AD%A6%E4%B9%A0%E5%8D%81%E4%B8%83%E6%95%B0%E5%80%BC%E5%87%BD%E6%95%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>mysql学习十六常用字符函数</title>
+    <link href="https://ln0491.github.io/2017/02/17/mysql%E5%AD%A6%E4%B9%A0%E5%8D%81%E5%85%AD%E5%B8%B8%E7%94%A8%E5%AD%97%E7%AC%A6%E5%87%BD%E6%95%B0/"/>
+    <id>https://ln0491.github.io/2017/02/17/mysql学习十六常用字符函数/</id>
+    <published>2017-02-17T05:23:10.000Z</published>
+    <updated>2017-02-17T07:03:17.572Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="mysql学习十六常用字符函数"><a href="#mysql学习十六常用字符函数" class="headerlink" title="mysql学习十六常用字符函数"></a>mysql学习十六常用字符函数</h3><h4 id="全并字符串函数-CONCAT-和CONCAT-WS"><a href="#全并字符串函数-CONCAT-和CONCAT-WS" class="headerlink" title="全并字符串函数 CONCAT()和CONCAT_WS()"></a>全并字符串函数 CONCAT()和CONCAT_WS()</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">CONCAT(S1,S2,S3...SN)</div></pre></td></tr></table></figure>
+<p>将传入的函数连接起来返回所合并字符串数据，如果其中一个为NULL，则返加值为NULL<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mysql&gt; select concat(&apos;M&apos;,&apos;y&apos;,&apos;S&apos;,&apos;q&apos;,&apos;l&apos;);</div><div class="line">+-----------------------------+</div><div class="line">| concat(&apos;M&apos;,&apos;y&apos;,&apos;S&apos;,&apos;q&apos;,&apos;l&apos;) |</div><div class="line">+-----------------------------+</div><div class="line">| MySql                       |</div><div class="line">+-----------------------------+</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure></p>
+<p>有NULL<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mysql&gt; select concat(&apos;M&apos;,&apos;y&apos;,&apos;S&apos;,&apos;q&apos;,&apos;l&apos;,null);</div><div class="line">+----------------------------------+</div><div class="line">| concat(&apos;M&apos;,&apos;y&apos;,&apos;S&apos;,&apos;q&apos;,&apos;l&apos;,null) |</div><div class="line">+----------------------------------+</div><div class="line">| NULL                             |</div><div class="line">+----------------------------------+</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure></p>
+<p>实现当前时间CURDATE和数值合并<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mysql&gt; select concat(curdate(),13.27);</div><div class="line">+-------------------------+</div><div class="line">| concat(curdate(),13.27) |</div><div class="line">+-------------------------+</div><div class="line">| 2017-02-1713.27         |</div><div class="line">+-------------------------+</div><div class="line">1 row in set (0.03 sec)</div></pre></td></tr></table></figure></p>
+<h4 id="全并字符串函数CONCAT-WS"><a href="#全并字符串函数CONCAT-WS" class="headerlink" title="全并字符串函数CONCAT_WS()"></a>全并字符串函数CONCAT_WS()</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">CONCAT_WS(S1,S2,S3...SN)</div></pre></td></tr></table></figure>
+<p>与CONCAT相比多了一个SEP分割符参数，即不仅将传的其他参数连接起来，而且还会通过分割符将各个字符串侵害开，分隔答可以是一个字符串，也可以是其他参数。<br>如果分隔符为NULL，则返回结果为NULL，函数会忽略任何分隔符参数后的NULL。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mysql&gt;  SELECT CONCAT_WS(&apos;-&apos;,&apos;0755&apos;,&apos;518000&apos;);</div><div class="line">+--------------------------------+</div><div class="line">| CONCAT_WS(&apos;-&apos;,&apos;0755&apos;,&apos;518000&apos;) |</div><div class="line">+--------------------------------+</div><div class="line">| 0755-518000                    |</div><div class="line">+--------------------------------+</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure>
+<p>NULL<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mysql&gt;  SELECT CONCAT_WS(null,&apos;0755&apos;,&apos;518000&apos;);</div><div class="line">+---------------------------------+</div><div class="line">| CONCAT_WS(null,&apos;0755&apos;,&apos;518000&apos;) |</div><div class="line">+---------------------------------+</div><div class="line">| NULL                            |</div><div class="line">+---------------------------------+</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure></p>
+<p>当侵害符后，参数存在NULL时<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">mysql&gt;  SELECT CONCAT_WS(&apos;-&apos;,&apos;0755&apos;,null,&apos;518000&apos;);</div><div class="line">+-------------------------------------+</div><div class="line">| CONCAT_WS(&apos;-&apos;,&apos;0755&apos;,null,&apos;518000&apos;) |</div><div class="line">+-------------------------------------+</div><div class="line">| 0755-518000                         |</div><div class="line">+-------------------------------------+</div><div class="line">1 row in set (0.00 sec)</div><div class="line"></div><div class="line">mysql&gt;  SELECT CONCAT_WS(&apos;-&apos;,null,&apos;0755&apos;,&apos;518000&apos;);</div><div class="line">+-------------------------------------+</div><div class="line">| CONCAT_WS(&apos;-&apos;,null,&apos;0755&apos;,&apos;518000&apos;) |</div><div class="line">+-------------------------------------+</div><div class="line">| 0755-518000                         |</div><div class="line">+-------------------------------------+</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure></p>
+<h4 id="比较字符大小函数STRCMP"><a href="#比较字符大小函数STRCMP" class="headerlink" title="比较字符大小函数STRCMP()"></a>比较字符大小函数STRCMP()</h4><p>STRCMP(S1,S2)<br>比较字符串1，与字符串2，如果参数1大于参数2，返回1，<br>如果参数1小参数2，返回-1<br>如果相等则返回0</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SELECT STRCMP(&apos;ABC&apos;,&apos;abc&apos;),</div><div class="line">    -&gt; STRCMP(&apos;abc&apos;,&apos;abd&apos;),</div><div class="line">    -&gt; STRCMP(&apos;abc&apos;,&apos;abb&apos;);</div><div class="line">+---------------------+---------------------+---------------------+</div><div class="line">| STRCMP(&apos;ABC&apos;,&apos;abc&apos;) | STRCMP(&apos;abc&apos;,&apos;abd&apos;) | STRCMP(&apos;abc&apos;,&apos;abb&apos;) |</div><div class="line">+---------------------+---------------------+---------------------+</div><div class="line">|                   0 |                  -1 |                   1 |</div><div class="line">+---------------------+---------------------+---------------------+</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure>
+<h4 id="获取字符串长度函数LENGTH"><a href="#获取字符串长度函数LENGTH" class="headerlink" title="获取字符串长度函数LENGTH()"></a>获取字符串长度函数LENGTH()</h4><p>LENGTH(STR)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SELECT &apos;Mysql&apos; 英文字符,</div><div class="line">    -&gt; LENGTH(&apos;Mysql&apos;) 长度,</div><div class="line">    -&gt; &apos;常用数&apos; 中文字符,</div><div class="line">    -&gt; LENGTH(&apos;常用数&apos;) 长度;</div><div class="line">+--------------+--------+--------------+--------+</div><div class="line">| 英文字符     | 长度   | 中文字符     | 长度   |</div><div class="line">+--------------+--------+--------------+--------+</div><div class="line">| Mysql        |      5 | 常用数       |      9 |</div><div class="line">+--------------+--------+--------------+--------+</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure></p>
+<p>中文字符一个占3位</p>
+<h4 id="获取字符串长度函数CHAR-LENGTH"><a href="#获取字符串长度函数CHAR-LENGTH" class="headerlink" title="获取字符串长度函数CHAR_LENGTH()"></a>获取字符串长度函数CHAR_LENGTH()</h4><p>CHAR_LENGTH(str)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SELECT &apos;Mysql&apos; 英文字符,</div><div class="line">    -&gt; CHAR_LENGTH(&apos;Mysql&apos;) 长度,</div><div class="line">    -&gt; &apos;常用数&apos; 中文字符,</div><div class="line">    -&gt; CHAR_LENGTH(&apos;常用数&apos;) 长度;</div><div class="line">+--------------+--------+--------------+--------+</div><div class="line">| 英文字符     | 长度   | 中文字符     | 长度   |</div><div class="line">+--------------+--------+--------------+--------+</div><div class="line">| Mysql        |      5 | 常用数       |      3 |</div><div class="line">+--------------+--------+--------------+--------+</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure></p>
+<p>中文还是占一个字符</p>
+<h4 id="字母大小写转换函数UPPPER-和函数LOWER"><a href="#字母大小写转换函数UPPPER-和函数LOWER" class="headerlink" title="字母大小写转换函数UPPPER()和函数LOWER()"></a>字母大小写转换函数UPPPER()和函数LOWER()</h4><p>UPPER(STR)将字符所有字符转换为大写<br>ucase(str)将字符所有字符转换为大写<br>LOWER(STR)将字符所有字符转换为小写<br>LCASE(STR)将字符所有字符转换为小写</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mysql&gt; select &apos;mysql&apos; 字符串,upper(&apos;mysql&apos;) 转换后,ucase(&apos;mysql&apos;) 转换后,lower(&apos;MYsQL&apos;) 转换后, lcase(&apos;MYSQL&apos;) 转换后;</div><div class="line">+-----------+-----------+-----------+-----------+-----------+</div><div class="line">| 字符串    | 转换后    | 转换后    | 转换后    | 转换后    |</div><div class="line">+-----------+-----------+-----------+-----------+-----------+</div><div class="line">| mysql     | MYSQL     | MYSQL     | mysql     | mysql     |</div><div class="line">+-----------+-----------+-----------+-----------+-----------+</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure>
+<h4 id="返加字符串位置的FIND-IN-SET"><a href="#返加字符串位置的FIND-IN-SET" class="headerlink" title="返加字符串位置的FIND_IN_SET()"></a>返加字符串位置的FIND_IN_SET()</h4><p>FIND_IN_SET(s1,,s2)<br>会返回在字符串s2中与s1相匹配的字符口中的益，参数S2字符串中将包含若干个用逗号隔开的字符串</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SELECT FIND_IN_SET(&apos;MySQL&apos;,&apos;oracle,sql,server,MySql&apos;);</div><div class="line">+------------------------------------------------+</div><div class="line">| FIND_IN_SET(&apos;MySQL&apos;,&apos;oracle,sql,server,MySql&apos;) |</div><div class="line">+------------------------------------------------+</div><div class="line">|                                              4 |</div><div class="line">+------------------------------------------------+</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure>
+<h4 id="返回指定字符串的位置FIELD"><a href="#返回指定字符串的位置FIELD" class="headerlink" title="返回指定字符串的位置FIELD()"></a>返回指定字符串的位置FIELD()</h4><p>FIELD(str,s1,,s2,…)返回第一个与字符串str，匹配的字符串的位置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SELECT FIELD(&apos;MySQL&apos;,&apos;oracle&apos;,&apos;MySql&apos;,&apos;sql&apos;,&apos;server&apos;);</div><div class="line">+------------------------------------------------+</div><div class="line">| FIELD(&apos;MySQL&apos;,&apos;oracle&apos;,&apos;MySql&apos;,&apos;sql&apos;,&apos;server&apos;) |</div><div class="line">+------------------------------------------------+</div><div class="line">|                                              2 |</div><div class="line">+------------------------------------------------+</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure></p>
+<h4 id="返回子字符串相匹配的开始位置"><a href="#返回子字符串相匹配的开始位置" class="headerlink" title="返回子字符串相匹配的开始位置"></a>返回子字符串相匹配的开始位置</h4><p>LOCATE(str1,str)<br>返回参数str中字符串str1的开始位置</p>
+<p>POSITION(str1 in str)<br>instr(str,str1)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SELECT LOCATE(&apos;sql&apos;,&apos;mysql&apos;),</div><div class="line">    -&gt;        POSITION(&apos;sql&apos; IN &apos;MySQL&apos;),</div><div class="line">    -&gt;        INSTR(&apos;MySql&apos;,&apos;my&apos;);</div><div class="line">+-----------------------+----------------------------+---------------------+</div><div class="line">| LOCATE(&apos;sql&apos;,&apos;mysql&apos;) | POSITION(&apos;sql&apos; IN &apos;MySQL&apos;) | INSTR(&apos;MySql&apos;,&apos;my&apos;) |</div><div class="line">+-----------------------+----------------------------+---------------------+</div><div class="line">|                     3 |                          3 |                   1 |</div><div class="line">+-----------------------+----------------------------+---------------------+</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure>
+<h4 id="返回指定位置的字符串ELT"><a href="#返回指定位置的字符串ELT" class="headerlink" title="返回指定位置的字符串ELT()"></a>返回指定位置的字符串ELT()</h4><p>ELT(N，s1,s2,s3…);</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SELECT ELT(3,&apos;MySQL&apos;,&apos;oracle&apos;,&apos;MySql&apos;,&apos;sql&apos;,&apos;server&apos;);</div><div class="line">+------------------------------------------------+</div><div class="line">| ELT(3,&apos;MySQL&apos;,&apos;oracle&apos;,&apos;MySql&apos;,&apos;sql&apos;,&apos;server&apos;) |</div><div class="line">+------------------------------------------------+</div><div class="line">| MySql                                          |</div><div class="line">+------------------------------------------------+</div><div class="line">1 row in set (0.00 sec)</div><div class="line"></div><div class="line">mysql&gt; SELECT ELT(0,&apos;MySQL&apos;,&apos;oracle&apos;,&apos;MySql&apos;,&apos;sql&apos;,&apos;server&apos;);</div><div class="line">+------------------------------------------------+</div><div class="line">| ELT(0,&apos;MySQL&apos;,&apos;oracle&apos;,&apos;MySql&apos;,&apos;sql&apos;,&apos;server&apos;) |</div><div class="line">+------------------------------------------------+</div><div class="line">| NULL                                           |</div><div class="line">+------------------------------------------------+</div><div class="line">1 row in set (0.00 sec)</div><div class="line"></div><div class="line">mysql&gt; SELECT ELT(-1,&apos;MySQL&apos;,&apos;oracle&apos;,&apos;MySql&apos;,&apos;sql&apos;,&apos;server&apos;);</div><div class="line">+-------------------------------------------------+</div><div class="line">| ELT(-1,&apos;MySQL&apos;,&apos;oracle&apos;,&apos;MySql&apos;,&apos;sql&apos;,&apos;server&apos;) |</div><div class="line">+-------------------------------------------------+</div><div class="line">| NULL                                            |</div><div class="line">+-------------------------------------------------+</div><div class="line">1 row in set (0.01 sec)</div><div class="line"></div><div class="line">mysql&gt; SELECT ELT(8,&apos;MySQL&apos;,&apos;oracle&apos;,&apos;MySql&apos;,&apos;sql&apos;,&apos;server&apos;);</div><div class="line">+------------------------------------------------+</div><div class="line">| ELT(8,&apos;MySQL&apos;,&apos;oracle&apos;,&apos;MySql&apos;,&apos;sql&apos;,&apos;server&apos;) |</div><div class="line">+------------------------------------------------+</div><div class="line">| NULL                                           |</div><div class="line">+------------------------------------------------+</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure>
+<h4 id="选择字符串的MAKE-SET（）"><a href="#选择字符串的MAKE-SET（）" class="headerlink" title="选择字符串的MAKE_SET（）"></a>选择字符串的MAKE_SET（）</h4><p>MAKE_SET（num,s1,s2,s3,…）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">SELECT BIN(5) 二进制数,MAKE_SET(5,&apos;MySQL&apos;,&apos;Oracle&apos;,&apos;SQL Server&apos;,&apos;PostgreSQL&apos;) 选取后的字符串;</div><div class="line">+--------------+-----------------------+</div><div class="line">| 二进制数     | 选取后的字符串        |</div><div class="line">+--------------+-----------------------+</div><div class="line">| 101          | MySQL,SQL Server      |</div><div class="line">+--------------+-----------------------+</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure>
+<p>由于5的二进制为101,所以选择MySQL,SQL Server ，第一个和第三个<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mysql&gt; select BIN(7) 二进制数,MAKE_SET(7,&apos;MySQL&apos;,&apos;Oracle&apos;,&apos;SQL Server&apos;,&apos;PostgreSQL&apos;) 选取后的字符串;</div><div class="line">+--------------+-------------------------+</div><div class="line">| 二进制数     | 选取后的字符串          |</div><div class="line">+--------------+-------------------------+</div><div class="line">| 111          | MySQL,Oracle,SQL Server |</div><div class="line">+--------------+-------------------------+</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure></p>
+<p>7为111,选择为前3个</p>
+<h4 id="从现有字符串中截取子字符串LEFT-和RIGHT"><a href="#从现有字符串中截取子字符串LEFT-和RIGHT" class="headerlink" title="从现有字符串中截取子字符串LEFT()和RIGHT"></a>从现有字符串中截取子字符串LEFT()和RIGHT</h4><p> LEFT(str,num) RIGHT(str,num)<br>从左边或右边截取子字符串<br>返回字符串str中包含前NUM个字符，从左或者从右边数的字符串<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SELECT &apos;MySQL&apos; 字符串,LEFT(&apos;MySQL&apos;,2) 前2个字符串 ,RIGHT(&apos;MySQL&apos;,3) 后3个字符串;</div><div class="line">+-----------+------------------+------------------+</div><div class="line">| 字符串    | 前2个字符串      | 后3个字符串      |</div><div class="line">+-----------+------------------+------------------+</div><div class="line">| MySQL     | My               | SQL              |</div><div class="line">+-----------+------------------+------------------+</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure></p>
+<h4 id="截取指定位置和长度子字符串SUBSTRING和MID"><a href="#截取指定位置和长度子字符串SUBSTRING和MID" class="headerlink" title="截取指定位置和长度子字符串SUBSTRING和MID()"></a>截取指定位置和长度子字符串SUBSTRING和MID()</h4><p>SUBSTRING(str,num,len)<br>返回字符串str第num个位置开始长度为len的子字符串<br>MID(str,num,len)<br>返回字符串str第num个位置开始长度为len的子字符串</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SELECT &apos;oraclemysql&apos; 字符串,SUBSTR(&apos;oraclemysql&apos;,1,5),SUBSTR(&apos;oraclemysql&apos;,7),SUBSTRING(&apos;oraclemysql&apos;,7,5),SUBSTRING(&apos;oraclemysql&apos;,7),MID(&apos;oraclemysql&apos;,7,5),MID(&apos;oraclemysql&apos;,7);</div><div class="line">+-------------+---------------------------+-------------------------+------------------------------+----------------------------+------------------------+----------------------+</div><div class="line">| 字符串      | SUBSTR(&apos;oraclemysql&apos;,1,5) | SUBSTR(&apos;oraclemysql&apos;,7) | SUBSTRING(&apos;oraclemysql&apos;,7,5) | SUBSTRING(&apos;oraclemysql&apos;,7) | MID(&apos;oraclemysql&apos;,7,5) | MID(&apos;oraclemysql&apos;,7) |</div><div class="line">+-------------+---------------------------+-------------------------+------------------------------+----------------------------+------------------------+----------------------+</div><div class="line">| oraclemysql | oracl                     | mysql                   | mysql                        | mysql                      | mysql                  | mysql                |</div><div class="line">+-------------+---------------------------+-------------------------+------------------------------+----------------------------+------------------------+----------------------+</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure>
+<h4 id="去队字符串的首空格LTRIM"><a href="#去队字符串的首空格LTRIM" class="headerlink" title="去队字符串的首空格LTRIM()"></a>去队字符串的首空格LTRIM()</h4><p>LTRIM(STR)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SELECT  CONCAT(&apos;-&apos;,&apos; MySQL &apos;,&apos;-&apos;) 原来字符串,</div><div class="line">    -&gt; CHAR_LENGTH(CONCAT(&apos;-&apos;,&apos; MySQL &apos;,&apos;-&apos;))  原来字符串长度,</div><div class="line">    -&gt; CONCAT(&apos;-&apos;,LTRIM(&apos; MySQL &apos;),&apos;-&apos;) 处理后字符串,</div><div class="line">    -&gt; CHAR_LENGTH(CONCAT(&apos;-&apos;,LTRIM(&apos; MySQL &apos;),&apos;-&apos;))  处理后字符串长度;</div><div class="line">+-----------------+-----------------------+--------------------+--------------------------+</div><div class="line">| 原来字符串      | 原来字符串长度        | 处理后字符串       | 处理后字符串长度         |</div><div class="line">+-----------------+-----------------------+--------------------+--------------------------+</div><div class="line">| - MySQL -       |                     9 | -MySQL -           |                        8 |</div><div class="line">+-----------------+-----------------------+--------------------+--------------------------+</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure></p>
+<h4 id="去队字符串的尾空格RTRIM"><a href="#去队字符串的尾空格RTRIM" class="headerlink" title="去队字符串的尾空格RTRIM()"></a>去队字符串的尾空格RTRIM()</h4><p>RTRIM(STR)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SELECT  CONCAT(&apos;-&apos;,&apos; MySQL &apos;,&apos;-&apos;) 原来字符串,</div><div class="line">    -&gt; CHAR_LENGTH(CONCAT(&apos;-&apos;,&apos; MySQL &apos;,&apos;-&apos;))  原来字符串长度,</div><div class="line">    -&gt; CONCAT(&apos;-&apos;,RTRIM(&apos; MySQL &apos;),&apos;-&apos;) 处理后字符串,</div><div class="line">    -&gt; CHAR_LENGTH(CONCAT(&apos;-&apos;,RTRIM(&apos; MySQL &apos;),&apos;-&apos;))  处理后字符串长度;</div><div class="line">+-----------------+-----------------------+--------------------+--------------------------+</div><div class="line">| 原来字符串      | 原来字符串长度        | 处理后字符串       | 处理后字符串长度         |</div><div class="line">+-----------------+-----------------------+--------------------+--------------------------+</div><div class="line">| - MySQL -       |                     9 | - MySQL-           |                        8 |</div><div class="line">+-----------------+-----------------------+--------------------+--------------------------+</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure></p>
+<h4 id="去队字符串的首尾空格TRIM"><a href="#去队字符串的首尾空格TRIM" class="headerlink" title="去队字符串的首尾空格TRIM()"></a>去队字符串的首尾空格TRIM()</h4><p>TRIM(STR)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SELECT  CONCAT(&apos;-&apos;,&apos; MySQL &apos;,&apos;-&apos;) 原来字符串,</div><div class="line">    -&gt; CHAR_LENGTH(CONCAT(&apos;-&apos;,&apos; MySQL &apos;,&apos;-&apos;))  原来字符串长度,</div><div class="line">    -&gt; CONCAT(&apos;-&apos;,TRIM(&apos; MySQL &apos;),&apos;-&apos;) 处理后字符串,</div><div class="line">    -&gt; CHAR_LENGTH(CONCAT(&apos;-&apos;,TRIM(&apos; MySQL &apos;),&apos;-&apos;))  处理后字符串长度;</div><div class="line">+-----------------+-----------------------+--------------------+--------------------------+</div><div class="line">| 原来字符串      | 原来字符串长度        | 处理后字符串       | 处理后字符串长度         |</div><div class="line">+-----------------+-----------------------+--------------------+--------------------------+</div><div class="line">| - MySQL -       |                     9 | -MySQL-            |                        7 |</div><div class="line">+-----------------+-----------------------+--------------------+--------------------------+</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure></p>
+<h4 id="替换字符串insert"><a href="#替换字符串insert" class="headerlink" title="替换字符串insert"></a>替换字符串insert</h4><p>INSERT(str,pos,len,newstr)<br>将字符串str中pos位置开始长度为len的字符串使用newstr来替换</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SELECT &apos;这是MySQL数据库管理系统&apos; 原字符串,</div><div class="line">    -&gt; INSERT(&apos;这是MySQL数据库管理系统&apos;,3,5,&apos;Oracle&apos;) 替换后字符串;</div><div class="line">+----------------------------------+-----------------------------------+</div><div class="line">| 原字符串                         | 替换后字符串                      |</div><div class="line">+----------------------------------+-----------------------------------+</div><div class="line">| 这是MySQL数据库管理系统          | 这是Oracle数据库管理系统          |</div><div class="line">+----------------------------------+-----------------------------------+</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure>
+<p>当长度大于原来的字符串<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SELECT &apos;这是MySQL数据库管理系统&apos; 原字符串,</div><div class="line">    -&gt; CHAR_LENGTH(&apos;这是MySQL数据库管理系统&apos;) 字符串长度,</div><div class="line">    -&gt; INSERT(&apos;这是MySQL数据库管理系统&apos;,20,5,&apos;Oracle&apos;) 替换后字符串;</div><div class="line">+----------------------------------+-----------------+----------------------------------+</div><div class="line">| 原字符串                         | 字符串长度      | 替换后字符串                     |</div><div class="line">+----------------------------------+-----------------+----------------------------------+</div><div class="line">| 这是MySQL数据库管理系统          |              14 | 这是MySQL数据库管理系统          |</div><div class="line">+----------------------------------+-----------------+----------------------------------+</div><div class="line">1 row in set (0.00 sec)</div><div class="line"></div><div class="line">mysql&gt; SELECT &apos;这是MySQL数据库管理系统&apos; 原字符串,</div><div class="line">    -&gt; CHAR_LENGTH(&apos;这是MySQL数据库管理系统&apos;) 字符串长度,</div><div class="line">    -&gt; INSERT(&apos;这是MySQL数据库管理系统&apos;,13,5,&apos;Oracle&apos;) 替换后字符串;</div><div class="line">+----------------------------------+-----------------+----------------------------------+</div><div class="line">| 原字符串                         | 字符串长度      | 替换后字符串                     |</div><div class="line">+----------------------------------+-----------------+----------------------------------+</div><div class="line">| 这是MySQL数据库管理系统          |              14 | 这是MySQL数据库管理Oracle        |</div><div class="line">+----------------------------------+-----------------+----------------------------------+</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure></p>
+<p>当所有替换的长度大于原来字符串中所剩下的长度<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SELECT &apos;这是MySQL数据库管理系统&apos; 原字符串,</div><div class="line">    -&gt; CHAR_LENGTH(&apos;这是MySQL数据库管理系统&apos;) 字符串长度,</div><div class="line">    -&gt; INSERT(&apos;这是MySQL数据库管理系统&apos;,6,20,&apos;Oracle&apos;) 替换后字符串;</div><div class="line">+----------------------------------+-----------------+--------------------+</div><div class="line">| 原字符串                         | 字符串长度      | 替换后字符串       |</div><div class="line">+----------------------------------+-----------------+--------------------+</div><div class="line">| 这是MySQL数据库管理系统          |              14 | 这是MySOracle      |</div><div class="line">+----------------------------------+-----------------+--------------------+</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure></p>
+<h4 id="替换字符串REPLACE"><a href="#替换字符串REPLACE" class="headerlink" title="替换字符串REPLACE"></a>替换字符串REPLACE</h4><p>replcae(str,substr,newstr)<br>将字符串str中的子字符串substr用字符串newstr替换<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SELECT &apos;这是MySQL数据库管理系统&apos; 原字符串,</div><div class="line">    -&gt; REPLACE(&apos;这是MySQL数据库管理系统&apos;,&apos;mysql&apos;,&apos;Oracle&apos;) 替换后字符串,</div><div class="line">    -&gt; REPLACE(&apos;这是MySQL数据库管理系统&apos;,&apos;MySQL&apos;,&apos;Oracle&apos;) 替换后字符串;</div><div class="line">+----------------------------------+----------------------------------+-----------------------------------+</div><div class="line">| 原字符串                         | 替换后字符串                     | 替换后字符串                      |</div><div class="line">+----------------------------------+----------------------------------+-----------------------------------+</div><div class="line">| 这是MySQL数据库管理系统          | 这是MySQL数据库管理系统          | 这是Oracle数据库管理系统          |</div><div class="line">+----------------------------------+----------------------------------+-----------------------------------+</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure></p>
+<p>大小写必须一样才会替换，不然不会替换</p>
+<h4 id="字符串反转-Reverse-str-字符串反转"><a href="#字符串反转-Reverse-str-字符串反转" class="headerlink" title="字符串反转 Reverse(str)字符串反转.."></a>字符串反转 Reverse(str)字符串反转..</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mysql&gt; select reverse(&apos;abc&apos;);</div><div class="line">+----------------+</div><div class="line">| reverse(&apos;abc&apos;) |</div><div class="line">+----------------+</div><div class="line">| cba            |</div><div class="line">+----------------+</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;mysql学习十六常用字符函数&quot;&gt;&lt;a href=&quot;#mysql学习十六常用字符函数&quot; class=&quot;headerlink&quot; title=&quot;mysql学习十六常用字符函数&quot;&gt;&lt;/a&gt;mysql学习十六常用字符函数&lt;/h3&gt;&lt;h4 id=&quot;全并字符串函数-CONCA
+    
+    </summary>
+    
+      <category term="mysql" scheme="https://ln0491.github.io/categories/mysql/"/>
+    
+    
+      <category term="mysql" scheme="https://ln0491.github.io/tags/mysql/"/>
+    
+  </entry>
   
   <entry>
     <title>mysql学习十五子查询四(在select子句中使用子查询)</title>
@@ -835,383 +1088,6 @@
     
     
       <category term="log" scheme="https://ln0491.github.io/tags/log/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>javaBase64使用</title>
-    <link href="https://ln0491.github.io/2016/11/17/javaBase64%E4%BD%BF%E7%94%A8/"/>
-    <id>https://ln0491.github.io/2016/11/17/javaBase64使用/</id>
-    <published>2016-11-17T03:06:11.000Z</published>
-    <updated>2016-11-17T03:10:29.377Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><pre><code>public static void main(String[] args) {
-
-    String str = &quot;Hello, world!&quot;;
-    System.out.println(&quot;未加密前：&quot; + str + &quot;  长度:&quot; + str.length());
-
-    String encoderString = toBase64Encode(str);
-    System.out.println(&quot;加密: &quot; + encoderString + &quot;  长度:&quot; + encoderString.length());
-
-    String decoderString = toDecodeFromeBase64(encoderString);
-    System.out.println(&quot;解密： &quot; + decoderString + &quot;  长度:&quot; + decoderString.length());
-
-    String path = &quot;D:/tmp/ba.png&quot;;
-
-    String imgString = fileToBase64String(path);
-    System.out.println(&quot;图片转base64 : &quot; + imgString);
-
-    boolean flag = base64StringToFile(imgString);
-    System.out.println(&quot;flag = &quot; + flag);
-}
-</code></pre><h2 id="使用Base64加密字符串"><a href="#使用Base64加密字符串" class="headerlink" title="使用Base64加密字符串"></a>使用Base64加密字符串</h2><pre><code>/**
- * 使用Base64加密字符串
-* @Title: toBase64Encode
-* @Description: TODO(这里用一句话描述这个方法的作用)
-* @param @param str
-* @param @return    设定文件
-* @return String    返回类型
-* @throws
- */
-public static String toBase64Encode(String str) {
-    String result = null;
-
-    try {
-        result = new BASE64Encoder().encode(str.getBytes(&quot;utf8&quot;));
-    } catch (UnsupportedEncodingException e) {
-        e.printStackTrace();
-
-    }
-
-    return result;
-}
-</code></pre><h2 id="使用Base64解码"><a href="#使用Base64解码" class="headerlink" title="使用Base64解码"></a>使用Base64解码</h2><pre><code>/**
- * 使用Base64解码
-* @Title: toDecodeFromeBase64
-* @Description: TODO(这里用一句话描述这个方法的作用)
-* @param @param str
-* @param @return    设定文件
-* @return String    返回类型
-* @throws
- */
-public static String toDecodeFromeBase64(String str) {
-    String result = null;
-    byte[] decodeBuffer;
-
-    try {
-        BASE64Decoder decoder = new BASE64Decoder();
-        decodeBuffer = decoder.decodeBuffer(str);
-
-        result = new String(decodeBuffer, &quot;utf8&quot;);
-    } catch (IOException e) {
-        e.printStackTrace();
-    }
-
-    return result;
-}
-</code></pre><h2 id="将一个图片文件转化为Bases64字符串"><a href="#将一个图片文件转化为Bases64字符串" class="headerlink" title="将一个图片文件转化为Bases64字符串"></a>将一个图片文件转化为Bases64字符串</h2><pre><code>/**
- * 根据路径是加密一个图片
-* @Title: fileToBase64String
-* @Description: TODO(这里用一句话描述这个方法的作用)
-* @param @param path
-* @param @return    设定文件
-* @return String    返回类型
-* @throws
- */
-public static String fileToBase64String(String path) {
-    String result = null;
-
-    InputStream in = null;
-    byte[] data;
-    try {
-        in = new FileInputStream(path);
-        // 声明字符数组长度为流的长度
-        data = new byte[in.available()];
-
-        // 读取文件到流中
-        in.read(data);
-        // 转化为字符串
-        BASE64Encoder encoder = new BASE64Encoder();
-        // 加密
-        result = encoder.encode(data);
-
-    } catch (FileNotFoundException e) {
-        e.printStackTrace();
-    } catch (IOException e) {
-        e.printStackTrace();
-    } finally {
-        IOUtils.close(in);
-    }
-
-    return result;
-}
-</code></pre><h2 id="将base64字符串转化文件"><a href="#将base64字符串转化文件" class="headerlink" title="将base64字符串转化文件"></a>将base64字符串转化文件</h2><pre><code>/**
- * 将base64字符串转化文件
-* @Title: base64StringToFile
-* @Description: TODO(这里用一句话描述这个方法的作用)
-* @param @param base64String
-* @param @return    设定文件
-* @return boolean    返回类型
-* @throws
- */
-public static boolean base64StringToFile(String base64String) {
-
-    boolean flag = false;
-
-    if (base64String == null) {
-        return flag;
-
-    }
-    BASE64Decoder decoder = new BASE64Decoder();
-    OutputStream out = null;
-    // Base64解码
-    try {
-        // 读取字符数据中
-        byte[] data = decoder.decodeBuffer(base64String);
-        // 调整数据
-        for (int i = 0; i &lt; data.length; ++i) {
-            if (data[i] &lt; 0) {// 调整异常数据
-                data[i] += 256;
-            }
-        }
-
-        // 生成jpeg图片
-        String imgFilePath = &quot;d:/tmp/test22.png&quot;;// 新生成的图片
-        out = new FileOutputStream(imgFilePath);
-        out.write(data);
-        out.flush();
-
-        flag = true;
-
-    } catch (IOException e) {
-        e.printStackTrace();
-        flag = false;
-    } finally {
-        IOUtils.close(out);
-    }
-
-    return flag;
-}
-</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;测试&quot;&gt;&lt;a href=&quot;#测试&quot; class=&quot;headerlink&quot; title=&quot;测试&quot;&gt;&lt;/a&gt;测试&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;public static void main(String[] args) {
-
-    String str = &amp;qu
-    
-    </summary>
-    
-      <category term="java" scheme="https://ln0491.github.io/categories/java/"/>
-    
-    
-      <category term="base64" scheme="https://ln0491.github.io/tags/base64/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>android 常用混淆</title>
-    <link href="https://ln0491.github.io/2016/11/16/android-%E5%B8%B8%E7%94%A8%E6%B7%B7%E6%B7%86/"/>
-    <id>https://ln0491.github.io/2016/11/16/android-常用混淆/</id>
-    <published>2016-11-16T07:40:01.000Z</published>
-    <updated>2016-11-16T07:42:01.190Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="通常不需混淆的Android类"><a href="#通常不需混淆的Android类" class="headerlink" title="通常不需混淆的Android类"></a>通常不需混淆的Android类</h1><pre><code>-keep public class * extends android.app.Fragment
--keep public class * extends android.app.Activity
--keep public class * extends android.app.Application
--keep public class * extends android.app.Service
--keep public class * extends android.content.BroadcastReceiver
--keep public class * extends android.preference.Preference
--keep public class * extends android.content.ContentProvider
--keep public class * extends android.support.v4.**
--keep public class * extends android.support.annotation.**
--keep public class * extends android.support.v7.**
-</code></pre><h1 id="butterknife"><a href="#butterknife" class="headerlink" title="butterknife"></a>butterknife</h1><pre><code>-keep class butterknife.** { *; }
--dontwarn butterknife.internal.**
--keep class **$$ViewBinder { *; }
--keepclasseswithmembernames class * {
-    @butterknife.* &lt;fields&gt;;
-}
--keepclasseswithmembernames class * {
-    @butterknife.* &lt;methods&gt;;
-}
-</code></pre><h1 id="RxJava-RxAndroid"><a href="#RxJava-RxAndroid" class="headerlink" title="RxJava RxAndroid"></a>RxJava RxAndroid</h1><pre><code>-dontwarn sun.misc.**
--keepclassmembers class rx.internal.util.unsafe.*ArrayQueue*Field* {
-   long producerIndex;
-   long consumerIndex;
-}
--keepclassmembers class rx.internal.util.unsafe.BaseLinkedQueueProducerNodeRef {
-    rx.internal.util.atomic.LinkedQueueNode producerNode;
-}
--keepclassmembers class rx.internal.util.unsafe.BaseLinkedQueueConsumerNodeRef {
-    rx.internal.util.atomic.LinkedQueueNode consumerNode;
-}
-</code></pre><h1 id="retrofit2"><a href="#retrofit2" class="headerlink" title="retrofit2"></a>retrofit2</h1><pre><code>-dontwarn retrofit2.**
--keep class retrofit2.** { *; }
--keepattributes Signature
--keepattributes Exceptions
-</code></pre><h1 id="okhttp"><a href="#okhttp" class="headerlink" title="okhttp"></a>okhttp</h1><pre><code>-dontwarn com.squareup.okhttp3.**
--keep class com.squareup.okhttp3.** { *;}
--dontwarn okio.**
-</code></pre><h1 id="日志"><a href="#日志" class="headerlink" title="日志"></a>日志</h1><pre><code>-dontwarn okhttp3.logging.**
-</code></pre><h1 id="glide"><a href="#glide" class="headerlink" title="glide"></a>glide</h1><pre><code>-keep public class * implements com.bumptech.glide.module.GlideModule
--keep public enum com.bumptech.glide.load.resource.bitmap.ImageHeaderParser$** {
-  **[] $VALUES;
-  public *;
-}
-</code></pre><h1 id="eventbus"><a href="#eventbus" class="headerlink" title="eventbus"></a>eventbus</h1><pre><code>-keepattributes *Annotation*
--keepclassmembers class ** {
-    @org.greenrobot.eventbus.Subscribe &lt;methods&gt;;
-}
--keep enum org.greenrobot.eventbus.ThreadMode { *; }
-</code></pre><h1 id="友盟统计"><a href="#友盟统计" class="headerlink" title="友盟统计"></a>友盟统计</h1><pre><code>-keepclassmembers class * {
-  public &lt;init&gt; (org.json.JSONObject);
-}
--keep public class [您的应用包名].R$*{
-  public static final int *;
-}
--keepclassmembers enum * {
-  public static **[] values(); public static ** valueOf(java.lang.String);
-}
-</code></pre><h1 id="Gson"><a href="#Gson" class="headerlink" title="Gson"></a>Gson</h1><pre><code>-keepattributes Signature-keepattributes *Annotation*
--keep class sun.misc.Unsafe { *; }
--keep class com.google.gson.stream.** { *; }
-# Application classes that will be serialized/deserialized over Gson 下面替换成自己的实体类
--keep class com.example.bean.** { *; }
-</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;通常不需混淆的Android类&quot;&gt;&lt;a href=&quot;#通常不需混淆的Android类&quot; class=&quot;headerlink&quot; title=&quot;通常不需混淆的Android类&quot;&gt;&lt;/a&gt;通常不需混淆的Android类&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;-keep publ
-    
-    </summary>
-    
-      <category term="android" scheme="https://ln0491.github.io/categories/android/"/>
-    
-    
-      <category term="android" scheme="https://ln0491.github.io/tags/android/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Android中View动画</title>
-    <link href="https://ln0491.github.io/2016/11/11/Android%E4%B8%ADView%E5%8A%A8%E7%94%BB/"/>
-    <id>https://ln0491.github.io/2016/11/11/Android中View动画/</id>
-    <published>2016-11-11T06:28:51.000Z</published>
-    <updated>2016-11-11T09:02:15.221Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="Android中View动画"><a href="#Android中View动画" class="headerlink" title="Android中View动画"></a>Android中View动画</h3><h4 id="XML结构"><a href="#XML结构" class="headerlink" title="XML结构"></a>XML结构</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;  </div><div class="line">&lt;set xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;  </div><div class="line">    android:interpolator=&quot;@[package:]anim/interpolator_resource&quot;  </div><div class="line">    android:shareInterpolator=[&quot;true&quot; | &quot;false&quot;] &gt;  </div><div class="line">    &lt;alpha  </div><div class="line">        android:fromAlpha=&quot;float&quot;  </div><div class="line">        android:toAlpha=&quot;float&quot; /&gt;  </div><div class="line">    &lt;scale  </div><div class="line">        android:fromXScale=&quot;float&quot;  </div><div class="line">        android:toXScale=&quot;float&quot;  </div><div class="line">        android:fromYScale=&quot;float&quot;  </div><div class="line">        android:toYScale=&quot;float&quot;  </div><div class="line">        android:pivotX=&quot;float&quot;  </div><div class="line">        android:pivotY=&quot;float&quot; /&gt;  </div><div class="line">    &lt;translate  </div><div class="line">        android:fromX=&quot;float&quot;  </div><div class="line">        android:toX=&quot;float&quot;  </div><div class="line">        android:fromY=&quot;float&quot;  </div><div class="line">        android:toY=&quot;float&quot; /&gt;  </div><div class="line">    &lt;rotate  </div><div class="line">        android:fromDegrees=&quot;float&quot;  </div><div class="line">        android:toDegrees=&quot;float&quot;  </div><div class="line">        android:pivotX=&quot;float&quot;  </div><div class="line">        android:pivotY=&quot;float&quot; /&gt;  </div><div class="line">    &lt;set&gt;  </div><div class="line">        ...  </div><div class="line">    &lt;/set&gt;  </div><div class="line">&lt;/set&gt;</div></pre></td></tr></table></figure>
-<p>XML文件中必须有一个根元素，可以是<alpha>、<scale>、<translate>、<rotate>中的任意一个，也可以是<set>来管理一个由前面几个元素组成的动画集合。</set></rotate></translate></scale></alpha></p>
-<p><set>是一个动画容器，管理多个动画的群组，与之相对应的Java对象是AnimationSet</set></p>
-<ul>
-<li>fillBefore fillAfter</li>
-</ul>
-<p>fillBefore是指动画结束时画面停留在此动画的第一帧;<br>fillAfter是指动画结束是画面停留在此动画的最后一帧。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">/*****动画结束时，停留在最后一帧*********</div><div class="line">setFillAfter(true);</div><div class="line">setFillBefore(false);  </div><div class="line">/*****动画结束时，停留在第一帧*********</div><div class="line">setFillAfter(false);</div><div class="line">setFillBefore(true);</div></pre></td></tr></table></figure></p>
-<p>XML设置</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">xml设置如下：</div><div class="line">/******动画结束时，停留在最后一帧**********</div><div class="line">&lt;set Android:fillAfter=&quot;true&quot; android:fillBefore=&quot;false&quot;&gt;</div><div class="line"></div><div class="line"></div><div class="line">/******动画结束时，停留在第一帧**********</div><div class="line">&lt;set android:fillAfter=&quot;false&quot; android:fillBefore=&quot;true&quot;&gt;</div></pre></td></tr></table></figure>
-<p>用这两个属性前要先 把 设 android:fillEnabled=”true” 这样才有效果<br>PS：xml设置在子标签里面设置是无效的，注意是set标签</p>
-<ul>
-<li>shareInterpolator<br>android:shareInterpolator代表<set>里面的多个动画是否要共享插值器，默认值为true，即共享插值器，如果设置为false，那么<set>的插值器就不再起作用，我们要在每个动画中加入插值器。</set></set></li>
-</ul>
-<ul>
-<li>interpolator<br>Android:interpolator代表一个插值器资源，可以引用系统自带插值器资源，也可以用自定义插值器资源，默认值是匀速插值器<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">AccelerateDecelerateInterpolator	@android:anim/accelerate_decelerate_interpolator	先加速再减速</div><div class="line">AccelerateInterpolator				@android:anim/accelerate_interpolator				加速</div><div class="line">AnticipateInterpolator				@android:anim/anticipate_interpolator				先回退一小步然后加速前进</div><div class="line">AnticipateOvershootInterpolator		@android:anim/anticipate_overshoot_interpolator		在上一个基础上超出终点一小步再回到终点</div><div class="line">BounceInterpolator					@android:anim/bounce_interpolator					最后阶段弹球效果</div><div class="line">CycleInterpolator					@android:anim/cycle_interpolator					周期运动</div><div class="line">DecelerateInterpolator				@android:anim/decelerate_interpolator				减速</div><div class="line">LinearInterpolator					@android:anim/linear_interpolator					匀速</div><div class="line">OvershootInterpolator				@android:anim/overshoot_interpolator				快速到达终点并超出一小步最后回到终点</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h4 id="translate"><a href="#translate" class="headerlink" title="translate"></a>translate</h4><ul>
-<li><translate>是位移动画，代表一个水平、垂直的位移。</translate></li>
-<li>与之对应的Java对象是TranslateAnimation。</li>
-<li>android:fromXDelta属性代表起始X方向的位置，</li>
-<li>android:toXDelta代表结尾X方向上的位置，</li>
-<li>android:fromYScale属性代表起始Y方向上的位置，</li>
-<li>android:toYDelta属性代表结尾Y方向上的位置</li>
-<li>以上四个属性都支持三种表示方式：浮点数、num%、num%p；</li>
-<li>如果以浮点数字表示，代表相对自身原始位置的像素值；</li>
-<li>如果以num%表示，代表相对于自己的百分比</li>
-<li>比如toXDelta定义为100%就表示在X方向上移动自己的1倍距离；如果以num%p表示，代表相对于父类组件的百分比。</li>
-</ul>
-<p>XML</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</div><div class="line">&lt;set xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</div><div class="line">    android:fillEnabled=&quot;true&quot;</div><div class="line">   android:shareInterpolator=&quot;true&quot;</div><div class="line">    android:fillBefore=&quot;true&quot;</div><div class="line">    android:fillAfter=&quot;false&quot;</div><div class="line">   android:interpolator=&quot;@android:anim/bounce_interpolator&quot;&gt;</div><div class="line"></div><div class="line"></div><div class="line">   &lt;translate android:fromXDelta=&quot;-20%&quot;</div><div class="line">              android:fromYDelta=&quot;-30%&quot;</div><div class="line">              android:toXDelta=&quot;80%p&quot;</div><div class="line">              android:toYDelta=&quot;80%&quot;</div><div class="line">              android:duration=&quot;2000&quot;</div><div class="line"></div><div class="line">              android:repeatMode=&quot;restart&quot;/&gt;</div><div class="line"></div><div class="line">   &lt;!--</div><div class="line">   fromXDelta 从哪里开始x轴</div><div class="line">   fromYDelta 从哪里开始y轴</div><div class="line">   repeatCount=&quot;infinite&quot; 播放次数 infinite 无限</div><div class="line">   repeatMode   reverse    播放模式  reverse 反方向进行，播放完了就，从播放完的地方倒着回到开始地址, restart 每次都从开始的地方开始播放</div><div class="line">   --&gt;</div><div class="line"></div><div class="line">&lt;/set&gt;</div></pre></td></tr></table></figure>
-<p>java</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">private void toTranstion() &#123;</div><div class="line">      </div><div class="line">      /**</div><div class="line">       * 加载XML</div><div class="line">       */</div><div class="line">      Animation animation = AnimationUtils.loadAnimation(this,R.anim.translate);</div><div class="line"></div><div class="line">      //开始播放</div><div class="line">      mBtnTr.startAnimation(animation);</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">  &#125;</div></pre></td></tr></table></figure>
-<p>代码动画</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Animation animation =new TranslateAnimation(0,100,0,0);</div><div class="line">       animation.setDuration(3000);</div><div class="line">       animation.setRepeatMode(Animation.REVERSE);</div><div class="line">       animation.setRepeatCount(Animation.INFINITE);</div><div class="line">	mBtnTr.startAnimation(animation);</div></pre></td></tr></table></figure>
-<h4 id="rotate"><a href="#rotate" class="headerlink" title="rotate"></a>rotate</h4><p><rotate>是旋转动画，与之对应的Java对象是RotateAnimation。<br>android:fromDegrees属性代表起始角度，浮点值，单位：度；<br>android:toDegrees属性代表结尾角度，浮点值，单位：度；<br>android:pivotX属性代表旋转中心的X坐标值，<br>android:pivotY属性代表旋转中心的Y坐标值，<br>这两个属性也有三种表示方式，数字方式代表相对于自身左边缘的像素值，num%方式代表相对于自身左边缘或顶边缘的百分比，num%p方式代表相对于父容器的左边缘或顶边缘的百分比。</rotate></p>
-<p> 例子<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</div><div class="line">&lt;set xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</div><div class="line">    android:shareInterpolator=&quot;true&quot;</div><div class="line">    android:fillAfter=&quot;true&quot;</div><div class="line">     android:fillBefore=&quot;false&quot;</div><div class="line">    android:interpolator=&quot;@android:anim/anticipate_interpolator&quot;&gt;</div><div class="line"></div><div class="line">    &lt;rotate android:fromDegrees=&quot;0&quot;</div><div class="line">            android:repeatMode=&quot;reverse&quot;</div><div class="line">            android:repeatCount=&quot;2&quot;    </div><div class="line">            android:pivotX=&quot;50%&quot;</div><div class="line">            android:pivotY=&quot;50%&quot;</div><div class="line">            android:duration=&quot;2000&quot;</div><div class="line">            android:toDegrees=&quot;-360&quot;/&gt;</div><div class="line">&lt;/set&gt;</div></pre></td></tr></table></figure></p>
-<p>java<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Animation animation = AnimationUtils.loadAnimation(this,R.anim.rotate);</div><div class="line">      mBtnRot.startAnimation(animation);</div></pre></td></tr></table></figure></p>
-<p>代码实现动画<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Animation roateAnimation = new RotateAnimation(0,360,Animation.RELATIVE_TO_SELF,0.5f,Animation.RELATIVE_TO_SELF,0.5f);</div><div class="line">        roateAnimation.setDuration(5000);</div><div class="line">        mBtnRot.startAnimation(roateAnimation);</div></pre></td></tr></table></figure></p>
-<h4 id="scale"><a href="#scale" class="headerlink" title="scale"></a>scale</h4><p><scale>是缩放动画，可以实现动态调控件尺寸的效果，与之对应的Java对象是ScaleAnimation。<br>android:fromXScale属性代表起始的X方向上相对自身的缩放比例，浮点值，比如1.0代表自身无变化，0.5代表起始时缩小一倍，2.0代表放大一倍；<br>android:toXScale属性代表结尾的X方向上相对自身的缩放比例，浮点值；<br>android:fromYScale属性代表起始的Y方向上相对自身的缩放比例，浮点值；<br>android:toYScale属性代表结尾的Y方向上相对自身的缩放比例，浮点值；<br>android:pivotX属性代表缩放的中轴点X坐标，浮点值，<br>android:pivotY属性代表缩放的中轴点Y坐标，浮点值，对于这两个属性，如果我们想表示中轴点为图像的中心，我们可以把两个属性值定义成0.5或者50%。</scale></p>
-<p>例子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</div><div class="line">&lt;set xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</div><div class="line">   android:shareInterpolator=&quot;true&quot;</div><div class="line">    android:interpolator=&quot;@android:anim/accelerate_interpolator&quot;&gt;</div><div class="line"></div><div class="line">    &lt;scale android:fromXScale=&quot;0&quot;</div><div class="line">           android:fromYScale=&quot;-1.0&quot;</div><div class="line">           android:pivotX=&quot;50%&quot;</div><div class="line">           android:pivotY=&quot;50%&quot;</div><div class="line">           android:duration=&quot;2000&quot;</div><div class="line">           android:repeatCount=&quot;2&quot;</div><div class="line">           android:repeatMode=&quot;reverse&quot;</div><div class="line">           android:toXScale=&quot;2.0&quot;</div><div class="line">           android:toYScale=&quot;3.0&quot;/&gt;</div><div class="line">&lt;/set&gt;</div></pre></td></tr></table></figure>
-<p>JAVA</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Animation scalAnimation = AnimationUtils.loadAnimation(this,R.anim.scale);</div><div class="line">       mBtnScal.startAnimation(scalAnimation);</div></pre></td></tr></table></figure>
-<p>代码动画<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Animation scalAnimation = new RotateAnimation(0,1,Animation.RELATIVE_TO_SELF,0.5f,Animation.RELATIVE_TO_SELF,0.5f);</div><div class="line">       scalAnimation.setDuration(3000);</div><div class="line">       scalAnimation.setFillEnabled(true);</div><div class="line">       scalAnimation.setFillAfter(true);</div><div class="line">       scalAnimation.setFillBefore(false);</div><div class="line">       scalAnimation.setRepeatCount(2);</div><div class="line">       mBtnScal.startAnimation(scalAnimation);</div></pre></td></tr></table></figure></p>
-<h4 id="alpha"><a href="#alpha" class="headerlink" title="alpha"></a>alpha</h4><p><alpha>是渐变动画，可以实现fadeIn和fadeOut的效果，与之对应的Java对象是AlphaAnimation。<br>android:fromAlpha属性代表起始alpha值，浮点值，范围在0.0和1.0之间，分别代表透明和完全不透明，<br>android:toAlpha属性代表结尾alpha值，浮点值，范围也在0.0和1.0之间。</alpha></p>
-<p>例子<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</div><div class="line">&lt;set xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</div><div class="line">     android:shareInterpolator=&quot;true&quot;</div><div class="line">     android:interpolator=&quot;@android:anim/accelerate_interpolator&quot;</div><div class="line">    &gt;</div><div class="line"></div><div class="line"></div><div class="line">    &lt;alpha android:fromAlpha=&quot;0&quot;</div><div class="line">           android:toAlpha=&quot;1&quot;</div><div class="line">           android:repeatCount=&quot;infinite&quot;</div><div class="line">           android:repeatMode=&quot;reverse&quot;</div><div class="line">           android:duration=&quot;3000&quot;/&gt;</div><div class="line"></div><div class="line">&lt;/set&gt;</div></pre></td></tr></table></figure></p>
-<p>java</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Animation alphaAnimation = AnimationUtils.loadAnimation(this,R.anim.alpha);</div><div class="line">      mBtnAl.startAnimation(alphaAnimation);</div></pre></td></tr></table></figure>
-<p>代码实现<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Animation animation = new AlphaAnimation(0,1);</div><div class="line">       animation.setDuration(3000);</div><div class="line">       animation.setInterpolator(new AccelerateInterpolator());</div><div class="line"></div><div class="line">       mBtnAl.startAnimation(animation);</div></pre></td></tr></table></figure></p>
-<h4 id="集合动画"><a href="#集合动画" class="headerlink" title="集合动画"></a>集合动画</h4><p>set 对应AnimationSet</p>
-<p>XML实现<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</div><div class="line">&lt;set xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</div><div class="line">    android:shareInterpolator=&quot;true&quot;</div><div class="line">    android:duration=&quot;2000&quot;</div><div class="line">     android:repeatMode=&quot;reverse&quot;</div><div class="line">     android:repeatCount=&quot;infinite&quot;</div><div class="line">     android:interpolator=&quot;@android:anim/bounce_interpolator&quot;</div><div class="line">    android:startOffset=&quot;100&quot;&gt;</div><div class="line"></div><div class="line">    &lt;alpha android:fromAlpha=&quot;0&quot;</div><div class="line">           android:toAlpha=&quot;1&quot;/&gt;</div><div class="line">    &lt;rotate android:fromDegrees=&quot;0&quot;</div><div class="line">            android:pivotX=&quot;20%&quot;</div><div class="line">            android:pivotY=&quot;50%&quot;</div><div class="line">            android:toDegrees=&quot;260&quot;</div><div class="line">            /&gt;</div><div class="line"></div><div class="line"></div><div class="line">    &lt;scale android:pivotY=&quot;50%&quot;</div><div class="line">           android:pivotX=&quot;50%&quot;</div><div class="line">           android:fromXScale=&quot;0&quot;</div><div class="line">           android:fromYScale=&quot;0&quot;</div><div class="line">           android:toXScale=&quot;2.0&quot;</div><div class="line">           android:toYScale=&quot;3.0&quot;</div><div class="line">           /&gt;</div><div class="line"></div><div class="line">    &lt;translate android:fromXDelta=&quot;0&quot;</div><div class="line">               android:fromYDelta=&quot;0&quot;</div><div class="line">               android:toXDelta=&quot;80%p&quot;</div><div class="line">               android:toYDelta=&quot;60%&quot;/&gt;</div><div class="line"></div><div class="line">&lt;/set&gt;</div></pre></td></tr></table></figure></p>
-<p>java<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">Animation animation =AnimationUtils.loadAnimation(this,R.anim.animset);</div><div class="line"></div><div class="line">mBtnSet.startAnimation(animation);</div></pre></td></tr></table></figure></p>
-<p>代码实现</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">AnimationSet set = new AnimationSet(true);</div><div class="line">     set.setDuration(3000);</div><div class="line"></div><div class="line">     Animation translateAnimation = new TranslateAnimation(Animation.RELATIVE_TO_SELF,0,Animation.RELATIVE_TO_SELF,2.0f,Animation.RELATIVE_TO_SELF,0f,Animation.RELATIVE_TO_SELF,-2.0f);</div><div class="line"></div><div class="line">     Animation roateAnimation = new RotateAnimation(0,360,Animation.RELATIVE_TO_SELF,0.5f,Animation.RELATIVE_TO_SELF,0.5f);</div><div class="line"></div><div class="line">    Animation scaleAnimation = new ScaleAnimation(0,1f,0,2.0f,Animation.RELATIVE_TO_SELF,0.5f,Animation.RELATIVE_TO_SELF,0.5f);</div><div class="line"></div><div class="line">     Animation alphaAnimation = new AlphaAnimation(0,1);</div><div class="line"></div><div class="line"></div><div class="line">     set.addAnimation(translateAnimation);</div><div class="line">   set.addAnimation(roateAnimation);</div><div class="line">     set.addAnimation(scaleAnimation);</div><div class="line">     set.addAnimation(alphaAnimation);</div><div class="line"></div><div class="line">     set.setInterpolator(new BounceInterpolator());</div><div class="line">     mBtnSet.startAnimation(set);</div></pre></td></tr></table></figure>
-<p>AnimationSet 我们最常用的是调用其 addAnimation 将一个个不一样的动画组织到一起来，然后调用view 的 startAnimation 方法触发这些动画执行。功能较弱不能做到把集合中的动画按一定顺序进行组织然后在执行的定制。<br>Animation 是针对视图外观的动画实现，动画被应用时外观改变但视图的触发点不会发生变化，还是在原来定义的位置。<br>源码<br><a href="https://github.com/ln0491/ViewAnimation" target="_blank" rel="external">https://github.com/ln0491/ViewAnimation</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;Android中View动画&quot;&gt;&lt;a href=&quot;#Android中View动画&quot; class=&quot;headerlink&quot; title=&quot;Android中View动画&quot;&gt;&lt;/a&gt;Android中View动画&lt;/h3&gt;&lt;h4 id=&quot;XML结构&quot;&gt;&lt;a href=&quot;#
-    
-    </summary>
-    
-      <category term="android" scheme="https://ln0491.github.io/categories/android/"/>
-    
-    
-      <category term="View动画" scheme="https://ln0491.github.io/tags/View%E5%8A%A8%E7%94%BB/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Android中帧动画</title>
-    <link href="https://ln0491.github.io/2016/11/11/Android%E4%B8%AD%E5%B8%A7%E5%8A%A8%E7%94%BB/"/>
-    <id>https://ln0491.github.io/2016/11/11/Android中帧动画/</id>
-    <published>2016-11-11T02:02:53.000Z</published>
-    <updated>2016-11-11T02:15:03.735Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="Android中帧动画"><a href="#Android中帧动画" class="headerlink" title="Android中帧动画"></a>Android中帧动画</h3><h4 id="Android中的逐帧动画"><a href="#Android中的逐帧动画" class="headerlink" title="Android中的逐帧动画"></a>Android中的逐帧动画</h4><p>，逐帧动画是一种常见的动画形式（Frame By Frame），其原理是在“连续的关键帧”中分解动画动作，也就是在时间轴的每帧上逐帧绘制不同的内容，使其连续播放而成动画。 因为逐帧动画的帧序列内容不一样，不但给制作增加了负担而且最终输出的文件量也很大，但它的优势也很明显：逐帧动画具有非常大的灵活性，几乎可以表现任何想表现的内容，而它类似与电影的播放模式，很适合于表演细腻的动画。</p>
-<p>在Android中逐帧动画需要得到AnimationDrawable类的支持，它位于”android.graphics.drawable.AnimationDrawable”包下，是Drawable的间接子类。它主要用来创建一个逐帧动画，并且可以对帧进行拉伸，把它设置为View的背景即可使用AnimationDrawable.start()方法播放。既然逐帧动画是需要播放一帧一帧的图像，所以需要为其添加帧。在Android中提供了两种方式为AnimationDrawable添加帧：XML定义的资源文件和Java代码创建，后面再详细讲讲这两种添加帧的方式。</p>
-<p>光为AnimationDrawable设置帧还不能完成播放动画的功能，还需要AnimationDrawable定义好的其他的一些方法来操作逐帧动画，下面简单介绍一下AnimationDrawable的常用方法：</p>
-<ul>
-<li>void start()：开始播放逐帧动画。</li>
-<li>void stop()：停止播放逐帧动画。</li>
-<li>void addFrame(Drawable frame,int duration)：为AnimationDrawable添加一帧，并设置持续时间。</li>
-<li>int getDuration(int i)：得到指定index的帧的持续时间。</li>
-<li>Drawable getFrame(int index)：得到指定index的帧Drawable。</li>
-<li>int getNumberOfFrames()：得到当前AnimationDrawable的所有帧数量。</li>
-<li>boolean isOneShot()：当前AnimationDrawable是否执行一次，返回true执行一次，false循环播放。</li>
-<li>boolean isRunning()：当前AnimationDrawable是否正在播放。</li>
-<li>void setOneShot(boolean oneShot)：设置AnimationDrawable是否执行一次，true执行一次，false循环播放</li>
-</ul>
-<h4 id="在代码中设置帧动画"><a href="#在代码中设置帧动画" class="headerlink" title="在代码中设置帧动画"></a>在代码中设置帧动画</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">// 为AnimationDrawable添加动画帧</div><div class="line">       mCodeAd.addFrame(getResources().getDrawable(R.drawable.loading_img_01),100);</div><div class="line">       mCodeAd.addFrame(getResources().getDrawable(R.drawable.loading_img_02),100);</div><div class="line">       mCodeAd.addFrame(getResources().getDrawable(R.drawable.loading_img_03),100);</div><div class="line">       mCodeAd.addFrame(getResources().getDrawable(R.drawable.loading_img_04),100);</div><div class="line">       mCodeAd.addFrame(getResources().getDrawable(R.drawable.loading_img_05),100);</div><div class="line">       mCodeAd.addFrame(getResources().getDrawable(R.drawable.loading_img_06),100);</div><div class="line">       mCodeAd.addFrame(getResources().getDrawable(R.drawable.loading_img_07),100);</div><div class="line">       mCodeAd.addFrame(getResources().getDrawable(R.drawable.loading_img_08),100);</div><div class="line">       mCodeAd.addFrame(getResources().getDrawable(R.drawable.loading_img_09),100);</div><div class="line">       mCodeAd.addFrame(getResources().getDrawable(R.drawable.loading_img_10),100);</div><div class="line">       mCodeAd.addFrame(getResources().getDrawable(R.drawable.loading_img_11),100);</div><div class="line">       mCodeAd.addFrame(getResources().getDrawable(R.drawable.loading_img_12),100);</div><div class="line">       //循环播放</div><div class="line">       mCodeAd.setOneShot(false);</div><div class="line">       //设置背景</div><div class="line">       mIvCode.setBackgroundDrawable(mCodeAd);</div></pre></td></tr></table></figure>
-<p>播放<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">private void startCode() &#123;</div><div class="line"></div><div class="line">       if(mCodeAd!=null &amp;&amp; !mCodeAd.isRunning())&#123;</div><div class="line">           mCodeAd.start();</div><div class="line">       &#125;else if(mCodeAd!=null &amp;&amp; mCodeAd.isRunning()) &#123;</div><div class="line">           mCodeAd.stop();</div><div class="line">       &#125;</div><div class="line"></div><div class="line"></div><div class="line">   &#125;</div></pre></td></tr></table></figure></p>
-<h4 id="在XML中设置帧动画"><a href="#在XML中设置帧动画" class="headerlink" title="在XML中设置帧动画"></a>在XML中设置帧动画</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</div><div class="line">&lt;animation-list xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</div><div class="line">    android:oneshot=&quot;false&quot;&gt;</div><div class="line">&lt;!--定义一个帧动画播放时间为100ms--&gt;</div><div class="line">    &lt;item android:drawable=&quot;@drawable/loading_img_01&quot; android:duration=&quot;100&quot;/&gt;</div><div class="line">    &lt;item android:drawable=&quot;@drawable/loading_img_02&quot; android:duration=&quot;100&quot;/&gt;</div><div class="line">    &lt;item android:drawable=&quot;@drawable/loading_img_03&quot; android:duration=&quot;100&quot;/&gt;</div><div class="line">    &lt;item android:drawable=&quot;@drawable/loading_img_04&quot; android:duration=&quot;100&quot;/&gt;</div><div class="line">    &lt;item android:drawable=&quot;@drawable/loading_img_05&quot; android:duration=&quot;100&quot;/&gt;</div><div class="line">    &lt;item android:drawable=&quot;@drawable/loading_img_06&quot; android:duration=&quot;100&quot;/&gt;</div><div class="line">    &lt;item android:drawable=&quot;@drawable/loading_img_07&quot; android:duration=&quot;100&quot;/&gt;</div><div class="line">    &lt;item android:drawable=&quot;@drawable/loading_img_08&quot; android:duration=&quot;100&quot;/&gt;</div><div class="line">    &lt;item android:drawable=&quot;@drawable/loading_img_09&quot; android:duration=&quot;100&quot;/&gt;</div><div class="line">    &lt;item android:drawable=&quot;@drawable/loading_img_10&quot; android:duration=&quot;100&quot;/&gt;</div><div class="line">    &lt;item android:drawable=&quot;@drawable/loading_img_11&quot; android:duration=&quot;100&quot;/&gt;</div><div class="line">    &lt;item android:drawable=&quot;@drawable/loading_img_12&quot; android:duration=&quot;100&quot;/&gt;</div><div class="line"></div><div class="line">&lt;/animation-list&gt;</div></pre></td></tr></table></figure>
-<p>代码中使用</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">private void initXMLFram() &#123;</div><div class="line"></div><div class="line">       mXmlAD = (AnimationDrawable) getResources().getDrawable(R.drawable.loading);</div><div class="line">       //为Image设置背景</div><div class="line">       mIvXML.setBackgroundDrawable(mXmlAD);</div><div class="line"></div><div class="line">   &#125;</div></pre></td></tr></table></figure>
-<p>播放</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">private void startXML() &#123;</div><div class="line">        if(mXmlAD!=null &amp;&amp; !mXmlAD.isRunning())&#123;</div><div class="line">            mXmlAD.start();</div><div class="line">        &#125;else if(mXmlAD!=null &amp;&amp; mXmlAD.isRunning()) &#123;</div><div class="line">            mXmlAD.stop();</div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
-<p>源码<br><a href="https://github.com/ln0491/DrawableAnimation" target="_blank" rel="external">https://github.com/ln0491/DrawableAnimation</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;Android中帧动画&quot;&gt;&lt;a href=&quot;#Android中帧动画&quot; class=&quot;headerlink&quot; title=&quot;Android中帧动画&quot;&gt;&lt;/a&gt;Android中帧动画&lt;/h3&gt;&lt;h4 id=&quot;Android中的逐帧动画&quot;&gt;&lt;a href=&quot;#Andr
-    
-    </summary>
-    
-      <category term="android" scheme="https://ln0491.github.io/categories/android/"/>
-    
-    
-      <category term="动画" scheme="https://ln0491.github.io/tags/%E5%8A%A8%E7%94%BB/"/>
     
   </entry>
   
