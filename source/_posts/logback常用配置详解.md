@@ -421,7 +421,7 @@ Logback 配置文件的语法非常灵活。正因为灵活，所以无法用 DT
 个或多个<appender>元素，有零个或多个<logger>元素，有最多一个<root>元素。如下图所
 示：
 
-![logbackconfig](https://ln0491.github.io/img/logbackconfig)
+![logbackconfig.png](https://ln0491.github.io/img/logbackconfig.png)
 
 
 ###### 标记名大小写敏感
