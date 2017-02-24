@@ -18,9 +18,9 @@
 <meta property="og:site_name" content="刘楠的博客">
 <meta property="og:description" content="logback常用配置详解什么是 logbackLogback 为取代 log4j 而生.Logback 由 log4j 的创立者 Ceki Gülcü 设计。以十多年设计工业级记录系统的经验为基础，所创建的 logback 比现有任何记录系统更快、占用资源更少，有时差距非常大。Logback 提供独特而实用的特性，比如 Marker、参数化记录语句、条件化堆栈跟踪和强大的事件过滤功能。以上列出的">
 <meta property="og:image" content="https://ln0491.github.io/img/logbackstatuslook.png">
-<meta property="og:image" content="https://ln0491.github.io/img/logbackconfig">
+<meta property="og:image" content="https://ln0491.github.io/img/logbackconfig.png">
 <meta property="og:image" content="https://ln0491.github.io/img/outpustreamappender.png">
-<meta property="og:updated_time" content="2017-02-24T06:40:30.674Z">
+<meta property="og:updated_time" content="2017-02-24T07:22:05.349Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="logback常用配置详解">
 <meta name="twitter:description" content="logback常用配置详解什么是 logbackLogback 为取代 log4j 而生.Logback 由 log4j 的创立者 Ceki Gülcü 设计。以十多年设计工业级记录系统的经验为基础，所创建的 logback 比现有任何记录系统更快、占用资源更少，有时差距非常大。Logback 提供独特而实用的特性，比如 Marker、参数化记录语句、条件化堆栈跟踪和强大的事件过滤功能。以上列出的">
@@ -166,7 +166,7 @@
 <p>要加到自己的 web 应用程序里，可以在 WEB-INF/web.xml 里添加如下内容<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;servlet&gt;</div><div class="line">		&lt;servlet-name&gt;ViewStatusMessages&lt;/servlet-name&gt;</div><div class="line">		&lt;servlet-class&gt;ch.qos.logback.classic.ViewStatusMessagesServlet&lt;/servlet-class&gt;</div><div class="line">	&lt;/servlet&gt;</div><div class="line">	&lt;servlet-mapping&gt;</div><div class="line">		&lt;servlet-name&gt;ViewStatusMessages&lt;/servlet-name&gt;</div><div class="line">		&lt;url-pattern&gt;/lbClassicStatus&lt;/url-pattern&gt;</div><div class="line">	&lt;/servlet-mapping&gt;</div></pre></td></tr></table></figure></p>
 <p>访问地址是 <a href="http://host/yourWebapp/lbClassicStatus" target="_blank" rel="external">http://host/yourWebapp/lbClassicStatus</a></p>
 <h5 id="配置文件语法"><a href="#配置文件语法" class="headerlink" title="配置文件语法"></a>配置文件语法</h5><p>Logback 配置文件的语法非常灵活。正因为灵活，所以无法用 DTD 或 XML schema 进<br>行定义。尽管如此，可以这样描述配置文件的基本结构：以<configuration>开头，后面有零<br>个或多个<appender>元素，有零个或多个<logger>元素，有最多一个<root>元素。如下图所<br>示：</root></logger></appender></configuration></p>
-<p><img src="https://ln0491.github.io/img/logbackconfig" alt="logbackconfig"></p>
+<p><img src="https://ln0491.github.io/img/logbackconfig.png" alt="logbackconfig.png"></p>
 <h6 id="标记名大小写敏感"><a href="#标记名大小写敏感" class="headerlink" title="标记名大小写敏感"></a>标记名大小写敏感</h6><p>从 logback 0.9.17 版起，标记名不区分大小些。比如，<logger>、<logger>和<logger><br>都是合法元素且表示同一个意思。按照隐式规则，标记名除了首字母外要区分大小写。因此，</logger></logger></logger></p>
 <p><xyz>与<xyz>等价，但不等价于<xyz>。隐式规则一般遵循 Java 世界里常用的驼峰命名规<br>则。因为很难确定一个标记什么时候与显式动作相关，什么时候又与隐式动作相关，所以很<br>难说 XML 标记是否是大小写敏感。如果你不确定标记名的大小写，就用驼峰命名法，基本<br>不会错。</xyz></xyz></xyz></p>
 <h6 id="配置logger或-元素"><a href="#配置logger或-元素" class="headerlink" title="配置logger或 元素"></a>配置logger或<logger> 元素</logger></h6><p>Logger 是用<logger>元素配置的。<logger>元素有且仅有一个 name 属性、一个可选的<br>level 属性和一个可选的 additivity 属性。<br>Level 属性的值大小写无关，其值为下面其中一个字符串：TRACE、DEBUG、INFO、<br>WARN、ERROR、ALL 和 OFF。还可以是一个特殊的字符串“INHERITED”或其同义词<br>“NULL”，表示强制继承上级的级别。</logger></logger></p>
@@ -373,11 +373,19 @@
 			
 		
 			
+				<li><a href="/tags/自定义View/" title="自定义View">自定义View<sup>2</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/test/" title="test">test<sup>2</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/自定义View/" title="自定义View">自定义View<sup>2</sup></a></li>
+				<li><a href="/tags/源码/" title="源码">源码<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/工具类/" title="工具类">工具类<sup>1</sup></a></li>
 			
 		
 			
@@ -385,7 +393,7 @@
 			
 		
 			
-				<li><a href="/tags/PorterDuffXfermode/" title="PorterDuffXfermode">PorterDuffXfermode<sup>1</sup></a></li>
+				<li><a href="/tags/工具/" title="工具">工具<sup>1</sup></a></li>
 			
 		
 			
@@ -393,7 +401,7 @@
 			
 		
 			
-				<li><a href="/tags/工具/" title="工具">工具<sup>1</sup></a></li>
+				<li><a href="/tags/base64/" title="base64">base64<sup>1</sup></a></li>
 			
 		
 			
@@ -405,19 +413,7 @@
 			
 		
 			
-				<li><a href="/tags/base64/" title="base64">base64<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/工具类/" title="工具类">工具类<sup>1</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/mysql学习十七数值函数/" title="mysql学习十七数值函数">mysql学习十七数值函数<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/log/" title="log">log<sup>1</sup></a></li>
 			
 		
 			
@@ -425,7 +421,11 @@
 			
 		
 			
-				<li><a href="/tags/源码/" title="源码">源码<sup>1</sup></a></li>
+				<li><a href="/tags/log/" title="log">log<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/PorterDuffXfermode/" title="PorterDuffXfermode">PorterDuffXfermode<sup>1</sup></a></li>
 			
 		
 		</ul>
