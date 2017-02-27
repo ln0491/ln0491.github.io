@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>https://ln0491.github.io/2017/02/27/mybatis%E5%85%A5%E9%97%A8%E4%BA%8C/</loc>
+    <lastmod>2017-02-27T07:48:12.730Z</lastmod>
+    <data>
+        <display>
+        <title>mybatis入门二</title>
+        <pubTime>2017-02-27T02:12:13.000Z</pubTime>
+        
+        <tag>mybatis</tag>
+         
+         
+           
+             
+              <breadCrumb title="mybatis" url="https://ln0491.github.io/categories/mybatis/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://ln0491.github.io/2017/02/27/mybatis%E5%85%A5%E9%97%A8%E4%B8%80/</loc>
     <lastmod>2017-02-27T02:23:08.217Z</lastmod>
     <data>
@@ -37,26 +57,6 @@
            
              
               <breadCrumb title="mysql" url="https://ln0491.github.io/categories/mysql/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://ln0491.github.io/2017/02/27/mybatis%E5%85%A5%E9%97%A8%E4%BA%8C/</loc>
-    <lastmod>2017-02-27T02:12:33.309Z</lastmod>
-    <data>
-        <display>
-        <title>mybatis入门二</title>
-        <pubTime>2017-02-27T02:12:13.000Z</pubTime>
-        
-        <tag>mybatis</tag>
-         
-         
-           
-             
-              <breadCrumb title="mybatis" url="https://ln0491.github.io/categories/mybatis/"/>
           
         </display>
     </data>
