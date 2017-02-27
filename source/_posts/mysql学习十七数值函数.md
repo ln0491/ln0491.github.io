@@ -1,8 +1,8 @@
 ---
 title: mysql学习十七数值函数
 date: 2017-02-17 13:23:39
-categories: mysql学习十七数值函数
-tags: mysql学习十七数值函数
+categories: mysql
+tags: mysql
 ---
 ### mysql学习十七数值函数
 
