@@ -1,0 +1,629 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>spring-boot入门一环境搭建及hellospringboot | 刘楠的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Liu Nan">
+    
+
+    
+    <meta name="description" content="spring-boot入门一环境搭建及hellospringboot环境本人使用myeclipse 10.6,JDK7.0,MAVEN 3.3.9
+新建MAVEN普通项目添加依赖-MAVEN 插件官网http://projects.spring.io/spring-boot/#quick-start
+1234567891011121314151617181920212223242526272829">
+<meta property="og:type" content="article">
+<meta property="og:title" content="spring-boot入门一环境搭建及hellospringboot">
+<meta property="og:url" content="https://ln0491.github.io/2017/03/01/spring-boot入门一环境搭建及hellospringboot/index.html">
+<meta property="og:site_name" content="刘楠的博客">
+<meta property="og:description" content="spring-boot入门一环境搭建及hellospringboot环境本人使用myeclipse 10.6,JDK7.0,MAVEN 3.3.9
+新建MAVEN普通项目添加依赖-MAVEN 插件官网http://projects.spring.io/spring-boot/#quick-start
+1234567891011121314151617181920212223242526272829">
+<meta property="og:updated_time" content="2017-03-01T01:52:58.062Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="spring-boot入门一环境搭建及hellospringboot">
+<meta name="twitter:description" content="spring-boot入门一环境搭建及hellospringboot环境本人使用myeclipse 10.6,JDK7.0,MAVEN 3.3.9
+新建MAVEN普通项目添加依赖-MAVEN 插件官网http://projects.spring.io/spring-boot/#quick-start
+1234567891011121314151617181920212223242526272829">
+
+    
+    <link rel="alternative" href="/atom.xml" title="刘楠的博客" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="刘楠的博客" title="刘楠的博客"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="刘楠的博客">刘楠的博客</a></h1>
+				<h2 class="blog-motto">热爱生活</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">首页</a></li>
+					
+						<li><a href="/archives">归档</a></li>
+					
+						<li><a href="/tags">标签</a></li>
+					
+						<li><a href="/categories">分类</a></li>
+					
+						<li><a href="/about">关于</a></li>
+					
+					<li>
+ 					
+						<form class="search" action="http://zhannei.baidu.com/cse/search" target="_blank">
+							<label>Search</label>
+						<input name="s" type="hidden" value= 9779949399098768934 ><input type="text" name="q" size="30" placeholder="搜索"><br>
+						</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2017/03/01/spring-boot入门一环境搭建及hellospringboot/" title="spring-boot入门一环境搭建及hellospringboot" itemprop="url">spring-boot入门一环境搭建及hellospringboot</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Liu Nan" target="_blank" itemprop="author">Liu Nan</a>
+		
+  <p class="article-time">
+    <time datetime="2017-03-01T01:20:44.000Z" itemprop="datePublished"> 发表于 2017-03-01</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#spring-boot入门一环境搭建及hellospringboot"><span class="toc-number">1.</span> <span class="toc-text">spring-boot入门一环境搭建及hellospringboot</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#环境"><span class="toc-number">1.0.1.</span> <span class="toc-text">环境</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#新建MAVEN普通项目添加依赖-MAVEN-插件"><span class="toc-number">1.0.2.</span> <span class="toc-text">新建MAVEN普通项目添加依赖-MAVEN 插件</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#测试控制器同时添加main方法"><span class="toc-number">1.1.</span> <span class="toc-text">测试控制器同时添加main方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#运行"><span class="toc-number">1.2.</span> <span class="toc-text">运行</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#访问"><span class="toc-number">1.3.</span> <span class="toc-text">访问</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#更换Banner"><span class="toc-number">1.4.</span> <span class="toc-text">更换Banner</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#关于-SpringBootApplication注解"><span class="toc-number">1.5.</span> <span class="toc-text">关于@SpringBootApplication注解</span></a></li></ol></li></ol>
+		
+		</div>
+		
+		<h3 id="spring-boot入门一环境搭建及hellospringboot"><a href="#spring-boot入门一环境搭建及hellospringboot" class="headerlink" title="spring-boot入门一环境搭建及hellospringboot"></a>spring-boot入门一环境搭建及hellospringboot</h3><h5 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h5><p>本人使用myeclipse 10.6,JDK7.0,MAVEN 3.3.9</p>
+<h5 id="新建MAVEN普通项目添加依赖-MAVEN-插件"><a href="#新建MAVEN普通项目添加依赖-MAVEN-插件" class="headerlink" title="新建MAVEN普通项目添加依赖-MAVEN 插件"></a>新建MAVEN普通项目添加依赖-MAVEN 插件</h5><p>官网<a href="http://projects.spring.io/spring-boot/#quick-start" target="_blank" rel="external">http://projects.spring.io/spring-boot/#quick-start</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</div><div class="line">	xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;</div><div class="line">	&lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;</div><div class="line">	&lt;groupId&gt;com.ghg&lt;/groupId&gt;</div><div class="line">	&lt;artifactId&gt;boot&lt;/artifactId&gt;</div><div class="line">	&lt;version&gt;0.0.1-SNAPSHOT&lt;/version&gt;</div><div class="line"></div><div class="line"></div><div class="line">	&lt;parent&gt;</div><div class="line">		&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</div><div class="line">		&lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;</div><div class="line">		&lt;version&gt;1.5.1.RELEASE&lt;/version&gt;</div><div class="line">	&lt;/parent&gt;</div><div class="line">	&lt;dependencies&gt;</div><div class="line">		&lt;dependency&gt;</div><div class="line">			&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</div><div class="line">			&lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;</div><div class="line">		&lt;/dependency&gt;</div><div class="line">	&lt;/dependencies&gt;</div><div class="line"></div><div class="line">	&lt;build&gt;</div><div class="line">		&lt;plugins&gt;</div><div class="line">		&lt;!--spring-boot maven  --&gt;</div><div class="line">			&lt;plugin&gt;</div><div class="line">				&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</div><div class="line">				&lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;</div><div class="line">			&lt;/plugin&gt;</div><div class="line">		&lt;/plugins&gt;</div><div class="line">	&lt;/build&gt;</div><div class="line">&lt;/project&gt;</div></pre></td></tr></table></figure>
+<h4 id="测试控制器同时添加main方法"><a href="#测试控制器同时添加main方法" class="headerlink" title="测试控制器同时添加main方法"></a>测试控制器同时添加main方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">package com.ghg.boot.controller;</div><div class="line"></div><div class="line">import org.springframework.boot.SpringApplication;</div><div class="line">import org.springframework.boot.autoconfigure.SpringBootApplication;</div><div class="line">import org.springframework.web.bind.annotation.RequestMapping;</div><div class="line">import org.springframework.web.bind.annotation.RestController;</div><div class="line"></div><div class="line">@SpringBootApplication</div><div class="line">@RestController</div><div class="line">public class HelloController &#123;</div><div class="line"></div><div class="line">	</div><div class="line">	@RequestMapping(value=&quot;/hello&quot;)</div><div class="line">	public String hello()&#123;</div><div class="line">		</div><div class="line">		return &quot;Hello Spring Boot!&quot;;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	public static void main(String[] args) &#123;</div><div class="line">		SpringApplication.run(HelloController.class, args);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h4><ul>
+<li>MAVEN 运行</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mvn spring-boot:run</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">/\\ / ___&apos;_ __ _ _(_)_ __  __ _ \ \ \ \</div><div class="line">( ( )\___ | &apos;_ | &apos;_| | &apos;_ \/ _` | \ \ \ \</div><div class="line"> \\/  ___)| |_)| | | | | || (_| |  ) ) ) )</div><div class="line">  &apos;  |____| .__|_| |_|_| |_\__, | / / / /</div><div class="line"> =========|_|==============|___/=/_/_/_/</div><div class="line"> :: Spring Boot ::        (v1.5.1.RELEASE)</div><div class="line"></div><div class="line">2017-03-01 09:27:30.965  INFO 8040 --- [           main] com.ghg.boot.controller.HelloController  : Starting HelloController on SC-201607041015 with PID 8040 (D:\myeclipsework\boot\target\classes started by Administrator in D:\myeclipsework\boot)</div><div class="line">2017-03-01 09:27:30.969  INFO 8040 --- [           main] com.ghg.boot.controller.HelloController  : No active profile set, falling back to default profiles: default</div><div class="line">2017-03-01 09:27:31.014  INFO 8040 --- [           main] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@563d35d9: startup date [Wed Mar 01 09:27:31 CST 2017]; root of context hierarchy</div><div class="line">2017-03-01 09:27:31.638  INFO 8040 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean &apos;org.springframework.boot.autoconfigure.validation.ValidationAutoConfiguration&apos; of type [class org.springframework.boot.autoconfigure.validation.ValidationAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)</div><div class="line">2017-03-01 09:27:31.753  INFO 8040 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean &apos;validator&apos; of type [class org.springframework.validation.beanvalidation.LocalValidatorFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)</div><div class="line">2017-03-01 09:27:32.128  INFO 8040 --- [           main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat initialized with port(s): 8080 (http)</div><div class="line">2017-03-01 09:27:32.137  INFO 8040 --- [           main] o.apache.catalina.core.StandardService   : Starting service Tomcat</div><div class="line">2017-03-01 09:27:32.138  INFO 8040 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.11</div><div class="line">2017-03-01 09:27:32.208  INFO 8040 --- [ost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext</div><div class="line">2017-03-01 09:27:32.208  INFO 8040 --- [ost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1196 ms</div><div class="line">2017-03-01 09:27:32.358  INFO 8040 --- [ost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: &apos;dispatcherServlet&apos; to [/]</div><div class="line">2017-03-01 09:27:32.362  INFO 8040 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: &apos;characterEncodingFilter&apos; to: [/*]</div><div class="line">2017-03-01 09:27:32.362  INFO 8040 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: &apos;hiddenHttpMethodFilter&apos; to: [/*]</div><div class="line">2017-03-01 09:27:32.362  INFO 8040 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: &apos;httpPutFormContentFilter&apos; to: [/*]</div><div class="line">2017-03-01 09:27:32.362  INFO 8040 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: &apos;requestContextFilter&apos; to: [/*]</div><div class="line">2017-03-01 09:27:32.663  INFO 8040 --- [           main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@563d35d9: startup date [Wed Mar 01 09:27:31 CST 2017]; root of context hierarchy</div><div class="line">2017-03-01 09:27:32.734  INFO 8040 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;&#123;[/hello]&#125;&quot; onto public java.lang.String com.ghg.boot.controller.HelloController.hello()</div><div class="line">2017-03-01 09:27:32.739  INFO 8040 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;&#123;[/error]&#125;&quot; onto public org.springframework.http.ResponseEntity&lt;java.util.Map&lt;java.lang.String, java.lang.Object&gt;&gt; org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)</div><div class="line">2017-03-01 09:27:32.739  INFO 8040 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;&#123;[/error],produces=[text/html]&#125;&quot; onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)</div><div class="line">2017-03-01 09:27:32.778  INFO 8040 --- [           main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]</div><div class="line">2017-03-01 09:27:32.778  INFO 8040 --- [           main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]</div><div class="line">2017-03-01 09:27:32.833  INFO 8040 --- [           main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]</div><div class="line">2017-03-01 09:27:33.102  INFO 8040 --- [           main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup</div><div class="line">2017-03-01 09:27:33.156  INFO 8040 --- [           main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 8080 (http)</div><div class="line">2017-03-01 09:27:33.161  INFO 8040 --- [           main] com.ghg.boot.controller.HelloController  : Started HelloController in 2.43 seconds (JVM running for 5.557)</div></pre></td></tr></table></figure>
+<h4 id="访问"><a href="#访问" class="headerlink" title="访问"></a>访问</h4><p><a href="http://127.0.0.1:8080/hello" target="_blank" rel="external">http://127.0.0.1:8080/hello</a><br>就可以看到结果</p>
+<h4 id="更换Banner"><a href="#更换Banner" class="headerlink" title="更换Banner"></a>更换Banner</h4><p>就是这个<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">/\\ / ___&apos;_ __ _ _(_)_ __  __ _ \ \ \ \</div><div class="line">( ( )\___ | &apos;_ | &apos;_| | &apos;_ \/ _` | \ \ \ \</div><div class="line"> \\/  ___)| |_)| | | | | || (_| |  ) ) ) )</div><div class="line">  &apos;  |____| .__|_| |_|_| |_\__, | / / / /</div></pre></td></tr></table></figure></p>
+<p>到<br><a href="http://patorjk.com/software/taag/" target="_blank" rel="external">http://patorjk.com/software/taag/</a><br>生成字符串<br>在src/main/resources 下新建一个banner.txt，文件，将上面生成的字符复制到banner.txt中，再次启动就变为自己的log了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">[INFO] --- spring-boot-maven-plugin:1.5.1.RELEASE:run (default-cli) @ boot ---</div><div class="line">           __                                     </div><div class="line">          |  \                                    </div><div class="line">  ______  | $$____    ______    _______  _______  </div><div class="line"> /      \ | $$    \  /      \  /       \|       \ </div><div class="line">|  $$$$$$\| $$$$$$$\|  $$$$$$\|  $$$$$$$| $$$$$$$\</div><div class="line">| $$  | $$| $$  | $$| $$  | $$| $$      | $$  | $$</div><div class="line">| $$__| $$| $$  | $$| $$__| $$| $$_____ | $$  | $$</div><div class="line"> \$$    $$| $$  | $$ \$$    $$ \$$     \| $$  | $$</div><div class="line"> _\$$$$$$$ \$$   \$$ _\$$$$$$$  \$$$$$$$ \$$   \$$</div><div class="line">|  \__| $$          |  \__| $$                    </div><div class="line"> \$$    $$           \$$    $$                    </div><div class="line">  \$$$$$$             \$$$$$$                     </div><div class="line">2017-03-01 09:36:14.028  INFO 12032 --- [           main] com.ghg.boot.controller.HelloController  : Starting HelloController on SC-201607041015 with PID 12032 (D:\myeclipsework\boot\target\classes started by Administrator in D:\myeclipsework\boot)</div><div class="line">2017-03-01 09:36:14.033  INFO 12032 --- [           main] com.ghg.boot.controller.HelloController  : No active profile set, falling back to default profiles: default</div><div class="line">2017-03-01 09:36:14.080  INFO 12032 --- [           main] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@48c8997c: startup date [Wed Mar 01 09:36:14 CST 2017]; root of context hierarchy</div><div class="line">2017-03-01 09:36:14.717  INFO 12032 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean &apos;org.springframework.boot.autoconfigure.validation.ValidationAutoConfiguration&apos; of type [class org.springframework.boot.autoconfigure.validation.ValidationAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)</div><div class="line">2017-03-01 09:36:14.803  INFO 12032 --- [           main] trationDele</div></pre></td></tr></table></figure></p>
+<h4 id="关于-SpringBootApplication注解"><a href="#关于-SpringBootApplication注解" class="headerlink" title="关于@SpringBootApplication注解"></a>关于@SpringBootApplication注解</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div></pre></td><td class="code"><pre><div class="line">/*</div><div class="line"> * Copyright 2012-2017 the original author or authors.</div><div class="line"> *</div><div class="line"> * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</div><div class="line"> * you may not use this file except in compliance with the License.</div><div class="line"> * You may obtain a copy of the License at</div><div class="line"> *</div><div class="line"> *      http://www.apache.org/licenses/LICENSE-2.0</div><div class="line"> *</div><div class="line"> * Unless required by applicable law or agreed to in writing, software</div><div class="line"> * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</div><div class="line"> * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</div><div class="line"> * See the License for the specific language governing permissions and</div><div class="line"> * limitations under the License.</div><div class="line"> */</div><div class="line"></div><div class="line">package org.springframework.boot.autoconfigure;</div><div class="line"></div><div class="line">import java.lang.annotation.Documented;</div><div class="line">import java.lang.annotation.ElementType;</div><div class="line">import java.lang.annotation.Inherited;</div><div class="line">import java.lang.annotation.Retention;</div><div class="line">import java.lang.annotation.RetentionPolicy;</div><div class="line">import java.lang.annotation.Target;</div><div class="line"></div><div class="line">import org.springframework.boot.SpringBootConfiguration;</div><div class="line">import org.springframework.boot.context.TypeExcludeFilter;</div><div class="line">import org.springframework.context.annotation.Bean;</div><div class="line">import org.springframework.context.annotation.ComponentScan;</div><div class="line">import org.springframework.context.annotation.ComponentScan.Filter;</div><div class="line">import org.springframework.context.annotation.Configuration;</div><div class="line">import org.springframework.context.annotation.FilterType;</div><div class="line">import org.springframework.core.annotation.AliasFor;</div><div class="line"></div><div class="line">/**</div><div class="line"> * Indicates a &#123;@link Configuration configuration&#125; class that declares one or more</div><div class="line"> * &#123;@link Bean @Bean&#125; methods and also triggers &#123;@link EnableAutoConfiguration</div><div class="line"> * auto-configuration&#125; and &#123;@link ComponentScan component scanning&#125;. This is a convenience</div><div class="line"> * annotation that is equivalent to declaring &#123;@code @Configuration&#125;,</div><div class="line"> * &#123;@code @EnableAutoConfiguration&#125; and &#123;@code @ComponentScan&#125;.</div><div class="line"> *</div><div class="line"> * @author Phillip Webb</div><div class="line"> * @author Stephane Nicoll</div><div class="line"> * @since 1.2.0</div><div class="line"> */</div><div class="line">@Target(ElementType.TYPE)</div><div class="line">@Retention(RetentionPolicy.RUNTIME)</div><div class="line">@Documented</div><div class="line">@Inherited</div><div class="line">@SpringBootConfiguration</div><div class="line">@EnableAutoConfiguration</div><div class="line">@ComponentScan(excludeFilters = &#123;</div><div class="line">		@Filter(type = FilterType.CUSTOM, classes = TypeExcludeFilter.class),</div><div class="line">		@Filter(type = FilterType.CUSTOM, classes = AutoConfigurationExcludeFilter.class) &#125;)</div><div class="line">public @interface SpringBootApplication &#123;</div><div class="line"></div><div class="line">	/**</div><div class="line">	 * Exclude specific auto-configuration classes such that they will never be applied.</div><div class="line">	 * @return the classes to exclude</div><div class="line">	 */</div><div class="line">	@AliasFor(annotation = EnableAutoConfiguration.class, attribute = &quot;exclude&quot;)</div><div class="line">	Class&lt;?&gt;[] exclude() default &#123;&#125;;</div><div class="line"></div><div class="line">	/**</div><div class="line">	 * Exclude specific auto-configuration class names such that they will never be</div><div class="line">	 * applied.</div><div class="line">	 * @return the class names to exclude</div><div class="line">	 * @since 1.3.0</div><div class="line">	 */</div><div class="line">	@AliasFor(annotation = EnableAutoConfiguration.class, attribute = &quot;excludeName&quot;)</div><div class="line">	String[] excludeName() default &#123;&#125;;</div><div class="line"></div><div class="line">	/**</div><div class="line">	 * Base packages to scan for annotated components. Use &#123;@link #scanBasePackageClasses&#125;</div><div class="line">	 * for a type-safe alternative to String-based package names.</div><div class="line">	 * @return base packages to scan</div><div class="line">	 * @since 1.3.0</div><div class="line">	 */</div><div class="line">	@AliasFor(annotation = ComponentScan.class, attribute = &quot;basePackages&quot;)</div><div class="line">	String[] scanBasePackages() default &#123;&#125;;</div><div class="line"></div><div class="line">	/**</div><div class="line">	 * Type-safe alternative to &#123;@link #scanBasePackages&#125; for specifying the packages to</div><div class="line">	 * scan for annotated components. The package of each class specified will be scanned.</div><div class="line">	 * &lt;p&gt;</div><div class="line">	 * Consider creating a special no-op marker class or interface in each package that</div><div class="line">	 * serves no purpose other than being referenced by this attribute.</div><div class="line">	 * @return base packages to scan</div><div class="line">	 * @since 1.3.0</div><div class="line">	 */</div><div class="line">	@AliasFor(annotation = ComponentScan.class, attribute = &quot;basePackageClasses&quot;)</div><div class="line">	Class&lt;?&gt;[] scanBasePackageClasses() default &#123;&#125;;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>@SpringBootApplication等同于<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">@Configuration</div><div class="line">@ComponentScan</div><div class="line">@EnableAutoConfiguration</div></pre></td></tr></table></figure></p>
+<p>组合<br>关闭特定的配置，使用exclude参数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">@SpringBootApplication(exclude=&#123;DataSourceConnectionSource.class&#125;)</div></pre></td></tr></table></figure></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/spring-boot/">spring-boot</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/spring-boot/">spring-boot</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="https://ln0491.github.io/2017/03/01/spring-boot入门一环境搭建及hellospringboot/" data-title="spring-boot入门一环境搭建及hellospringboot | 刘楠的博客" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2017/02/28/mybatis入门四延时加载、缓存/"  title="mybatis入门四延时加载、缓存">
+ <strong>下一篇：</strong><br/> 
+ <span>mybatis入门四延时加载、缓存
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="2017/03/01/spring-boot入门一环境搭建及hellospringboot/" data-title="spring-boot入门一环境搭建及hellospringboot" data-url="https://ln0491.github.io/2017/03/01/spring-boot入门一环境搭建及hellospringboot/"></div>
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#spring-boot入门一环境搭建及hellospringboot"><span class="toc-number">1.</span> <span class="toc-text">spring-boot入门一环境搭建及hellospringboot</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#环境"><span class="toc-number">1.0.1.</span> <span class="toc-text">环境</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#新建MAVEN普通项目添加依赖-MAVEN-插件"><span class="toc-number">1.0.2.</span> <span class="toc-text">新建MAVEN普通项目添加依赖-MAVEN 插件</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#测试控制器同时添加main方法"><span class="toc-number">1.1.</span> <span class="toc-text">测试控制器同时添加main方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#运行"><span class="toc-number">1.2.</span> <span class="toc-text">运行</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#访问"><span class="toc-number">1.3.</span> <span class="toc-text">访问</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#更换Banner"><span class="toc-number">1.4.</span> <span class="toc-text">更换Banner</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#关于-SpringBootApplication注解"><span class="toc-number">1.5.</span> <span class="toc-text">关于@SpringBootApplication注解</span></a></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/android/" title="android">android<sup>42</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/java/" title="java">java<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/log/" title="log">log<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/logback/" title="logback">logback<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/mybatis/" title="mybatis">mybatis<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/mysql/" title="mysql">mysql<sup>19</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/spring-boot/" title="spring-boot">spring-boot<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/test/" title="test">test<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/mysql/" title="mysql">mysql<sup>19</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/图片加载/" title="图片加载">图片加载<sup>12</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/android/" title="android">android<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Retrofit/" title="Retrofit">Retrofit<sup>6</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/viewpager/" title="viewpager">viewpager<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/mybatis/" title="mybatis">mybatis<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/volley/" title="volley">volley<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/test/" title="test">test<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/自定义View/" title="自定义View">自定义View<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/工具/" title="工具">工具<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/maven/" title="maven">maven<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/PorterDuffXfermode/" title="PorterDuffXfermode">PorterDuffXfermode<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/工具类/" title="工具类">工具类<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/base64/" title="base64">base64<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/logback/" title="logback">logback<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/动画/" title="动画">动画<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/View动画/" title="View动画">View动画<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/spring-boot/" title="spring-boot">spring-boot<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/View/" title="View">View<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/log/" title="log">log<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  
+  <div class="tagcloudlist">
+    <p class="asidetitle">标签云</p>
+    <div class="tagcloudlist clearfix">
+       <a href="/tags/PorterDuffXfermode/" style="font-size: 10px;">PorterDuffXfermode</a> <a href="/tags/Retrofit/" style="font-size: 16.25px;">Retrofit</a> <a href="/tags/View/" style="font-size: 10px;">View</a> <a href="/tags/View动画/" style="font-size: 10px;">View动画</a> <a href="/tags/android/" style="font-size: 17.5px;">android</a> <a href="/tags/base64/" style="font-size: 10px;">base64</a> <a href="/tags/log/" style="font-size: 10px;">log</a> <a href="/tags/logback/" style="font-size: 10px;">logback</a> <a href="/tags/maven/" style="font-size: 10px;">maven</a> <a href="/tags/mybatis/" style="font-size: 13.75px;">mybatis</a> <a href="/tags/mysql/" style="font-size: 20px;">mysql</a> <a href="/tags/spring-boot/" style="font-size: 10px;">spring-boot</a> <a href="/tags/test/" style="font-size: 11.25px;">test</a> <a href="/tags/viewpager/" style="font-size: 15px;">viewpager</a> <a href="/tags/volley/" style="font-size: 12.5px;">volley</a> <a href="/tags/动画/" style="font-size: 10px;">动画</a> <a href="/tags/图片加载/" style="font-size: 18.75px;">图片加载</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/工具类/" style="font-size: 10px;">工具类</a> <a href="/tags/源码/" style="font-size: 10px;">源码</a> <a href="/tags/自定义View/" style="font-size: 11.25px;">自定义View</a>
+    </div>
+  </div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://www.cnblogs.com/" target="_blank" title="博客园">博客园</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.csdn.net/" target="_blank" title="CSDN">CSDN</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.cnblogs.com/liunanjava/" target="_blank" title="森林森">森林森</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.jianshu.com/" target="_blank" title="简书">简书</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> 爱生活爱编码. <br/>
+			This is my blog,Try to do better.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/ln0491" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<a href="mailto:153011784@qq.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2017 
+		
+		<a href="/about" target="_blank" title="Liu Nan">Liu Nan</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+	$('#toc.toc-aside').css('display', 'block').addClass('fadeIn'); //这个是我新加的，修改点
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+        getSize();
+        if (myWidth >= 1024) {
+          c.click();
+        }
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"ln0491"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?f9d3aff238126ad201a9a789a888d75a";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1260477305'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1260477305%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
