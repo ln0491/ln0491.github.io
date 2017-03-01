@@ -4,49 +4,32 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>ViewPager的基本使用 | 刘楠的博客</title>
+    <title>spring-boot入门二配置文件 | 刘楠的博客</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Liu Nan">
     
 
     
-    <meta name="description" content="ViewPagr应该非常常用的控件之一了
+    <meta name="description" content="spring-boot入门二配置文件配置文件Spring Boot使用了一个全局的配置文件application.properties，放在src/main/resources目录下或者类路径的/config下。Sping Boot的全局配置文件的作用是对一些默认配置的配置值进行修改。
+application.properties和application.yml文件可以放在一下四个位置：
 
-
-引导页
-轮播图最常用的地方，今天学习下最基本的用法效果
-
-
-
-布局1234567891011121314151617&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&amp;gt;&amp;lt;RelativeLayout    xmlns:android=&quot;http://schemas.android.com/apk/res/and">
+外置，">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ViewPager的基本使用">
-<meta property="og:url" content="https://ln0491.github.io/2016/09/29/ViewPager的基本使用/index.html">
+<meta property="og:title" content="spring-boot入门二配置文件">
+<meta property="og:url" content="https://ln0491.github.io/2017/03/01/spring-boot入门二配置文件/index.html">
 <meta property="og:site_name" content="刘楠的博客">
-<meta property="og:description" content="ViewPagr应该非常常用的控件之一了
+<meta property="og:description" content="spring-boot入门二配置文件配置文件Spring Boot使用了一个全局的配置文件application.properties，放在src/main/resources目录下或者类路径的/config下。Sping Boot的全局配置文件的作用是对一些默认配置的配置值进行修改。
+application.properties和application.yml文件可以放在一下四个位置：
 
-
-引导页
-轮播图最常用的地方，今天学习下最基本的用法效果
-
-
-
-布局1234567891011121314151617&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&amp;gt;&amp;lt;RelativeLayout    xmlns:android=&quot;http://schemas.android.com/apk/res/and">
-<meta property="og:image" content="https://ln0491.github.io/img/guid.gif">
-<meta property="og:updated_time" content="2016-09-29T06:57:40.736Z">
+外置，">
+<meta property="og:updated_time" content="2017-03-01T05:48:09.682Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ViewPager的基本使用">
-<meta name="twitter:description" content="ViewPagr应该非常常用的控件之一了
+<meta name="twitter:title" content="spring-boot入门二配置文件">
+<meta name="twitter:description" content="spring-boot入门二配置文件配置文件Spring Boot使用了一个全局的配置文件application.properties，放在src/main/resources目录下或者类路径的/config下。Sping Boot的全局配置文件的作用是对一些默认配置的配置值进行修改。
+application.properties和application.yml文件可以放在一下四个位置：
 
-
-引导页
-轮播图最常用的地方，今天学习下最基本的用法效果
-
-
-
-布局1234567891011121314151617&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&amp;gt;&amp;lt;RelativeLayout    xmlns:android=&quot;http://schemas.android.com/apk/res/and">
-<meta name="twitter:image" content="https://ln0491.github.io/img/guid.gif">
+外置，">
 
     
     <link rel="alternative" href="/atom.xml" title="刘楠的博客" type="application/atom+xml">
@@ -109,14 +92,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2016/09/29/ViewPager的基本使用/" title="ViewPager的基本使用" itemprop="url">ViewPager的基本使用</a>
+      <a href="/2017/03/01/spring-boot入门二配置文件/" title="spring-boot入门二配置文件" itemprop="url">spring-boot入门二配置文件</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="Liu Nan" target="_blank" itemprop="author">Liu Nan</a>
 		
   <p class="article-time">
-    <time datetime="2016-09-29T01:52:30.000Z" itemprop="datePublished"> 发表于 2016-09-29</time>
+    <time datetime="2017-03-01T02:08:35.000Z" itemprop="datePublished"> 发表于 2017-03-01</time>
     
   </p>
 </header>
@@ -125,22 +108,27 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#效果"><span class="toc-number">1.</span> <span class="toc-text">效果</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#布局"><span class="toc-number">2.</span> <span class="toc-text">布局</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Adapter"><span class="toc-number">2.1.</span> <span class="toc-text">Adapter</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Activity"><span class="toc-number">2.2.</span> <span class="toc-text">Activity</span></a></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#spring-boot入门二配置文件"><span class="toc-number">1.</span> <span class="toc-text">spring-boot入门二配置文件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#配置文件"><span class="toc-number">1.1.</span> <span class="toc-text">配置文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Profile-多环境配置"><span class="toc-number">1.2.</span> <span class="toc-text">Profile-多环境配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#配置上下文"><span class="toc-number">1.3.</span> <span class="toc-text">配置上下文</span></a></li></ol></li></ol>
 		
 		</div>
 		
-		<p>ViewPagr应该非常常用的控件之一了</p>
-<blockquote>
+		<h3 id="spring-boot入门二配置文件"><a href="#spring-boot入门二配置文件" class="headerlink" title="spring-boot入门二配置文件"></a>spring-boot入门二配置文件</h3><h4 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h4><p>Spring Boot使用了一个全局的配置文件application.properties，放在src/main/resources目录下或者类路径的/config下。Sping Boot的全局配置文件的作用是对一些默认配置的配置值进行修改。</p>
+<p>application.properties和application.yml文件可以放在一下四个位置：</p>
 <ul>
-<li>引导页</li>
-<li>轮播图<br>最常用的地方，今天学习下最基本的用法<h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h2></li>
+<li>外置，在相对于应用程序运行目录的/congfig子目录里。</li>
+<li>外置，在应用程序运行的目录里</li>
+<li>内置，在config包内</li>
+<li>内置，在Classpath根目录<br>同样，这个列表按照优先级排序，也就是说，src/main/resources/config下application.properties覆盖src/main/resources下application.properties中相同的属性</li>
 </ul>
-</blockquote>
-<p><img src="https://ln0491.github.io/img/guid.gif" alt="guid.gif"></p>
-<h2 id="布局"><a href="#布局" class="headerlink" title="布局"></a>布局</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</div><div class="line"><span class="tag">&lt;<span class="name">RelativeLayout</span></span></div><div class="line">    <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></div><div class="line">    <span class="attr">xmlns:tools</span>=<span class="string">"http://schemas.android.com/tools"</span></div><div class="line">    <span class="attr">android:id</span>=<span class="string">"@+id/activity_welcome"</span></div><div class="line">    <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line">    <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></div><div class="line">    <span class="attr">tools:context</span>=<span class="string">"com.liu.viewpagerdemo.ui.WelcomeActivity"</span>&gt;</div><div class="line"></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">android.support.v4.view.ViewPager</span></span></div><div class="line">        <span class="attr">android:id</span>=<span class="string">"@+id/viewPager"</span></div><div class="line">        <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line">        <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span>&gt;</div><div class="line"></div><div class="line">    <span class="tag">&lt;/<span class="name">android.support.v4.view.ViewPager</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">RelativeLayout</span>&gt;</span></div></pre></td></tr></table></figure>
-<h3 id="Adapter"><a href="#Adapter" class="headerlink" title="Adapter"></a>Adapter</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div></pre></td><td class="code"><pre><div class="line">public class WelcomeViewpagerAdapter extends PagerAdapter &#123;</div><div class="line">    //数据</div><div class="line">    List&lt;Integer&gt; mDatas;</div><div class="line">    Context mContext;</div><div class="line"></div><div class="line">    public WelcomeViewpagerAdapter(Context context, List&lt;Integer&gt; datas) &#123;</div><div class="line">        mContext= context;</div><div class="line">        mDatas = datas;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    /**</div><div class="line">     * 返回要滑动的VIew的个数</div><div class="line">     * @return</div><div class="line">     */</div><div class="line">    @Override</div><div class="line">    public int getCount() &#123;</div><div class="line">        return mDatas.size();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public boolean isViewFromObject(View view, Object object) &#123;</div><div class="line">        return view == object;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    /**</div><div class="line">     * 做了两件事，第一：将当前视图添加到container中，第二：返回当前View</div><div class="line">     * @param container</div><div class="line">     * @param position</div><div class="line">     * @return</div><div class="line">     */</div><div class="line">    @Override</div><div class="line">    public Object instantiateItem(ViewGroup container, int position) &#123;</div><div class="line">      //  View view = View.inflate(mContext,R.layout.item_pager,null);</div><div class="line">       // ImageView imageView = (ImageView) view.findViewById(R.id.ivDispaly);</div><div class="line"></div><div class="line">        ImageView imageView = new ImageView(mContext);</div><div class="line">        imageView.setImageResource(mDatas.get(position));</div><div class="line">        imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);</div><div class="line">        //添加View到容器</div><div class="line">        container.addView(imageView);</div><div class="line"></div><div class="line">        //返回当前的View</div><div class="line">        return imageView;</div><div class="line">        //        return super.instantiateItem(container, position);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * 从当前container中删除指定位置（position）的View;</div><div class="line">     * @param container</div><div class="line">     * @param position</div><div class="line">     * @param object</div><div class="line">     */</div><div class="line">    @Override</div><div class="line">    public void destroyItem(ViewGroup container, int position, Object object) &#123;</div><div class="line">       // super.destroyItem(container, position, object);</div><div class="line"></div><div class="line">        container.removeView((View) object);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="Activity"><a href="#Activity" class="headerlink" title="Activity"></a>Activity</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line">public class WelcomeActivity extends AppCompatActivity &#123;</div><div class="line"></div><div class="line">    //viewpager</div><div class="line">    private ViewPager mViewPager;</div><div class="line"> </div><div class="line">    //viewpager数据集合也可以用数组</div><div class="line">    private List&lt;Integer&gt; mDatas = new ArrayList&lt;&gt;();</div><div class="line">   // private int[] imageIds = new int[] &#123; R.mipmap.img_recom01,R.mipmap.img_recom02, R.mipmap.img_recom03 &#125;;</div><div class="line">    //viewpager适配器</div><div class="line">    private WelcomeViewpagerAdapter mWelcomeViewpagerAdapter;</div><div class="line">  </div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</div><div class="line">        requestWindowFeature(Window.FEATURE_NO_TITLE);</div><div class="line">        super.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.activity_welcome);</div><div class="line">        initView();</div><div class="line">        initData();</div><div class="line">        </div><div class="line">    &#125;</div><div class="line"></div><div class="line">    private void initView() &#123;</div><div class="line"></div><div class="line">        mViewPager = (ViewPager) findViewById(R.id.viewPager);</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    private void initData() &#123;</div><div class="line">        //添加图片</div><div class="line">        mDatas.add(R.mipmap.img_recom01);</div><div class="line">        mDatas.add(R.mipmap.img_recom02);</div><div class="line">        mDatas.add(R.mipmap.img_recom03);</div><div class="line"></div><div class="line">        initViewPager();</div><div class="line">     </div><div class="line">    &#125;</div><div class="line"></div><div class="line">    private void initViewPager() &#123;</div><div class="line">        mWelcomeViewpagerAdapter = new WelcomeViewpagerAdapter(this,mDatas);</div><div class="line">        mViewPager.setAdapter(mWelcomeViewpagerAdapter);</div><div class="line"></div><div class="line">    &#125;</div><div class="line">   </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>代码很简单，这是基本的用法<br>源码：<a href="https://github.com/ln0491/ViewPagerDemo" target="_blank" rel="external">https://github.com/ln0491/ViewPagerDemo</a></p>
+<p>此外，如果你在相同优先级位置同时有application.properties和application.yml，那么application.yml里面的属性就会覆盖application.properties里的属性</p>
+<h4 id="Profile-多环境配置"><a href="#Profile-多环境配置" class="headerlink" title="Profile-多环境配置"></a>Profile-多环境配置</h4><p>当应用程序需要部署到不同运行环境时，一些配置细节通常会有所不同，最简单的比如日志，生产日志会将日志级别设置为WARN或更高级别，并将日志写入日志文件，而开发的时候需要日志级别为DEBUG，日志输出到控制台即可。<br>如果按照以前的做法，就是每次发布的时候替换掉配置文件，这样太麻烦了，Spring Boot的Profile就给我们提供了解决方案，命令带上参数就搞定。<br>这里我们来模拟一下，只是简单的修改端口来测试<br>在Spring Boot中多环境配置文件名需要满足application-{profile}.properties的格式，其中{profile}对应你的环境标识，比如：<br>application-dev.properties：开发环境<br>application-prod.properties：生产环境<br>想要使用对应的环境，只需要在application.properties中使用spring.profiles.active属性来设置，值对应上面提到的{profile}，这里就是指dev、prod这2个。<br>当然你也可以用命令行启动的时候带上参数：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">java -jar xxx.jar --spring.profiles.active=dev</div></pre></td></tr></table></figure></p>
+<p>我给不同的环境添加不同的端口属性server.port，然后根据指定不同的spring.profiles.active来切换使用。各位可以自己试试。这里就不贴代码了。<br>除了可以用profile的配置文件来分区配置我们的环境变量，在代码里，我们还可以直接用@Profile注解来进行配置，例如数据库配置，这里我们先定义一个接口<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public  interface DBConnector &#123; public  void  configure(); &#125;</div></pre></td></tr></table></figure></p>
+<p>分别定义俩个实现类来实现它<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line">  * 测试数据库</div><div class="line">  */</div><div class="line">@Component</div><div class="line">@Profile(&quot;testdb&quot;)</div><div class="line">public class TestDBConnector implements DBConnector &#123;</div><div class="line">    @Override</div><div class="line">    public void configure() &#123;</div><div class="line">        System.out.println(&quot;testdb&quot;);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">/**</div><div class="line"> * 生产数据库</div><div class="line"> */</div><div class="line">@Component</div><div class="line">@Profile(&quot;devdb&quot;)</div><div class="line">public class DevDBConnector implements DBConnector &#123;</div><div class="line">    @Override</div><div class="line">    public void configure() &#123;</div><div class="line">        System.out.println(&quot;devdb&quot;);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>通过在配置文件激活具体使用哪个实现类<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">spring.profiles.active=testdb</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">@RestController</div><div class="line">@RequestMapping(&quot;/task&quot;)</div><div class="line">public class TaskController &#123;</div><div class="line"></div><div class="line">    @Autowired DBConnector connector ;</div><div class="line"></div><div class="line">    @RequestMapping(value = &#123;&quot;/&quot;,&quot;&quot;&#125;)</div><div class="line">    public String hellTask()&#123;</div><div class="line"></div><div class="line">        connector.configure(); //最终打印testdb     </div><div class="line">        return &quot;hello task !! myage is &quot; + myage;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>除了spring.profiles.active来激活一个或者多个profile之外，还可以用spring.profiles.include来叠加profile<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">spring.profiles.active: testdb  </div><div class="line">spring.profiles.include: proddb,prodmq</div></pre></td></tr></table></figure></p>
+<h4 id="配置上下文"><a href="#配置上下文" class="headerlink" title="配置上下文"></a>配置上下文</h4><p>在resources目录下建立application.properties文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">server.context-path=/bt</div></pre></td></tr></table></figure></p>
+<p>访问<br><a href="http://127.0.0.1:8080/bt/hello" target="_blank" rel="external">http://127.0.0.1:8080/bt/hello</a></p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -148,13 +136,13 @@
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/android/">android</a>
+  <a class="article-category-link" href="/categories/spring-boot/">spring-boot</a>
 </div>
 
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/viewpager/">viewpager</a>
+  <span></span> <a href="/tags/spring-boot/">spring-boot</a>
   </div>
 
 </div>
@@ -163,7 +151,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="https://ln0491.github.io/2016/09/29/ViewPager的基本使用/" data-title="ViewPager的基本使用 | 刘楠的博客" data-tsina="null" class="share clearfix">
+	  <div data-url="https://ln0491.github.io/2017/03/01/spring-boot入门二配置文件/" data-title="spring-boot入门二配置文件 | 刘楠的博客" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -177,18 +165,18 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2016/09/29/Bitmap和Base64的相互转换/" title="Bitmap和Base64的相互转换">
+ <a href="/2017/03/01/spring-boot常配置文件属性/" title="spring-boot常配置文件属性">
   <strong>上一篇：</strong><br/>
   <span>
-  Bitmap和Base64的相互转换</span>
+  spring-boot常配置文件属性</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/2016/09/28/Android onTouch 事件/"  title="Android onTouch 事件">
+<a href="/2017/03/01/spring-boot入门一环境搭建及hellospringboot/"  title="spring-boot入门一环境搭建及hellospringboot">
  <strong>下一篇：</strong><br/> 
- <span>Android onTouch 事件
+ <span>spring-boot入门一环境搭建及hellospringboot
 </span>
 </a>
 </div>
@@ -197,7 +185,7 @@
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2016/09/29/ViewPager的基本使用/" data-title="ViewPager的基本使用" data-url="https://ln0491.github.io/2016/09/29/ViewPager的基本使用/"></div>
+	<div class="ds-thread" data-thread-key="2017/03/01/spring-boot入门二配置文件/" data-title="spring-boot入门二配置文件" data-url="https://ln0491.github.io/2017/03/01/spring-boot入门二配置文件/"></div>
 </section>
 
 
@@ -207,7 +195,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#效果"><span class="toc-number">1.</span> <span class="toc-text">效果</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#布局"><span class="toc-number">2.</span> <span class="toc-text">布局</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Adapter"><span class="toc-number">2.1.</span> <span class="toc-text">Adapter</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Activity"><span class="toc-number">2.2.</span> <span class="toc-text">Activity</span></a></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#spring-boot入门二配置文件"><span class="toc-number">1.</span> <span class="toc-text">spring-boot入门二配置文件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#配置文件"><span class="toc-number">1.1.</span> <span class="toc-text">配置文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Profile-多环境配置"><span class="toc-number">1.2.</span> <span class="toc-text">Profile-多环境配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#配置上下文"><span class="toc-number">1.3.</span> <span class="toc-text">配置上下文</span></a></li></ol></li></ol>
  
   </div>
 
