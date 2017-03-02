@@ -1,0 +1,630 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>如何用Java类配置Spring MVC(不通过web.xml和XML方式) | 刘楠的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Liu Nan">
+    
+
+    
+    <meta name="description" content="如何用Java类配置Spring MVC(不通过web.xml和XML方式)建立普通MAVEN项目配置POM12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何用Java类配置Spring MVC(不通过web.xml和XML方式)">
+<meta property="og:url" content="https://ln0491.github.io/2017/03/02/如何用Java类配置Spring-MVC-不通过web-xml和XML方式/index.html">
+<meta property="og:site_name" content="刘楠的博客">
+<meta property="og:description" content="如何用Java类配置Spring MVC(不通过web.xml和XML方式)建立普通MAVEN项目配置POM12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777">
+<meta property="og:image" content="http://img.blog.csdn.net/20170223152815739?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva28wNDkx/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20170223152921834?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva28wNDkx/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20170223153434059?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva28wNDkx/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:updated_time" content="2017-03-02T09:52:41.399Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="如何用Java类配置Spring MVC(不通过web.xml和XML方式)">
+<meta name="twitter:description" content="如何用Java类配置Spring MVC(不通过web.xml和XML方式)建立普通MAVEN项目配置POM12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20170223152815739?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva28wNDkx/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+
+    
+    <link rel="alternative" href="/atom.xml" title="刘楠的博客" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="刘楠的博客" title="刘楠的博客"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="刘楠的博客">刘楠的博客</a></h1>
+				<h2 class="blog-motto">热爱生活</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">首页</a></li>
+					
+						<li><a href="/archives">归档</a></li>
+					
+						<li><a href="/tags">标签</a></li>
+					
+						<li><a href="/categories">分类</a></li>
+					
+						<li><a href="/about">关于</a></li>
+					
+					<li>
+ 					
+						<form class="search" action="http://zhannei.baidu.com/cse/search" target="_blank">
+							<label>Search</label>
+						<input name="s" type="hidden" value= 9779949399098768934 ><input type="text" name="q" size="30" placeholder="搜索"><br>
+						</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2017/03/02/如何用Java类配置Spring-MVC-不通过web-xml和XML方式/" title="如何用Java类配置Spring MVC(不通过web.xml和XML方式)" itemprop="url">如何用Java类配置Spring MVC(不通过web.xml和XML方式)</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Liu Nan" target="_blank" itemprop="author">Liu Nan</a>
+		
+  <p class="article-time">
+    <time datetime="2017-03-02T09:50:48.000Z" itemprop="datePublished"> 发表于 2017-03-02</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#如何用Java类配置Spring-MVC-不通过web-xml和XML方式"><span class="toc-number">1.</span> <span class="toc-text">如何用Java类配置Spring MVC(不通过web.xml和XML方式)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#建立普通MAVEN项目配置POM"><span class="toc-number">1.1.</span> <span class="toc-text">建立普通MAVEN项目配置POM</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#配置DispatcherServlet-需要创建一个Web初始化类"><span class="toc-number">1.2.</span> <span class="toc-text">配置DispatcherServlet. 需要创建一个Web初始化类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#配置启动配置类RootConfig"><span class="toc-number">1.3.</span> <span class="toc-text">配置启动配置类RootConfig</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#配置Spring-MVC视图解析WebConfig-java-需要要创建一个类继承自WebMvcConfigurerAdapter"><span class="toc-number">1.4.</span> <span class="toc-text">配置Spring MVC视图解析WebConfig.java, 需要要创建一个类继承自WebMvcConfigurerAdapter</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#控制器和页面"><span class="toc-number">2.</span> <span class="toc-text">控制器和页面</span></a></li></ol>
+		
+		</div>
+		
+		<h3 id="如何用Java类配置Spring-MVC-不通过web-xml和XML方式"><a href="#如何用Java类配置Spring-MVC-不通过web-xml和XML方式" class="headerlink" title="如何用Java类配置Spring MVC(不通过web.xml和XML方式)"></a>如何用Java类配置Spring MVC(不通过web.xml和XML方式)</h3><h4 id="建立普通MAVEN项目配置POM"><a href="#建立普通MAVEN项目配置POM" class="headerlink" title="建立普通MAVEN项目配置POM"></a>建立普通MAVEN项目配置POM</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div></pre></td><td class="code"><pre><div class="line">&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</div><div class="line">	xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;</div><div class="line">	&lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;</div><div class="line">	&lt;groupId&gt;com.ghg&lt;/groupId&gt;</div><div class="line">	&lt;artifactId&gt;chart04&lt;/artifactId&gt;</div><div class="line">	&lt;version&gt;0.0.1-SNAPSHOT&lt;/version&gt;</div><div class="line">	&lt;packaging&gt;war&lt;/packaging&gt;</div><div class="line"></div><div class="line">	&lt;properties&gt;</div><div class="line">		&lt;!-- generic --&gt;</div><div class="line">		&lt;java.version&gt;1.7&lt;/java.version&gt;</div><div class="line">		&lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;</div><div class="line">		&lt;project.reporting.outputEncoding&gt;UTF-8&lt;/project.reporting.outputEncoding&gt;</div><div class="line">		&lt;!-- web jsp --&gt;</div><div class="line">		&lt;jsp.version&gt;2.2&lt;/jsp.version&gt;</div><div class="line">		&lt;jstl.verison&gt;1.2&lt;/jstl.verison&gt;</div><div class="line">		&lt;servlet.version&gt;3.1.0&lt;/servlet.version&gt;</div><div class="line"></div><div class="line">		&lt;!--spring --&gt;</div><div class="line">		&lt;spring-framework.version&gt;4.3.6.RELEASE&lt;/spring-framework.version&gt;</div><div class="line">		&lt;!--logging --&gt;</div><div class="line">		&lt;logback.version&gt;1.2.1&lt;/logback.version&gt;</div><div class="line">		&lt;slf4j.version&gt;1.7.23&lt;/slf4j.version&gt;</div><div class="line">		&lt;log4j.version&gt;1.2.17&lt;/log4j.version&gt;</div><div class="line">	&lt;/properties&gt;</div><div class="line"></div><div class="line"></div><div class="line">	&lt;dependencies&gt;</div><div class="line">		&lt;!-- javax --&gt;</div><div class="line"></div><div class="line">		&lt;dependency&gt;</div><div class="line">			&lt;groupId&gt;javax&lt;/groupId&gt;</div><div class="line">			&lt;artifactId&gt;javaee-web-api&lt;/artifactId&gt;</div><div class="line">			&lt;version&gt;7.0&lt;/version&gt;</div><div class="line">			&lt;scope&gt;provided&lt;/scope&gt;</div><div class="line">		&lt;/dependency&gt;</div><div class="line"></div><div class="line">		&lt;!-- spring --&gt;</div><div class="line">		&lt;dependency&gt;</div><div class="line">			&lt;groupId&gt;org.springframework&lt;/groupId&gt;</div><div class="line">			&lt;artifactId&gt;spring-context&lt;/artifactId&gt;</div><div class="line">			&lt;version&gt;$&#123;spring-framework.version&#125;&lt;/version&gt;</div><div class="line">		&lt;/dependency&gt;</div><div class="line">		&lt;dependency&gt;</div><div class="line">			&lt;groupId&gt;org.springframework&lt;/groupId&gt;</div><div class="line">			&lt;artifactId&gt;spring-webmvc&lt;/artifactId&gt;</div><div class="line">			&lt;version&gt;$&#123;spring-framework.version&#125;&lt;/version&gt;</div><div class="line">		&lt;/dependency&gt;</div><div class="line">		&lt;dependency&gt;</div><div class="line">			&lt;groupId&gt;org.springframework&lt;/groupId&gt;</div><div class="line">			&lt;artifactId&gt;spring-tx&lt;/artifactId&gt;</div><div class="line">			&lt;version&gt;$&#123;spring-framework.version&#125;&lt;/version&gt;</div><div class="line">		&lt;/dependency&gt;</div><div class="line">		&lt;!--other web dependency --&gt;</div><div class="line"></div><div class="line">		&lt;dependency&gt;</div><div class="line">			&lt;groupId&gt;javax.servlet.jsp&lt;/groupId&gt;</div><div class="line">			&lt;artifactId&gt;jsp-api&lt;/artifactId&gt;</div><div class="line">			&lt;version&gt;$&#123;jsp.version&#125;&lt;/version&gt;</div><div class="line">			&lt;scope&gt;provided&lt;/scope&gt;</div><div class="line">		&lt;/dependency&gt;</div><div class="line">		&lt;dependency&gt;</div><div class="line">			&lt;groupId&gt;javax.servlet&lt;/groupId&gt;</div><div class="line">			&lt;artifactId&gt;jstl&lt;/artifactId&gt;</div><div class="line">			&lt;version&gt;$&#123;jstl.verison&#125;&lt;/version&gt;</div><div class="line">		&lt;/dependency&gt;</div><div class="line">		&lt;!-- servlet --&gt;</div><div class="line">		&lt;dependency&gt;</div><div class="line">			&lt;groupId&gt;javax.servlet&lt;/groupId&gt;</div><div class="line">			&lt;artifactId&gt;javax.servlet-api&lt;/artifactId&gt;</div><div class="line">			&lt;version&gt;$&#123;servlet.version&#125;&lt;/version&gt;</div><div class="line">			&lt;scope&gt;provided&lt;/scope&gt;</div><div class="line">		&lt;/dependency&gt;</div><div class="line"></div><div class="line">		&lt;!-- logging --&gt;</div><div class="line">		&lt;!-- SLF4J和logback --&gt;</div><div class="line"></div><div class="line">		&lt;dependency&gt;</div><div class="line">			&lt;groupId&gt;org.slf4j&lt;/groupId&gt;</div><div class="line">			&lt;artifactId&gt;slf4j-api&lt;/artifactId&gt;</div><div class="line">			&lt;version&gt;$&#123;slf4j.version&#125;&lt;/version&gt;</div><div class="line">		&lt;/dependency&gt;</div><div class="line">		&lt;!-- logback --&gt;</div><div class="line">		&lt;dependency&gt;</div><div class="line">			&lt;groupId&gt;ch.qos.logback&lt;/groupId&gt;</div><div class="line">			&lt;artifactId&gt;logback-classic&lt;/artifactId&gt;</div><div class="line">			&lt;version&gt;$&#123;logback.version&#125;&lt;/version&gt;</div><div class="line">		&lt;/dependency&gt;</div><div class="line">		&lt;dependency&gt;</div><div class="line">			&lt;groupId&gt;ch.qos.logback&lt;/groupId&gt;</div><div class="line">			&lt;artifactId&gt;logback-core&lt;/artifactId&gt;</div><div class="line">			&lt;version&gt;$&#123;logback.version&#125;&lt;/version&gt;</div><div class="line">		&lt;/dependency&gt;</div><div class="line">		&lt;dependency&gt;</div><div class="line">			&lt;groupId&gt;ch.qos.logback&lt;/groupId&gt;</div><div class="line">			&lt;artifactId&gt;logback-access&lt;/artifactId&gt;</div><div class="line">			&lt;version&gt;$&#123;logback.version&#125;&lt;/version&gt;</div><div class="line">		&lt;/dependency&gt;</div><div class="line">		&lt;dependency&gt;</div><div class="line">			&lt;groupId&gt;log4j&lt;/groupId&gt;</div><div class="line">			&lt;artifactId&gt;log4j&lt;/artifactId&gt;</div><div class="line">			&lt;version&gt;$&#123;log4j.version&#125;&lt;/version&gt;</div><div class="line">		&lt;/dependency&gt;</div><div class="line">		</div><div class="line">		&lt;!-- jackson --&gt;</div><div class="line">		&lt;dependency&gt;</div><div class="line">			&lt;groupId&gt;com.fasterxml.jackson.core&lt;/groupId&gt;</div><div class="line">			&lt;artifactId&gt;jackson-databind&lt;/artifactId&gt;</div><div class="line">			&lt;version&gt;2.8.6&lt;/version&gt;</div><div class="line">		&lt;/dependency&gt;</div><div class="line">	&lt;/dependencies&gt;</div><div class="line"></div><div class="line"></div><div class="line">	&lt;build&gt;</div><div class="line">		&lt;finalName&gt;char04&lt;/finalName&gt;</div><div class="line">		&lt;plugins&gt;</div><div class="line">			&lt;plugin&gt;</div><div class="line">				&lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;</div><div class="line">				&lt;artifactId&gt;maven-compiler-plugin&lt;/artifactId&gt;</div><div class="line">				&lt;version&gt;3.6.1&lt;/version&gt;</div><div class="line">				&lt;configuration&gt;</div><div class="line">					&lt;source&gt;$&#123;java.version&#125;&lt;/source&gt;</div><div class="line">					&lt;target&gt;$&#123;java.version&#125;&lt;/target&gt;</div><div class="line">					&lt;encoding&gt;UTF-8&lt;/encoding&gt;</div><div class="line">				&lt;/configuration&gt;</div><div class="line">			&lt;/plugin&gt;</div><div class="line"></div><div class="line">			&lt;plugin&gt;</div><div class="line">				&lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;</div><div class="line">				&lt;artifactId&gt;maven-war-plugin&lt;/artifactId&gt;</div><div class="line">				&lt;version&gt;3.0.0&lt;/version&gt;</div><div class="line">				&lt;configuration&gt;</div><div class="line">					&lt;failOnMissingWebXml&gt;false&lt;/failOnMissingWebXml&gt;</div><div class="line">				&lt;/configuration&gt;</div><div class="line">			&lt;/plugin&gt;</div><div class="line"></div><div class="line">			&lt;!-- &lt;plugin&gt;</div><div class="line">				&lt;groupId&gt;org.mortbay.jetty&lt;/groupId&gt;</div><div class="line">				&lt;artifactId&gt;jetty-maven-plugin&lt;/artifactId&gt;</div><div class="line">				&lt;version&gt;8.1.14.v20131031&lt;/version&gt;</div><div class="line">				&lt;configuration&gt;</div><div class="line">					&lt;scanIntervalSeconds&gt;600&lt;/scanIntervalSeconds&gt;</div><div class="line">					&lt;scanTargetPatterns&gt;</div><div class="line">						&lt;scanTargetPattern&gt;</div><div class="line">							&lt;directory&gt;src/main/webapp&lt;/directory&gt;</div><div class="line">							&lt;includes&gt;</div><div class="line">								&lt;include&gt;**/*.xml&lt;/include&gt;</div><div class="line">								&lt;include&gt;**/*.properties&lt;/include&gt;</div><div class="line">								&lt;include&gt;**/*.tld&lt;/include&gt;</div><div class="line">							&lt;/includes&gt;</div><div class="line">						&lt;/scanTargetPattern&gt;</div><div class="line">					&lt;/scanTargetPatterns&gt;</div><div class="line">					&lt;webAppConfig&gt;</div><div class="line">						&lt;contextPath&gt;/char04&lt;/contextPath&gt;</div><div class="line">					&lt;/webAppConfig&gt;</div><div class="line">					&lt;connectors&gt;</div><div class="line">						&lt;connector implementation=&quot;org.eclipse.jetty.server.nio.SelectChannelConnector&quot;&gt;</div><div class="line">							&lt;port&gt;9090&lt;/port&gt;</div><div class="line">							&lt;maxIdleTime&gt;60000&lt;/maxIdleTime&gt;</div><div class="line">						&lt;/connector&gt;</div><div class="line">					&lt;/connectors&gt;</div><div class="line">				&lt;/configuration&gt;</div><div class="line">			&lt;/plugin&gt; --&gt;</div><div class="line">		&lt;/plugins&gt;</div><div class="line">	&lt;/build&gt;</div><div class="line">&lt;/project&gt;</div></pre></td></tr></table></figure>
+<h4 id="配置DispatcherServlet-需要创建一个Web初始化类"><a href="#配置DispatcherServlet-需要创建一个Web初始化类" class="headerlink" title="配置DispatcherServlet. 需要创建一个Web初始化类"></a>配置DispatcherServlet. 需要创建一个Web初始化类</h4><p>MyMVCConfig extends WebMvcConfigurerAdapter 继承WebMvcConfigurerAdapter<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">package com.ghg.chart04.config;</div><div class="line"></div><div class="line">import org.springframework.context.annotation.Bean;</div><div class="line">import org.springframework.context.annotation.ComponentScan;</div><div class="line">import org.springframework.context.annotation.Configuration;</div><div class="line">import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;</div><div class="line">import org.springframework.web.servlet.config.annotation.EnableWebMvc;</div><div class="line">import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;</div><div class="line">import org.springframework.web.servlet.view.InternalResourceViewResolver;</div><div class="line">import org.springframework.web.servlet.view.JstlView;</div><div class="line"></div><div class="line">@Configuration</div><div class="line">@EnableWebMvc</div><div class="line">@ComponentScan(&quot;com.ghg.chart04.controller&quot;)</div><div class="line">public class MyMVCConfig extends WebMvcConfigurerAdapter &#123;</div><div class="line">	@Bean</div><div class="line">	public InternalResourceViewResolver viewResolver() &#123;</div><div class="line">		InternalResourceViewResolver resolver = new InternalResourceViewResolver();</div><div class="line"></div><div class="line">		resolver.setPrefix(&quot;/WEB-INF/classes/views&quot;);</div><div class="line">		resolver.setSuffix(&quot;.jsp&quot;);</div><div class="line">		resolver.setViewClass(JstlView.class);</div><div class="line">		resolver.setExposeContextBeansAsAttributes(true);</div><div class="line">		return resolver;</div><div class="line"></div><div class="line">	&#125;</div><div class="line"></div><div class="line">	// 配置静态资源的处理</div><div class="line">	@Override</div><div class="line">	public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) &#123;</div><div class="line">		configurer.enable(); // 对静态资源的请求转发到容器缺省的servlet，而不使用DispatcherServlet</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="配置启动配置类RootConfig"><a href="#配置启动配置类RootConfig" class="headerlink" title="配置启动配置类RootConfig"></a>配置启动配置类RootConfig</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">package com.ghg.chart04.init;</div><div class="line"></div><div class="line">import org.springframework.context.annotation.ComponentScan;</div><div class="line">import org.springframework.context.annotation.ComponentScan.Filter;</div><div class="line">import org.springframework.context.annotation.Configuration;</div><div class="line">import org.springframework.context.annotation.FilterType;</div><div class="line">import org.springframework.web.servlet.config.annotation.EnableWebMvc;</div><div class="line"></div><div class="line">@Configuration</div><div class="line">@ComponentScan(basePackages=&#123;&quot;com.ghg.chart04&quot;&#125;,excludeFilters=&#123;@Filter(type=FilterType.ANNOTATION,value=EnableWebMvc.class)&#125;)</div><div class="line">public class RootConfig &#123;</div><div class="line"></div><div class="line">&#125;</div><div class="line">/**</div><div class="line">	 * 用来配置servcie与dao 业务数据</div><div class="line">	 */</div></pre></td></tr></table></figure>
+<h4 id="配置Spring-MVC视图解析WebConfig-java-需要要创建一个类继承自WebMvcConfigurerAdapter"><a href="#配置Spring-MVC视图解析WebConfig-java-需要要创建一个类继承自WebMvcConfigurerAdapter" class="headerlink" title="配置Spring MVC视图解析WebConfig.java, 需要要创建一个类继承自WebMvcConfigurerAdapter"></a>配置Spring MVC视图解析WebConfig.java, 需要要创建一个类继承自WebMvcConfigurerAdapter</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">package com.ghg.chart04.init;</div><div class="line"></div><div class="line"></div><div class="line">import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;</div><div class="line"></div><div class="line">import com.ghg.chart04.config.MyMVCConfig;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">public class WebInitializer extends AbstractAnnotationConfigDispatcherServletInitializer  &#123;</div><div class="line">/**</div><div class="line">	 * 用来配置servcie与dao 业务数据</div><div class="line">	 */</div><div class="line">	@Override</div><div class="line">	protected Class&lt;?&gt;[] getRootConfigClasses() &#123;</div><div class="line">		return new Class&lt;?&gt;[] &#123; RootConfig.class &#125;; //启动配置类</div><div class="line">	&#125;</div><div class="line">	/**</div><div class="line">	 * 用来配置MVC中的Class，也是就Controller</div><div class="line">	 */</div><div class="line">	@Override</div><div class="line">	protected Class&lt;?&gt;[] getServletConfigClasses() &#123;</div><div class="line">		 return new Class&lt;?&gt;[] &#123; MyMVCConfig.class &#125;;        //ָ指定Web配置类</div><div class="line">	&#125;</div><div class="line">/**</div><div class="line">	 * 将DispatcherServlet映射到/</div><div class="line">	 */</div><div class="line">	@Override</div><div class="line">	protected String[] getServletMappings() &#123;</div><div class="line">		return new String[]&#123;&quot;/&quot;&#125;;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>至此, 传统方式中需要通过web.xml进行配置的东西就已将全部完成有上面三个java类(WebInitializer , RootConfig, MyMVCConfig )完成. 可以开始写Controller和页面代码了</p>
+<h3 id="控制器和页面"><a href="#控制器和页面" class="headerlink" title="控制器和页面"></a>控制器和页面</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">package com.ghg.chart04.controller;</div><div class="line"></div><div class="line">import javax.servlet.http.HttpServletRequest;</div><div class="line"></div><div class="line">import org.springframework.web.bind.annotation.RequestMapping;</div><div class="line">import org.springframework.web.bind.annotation.RestController;</div><div class="line"></div><div class="line">@RestController</div><div class="line">public class HelloController &#123;</div><div class="line"></div><div class="line">	</div><div class="line">	@RequestMapping(value=&quot;/hello&quot;)</div><div class="line">	public Map&lt;String, String&gt; hello(HttpServletRequest request)&#123;</div><div class="line">		</div><div class="line">		Map&lt;String, String&gt; params = new HashMap&lt;String, String&gt;();</div><div class="line">		params.put(&quot;title&quot;, &quot;hello&quot;);</div><div class="line">		params.put(&quot;result&quot;, &quot;中奖了&quot;);</div><div class="line">		return params;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">``` </div><div class="line"></div><div class="line">jsp</div></pre></td></tr></table></figure>
+<p>&lt;%@ page language=”java” contentType=”text/html; charset=UTF-8”<br>    pageEncoding=”UTF-8”%&gt;<br>&lt;!DOCTYPE html PUBLIC “-//W3C//DTD HTML 4.01 Transitional//EN” “<a href="http://www.w3.org/TR/html4/loose.dtd&quot;&gt;" target="_blank" rel="external">http://www.w3.org/TR/html4/loose.dtd&quot;&gt;</a></p>
+<p><html></html></p>
+<p><head></head></p>
+<p><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></p>
+<p><title>Welcome</title><br></p>
+<p><body></body></p>
+<p><pre>Welcome to Spring MVC!</pre><br><br><br>```<br><img src="http://img.blog.csdn.net/20170223152815739?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva28wNDkx/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<p><img src="http://img.blog.csdn.net/20170223152921834?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva28wNDkx/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"><br><img src="http://img.blog.csdn.net/20170223153434059?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva28wNDkx/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/spring/">spring</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/spring/">spring</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="https://ln0491.github.io/2017/03/02/如何用Java类配置Spring-MVC-不通过web-xml和XML方式/" data-title="如何用Java类配置Spring MVC(不通过web.xml和XML方式) | 刘楠的博客" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2017/03/01/spring-boot入门五日志/"  title="spring-boot入门五日志">
+ <strong>下一篇：</strong><br/> 
+ <span>spring-boot入门五日志
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="2017/03/02/如何用Java类配置Spring-MVC-不通过web-xml和XML方式/" data-title="如何用Java类配置Spring MVC(不通过web.xml和XML方式)" data-url="https://ln0491.github.io/2017/03/02/如何用Java类配置Spring-MVC-不通过web-xml和XML方式/"></div>
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#如何用Java类配置Spring-MVC-不通过web-xml和XML方式"><span class="toc-number">1.</span> <span class="toc-text">如何用Java类配置Spring MVC(不通过web.xml和XML方式)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#建立普通MAVEN项目配置POM"><span class="toc-number">1.1.</span> <span class="toc-text">建立普通MAVEN项目配置POM</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#配置DispatcherServlet-需要创建一个Web初始化类"><span class="toc-number">1.2.</span> <span class="toc-text">配置DispatcherServlet. 需要创建一个Web初始化类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#配置启动配置类RootConfig"><span class="toc-number">1.3.</span> <span class="toc-text">配置启动配置类RootConfig</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#配置Spring-MVC视图解析WebConfig-java-需要要创建一个类继承自WebMvcConfigurerAdapter"><span class="toc-number">1.4.</span> <span class="toc-text">配置Spring MVC视图解析WebConfig.java, 需要要创建一个类继承自WebMvcConfigurerAdapter</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#控制器和页面"><span class="toc-number">2.</span> <span class="toc-text">控制器和页面</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/android/" title="android">android<sup>42</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/java/" title="java">java<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/log/" title="log">log<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/logback/" title="logback">logback<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/mybatis/" title="mybatis">mybatis<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/mysql/" title="mysql">mysql<sup>19</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/spring/" title="spring">spring<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/spring-boot/" title="spring-boot">spring-boot<sup>6</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/test/" title="test">test<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/mysql/" title="mysql">mysql<sup>19</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/图片加载/" title="图片加载">图片加载<sup>12</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/android/" title="android">android<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/spring-boot/" title="spring-boot">spring-boot<sup>6</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Retrofit/" title="Retrofit">Retrofit<sup>6</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/viewpager/" title="viewpager">viewpager<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/mybatis/" title="mybatis">mybatis<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/volley/" title="volley">volley<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/自定义View/" title="自定义View">自定义View<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/test/" title="test">test<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/PorterDuffXfermode/" title="PorterDuffXfermode">PorterDuffXfermode<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/View动画/" title="View动画">View动画<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/maven/" title="maven">maven<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/base64/" title="base64">base64<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/工具/" title="工具">工具<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/logback/" title="logback">logback<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/工具类/" title="工具类">工具类<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/动画/" title="动画">动画<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/spring/" title="spring">spring<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/log/" title="log">log<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  
+  <div class="tagcloudlist">
+    <p class="asidetitle">标签云</p>
+    <div class="tagcloudlist clearfix">
+       <a href="/tags/PorterDuffXfermode/" style="font-size: 10px;">PorterDuffXfermode</a> <a href="/tags/Retrofit/" style="font-size: 16.25px;">Retrofit</a> <a href="/tags/View/" style="font-size: 10px;">View</a> <a href="/tags/View动画/" style="font-size: 10px;">View动画</a> <a href="/tags/android/" style="font-size: 17.5px;">android</a> <a href="/tags/base64/" style="font-size: 10px;">base64</a> <a href="/tags/log/" style="font-size: 10px;">log</a> <a href="/tags/logback/" style="font-size: 10px;">logback</a> <a href="/tags/maven/" style="font-size: 10px;">maven</a> <a href="/tags/mybatis/" style="font-size: 13.75px;">mybatis</a> <a href="/tags/mysql/" style="font-size: 20px;">mysql</a> <a href="/tags/spring/" style="font-size: 10px;">spring</a> <a href="/tags/spring-boot/" style="font-size: 16.25px;">spring-boot</a> <a href="/tags/test/" style="font-size: 11.25px;">test</a> <a href="/tags/viewpager/" style="font-size: 15px;">viewpager</a> <a href="/tags/volley/" style="font-size: 12.5px;">volley</a> <a href="/tags/动画/" style="font-size: 10px;">动画</a> <a href="/tags/图片加载/" style="font-size: 18.75px;">图片加载</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/工具类/" style="font-size: 10px;">工具类</a> <a href="/tags/源码/" style="font-size: 10px;">源码</a> <a href="/tags/自定义View/" style="font-size: 11.25px;">自定义View</a>
+    </div>
+  </div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://www.cnblogs.com/" target="_blank" title="博客园">博客园</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.csdn.net/" target="_blank" title="CSDN">CSDN</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.cnblogs.com/liunanjava/" target="_blank" title="森林森">森林森</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.jianshu.com/" target="_blank" title="简书">简书</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> 爱生活爱编码. <br/>
+			This is my blog,Try to do better.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/ln0491" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<a href="mailto:153011784@qq.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2017 
+		
+		<a href="/about" target="_blank" title="Liu Nan">Liu Nan</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+	$('#toc.toc-aside').css('display', 'block').addClass('fadeIn'); //这个是我新加的，修改点
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+        getSize();
+        if (myWidth >= 1024) {
+          c.click();
+        }
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"ln0491"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?f9d3aff238126ad201a9a789a888d75a";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1260477305'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1260477305%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
