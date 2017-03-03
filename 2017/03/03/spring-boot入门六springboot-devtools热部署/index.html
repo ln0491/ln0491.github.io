@@ -4,23 +4,26 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>Android-按二次返回键退出. | 刘楠的博客</title>
+    <title>spring-boot入门六springboot + devtools热部署 | 刘楠的博客</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Liu Nan">
     
 
     
-    <meta name="description" content="按二次返回键退出的功能在onBackPressed 方法中做下时间判断123456789101112131415161718192021/**  * 最后按下的时间  */ private  long lastTime ; /**  * 按二次返回键退出应用  */ @Override public void onBackPressed() &amp;#123;     long currentTime">
+    <meta name="description" content="Developer toolspring-boot-devtools 是一个为开发者服务的一个模块，其中最重要的功能就是自动应用代码更改到最新的App上面去。原理是在发现代码有更改之后，重新启动应用，但是比速度比手动停止后再启动还要更快，更快指的不是节省出来的手工操作的时间。
+只需要添加依赖即可12345&amp;lt;dependency&amp;gt;       &amp;lt;groupId&amp;gt;org.spr">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Android-按二次返回键退出.">
-<meta property="og:url" content="https://ln0491.github.io/2016/10/11/Android-按二次返回键退出/index.html">
+<meta property="og:title" content="spring-boot入门六springboot + devtools热部署">
+<meta property="og:url" content="https://ln0491.github.io/2017/03/03/spring-boot入门六springboot-devtools热部署/index.html">
 <meta property="og:site_name" content="刘楠的博客">
-<meta property="og:description" content="按二次返回键退出的功能在onBackPressed 方法中做下时间判断123456789101112131415161718192021/**  * 最后按下的时间  */ private  long lastTime ; /**  * 按二次返回键退出应用  */ @Override public void onBackPressed() &amp;#123;     long currentTime">
-<meta property="og:updated_time" content="2016-10-11T06:40:15.682Z">
+<meta property="og:description" content="Developer toolspring-boot-devtools 是一个为开发者服务的一个模块，其中最重要的功能就是自动应用代码更改到最新的App上面去。原理是在发现代码有更改之后，重新启动应用，但是比速度比手动停止后再启动还要更快，更快指的不是节省出来的手工操作的时间。
+只需要添加依赖即可12345&amp;lt;dependency&amp;gt;       &amp;lt;groupId&amp;gt;org.spr">
+<meta property="og:updated_time" content="2017-03-03T07:06:55.198Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Android-按二次返回键退出.">
-<meta name="twitter:description" content="按二次返回键退出的功能在onBackPressed 方法中做下时间判断123456789101112131415161718192021/**  * 最后按下的时间  */ private  long lastTime ; /**  * 按二次返回键退出应用  */ @Override public void onBackPressed() &amp;#123;     long currentTime">
+<meta name="twitter:title" content="spring-boot入门六springboot + devtools热部署">
+<meta name="twitter:description" content="Developer toolspring-boot-devtools 是一个为开发者服务的一个模块，其中最重要的功能就是自动应用代码更改到最新的App上面去。原理是在发现代码有更改之后，重新启动应用，但是比速度比手动停止后再启动还要更快，更快指的不是节省出来的手工操作的时间。
+只需要添加依赖即可12345&amp;lt;dependency&amp;gt;       &amp;lt;groupId&amp;gt;org.spr">
 
     
     <link rel="alternative" href="/atom.xml" title="刘楠的博客" type="application/atom+xml">
@@ -83,14 +86,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2016/10/11/Android-按二次返回键退出/" title="Android-按二次返回键退出." itemprop="url">Android-按二次返回键退出.</a>
+      <a href="/2017/03/03/spring-boot入门六springboot-devtools热部署/" title="spring-boot入门六springboot + devtools热部署" itemprop="url">spring-boot入门六springboot + devtools热部署</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="Liu Nan" target="_blank" itemprop="author">Liu Nan</a>
 		
   <p class="article-time">
-    <time datetime="2016-10-11T06:39:56.000Z" itemprop="datePublished"> 发表于 2016-10-11</time>
+    <time datetime="2017-03-03T06:47:20.000Z" itemprop="datePublished"> 发表于 2017-03-03</time>
     
   </p>
 </header>
@@ -99,14 +102,30 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#按二次返回键退出的功能"><span class="toc-number">1.</span> <span class="toc-text">按二次返回键退出的功能</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#在onBackPressed-方法中做下时间判断"><span class="toc-number">1.0.1.</span> <span class="toc-text">在onBackPressed 方法中做下时间判断</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#第二种在onKeyDown-方法中做下判断"><span class="toc-number">1.0.2.</span> <span class="toc-text">第二种在onKeyDown 方法中做下判断</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#有些页面不让用返回键可以禁用"><span class="toc-number">1.0.3.</span> <span class="toc-text">有些页面不让用返回键可以禁用</span></a></li></ol></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#Developer-tools"><span class="toc-number">1.</span> <span class="toc-text">Developer tools</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#排除静态资源"><span class="toc-number">2.</span> <span class="toc-text">排除静态资源</span></a></li></ol>
 		
 		</div>
 		
-		<h2 id="按二次返回键退出的功能"><a href="#按二次返回键退出的功能" class="headerlink" title="按二次返回键退出的功能"></a>按二次返回键退出的功能</h2><h4 id="在onBackPressed-方法中做下时间判断"><a href="#在onBackPressed-方法中做下时间判断" class="headerlink" title="在onBackPressed 方法中做下时间判断"></a>在onBackPressed 方法中做下时间判断</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line">  * 最后按下的时间</div><div class="line">  */</div><div class="line"> private  long lastTime ;</div><div class="line"></div><div class="line"> /**</div><div class="line">  * 按二次返回键退出应用</div><div class="line">  */</div><div class="line"> @Override</div><div class="line"> public void onBackPressed() &#123;</div><div class="line">     long currentTime = System.currentTimeMillis();</div><div class="line"></div><div class="line">     if(currentTime-lastTime&lt;2*1000)&#123;</div><div class="line">         super.onBackPressed();</div><div class="line">     &#125;else &#123;</div><div class="line">         Toast.makeText(this, &quot;再按一次退出应用&quot;, Toast.LENGTH_SHORT).show();</div><div class="line">         lastTime=currentTime;</div><div class="line">     &#125;</div><div class="line"></div><div class="line"></div><div class="line"> &#125;</div></pre></td></tr></table></figure>
-<h4 id="第二种在onKeyDown-方法中做下判断"><a href="#第二种在onKeyDown-方法中做下判断" class="headerlink" title="第二种在onKeyDown 方法中做下判断"></a>第二种在onKeyDown 方法中做下判断</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">   public boolean onKeyDown(int keyCode, KeyEvent event) &#123;</div><div class="line"></div><div class="line">       if(keyCode==KeyEvent.KEYCODE_BACK)&#123;</div><div class="line">           //禁用返回键</div><div class="line">           exit();</div><div class="line">           return false;</div><div class="line">       &#125;</div><div class="line"></div><div class="line">       return super.onKeyDown(keyCode, event);</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
-<p>exit方法就是第一种的写法</p>
-<h4 id="有些页面不让用返回键可以禁用"><a href="#有些页面不让用返回键可以禁用" class="headerlink" title="有些页面不让用返回键可以禁用"></a>有些页面不让用返回键可以禁用</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">    public boolean onKeyDown(int keyCode, KeyEvent event) &#123;</div><div class="line"></div><div class="line">        if(keyCode==KeyEvent.KEYCODE_BACK)&#123;</div><div class="line">            //禁用返回键</div><div class="line">            return false;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        return super.onKeyDown(keyCode, event);</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+		<h4 id="Developer-tools"><a href="#Developer-tools" class="headerlink" title="Developer tools"></a>Developer tools</h4><p>pring-boot-devtools 是一个为开发者服务的一个模块，其中最重要的功能就是自动应用代码更改到最新的App上面去。原理是在发现代码有更改之后，重新启动应用，但是比速度比手动停止后再启动还要更快，更快指的不是节省出来的手工操作的时间。</p>
+<p>只需要添加依赖即可<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;dependency&gt;</div><div class="line">       &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</div><div class="line">       &lt;artifactId&gt;spring-boot-devtools&lt;/artifactId&gt;</div><div class="line">       &lt;optional&gt;true&lt;/optional&gt;</div><div class="line">   &lt;/dependency&gt;</div></pre></td></tr></table></figure></p>
+<p>测试方法：</p>
+<ul>
+<li>修改类–&gt;保存：应用会重启</li>
+<li>修改配置文件–&gt;保存：应用会重启</li>
+</ul>
+<h4 id="排除静态资源"><a href="#排除静态资源" class="headerlink" title="排除静态资源"></a>排除静态资源</h4><p>Excluding resources<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Certain resources don’t necessarily need to trigger a restart when they are changed. For example, Thymeleaf templates can just be edited in-place. By default changing resources in /META-INF/maven, /META-INF/resources ,/resources ,/static ,/public or /templates will not trigger a restart but will trigger a live reload. If you want to customize these exclusions you can use the spring.devtools.restart.exclude property. For example, to exclude only /static and /public you would set the following:</div></pre></td></tr></table></figure></p>
+<p>建议我们将静态资源放在以下目录</p>
+<ul>
+<li>/META-INF/maven</li>
+<li>/META-INF/resources</li>
+<li>/resources</li>
+<li>/static</li>
+<li>/public</li>
+<li>/templates</li>
+</ul>
+<p>根据个人喜好，可以放置，<br>在application.properties中配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">spring.devtools.restart.exclude=static/**,public/**</div></pre></td></tr></table></figure></p>
+<p>静态资源更改好，应用不会重启</p>
+<p>spring默认，已经设置了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">spring.devtools.restart.exclude=META-INF/maven/**,META-INF/resources/**,resources/**,static/**,public/**,templates/**,**/*Test.class,**/*Tests.class,git.properties # Patterns that should be excluded from triggering a full restart.</div><div class="line">spring.devtools.restart.poll-interval=1000 # Amount of time (in milliseconds) to wait between polling for classpath changes.</div></pre></td></tr></table></figure></p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -114,13 +133,13 @@
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/android/">android</a>
+  <a class="article-category-link" href="/categories/spring-boot/">spring-boot</a>
 </div>
 
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/android/">android</a>
+  <span></span> <a href="/tags/spring-boot/">spring-boot</a>
   </div>
 
 </div>
@@ -129,7 +148,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="https://ln0491.github.io/2016/10/11/Android-按二次返回键退出/" data-title="Android-按二次返回键退出. | 刘楠的博客" data-tsina="null" class="share clearfix">
+	  <div data-url="https://ln0491.github.io/2017/03/03/spring-boot入门六springboot-devtools热部署/" data-title="spring-boot入门六springboot + devtools热部署 | 刘楠的博客" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -142,19 +161,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2016/10/12/Android自定义属性-format/" title="Android自定义属性-format">
-  <strong>上一篇：</strong><br/>
-  <span>
-  Android自定义属性-format</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2016/10/11/ViewPager填充Fragment和懒加载/"  title="ViewPager填充Fragment和懒加载">
+<a href="/2017/03/02/如何用Java类配置Spring-MVC-不通过web-xml和XML方式/"  title="如何用Java类配置Spring MVC(不通过web.xml和XML方式)">
  <strong>下一篇：</strong><br/> 
- <span>ViewPager填充Fragment和懒加载
+ <span>如何用Java类配置Spring MVC(不通过web.xml和XML方式)
 </span>
 </a>
 </div>
@@ -163,7 +174,7 @@
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2016/10/11/Android-按二次返回键退出/" data-title="Android-按二次返回键退出." data-url="https://ln0491.github.io/2016/10/11/Android-按二次返回键退出/"></div>
+	<div class="ds-thread" data-thread-key="2017/03/03/spring-boot入门六springboot-devtools热部署/" data-title="spring-boot入门六springboot + devtools热部署" data-url="https://ln0491.github.io/2017/03/03/spring-boot入门六springboot-devtools热部署/"></div>
 </section>
 
 
@@ -173,7 +184,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#按二次返回键退出的功能"><span class="toc-number">1.</span> <span class="toc-text">按二次返回键退出的功能</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#在onBackPressed-方法中做下时间判断"><span class="toc-number">1.0.1.</span> <span class="toc-text">在onBackPressed 方法中做下时间判断</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#第二种在onKeyDown-方法中做下判断"><span class="toc-number">1.0.2.</span> <span class="toc-text">第二种在onKeyDown 方法中做下判断</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#有些页面不让用返回键可以禁用"><span class="toc-number">1.0.3.</span> <span class="toc-text">有些页面不让用返回键可以禁用</span></a></li></ol></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#Developer-tools"><span class="toc-number">1.</span> <span class="toc-text">Developer tools</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#排除静态资源"><span class="toc-number">2.</span> <span class="toc-text">排除静态资源</span></a></li></ol>
  
   </div>
 
