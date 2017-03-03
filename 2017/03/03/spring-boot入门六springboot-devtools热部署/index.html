@@ -4,26 +4,26 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>MeasureSpec模式 | 刘楠的博客</title>
+    <title>spring-boot入门六springboot + devtools热部署 | 刘楠的博客</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Liu Nan">
     
 
     
-    <meta name="description" content="MeasureSpec模式子View的SpecMode为MeasureSpec.EXACTLY-(完全)，父元素决定自元素的确切大小，子元素将被限定在给定的边界里而忽略它本身大小
-1.当子view为的LayoutParams的宽(高)采用具体的值(如100dp)宽高为固定大小,且父容器的MeasureSpec为MeasureSpec.EXACTLY或者MeasureSpec.AT_MOST或者Me">
+    <meta name="description" content="Developer toolspring-boot-devtools 是一个为开发者服务的一个模块，其中最重要的功能就是自动应用代码更改到最新的App上面去。原理是在发现代码有更改之后，重新启动应用，但是比速度比手动停止后再启动还要更快，更快指的不是节省出来的手工操作的时间。
+只需要添加依赖即可12345&amp;lt;dependency&amp;gt;       &amp;lt;groupId&amp;gt;org.spr">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MeasureSpec模式">
-<meta property="og:url" content="https://ln0491.github.io/2016/10/25/MeasureSpec模式/index.html">
+<meta property="og:title" content="spring-boot入门六springboot + devtools热部署">
+<meta property="og:url" content="https://ln0491.github.io/2017/03/03/spring-boot入门六springboot-devtools热部署/index.html">
 <meta property="og:site_name" content="刘楠的博客">
-<meta property="og:description" content="MeasureSpec模式子View的SpecMode为MeasureSpec.EXACTLY-(完全)，父元素决定自元素的确切大小，子元素将被限定在给定的边界里而忽略它本身大小
-1.当子view为的LayoutParams的宽(高)采用具体的值(如100dp)宽高为固定大小,且父容器的MeasureSpec为MeasureSpec.EXACTLY或者MeasureSpec.AT_MOST或者Me">
-<meta property="og:updated_time" content="2016-10-25T09:07:54.118Z">
+<meta property="og:description" content="Developer toolspring-boot-devtools 是一个为开发者服务的一个模块，其中最重要的功能就是自动应用代码更改到最新的App上面去。原理是在发现代码有更改之后，重新启动应用，但是比速度比手动停止后再启动还要更快，更快指的不是节省出来的手工操作的时间。
+只需要添加依赖即可12345&amp;lt;dependency&amp;gt;       &amp;lt;groupId&amp;gt;org.spr">
+<meta property="og:updated_time" content="2017-03-03T06:49:32.349Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MeasureSpec模式">
-<meta name="twitter:description" content="MeasureSpec模式子View的SpecMode为MeasureSpec.EXACTLY-(完全)，父元素决定自元素的确切大小，子元素将被限定在给定的边界里而忽略它本身大小
-1.当子view为的LayoutParams的宽(高)采用具体的值(如100dp)宽高为固定大小,且父容器的MeasureSpec为MeasureSpec.EXACTLY或者MeasureSpec.AT_MOST或者Me">
+<meta name="twitter:title" content="spring-boot入门六springboot + devtools热部署">
+<meta name="twitter:description" content="Developer toolspring-boot-devtools 是一个为开发者服务的一个模块，其中最重要的功能就是自动应用代码更改到最新的App上面去。原理是在发现代码有更改之后，重新启动应用，但是比速度比手动停止后再启动还要更快，更快指的不是节省出来的手工操作的时间。
+只需要添加依赖即可12345&amp;lt;dependency&amp;gt;       &amp;lt;groupId&amp;gt;org.spr">
 
     
     <link rel="alternative" href="/atom.xml" title="刘楠的博客" type="application/atom+xml">
@@ -86,14 +86,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2016/10/25/MeasureSpec模式/" title="MeasureSpec模式" itemprop="url">MeasureSpec模式</a>
+      <a href="/2017/03/03/spring-boot入门六springboot-devtools热部署/" title="spring-boot入门六springboot + devtools热部署" itemprop="url">spring-boot入门六springboot + devtools热部署</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="Liu Nan" target="_blank" itemprop="author">Liu Nan</a>
 		
   <p class="article-time">
-    <time datetime="2016-10-25T09:06:48.000Z" itemprop="datePublished"> 发表于 2016-10-25</time>
+    <time datetime="2017-03-03T06:47:20.000Z" itemprop="datePublished"> 发表于 2017-03-03</time>
     
   </p>
 </header>
@@ -102,41 +102,17 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#MeasureSpec模式"><span class="toc-number">1.</span> <span class="toc-text">MeasureSpec模式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#子View的SpecMode为MeasureSpec-EXACTLY-完全-，父元素决定自元素的确切大小，子元素将被限定在给定的边界里而忽略它本身大小"><span class="toc-number">1.1.</span> <span class="toc-text">子View的SpecMode为MeasureSpec.EXACTLY-(完全)，父元素决定自元素的确切大小，子元素将被限定在给定的边界里而忽略它本身大小</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#子View的SpecMode为MeasureSpec-AT-MOST-至多-，子元素至多达到指定大小的值"><span class="toc-number">1.2.</span> <span class="toc-text">子View的SpecMode为MeasureSpec.AT_MOST-(至多)，子元素至多达到指定大小的值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#的SpecMode为MeasureSpec-UNSPECIFIED-未指定"><span class="toc-number">1.3.</span> <span class="toc-text">的SpecMode为MeasureSpec.UNSPECIFIED-未指定</span></a></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#Developer-tools"><span class="toc-number">1.</span> <span class="toc-text">Developer tools</span></a></li></ol>
 		
 		</div>
 		
-		<h2 id="MeasureSpec模式"><a href="#MeasureSpec模式" class="headerlink" title="MeasureSpec模式"></a>MeasureSpec模式</h2><h3 id="子View的SpecMode为MeasureSpec-EXACTLY-完全-，父元素决定自元素的确切大小，子元素将被限定在给定的边界里而忽略它本身大小"><a href="#子View的SpecMode为MeasureSpec-EXACTLY-完全-，父元素决定自元素的确切大小，子元素将被限定在给定的边界里而忽略它本身大小" class="headerlink" title="子View的SpecMode为MeasureSpec.EXACTLY-(完全)，父元素决定自元素的确切大小，子元素将被限定在给定的边界里而忽略它本身大小"></a>子View的SpecMode为MeasureSpec.EXACTLY-(完全)，父元素决定自元素的确切大小，子元素将被限定在给定的边界里而忽略它本身大小</h3><ul>
-<li>1.当子view为的LayoutParams的宽(高)采用具体的值(如100dp)宽高为固定大小,且父容器的MeasureSpec为MeasureSpec.EXACTLY或者MeasureSpec.AT_MOST或者MeasureSpec.UNSPECIFIED时：系统返回给该子View的specMode就为MeasureSpec.EXACTLY，系统返回给该子View的specSize就为子View自己指定的大小(childSize)。</li>
-</ul>
-<blockquote>
-<p>这种情况，子view指定了宽高的具体值，不管父容器是什么返回的都是MeasureSpec.EXACTLY</p>
-</blockquote>
+		<h4 id="Developer-tools"><a href="#Developer-tools" class="headerlink" title="Developer tools"></a>Developer tools</h4><p>pring-boot-devtools 是一个为开发者服务的一个模块，其中最重要的功能就是自动应用代码更改到最新的App上面去。原理是在发现代码有更改之后，重新启动应用，但是比速度比手动停止后再启动还要更快，更快指的不是节省出来的手工操作的时间。</p>
+<p>只需要添加依赖即可<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;dependency&gt;</div><div class="line">       &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</div><div class="line">       &lt;artifactId&gt;spring-boot-devtools&lt;/artifactId&gt;</div><div class="line">       &lt;optional&gt;true&lt;/optional&gt;</div><div class="line">   &lt;/dependency&gt;</div></pre></td></tr></table></figure></p>
+<p>测试方法：</p>
 <ul>
-<li>2.当子View的LayoutParams的宽(高)采用match_parent时并且父容器的MeasureSpec为MeasureSpec.EXACTLY时：系统返回给该子View的specMode就为 MeasureSpec.EXACTLY，系统返回给该子View的specSize就为该父容器剩余空间的大小(parentLeftSize)。</li>
+<li>修改类–&gt;保存：应用会重启</li>
+<li>修改配置文件–&gt;保存：应用会重启</li>
 </ul>
-<blockquote>
-<p>这种情况View设置宽高为match_parent,父容器为宽高为固定指定了大小的100dp，之类的，就是告诉子view要和父容器一样大</p>
-</blockquote>
-<h3 id="子View的SpecMode为MeasureSpec-AT-MOST-至多-，子元素至多达到指定大小的值"><a href="#子View的SpecMode为MeasureSpec-AT-MOST-至多-，子元素至多达到指定大小的值" class="headerlink" title="子View的SpecMode为MeasureSpec.AT_MOST-(至多)，子元素至多达到指定大小的值"></a>子View的SpecMode为MeasureSpec.AT_MOST-(至多)，子元素至多达到指定大小的值</h3><ul>
-<li>1.当子View的LayoutParams的宽(高)采用match_parent并且父容器的MeasureSpec为MeasureSpec.AT_MOST时：系统返回给该子View的specMode就为MeasureSpec.AT_MOST，系统返回给该子View的specSize就为该父容器剩余空间的大小(parentLeftSize)</li>
-</ul>
-<blockquote>
-<p>当子viwe的宽高为match_parent,父容器的宽高为MeasureSpec为MeasureSpec.AT_MOST也就是wrap_content时，子view就是要和父容器一样大</p>
-</blockquote>
-<ul>
-<li>2.当子View的LayoutParams的宽(高)采用wrap_content时并且父容器的MeasureSpec为MeasureSpec.EXACTLY时：系统返回给该子View的specMode就为 MeasureSpec.AT_MOST，系统返回给该子View的specSize就为该父容器剩余空间的大小(parentLeftSize)</li>
-</ul>
-<blockquote>
-<p>子view的宽高是wrap_content，而父容器的宽高为指定的固定大小，子view要看内容来确定大小，这里系统返回的就是MeasureSpec.AT_MOST</p>
-</blockquote>
-<ul>
-<li>3.当子View的LayoutParams的宽(高)采用wrap_content时并且父容器的MeasureSpec为MeasureSpec.AT_MOST时:系统返回给该子View的specMode就为MeasureSpec.AT_MOST，系统返回给该子View的specSize就为该父容器剩余空间的大小(parentLeftSize)</li>
-</ul>
-<blockquote>
-<p>子View的LayoutParams的宽(高)采用wrap_content，即说明这个子View的宽高不明确,要视内容而定,这个时候父容器的MeasureSpec为MeasureSpec.AT_MOST。这种情况概况起来简单地说就是：子View的宽高是不确定的，父容器的宽高也是不确定的，那么系统返回给该子View的specMode也就是不确定的即为MeasureSpec.AT_MOST，系统返回给该子View的specSize就为该父容器剩余空间的大小(parentLeftSize)</p>
-</blockquote>
-<h3 id="的SpecMode为MeasureSpec-UNSPECIFIED-未指定"><a href="#的SpecMode为MeasureSpec-UNSPECIFIED-未指定" class="headerlink" title="的SpecMode为MeasureSpec.UNSPECIFIED-未指定"></a>的SpecMode为MeasureSpec.UNSPECIFIED-未指定</h3><p>一般都是父控件是AdapterView，通过measure方法传入的模式</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -144,13 +120,13 @@
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/android/">android</a>
+  <a class="article-category-link" href="/categories/spring-boot/">spring-boot</a>
 </div>
 
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/自定义View/">自定义View</a>
+  <span></span> <a href="/tags/spring-boot/">spring-boot</a>
   </div>
 
 </div>
@@ -159,7 +135,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="https://ln0491.github.io/2016/10/25/MeasureSpec模式/" data-title="MeasureSpec模式 | 刘楠的博客" data-tsina="null" class="share clearfix">
+	  <div data-url="https://ln0491.github.io/2017/03/03/spring-boot入门六springboot-devtools热部署/" data-title="spring-boot入门六springboot + devtools热部署 | 刘楠的博客" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -172,19 +148,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2016/10/25/PorterDuffXfermode模式学习/" title="PorterDuffXfermode模式学习">
-  <strong>上一篇：</strong><br/>
-  <span>
-  PorterDuffXfermode模式学习</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2016/10/24/GRADLE命令简单学习/"  title="GRADLE命令简单学习">
+<a href="/2017/03/02/如何用Java类配置Spring-MVC-不通过web-xml和XML方式/"  title="如何用Java类配置Spring MVC(不通过web.xml和XML方式)">
  <strong>下一篇：</strong><br/> 
- <span>GRADLE命令简单学习
+ <span>如何用Java类配置Spring MVC(不通过web.xml和XML方式)
 </span>
 </a>
 </div>
@@ -193,7 +161,7 @@
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2016/10/25/MeasureSpec模式/" data-title="MeasureSpec模式" data-url="https://ln0491.github.io/2016/10/25/MeasureSpec模式/"></div>
+	<div class="ds-thread" data-thread-key="2017/03/03/spring-boot入门六springboot-devtools热部署/" data-title="spring-boot入门六springboot + devtools热部署" data-url="https://ln0491.github.io/2017/03/03/spring-boot入门六springboot-devtools热部署/"></div>
 </section>
 
 
@@ -203,7 +171,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#MeasureSpec模式"><span class="toc-number">1.</span> <span class="toc-text">MeasureSpec模式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#子View的SpecMode为MeasureSpec-EXACTLY-完全-，父元素决定自元素的确切大小，子元素将被限定在给定的边界里而忽略它本身大小"><span class="toc-number">1.1.</span> <span class="toc-text">子View的SpecMode为MeasureSpec.EXACTLY-(完全)，父元素决定自元素的确切大小，子元素将被限定在给定的边界里而忽略它本身大小</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#子View的SpecMode为MeasureSpec-AT-MOST-至多-，子元素至多达到指定大小的值"><span class="toc-number">1.2.</span> <span class="toc-text">子View的SpecMode为MeasureSpec.AT_MOST-(至多)，子元素至多达到指定大小的值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#的SpecMode为MeasureSpec-UNSPECIFIED-未指定"><span class="toc-number">1.3.</span> <span class="toc-text">的SpecMode为MeasureSpec.UNSPECIFIED-未指定</span></a></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#Developer-tools"><span class="toc-number">1.</span> <span class="toc-text">Developer tools</span></a></li></ol>
  
   </div>
 
