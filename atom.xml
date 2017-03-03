@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ln0491.github.io/"/>
-  <updated>2017-03-03T06:49:32.349Z</updated>
+  <updated>2017-03-03T07:06:55.198Z</updated>
   <id>https://ln0491.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://ln0491.github.io/2017/03/03/spring-boot%E5%85%A5%E9%97%A8%E5%85%ADspringboot-devtools%E7%83%AD%E9%83%A8%E7%BD%B2/"/>
     <id>https://ln0491.github.io/2017/03/03/spring-boot入门六springboot-devtools热部署/</id>
     <published>2017-03-03T06:47:20.000Z</published>
-    <updated>2017-03-03T06:49:32.349Z</updated>
+    <updated>2017-03-03T07:06:55.198Z</updated>
     
     <content type="html"><![CDATA[<h4 id="Developer-tools"><a href="#Developer-tools" class="headerlink" title="Developer tools"></a>Developer tools</h4><p>pring-boot-devtools 是一个为开发者服务的一个模块，其中最重要的功能就是自动应用代码更改到最新的App上面去。原理是在发现代码有更改之后，重新启动应用，但是比速度比手动停止后再启动还要更快，更快指的不是节省出来的手工操作的时间。</p>
 <p>只需要添加依赖即可<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;dependency&gt;</div><div class="line">       &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</div><div class="line">       &lt;artifactId&gt;spring-boot-devtools&lt;/artifactId&gt;</div><div class="line">       &lt;optional&gt;true&lt;/optional&gt;</div><div class="line">   &lt;/dependency&gt;</div></pre></td></tr></table></figure></p>
@@ -29,6 +29,19 @@
 <li>修改类–&gt;保存：应用会重启</li>
 <li>修改配置文件–&gt;保存：应用会重启</li>
 </ul>
+<h4 id="排除静态资源"><a href="#排除静态资源" class="headerlink" title="排除静态资源"></a>排除静态资源</h4><p>Excluding resources<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Certain resources don’t necessarily need to trigger a restart when they are changed. For example, Thymeleaf templates can just be edited in-place. By default changing resources in /META-INF/maven, /META-INF/resources ,/resources ,/static ,/public or /templates will not trigger a restart but will trigger a live reload. If you want to customize these exclusions you can use the spring.devtools.restart.exclude property. For example, to exclude only /static and /public you would set the following:</div></pre></td></tr></table></figure></p>
+<p>建议我们将静态资源放在以下目录</p>
+<ul>
+<li>/META-INF/maven</li>
+<li>/META-INF/resources</li>
+<li>/resources</li>
+<li>/static</li>
+<li>/public</li>
+<li>/templates</li>
+</ul>
+<p>根据个人喜好，可以放置，<br>在application.properties中配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">spring.devtools.restart.exclude=static/**,public/**</div></pre></td></tr></table></figure></p>
+<p>静态资源更改好，应用不会重启</p>
+<p>spring默认，已经设置了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">spring.devtools.restart.exclude=META-INF/maven/**,META-INF/resources/**,resources/**,static/**,public/**,templates/**,**/*Test.class,**/*Tests.class,git.properties # Patterns that should be excluded from triggering a full restart.</div><div class="line">spring.devtools.restart.poll-interval=1000 # Amount of time (in milliseconds) to wait between polling for classpath changes.</div></pre></td></tr></table></figure></p>
 ]]></content>
     
     <summary type="html">
